@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2C3B4D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tasks">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>Task Management</title>
+<style>
+:root{--glass:rgba(255,255,255,.84);--bgimg:url(data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAAAAAI8z4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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);--bg:#accfc9;--card:#fff;--line:#f0e6f3;--box:#d9cbe6;--ink:#40364f;--mute:#9a8fae;--accent:#c084e8;--tint:#fbf6fd;--late:#e0446a;color-scheme:light}
+html[data-theme=dark]{--glass:rgba(31,35,69,.88);--bg:#181b34;--card:#1f2345;--line:#30355f;--box:#4a5089;--ink:#e6e9ff;--mute:#9aa0cf;--accent:#a99cff;--tint:rgba(255,255,255,.04);--late:#ff7b93;color-scheme:dark}
+html[data-theme=dark] .grp,html[data-theme=dark] .rc,html[data-theme=dark] .xtab,html[data-theme=dark] .xcard{--c:hsl(var(--h,300) 95% 68%)!important}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg) var(--bgimg) no-repeat var(--bgpos,center bottom) fixed;background-size:cover;color:var(--ink);font:12.5px/1.3 ui-rounded,"SF Pro Rounded","Nunito","Quicksand","Varela Round","Hiragino Maru Gothic ProN","Segoe UI",system-ui,sans-serif;padding:16px 18px min(300px,38vh)}
+html[data-theme=dark] body{background-image:linear-gradient(rgba(20,22,48,.8),rgba(20,22,48,.8)),var(--bgimg)}
+.wrap{max-width:1300px;margin:0 auto}
+.top{position:relative;flex-wrap:wrap;display:flex;align-items:center;gap:14px;margin-bottom:10px;background:var(--glass);border-radius:16px;padding:8px 14px}
+h1{font-size:20px;margin:0;letter-spacing:.01em}
+.bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden;max-width:360px}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#ff9ccf,#8ec1ff,#7be0b0);transition:width .5s}
+#count{color:var(--mute);white-space:nowrap}
+.right{margin-left:auto;display:flex;gap:8px;align-items:center}
+#th,.tb{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 10px;cursor:pointer;font-size:12px;color:var(--mute)}
+input,select,button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.verse{max-width:760px;margin-left:auto;margin-right:auto;position:relative;background:linear-gradient(120deg,#ffe4f2,#efe6ff 50%,#dff1ff);border:2px solid #fff;border-radius:20px;padding:8px 44px 9px;text-align:center;margin-bottom:4px;box-shadow:0 2px 10px rgba(150,110,190,.15)}
+.verse::before,.verse::after{position:absolute;top:50%;transform:translateY(-50%);font-size:18px}
+.verse::before{content:"✿";left:16px;color:#f59ac8}
+.verse::after{content:"✧";right:16px;color:#a98be8}
+html[data-theme=dark] .verse{background:linear-gradient(120deg,#3b2a55,#2b3163 50%,#24445e);border-color:#3c4380}
+.vh,.vr{color:var(--ink);opacity:.65}
+.vh{font-size:11px;margin-bottom:2px}
+.vt{font-size:15px;line-height:1.5;font-weight:500;max-width:64ch;margin:0 auto}
+.vr{margin-top:3px;font-weight:700;font-size:12px}
+.grp{margin:16px 0 20px}
+.gt{display:flex;align-items:center;gap:8px;color:var(--c);font-size:15px;font-weight:800;margin-bottom:7px;width:fit-content;background:var(--glass);border-radius:99px;padding:4px 14px 4px 8px}
+.gname{background:transparent;border:0;color:var(--c);font:inherit;font-weight:800;font-size:15px;padding:2px 4px;border-radius:8px}
+.gname:hover{background:var(--tint)}
+.logo{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--box);background:var(--card);cursor:pointer;padding:0;display:grid;place-items:center;color:var(--mute);font-size:15px;line-height:1;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:contain}
+.lx{background:none;border:0;color:var(--mute);cursor:pointer;font-size:14px;padding:0 2px}
+.gt small{color:var(--mute);font-weight:500;font-size:12px}
+.gx,.xp,.ax{background:none;border:0;cursor:pointer;color:inherit;padding:0 4px;font-size:13px}
+.scroll{overflow-x:auto;border-radius:16px}
+.tbl{min-width:830px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(150,110,190,.07)}
+.tr{display:grid;grid-template-columns:32px 2in 132px 98px 100px 68px minmax(200px,1fr) 28px;border-bottom:1px solid var(--line);min-height:34px}
+.tr:last-child{border-bottom:0}
+.tr>*{display:flex;align-items:center;min-width:0}
+.hd{color:var(--mute);font-weight:700;background:var(--tint)}
+.hd>*{justify-content:center}
+.ck{justify-content:center}
+.ck input{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:2px solid var(--box);border-radius:50%;cursor:pointer;margin:0;display:grid;place-content:center;background:var(--card)}
+.ck input:hover{border-color:#7be0b0}
+.ck input:checked{background:#7be0b0;border-color:#7be0b0}
+.ck input:checked::after{content:"✓";color:#fff;font-size:10px;font-weight:800;line-height:1}
+.tr input[type=text],.tr input[type=date]{background:transparent;border:0;width:100%;padding:6px 8px;height:100%;font-size:12.5px;border-radius:8px}
+.tr input[type=text]:hover,.tr input[type=date]:hover{background:var(--tint)}
+.tr input[type=date]{text-align:center;padding:6px 2px}
+.late input[type=date]{color:var(--late)}
+.title{font-weight:700}
+.sub .title{font-weight:400}
+.sub{background:var(--tint)}
+.ind{width:22px;flex:none}
+.xp{width:22px;flex:none;color:var(--mute)}
+.badge{flex:none;margin-right:6px;background:var(--line);border-radius:99px;padding:0 7px;font-size:11px;color:var(--mute)}
+.done .title{text-decoration:line-through;color:var(--mute)}
+.pc{padding:0 6px}
+select.pill{appearance:none;-webkit-appearance:none;border:0;width:100%;height:22px;border-radius:99px;text-align:center;text-align-last:center;font-weight:700;cursor:pointer;font-size:11.5px}
+select.pill option{background:#fff;color:#40364f}
+.c-open{background:#a9d0ff;color:#1f3b63}.c-work{background:#ffd58a;color:#5a3d00}.c-stuck{background:#ff9fae;color:#6b1226}.c-review{background:#cfb4f5;color:#3f2270}.c-done{background:#9ee6bf;color:#0f4d33}
+.p-crit{background:#ff8aa1;color:#5a0f24}.p-high{background:#ffb3c1;color:#6b1226}.p-med{background:#ffc9a3;color:#5c2f0a}.p-low{background:#d3ee9b;color:#2f4a00}
+.del{background:none;border:0;color:var(--mute);cursor:pointer;font-size:16px;justify-content:center;width:100%}
+.del:hover{color:var(--late)}
+.add{background:var(--tint)}
+.addbtn{width:22px;height:22px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:16px;line-height:1;cursor:pointer;margin:0 auto;display:grid;place-items:center;padding:0}
+.empty{color:var(--mute);padding:10px 14px}
+.ax{color:var(--ink);background:var(--glass);border-radius:99px;padding:4px 12px!important;margin:8px 0 4px;font-size:12px;text-align:left}
+.arch .tr{opacity:.7}
+.bottom{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin-top:26px}
+#chart{flex:1 1 520px;min-width:0;max-width:780px}
+#side{flex:1 1 280px;min-width:260px;display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px 16px;box-shadow:0 2px 12px rgba(150,110,190,.08)}
+.card h2{margin:0 0 8px;font-size:14px}
+#notes{width:100%;min-height:96px;resize:vertical;border:0;background:var(--tint);border-radius:12px;padding:8px 10px;font:inherit;color:var(--ink)}
+.lk{display:flex;align-items:center;gap:6px;padding:5px 2px;border-bottom:1px solid var(--line)}
+.lk a{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink);font-weight:600;text-decoration:underline dotted}
+.lk a:hover{color:var(--accent)}
+.lk button{background:none;border:0;color:var(--mute);cursor:pointer;font-size:15px}
+.lf{display:flex;gap:6px;margin-top:8px}
+.lf input{min-width:0;border:0;background:var(--tint);border-radius:10px;padding:6px 9px;font:inherit;color:var(--ink)}
+.rem{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+.rc{border-top:5px solid var(--c);border-radius:18px;padding:10px 14px 12px}
+.rc h2{font-size:13px}
+.rc h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rt{width:100%;min-height:78px;resize:vertical;border:0;background:var(--tint);border-radius:12px;padding:8px 10px;font:inherit;color:var(--ink)}
+#ln{flex:1 1 34%}#lu{flex:1 1 44%}
+.lf .addbtn{flex:none;align-self:center;margin:0}
+.nolk{color:var(--mute);padding:4px 2px}
+.chart{max-width:780px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px 16px 8px;box-shadow:0 2px 12px rgba(150,110,190,.08)}
+.ct{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ct h2{margin:0;font-size:14px}
+.legend{margin-left:auto;display:flex;gap:14px;color:var(--mute)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 2px}
+.stat{background:var(--tint);border-radius:12px;padding:6px 12px;font-size:11.5px}
+.stat b{display:block;font-size:16px;line-height:1.2}
+.stat span{color:var(--mute)}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{fill:var(--mute);font-size:10px;font-family:inherit}
+.chart .tot{fill:var(--ink);font-weight:700}
+.chart .now{fill:var(--accent);font-weight:800}
+.chart line{stroke:var(--line)}
+.none{text-align:center;color:var(--mute);padding:26px 0 18px}
+#party{position:fixed;inset:0;z-index:50;display:none;place-items:center;text-align:center;cursor:pointer;background:linear-gradient(135deg,#ff2d87,#ff9f1c,#ffd23f,#06b6c4);background-size:400% 400%;animation:gbg 6s ease infinite}
+#party.on{display:grid}
+#party canvas{position:absolute;inset:0;width:100%;height:100%}
+#party>div{position:relative;color:#fff;padding:20px}
+#party h2{font-size:clamp(40px,9vw,110px);margin:0;line-height:1.05;letter-spacing:-.03em;text-shadow:0 4px 12px rgba(0,0,0,.3);animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+#party p{font-size:clamp(18px,3vw,28px);margin:12px 0 0;font-weight:600}
+#party small{display:block;margin-top:22px;opacity:.85;font-size:14px}
+#party .flags{position:absolute;top:0;left:0;right:0;padding:0;display:flex;pointer-events:none;border-top:3px solid rgba(0,0,0,.25)}
+.flags i{flex:1;height:clamp(50px,11vh,110px);margin:0 1px;clip-path:polygon(0 0,100% 0,100% 84%,88% 100%,75% 84%,62% 100%,50% 84%,38% 100%,25% 84%,12% 100%,0 84%);transform-origin:50% 0;animation:sway 1.4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.crew{display:flex;justify-content:center;gap:clamp(2px,1vw,14px);margin-top:6px}.crew span{font-size:clamp(44px,9vw,96px);line-height:1.1;transform-origin:bottom center;animation:dance .6s infinite alternate ease-in-out;user-select:none}
+.bg{display:none;gap:12px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.all .bg{display:flex}
+.bg span{padding:8px 18px;border-radius:20px;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+@keyframes dance{0%{transform:translateY(0) rotate(-15deg)}50%{transform:translateY(-30px) rotate(0) scaleX(1.1)}100%{transform:translateY(0) rotate(15deg)}}
+@keyframes gbg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes pop{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.crew span,.flags i,#party{animation:none}}
+@media(max-width:800px){.rem{grid-template-columns:1fr}}
+@media(max-width:700px){.stats{grid-template-columns:1fr}.legend{margin-left:0}}
+.gcol{width:20px;height:20px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;flex:none}
+.gcol::-webkit-color-swatch-wrapper{padding:0}
+.gcol::-webkit-color-swatch{border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--line)}
+.gcol::-moz-color-swatch{border:2px solid #fff;border-radius:50%}
+.gdel{background:none;border:0;cursor:pointer;font-size:13px;opacity:.5;padding:0 2px}
+.gdel:hover{opacity:1}
+.addgrp{display:block;margin:4px auto 0;background:var(--glass);border:2px dashed var(--box);border-radius:99px;padding:8px 24px;cursor:pointer;font-weight:700;color:var(--ink)}
+.addgrp:hover{border-color:var(--accent)}
+.bgp[hidden]{display:none}
+.bgp{position:absolute;right:8px;top:calc(100% + 8px);z-index:20;width:300px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.bgp h3{margin:0 0 8px;font-size:12.5px}
+.sws{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.sw{aspect-ratio:1;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.sw.on{box-shadow:0 0 0 2.5px var(--accent)}
+.bgrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.bgrow .tb{display:inline-flex;align-items:center;gap:6px}
+.bgrow input[type=color]{width:22px;height:22px;padding:0;border:0;background:none;cursor:pointer}
+.bgn{margin:8px 0 0;color:var(--mute);min-height:1em;font-size:11.5px}
+/* ---- night mode: every color follows the spectrum ---- */
+html[data-theme=dark]{--rb:linear-gradient(90deg,#ff5d8f,#ff9f45,#ffe14d,#4dff9d,#3dd9ff,#7b8bff,#c86bff)}
+html[data-theme=dark] h1{background:var(--rb);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=dark] .bar i{background:var(--rb)}
+html[data-theme=dark] .top{border:1.5px solid transparent;background:linear-gradient(#1a1d3c,#1a1d3c) padding-box,var(--rb) border-box}
+html[data-theme=dark] .verse{border:2px solid transparent;background:linear-gradient(#211d45,#211d45) padding-box,var(--rb) border-box}
+html[data-theme=dark] .chart{border:2px solid transparent;background:linear-gradient(#1f2345,#1f2345) padding-box,var(--rb) border-box}
+html[data-theme=dark] .card{border-color:rgba(255,255,255,.1)}
+html[data-theme=dark] #side .card:nth-child(1){--h:200}
+html[data-theme=dark] #side .card:nth-child(2){--h:280}
+html[data-theme=dark] #side .card{border-top:3px solid hsl(var(--h) 95% 66%);box-shadow:var(--raise),0 0 16px hsl(var(--h) 95% 60%/.22)}
+html[data-theme=dark] .rc,html[data-theme=dark] .tbl{box-shadow:var(--raise),0 0 16px hsl(var(--h,300) 95% 60%/.28)}
+.stat:nth-child(1){--h:340}.stat:nth-child(2){--h:40}.stat:nth-child(3){--h:160}
+html[data-theme=dark] .stat{border-top:3px solid hsl(var(--h) 95% 66%)}
+html[data-theme=dark] .stat b{color:hsl(var(--h) 95% 72%)}
+html[data-theme=dark] .c-open{background:#38bdf8;color:#04283d}
+html[data-theme=dark] .c-work{background:#ffb020;color:#3d2600}
+html[data-theme=dark] .c-stuck{background:#ff5d7a;color:#3d0512}
+html[data-theme=dark] .c-review{background:#b78bff;color:#22084d}
+html[data-theme=dark] .c-done{background:#3dff9a;color:#003d20}
+html[data-theme=dark] .p-crit{background:#ff3d8b;color:#3d0018}
+html[data-theme=dark] .p-high{background:#ff7a3d;color:#3d1500}
+html[data-theme=dark] .p-med{background:#ffe14d;color:#3d3300}
+html[data-theme=dark] .p-low{background:#a6f04d;color:#1d3300}
+html[data-theme=dark] .ck input:hover{border-color:#3dff9a}
+html[data-theme=dark] .ck input:checked{background:#3dff9a;border-color:#3dff9a}
+html[data-theme=dark] .ck input:checked::after{color:#003d20}
+html[data-theme=dark] .addbtn{background:var(--rb);color:#1a1035;font-weight:800}
+html[data-theme=dark] .addgrp{background:var(--rb);color:#1a1035}
+html[data-theme=dark] .gcol{display:none}
+/* ===== soft 3D skin ===== */
+:root{--card:#f3f1ec;--tint:#e8e5de;--line:#dedbd3;--box:#c8c5bd;--ink:#38403c;--mute:#858d88;--accent:#4fc9a0;--glass:rgba(243,241,236,.94);--sh-d:rgba(62,74,68,.27);--sh-l:rgba(255,255,255,.92);--mint:linear-gradient(#c6f3e0,#93dcbf);--mint-ink:#14513a;
+--raise:8px 8px 18px var(--sh-d),-6px -6px 16px var(--sh-l);--raise-s:4px 4px 9px var(--sh-d),-3px -3px 8px var(--sh-l);--raise-xs:2px 2px 5px var(--sh-d),-2px -2px 4px var(--sh-l);--inset:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
+html[data-theme=dark]{--sh-d:rgba(3,5,18,.72);--sh-l:rgba(255,255,255,.06);--mint:linear-gradient(#5be0b0,#2fb98a);--mint-ink:#053626}
+:focus-visible{outline:3px solid rgba(111,214,178,.6);outline-offset:1px}
+.top{border-radius:24px;box-shadow:var(--raise)}
+.tb,#th{border:0;background:var(--card);color:var(--ink);box-shadow:var(--raise-s);transition:box-shadow .15s}
+.tb:hover,#th:hover{box-shadow:var(--raise-xs)}
+.tb:active,#th:active{box-shadow:var(--inset)}
+.bar{height:10px;background:var(--tint);box-shadow:var(--inset)}
+.bar i{box-shadow:1px 1px 3px var(--sh-d)}
+.verse{box-shadow:var(--raise)}
+.gt{box-shadow:var(--raise-s)}
+.ax{box-shadow:var(--raise-xs)}
+.logo{border:0;box-shadow:var(--raise-xs)}
+.scroll{padding:8px 18px 20px 12px;margin:-8px -18px -20px -12px}
+.tbl{border:0;border-radius:26px;box-shadow:var(--raise);position:relative;overflow:visible;padding:8px 12px 8px 24px;min-width:930px;background:var(--card)}
+.tbl::before{content:"";position:absolute;left:10px;top:14px;bottom:14px;width:6px;border-radius:99px;background:var(--c);box-shadow:inset 1px 1px 2px rgba(255,255,255,.55),1px 1px 3px var(--sh-d)}
+.hd{border-radius:14px;box-shadow:var(--inset);background:var(--tint);min-height:32px}
+.tr{border-bottom:1.5px solid rgba(120,120,120,.09)}
+.tr:last-child{border-bottom:0}
+.tr:not(.hd):not(.add):hover{background:var(--tint);border-radius:12px}
+.tr.add{background:transparent}
+.tr.add input[type=text],.tr.add input[type=date]{height:26px;border-radius:99px;background:var(--tint);box-shadow:var(--inset);padding:0 12px}
+.tr.add input[type=date]{padding:0 3px;font-size:10.5px;letter-spacing:-.2px}
+.ck input{border:0;box-shadow:var(--raise-xs)}
+.ck input:hover{box-shadow:var(--inset)}
+.ck input:checked{background:var(--mint);box-shadow:var(--inset)}
+.ck input:checked::after{color:var(--mint-ink)}
+select.pill{box-shadow:var(--raise-xs)}
+.c-open{background:#bcd7f6;color:#213f63}.c-work{background:#f7e4a0;color:#5a4300}.c-stuck{background:#f6b4ba;color:#6b1a25}.c-review{background:#dccbf4;color:#3f2270}.c-done{background:#aeeacf;color:#0e4a33}
+.p-crit{background:#f4a2ad;color:#5a0f24}.p-high{background:#f8bfc5;color:#6b1226}.p-med{background:#f8d9b4;color:#5c2f0a}.p-low{background:#c9eeb0;color:#2f4a00}
+.addbtn{background:var(--mint);color:var(--mint-ink);box-shadow:var(--raise-xs);font-weight:800}
+.addbtn:active{box-shadow:var(--inset)}
+.addgrp{background:var(--mint);color:var(--mint-ink);border:0;box-shadow:var(--raise-s);padding:10px 28px}
+.addgrp:hover{box-shadow:var(--raise-xs)}
+.addgrp:active{box-shadow:var(--inset)}
+.card,.chart{border:0;border-radius:26px;box-shadow:var(--raise)}
+.card.rc{border-top:5px solid var(--c)}
+.stat{background:var(--tint);box-shadow:var(--inset);border-radius:18px}
+#notes,.rt,.lf input{background:var(--tint);box-shadow:var(--inset);border-radius:16px}
+.bgp{border:0;border-radius:24px;box-shadow:var(--raise)}
+.sw{border:0;box-shadow:var(--raise-xs)}
+.sw.on{box-shadow:var(--inset),0 0 0 3px var(--accent)}
+html:not([data-theme=dark]) .chart .now{fill:#1f9f76}
+/* ===== calendar ===== */
+.cal{margin-top:18px;padding:16px 18px 18px}
+.ch{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card .ch h2{margin:0 6px 0 0;font-size:18px;min-width:11ch}
+.sp{flex:1}
+.nb{width:30px;height:30px;border-radius:50%;border:0;background:var(--card);box-shadow:var(--raise-s);cursor:pointer;font-size:16px;line-height:1;color:var(--ink)}
+.nb:active{box-shadow:var(--inset)}
+.sbtn,.pbtn,.chip{border:0;border-radius:99px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:var(--raise-s);display:inline-flex;align-items:center;gap:6px}
+.sbtn,.chip{background:var(--card);color:var(--mute)}
+.chip{padding:6px 12px;font-size:11.5px}
+.chip.on{background:var(--mint);color:var(--mint-ink)}
+.pbtn{background:var(--mint);color:var(--mint-ink)}
+.sbtn:hover,.pbtn:hover,.chip:hover{box-shadow:var(--raise-xs)}
+.sbtn:active,.pbtn:active,.chip:active{box-shadow:var(--inset)}
+.files{margin-top:10px;color:var(--mute);font-size:11.5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fchip{background:var(--tint);box-shadow:var(--inset);border-radius:99px;padding:3px 6px 3px 12px;display:inline-flex;gap:4px;align-items:center;color:var(--ink)}
+.fchip button{border:0;background:none;cursor:pointer;color:var(--mute);font-size:14px;padding:0 4px}
+.cbody{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;align-items:flex-start}
+.cgrid{flex:1 1 560px;min-width:0}
+.wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
+.wd{text-align:center;color:var(--mute);font-weight:700;font-size:11px;padding:2px 0 4px}
+.day{min-height:88px;border-radius:16px;padding:6px 6px 7px;background:var(--card);box-shadow:var(--raise-s);cursor:pointer;display:flex;flex-direction:column;gap:3px;border:0;text-align:left;font:inherit;color:inherit;min-width:0}
+.day:hover{box-shadow:var(--raise-xs)}
+.day.out{opacity:.5}
+.day.sel{box-shadow:var(--inset)}
+.dn{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:11.5px;flex:none}
+.day.today .dn{background:var(--mint);color:var(--mint-ink);box-shadow:0 0 0 3px rgba(111,214,178,.45)}
+.ev{font-size:10.5px;line-height:1.3;border-radius:8px;padding:1px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.ev.t{background:var(--cc,#bbb);color:#1d2a26}
+.ev.x{background:var(--tint);color:var(--ink);box-shadow:var(--inset)}
+.ev.dd,.ai b.dd{text-decoration:line-through;opacity:.55}
+.more{font-size:10px;color:var(--mute);padding-left:4px}
+.agenda{flex:0 1 290px;min-width:250px}
+.agenda h3{margin:0 0 8px;font-size:13px}
+.agenda h3+.aglist{margin-bottom:16px}
+.aglist{background:var(--tint);box-shadow:var(--inset);border-radius:18px;padding:8px 12px;display:grid;gap:8px}
+.ai{display:flex;gap:9px;align-items:flex-start}
+.ai i{width:10px;height:10px;border-radius:50%;margin-top:4px;flex:none;background:var(--mute);box-shadow:var(--raise-xs)}
+.ai div{min-width:0}
+.ai b{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.ai small{color:var(--mute);font-size:11px}
+.ai small.late{color:var(--late);font-weight:700}
+.aglist .empty{padding:4px 0}
+#toasts{position:fixed;right:16px;bottom:16px;z-index:60;display:grid;gap:12px;max-width:min(370px,calc(100vw - 32px))}
+.toast{position:relative;background:var(--card);border-radius:18px;padding:11px 32px 11px 16px;box-shadow:var(--raise);border-left:6px solid #7fd9b6;display:grid;gap:3px;color:var(--ink)}
+.toast b{font-size:13px}
+.toast span{white-space:pre-line;color:var(--mute);font-size:12px}
+/* ===== device frame, tabs, part panels ===== */
+.wrap{max-width:1340px}
+.frame{background:linear-gradient(145deg,#5d5e5a,#3d3e3b);border-radius:40px;padding:12px 14px 16px;box-shadow:12px 14px 30px rgba(20,25,22,.4),-6px -6px 16px rgba(255,255,255,.3),inset 1px 1px 2px rgba(255,255,255,.2)}
+html[data-theme=dark] .frame{background:linear-gradient(145deg,#2d3060,#12142b);box-shadow:12px 14px 30px rgba(0,0,0,.6),-4px -4px 14px rgba(255,255,255,.05),inset 1px 1px 2px rgba(255,255,255,.12)}
+.ftabs{display:flex;align-items:center;gap:12px;padding:0 6px}
+.hb{width:40px;height:40px;border-radius:50%;border:0;background:#f3f1ec;color:#38403c;font-size:17px;cursor:pointer;flex:none;box-shadow:3px 3px 8px rgba(0,0,0,.4),-2px -2px 5px rgba(255,255,255,.12)}
+.hb:active{box-shadow:inset 2px 2px 5px rgba(0,0,0,.3)}
+.xtabs{display:flex;gap:9px;overflow-x:auto;padding:8px 8px 12px;flex:1;scrollbar-width:none}
+.xtabs::-webkit-scrollbar{display:none}
+.xtab{flex:none;border:0;border-radius:99px;padding:8px 16px;font-size:12.5px;font-weight:700;cursor:pointer;background:#dcdad3;color:#43473f;display:inline-flex;gap:7px;align-items:center;max-width:250px;box-shadow:2px 2px 6px rgba(0,0,0,.35);font-family:inherit;transition:transform .12s}
+.xtab:hover{transform:translateY(-1px)}
+.xtab span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xtab.on{background:#fff;color:#1d2420;box-shadow:0 0 0 3px var(--c,#6fd6b2),4px 4px 10px rgba(0,0,0,.4)}
+.xtab img{width:17px;height:17px;border-radius:50%;object-fit:contain;background:#fff}
+.xtab em{font-style:normal;background:#f5ee3a;color:#3a3800;border-radius:99px;font-size:10px;min-width:17px;height:17px;display:grid;place-items:center;font-weight:800;padding:0 4px}
+.xtab.add{background:var(--mint);color:var(--mint-ink)}
+html[data-theme=dark] .xtab:not(.add):not(.on){background:#2b2f5c;color:#cfd3ff}
+html[data-theme=dark] .xtab.on{background:#eef0ff;color:#171a3a}
+.shell{background:var(--card);border-radius:28px;padding:18px 20px 24px;box-shadow:inset 3px 3px 9px rgba(0,0,0,.22),inset -2px -2px 6px rgba(255,255,255,.35)}
+html[data-theme=dark] .shell{box-shadow:inset 3px 3px 10px rgba(0,0,0,.5),inset -2px -2px 6px rgba(255,255,255,.04)}
+body[data-view=part] .verse,body[data-view=part] .bottom,body[data-view=part] #rem,body[data-view=part] #cal{display:none}
+.xpv,.xsum{margin:0}
+.xhead{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;margin:4px 0 14px}
+.xid{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:28px;box-shadow:var(--raise);padding:10px 20px 10px 12px;border-left:6px solid var(--c,#6fd6b2)}
+.xid h2{margin:0;font-size:20px}
+.xid small{color:var(--mute);font-size:11.5px;display:block}
+.xid .gname{font-size:20px;min-width:9ch}
+.xmeta{display:flex;align-items:center;gap:8px}
+.logo.big{width:46px;height:46px;font-size:22px}
+.xbadge{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--mint);box-shadow:var(--raise-xs)}
+.xvit{display:flex;gap:28px;flex-wrap:wrap}
+.sv small{display:block;font-size:10.5px;color:var(--mute);margin-bottom:1px}
+.sv b{font-size:23px;font-weight:600;letter-spacing:-.5px}
+.sv.late b{color:var(--late)}
+.xsubs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+.xs{border:0;border-radius:99px;padding:8px 18px;font-size:12.5px;font-weight:700;background:transparent;color:var(--mute);cursor:pointer;font-family:inherit;display:inline-flex;gap:6px;align-items:center}
+.xs:hover{color:var(--ink)}
+.xs.on{background:var(--card);color:var(--ink);box-shadow:var(--raise-s)}
+.xs.on::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.xs em{font-style:normal;font-size:10.5px;background:var(--tint);box-shadow:var(--inset);border-radius:99px;padding:1px 8px;color:var(--mute)}
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin:8px 0 18px}
+.xcard{text-align:left;border:0;background:var(--card);color:var(--ink);border-radius:26px;box-shadow:var(--raise);padding:16px 18px 14px 28px;cursor:pointer;position:relative;font:inherit;display:grid;gap:9px;transition:box-shadow .15s}
+.xcard::before{content:"";position:absolute;left:11px;top:16px;bottom:16px;width:6px;border-radius:99px;background:var(--c)}
+.xcard:hover{box-shadow:var(--raise-s)}
+.xcard:active{box-shadow:var(--inset)}
+.xcard .nm{color:var(--c);font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px}
+.xcard .nm img{width:22px;height:22px;object-fit:contain;border-radius:50%}
+.xcard .xvit{gap:18px}
+.xcard .sv b{font-size:18px}
+.xprog{height:9px;border-radius:99px;background:var(--tint);box-shadow:var(--inset);overflow:hidden}
+.xprog i{display:block;height:100%;border-radius:99px;background:var(--c)}
+.xcard .nx{color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xdrop{border-radius:24px;box-shadow:var(--inset);background:var(--tint);padding:22px 18px;text-align:center;color:var(--mute);display:grid;gap:8px;justify-items:center;transition:box-shadow .15s}
+.xdrop.over{box-shadow:var(--inset),0 0 0 3px var(--accent)}
+.xdrop b{color:var(--ink);font-size:15px}
+.xdrop small{font-size:12px;max-width:520px}
+.xdi{font-size:30px}
+.xfl{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:18px}
+.xf{background:var(--card);border-radius:20px;box-shadow:var(--raise-s);padding:10px 12px;display:flex;gap:11px;align-items:center;min-width:0}
+.xfi{width:48px;height:48px;border-radius:14px;box-shadow:var(--inset);background:var(--tint);display:grid;place-items:center;font-size:23px;flex:none;overflow:hidden}
+.xfi img{width:100%;height:100%;object-fit:cover}
+.xfn{min-width:0;flex:1}
+.xfn b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xfn small{color:var(--mute);font-size:11px}
+.xfa{display:flex;gap:6px}
+.xfa button{width:30px;height:30px;border-radius:50%;border:0;background:var(--card);box-shadow:var(--raise-xs);cursor:pointer;font-size:13px}
+.xfa button:active{box-shadow:var(--inset)}
+.xtot{color:var(--mute);font-size:11.5px;margin:12px 4px 0}
+.xpv .rc textarea{min-height:170px}
+@media(max-width:700px){.frame{padding:8px 8px 10px;border-radius:28px}.shell{padding:12px 10px 16px;border-radius:22px}.xvit{gap:18px}}
+.toast button{position:absolute;top:6px;right:8px;border:0;background:none;cursor:pointer;font-size:17px;color:var(--mute)}
+/* ===== palette: Palladian #EEE9DF · Oatmeal #C9C1B1 · Blue Fantastic #2C3B4D · Burning Flame #FFB162 · Truffle Trouble #A35139 · Abyssal Anchorfish Blue #1B2632 ===== */
+:root{--card:#EEE9DF;--tint:#E1DBCC;--line:#D6CFBD;--box:#C9C1B1;--ink:#2C3B4D;--mute:#68717C;--accent:#FFB162;--glass:rgba(238,233,223,.94);--sh-d:rgba(44,59,77,.3);--sh-l:rgba(255,255,255,.78);--mint:linear-gradient(#FFC78C,#FFB162);--mint-ink:#4A2410;--late:#A35139}
+html[data-theme=dark]{--card:#2C3B4D;--tint:#222F3E;--line:#3B4C61;--box:#4C5F78;--ink:#EEE9DF;--mute:#AEB6BF;--accent:#FFB162;--glass:rgba(27,38,50,.92);--sh-d:rgba(6,10,16,.72);--sh-l:rgba(255,255,255,.055);--mint:linear-gradient(#FFC78C,#F09A48);--mint-ink:#2B1608;--late:#F0866A}
+:focus-visible{outline:3px solid rgba(255,177,98,.75)}
+.frame{background:linear-gradient(145deg,#2C3B4D,#1B2632);box-shadow:12px 14px 30px rgba(27,38,50,.45),-6px -6px 16px rgba(255,255,255,.35),inset 1px 1px 2px rgba(255,255,255,.14)}
+html[data-theme=dark] .frame{background:linear-gradient(145deg,#1B2632,#0F161E)}
+.hb{background:#EEE9DF;color:#2C3B4D}
+.xtab{background:#C9C1B1;color:#2C3B4D}
+.xtab.on{background:#EEE9DF;color:#1B2632}
+.xtab em{background:#FFB162;color:#3d1f0a}
+html[data-theme=dark] .xtab:not(.add):not(.on){background:#35475C;color:#EEE9DF}
+html[data-theme=dark] .xtab.on{background:#EEE9DF;color:#1B2632}
+.shell{background:var(--card)}
+html:not([data-theme=dark]) .bar i{background:linear-gradient(90deg,#FFB162,#A35139)}
+.verse{background:linear-gradient(120deg,#F7E8D3,#EEE9DF 50%,#E4DCCA);border-color:#fff;box-shadow:var(--raise)}
+.verse::before{color:#FFB162}.verse::after{color:#A35139}
+html[data-theme=dark] .top{background:linear-gradient(#1B2632,#1B2632) padding-box,var(--rb) border-box}
+html[data-theme=dark] .verse{background:linear-gradient(#1B2632,#1B2632) padding-box,var(--rb) border-box}
+html[data-theme=dark] .chart{background:linear-gradient(#243142,#243142) padding-box,var(--rb) border-box}
+html[data-theme=dark] .addbtn,html[data-theme=dark] .addgrp{color:#1B2632}
+.day.today .dn{box-shadow:0 0 0 3px rgba(255,177,98,.5)}
+.toast{border-left-color:#FFB162}
+html:not([data-theme=dark]) .chart .now{fill:#A35139}
+.c-open{background:#C9D6E6;color:#1F3148}.c-work{background:#FFD9A8;color:#5A3208}.c-stuck{background:#E9B3A3;color:#5C2314}.c-review{background:#D8CFE3;color:#3A2A55}.c-done{background:#CFDDBE;color:#2D4419}
+.p-crit{background:#D98E78;color:#3E140A}.p-high{background:#EBB9A6;color:#5C2314}.p-med{background:#FFD9A8;color:#5A3208}.p-low{background:#D8D3B5;color:#3F3F1E}
+/* ===== phone + tablet ===== */
+#side{grid-template-columns:minmax(0,1fr)}
+#side,#side .card,.lf{min-width:0;max-width:100%}
+.lf input{flex:1 1 60px;width:auto;min-width:0}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+button,label,select{touch-action:manipulation}
+.wrap{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.tb{white-space:nowrap}
+#bkp{width:min(320px,calc(100vw - 40px))}
+#bkp p{margin:0 0 10px;font-size:11.5px;color:var(--mute);line-height:1.45}
+#bkp .bgrow{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:820px){
+  .bottom{gap:14px}
+  .agenda{flex:1 1 100%}
+}
+@media(max-width:900px){
+  /* task rows become little cards */
+  .scroll{overflow:visible;padding:8px 6px 14px;margin:-8px -6px -14px}
+  .tbl{min-width:0!important;padding:6px 10px 6px 22px}
+  .hd{display:none!important}
+  .pc{padding:0}
+  .tr{grid-template-columns:34px minmax(0,1.25fr) minmax(0,1fr) 34px;grid-auto-rows:auto;row-gap:6px;column-gap:6px;padding:10px 0;min-height:0}
+  .tr>*{min-height:34px}
+  .tr>:nth-child(1){grid-column:1;grid-row:1}
+  .tr>:nth-child(2){grid-column:2/4;grid-row:1}
+  .tr>:nth-child(8){grid-column:4;grid-row:1}
+  .tr>:nth-child(3){grid-column:2/5;grid-row:2}
+  .tr>:nth-child(5){grid-column:2/3;grid-row:3}
+  .tr>:nth-child(4){grid-column:3/5;grid-row:3}
+  .tr>:nth-child(6){grid-column:2/5;grid-row:4}
+  .tr>:nth-child(7){grid-column:2/5;grid-row:5}
+  .rk span{display:inline}
+  .tr input[type=text],.tr input[type=date]{height:34px;padding:0 12px}
+  .tr input[type=date],.tr.add input[type=date]{text-align:left;padding:0 6px 0 10px!important;letter-spacing:-.4px;font-size:15px!important}
+  .tr.add input[type=text],.tr.add input[type=date]{height:36px;padding:0 14px;font-size:16px}
+  .tr.sub{padding-left:14px}
+  select.pill{height:32px;font-size:15px!important;padding:0 4px}
+  .ck input{width:22px;height:22px}
+  .del,.addbtn{min-width:34px;min-height:34px}
+  .tr input.title{font-weight:700}
+}
+@media(max-width:700px){
+  .top{gap:8px;padding:10px 14px}
+  .top h1{font-size:20px;flex:1 1 auto}
+  .bar{flex:1 1 90px;min-width:80px}
+  .right{margin-left:0;width:100%;flex-wrap:wrap;gap:8px}
+  .tb,#th{padding:8px 12px;font-size:13px}
+  input,select,textarea{font-size:16px!important}
+  .xid{max-width:100%;padding:10px 14px 10px 10px}
+  .xid>div{min-width:0;flex:1}
+  .xid .gname{width:100%;min-width:0;font-size:19px!important}
+  .xmeta{flex-wrap:wrap}
+  .xvit{gap:16px 20px}
+  .xhead{gap:12px}
+  .xs{padding:8px 14px}
+  .xgrid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .csv{overflow-x:auto;margin:0 -6px;padding:0 6px}
+  .csv svg{min-width:600px}
+  #chart,#side{flex:1 1 100%}
+  .card.rc{padding:12px 14px}
+  .ch{gap:8px}
+  .card .ch h2{min-width:0;font-size:16px;flex:1 1 100%}
+  .sbtn,.pbtn,.chip{padding:8px 13px}
+  .wk{gap:5px}
+  .day{min-height:58px;padding:4px 3px;border-radius:12px}
+  .dn{width:20px;height:20px;font-size:11px}
+  .ev{font-size:0;height:5px;padding:0;border-radius:99px;min-height:0}
+  .more{display:none}
+  .agenda h3{font-size:14px}
+  #toasts{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));max-width:none}
+  .bgp{right:0}
+}
+/* ===== reconciliation rows ===== */
+.rc3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;align-items:center}
+.rf{position:relative;display:block;min-width:0}
+.rf small{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:var(--mute);pointer-events:none;text-transform:uppercase;letter-spacing:.3px}
+.tr .rf input{height:28px!important;border-radius:99px!important;background:var(--tint)!important;box-shadow:var(--inset);padding:0 10px 0 50px!important;text-align:right;font-variant-numeric:tabular-nums}
+.tr .rf.x input{padding-left:58px!important}
+.diff{height:28px;border-radius:99px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-weight:800;font-size:12.5px;font-variant-numeric:tabular-nums;box-shadow:var(--raise-xs);white-space:nowrap;overflow:hidden}
+.diff small{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;opacity:.75}
+.diff.ok{background:#BFE5C2;color:#0F5A24}
+.diff.bad{background:#F5B5AA;color:#9B1C0C}
+.diff.na{background:var(--tint);color:var(--mute);box-shadow:var(--inset)}
+html[data-theme=dark] .diff.ok{background:#1F6B3F;color:#B6F5CD}
+html[data-theme=dark] .diff.bad{background:#8A2E2A;color:#FFC3B8}
+@media(max-width:700px){.rc3{grid-template-columns:1fr;gap:6px}.rc3 .diff{height:36px}.tr .rf input{height:36px!important;padding-left:64px!important}}
+/* ===== folder-style tabs ===== */
+.ftabs{align-items:flex-end;padding:0 6px}
+.hb{margin-bottom:10px}
+.xtabs{align-items:flex-end;gap:5px;padding:8px 14px 4px;margin-bottom:-4px;position:relative;z-index:3;overflow-y:hidden}
+.xtab{border-radius:14px 14px 0 0;padding:8px 15px 7px;box-shadow:none;border-top:4px solid var(--c,transparent);background:#C9C1B1;color:#2C3B4D;max-width:200px;position:relative;transform:none}
+.xtab:hover{transform:none;filter:brightness(1.05)}
+.xtab.on{background:var(--card);color:var(--ink);box-shadow:none;padding:11px 18px 11px;margin-bottom:-4px;border-top-width:5px}
+.xtab.on::before,.xtab.on::after{content:"";position:absolute;bottom:0;width:14px;height:14px;pointer-events:none}
+.xtab.on::before{left:-14px;background:radial-gradient(circle at 0 0,transparent 13.5px,var(--card) 14px)}
+.xtab.on::after{right:-14px;background:radial-gradient(circle at 100% 0,transparent 13.5px,var(--card) 14px)}
+.xtab.add{border-top-color:transparent;background:var(--mint);color:var(--mint-ink);padding:8px 14px 7px}
+.xtab .ti{font-size:14px;line-height:1;font-weight:400}
+html[data-theme=dark] .xtab:not(.add):not(.on){background:#35475C;color:#EEE9DF}
+html[data-theme=dark] .xtab.on{background:var(--card);color:var(--ink)}
+.shell{border-top-left-radius:0}
+.xshort{display:inline-flex;align-items:center;gap:6px}
+.xshort small{font-size:10.5px;color:var(--mute);display:inline}
+.gshort{width:9.5em;border:0;border-radius:99px;background:var(--tint);box-shadow:var(--inset);padding:4px 12px;font:inherit;font-size:12px;font-weight:700;color:var(--ink)}
+@media(max-width:700px){.xtabs{padding-left:8px}.xtab{max-width:150px}.shell{border-top-left-radius:22px}}
+.xid .gname{max-width:100%;text-overflow:ellipsis}
+/* ===== part page sections ===== */
+.xsec{margin-top:6px;margin-bottom:26px}
+.xsec h3{margin:0 0 12px;font-size:15px;display:flex;align-items:center;gap:8px}
+.xsec h3 em{font-style:normal;font-size:11px;font-weight:700;color:var(--mute);background:var(--tint);box-shadow:var(--inset);border-radius:99px;padding:1px 9px}
+.ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.nt{background:var(--card);border-radius:20px;box-shadow:var(--raise-s);padding:10px 12px 12px;border-left:5px solid var(--c)}
+.nt.sub{margin-left:12px}
+.nh{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.nh b{font-size:12.5px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nh small{color:var(--mute);font-size:11px;flex:none}
+.nh small.late{color:var(--late);font-weight:800}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;padding:0;display:block;box-shadow:var(--raise-xs)}
+.nt textarea{width:100%;border:0;resize:none;background:var(--tint);box-shadow:var(--inset);border-radius:14px;padding:8px 12px;font:inherit;font-size:12.5px;line-height:1.45;color:var(--ink);min-height:44px;overflow:hidden;display:block}
+@media(min-width:901px){
+  .tbl.nn{min-width:640px}
+  .tbl.nn .tr{grid-template-columns:32px 2in 132px 98px 100px 28px}
+}
+.tbl.nn .tr>:nth-child(6){display:none}
+.tbl.hr .tr:not(.rec):not(.hd)>:nth-child(6){visibility:hidden}
+@media(max-width:900px){.tbl.hr .tr:not(.rec):not(.hd)>:nth-child(6){display:none}.tbl.act .tr.hd{display:none}}
+@media(max-width:700px){.ngrid{grid-template-columns:1fr}.nt.sub{margin-left:0}}
+.pnote{width:100%;min-height:170px;resize:vertical;border:0;background:var(--tint);box-shadow:var(--inset);border-radius:22px;padding:14px 18px;font:inherit;font-size:14px;line-height:1.55;color:var(--ink);display:block}
+/* ===== summary cards take on each part's color ===== */
+.xcard{background:var(--tint);background:linear-gradient(150deg,color-mix(in srgb,var(--cd) 30%,var(--card)),color-mix(in srgb,var(--cd) 15%,var(--card)))}
+.xcard .xprog{background:color-mix(in srgb,var(--cd) 22%,var(--card));box-shadow:var(--inset)}
+.xcard .xprog i{background:color-mix(in srgb,var(--cd) 88%,#fff)}
+.xcard .nx,.xcard .sv small{color:color-mix(in srgb,var(--ink) 72%,transparent)}
+.xcard::before{background:var(--cd);box-shadow:inset 1px 1px 2px rgba(255,255,255,.5),1px 1px 3px var(--sh-d)}
+html[data-theme=dark] .xcard{background:linear-gradient(150deg,color-mix(in srgb,hsl(var(--h) 90% 62%) 24%,var(--card)),color-mix(in srgb,hsl(var(--h) 90% 62%) 11%,var(--card)))}
+html[data-theme=dark] .xcard .xprog{background:color-mix(in srgb,hsl(var(--h) 90% 62%) 18%,var(--card))}
+html[data-theme=dark] .xcard .xprog i,html[data-theme=dark] .xcard::before{background:hsl(var(--h) 95% 68%)}
+/* ===== reminder cards take on each part's color ===== */
+.card.rc{background:var(--tint);background:linear-gradient(150deg,color-mix(in srgb,var(--cd) 30%,var(--card)),color-mix(in srgb,var(--cd) 15%,var(--card)))}
+.card.rc .rt{background:color-mix(in srgb,var(--cd) 20%,var(--card));box-shadow:var(--inset)}
+html[data-theme=dark] .card.rc{background:linear-gradient(150deg,color-mix(in srgb,hsl(var(--h) 90% 62%) 24%,var(--card)),color-mix(in srgb,hsl(var(--h) 90% 62%) 11%,var(--card)))}
+html[data-theme=dark] .card.rc .rt{background:color-mix(in srgb,hsl(var(--h) 90% 62%) 14%,var(--card))}
+.lkrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.lkrow input{flex:1 1 260px;min-width:0;border:0;border-radius:99px;background:var(--tint);box-shadow:var(--inset);padding:8px 14px;font:inherit;font-size:12.5px;color:var(--ink)}
+.lk{font-size:12px;font-weight:700;color:var(--ink)}
+.lkerr{flex:1 1 100%;color:var(--late);font-size:11.5px}
+.rk{justify-content:center}
+.rk label{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--ink)}
+.rk span{display:none}
+.rk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border-radius:7px;border:0;box-shadow:var(--raise-xs);background:var(--card);cursor:pointer;margin:0;display:grid;place-content:center}
+.rk input:hover{box-shadow:var(--inset)}
+.rk input:checked{background:var(--mint);box-shadow:var(--inset)}
+.rk input:checked::after{content:"✓";color:var(--mint-ink);font-size:13px;font-weight:800;line-height:1}
+.hd>div:nth-child(6){font-size:12px}
+@media(max-width:900px){.rk{justify-content:flex-start}.rk span{display:inline}.rk input{width:24px;height:24px}}
+/* ===== index-divider tabs (one straight row) ===== */
+.xtabs{gap:0;padding:12px 16px 4px 22px}
+.xtab{--tb:#C9C1B1;position:relative;isolation:isolate;z-index:1;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:10px 30px 9px;margin-left:-13px;max-width:230px;color:#2C3B4D;
+  filter:drop-shadow(-1px 0 1px rgba(20,28,38,.28)) drop-shadow(1px -1px 2px rgba(20,28,38,.14))}
+.xtabs>.xtab:first-child{margin-left:0}
+.xtab:hover{filter:drop-shadow(-1px 0 1px rgba(20,28,38,.28)) drop-shadow(1px -1px 2px rgba(20,28,38,.14)) brightness(1.06)}
+.xtab.on{--tb:var(--card);z-index:6;padding:13px 30px 12px;margin-bottom:-4px;color:var(--ink)}
+.xtab.add{--tb:var(--mint);color:var(--mint-ink)}
+html[data-theme=dark] .xtab{--tb:#35475C;color:#EEE9DF}
+html[data-theme=dark] .xtab.on{--tb:var(--card);color:var(--ink)}
+html[data-theme=dark] .xtab.add{--tb:var(--mint);color:var(--mint-ink)}
+.xtab::before,.xtab.on::before{content:"";position:absolute;inset:0;width:auto;height:auto;z-index:-1;pointer-events:none;
+  background:linear-gradient(var(--c,transparent),var(--c,transparent)) top/100% 4px no-repeat,var(--tb);
+  clip-path:polygon(0 100%,9px 7px,13px 2px,20px 0,calc(100% - 20px) 0,calc(100% - 13px) 2px,calc(100% - 9px) 7px,100% 100%)}
+.xtab.on::before{background:linear-gradient(var(--c,transparent),var(--c,transparent)) top/100% 5px no-repeat,var(--tb)}
+.xtab.on::after{display:none}
+@media(max-width:700px){.xtab{padding:9px 24px 8px;max-width:170px}.xtab.on{padding:12px 24px 11px}.xtabs{padding-left:14px}}
+/* ===== task tables take a light tint of the part color ===== */
+.xpv{--lt:color-mix(in srgb,var(--cd) 60%,#fff)}
+.xpv .tbl{background:linear-gradient(150deg,color-mix(in srgb,var(--lt) 26%,var(--card)),color-mix(in srgb,var(--lt) 12%,var(--card)));
+  box-shadow:var(--raise),0 14px 30px -10px color-mix(in srgb,var(--cd) 45%,transparent)}
+.xpv .tbl .hd{background:color-mix(in srgb,var(--lt) 30%,var(--tint))}
+.xpv .tbl .tr{border-bottom-color:color-mix(in srgb,var(--lt) 35%,transparent)}
+.xpv .tbl .tr:not(.hd):not(.add):hover{background:color-mix(in srgb,var(--lt) 22%,var(--card))}
+.xpv .tbl .tr.add input[type=text],.xpv .tbl .tr.add input[type=date]{background:color-mix(in srgb,var(--lt) 22%,var(--card))}
+.xpv .tbl .rf input{background:color-mix(in srgb,var(--lt) 22%,var(--card))!important}
+html[data-theme=dark] .xpv .tbl{background:linear-gradient(150deg,color-mix(in srgb,hsl(var(--h) 90% 62%) 16%,var(--card)),color-mix(in srgb,hsl(var(--h) 90% 62%) 7%,var(--card)));
+  box-shadow:var(--raise),0 0 18px hsl(var(--h,300) 95% 60%/.28)}
+html[data-theme=dark] .xpv .tbl .hd{background:color-mix(in srgb,hsl(var(--h) 90% 62%) 16%,var(--tint))}
+html[data-theme=dark] .xpv .tbl .tr:not(.hd):not(.add):hover{background:color-mix(in srgb,hsl(var(--h) 90% 62%) 12%,var(--card))}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="frame">
+  <div class="ftabs"><button class="hb" id="hb" aria-label="Summary" title="Summary">🏠</button><div class="xtabs" id="tabs" role="tablist" aria-label="Parts"></div></div>
+  <div class="shell">
+  <div class="top"><h1>Task Management 🌷</h1><div class="bar"><i id="fill"></i></div><span id="count"></span><span class="right"><label class="tb" id="sl"><span id="st">🎵 Song</span><input type="file" id="sf" accept="audio/*" hidden></label><button class="tb" id="sx" hidden aria-label="Remove my song">✕</button><button class="tb" id="alb" title="Due-date alerts">🔔 Alerts on</button><button class="tb" id="bgb" aria-haspopup="true" aria-expanded="false">🎨 Background</button><button class="tb" id="bkb" aria-haspopup="true" aria-expanded="false">💾 Backup</button><button id="th" aria-label="Night mode on or off" title="Night mode">🌙</button></span><div class="bgp" id="bgp" hidden></div><div class="bgp" id="bkp" hidden><h3>Backup &amp; restore</h3><p>Your tasks live on this device only. Save a backup file to move everything to your phone or tablet (or to keep a safe copy), then restore it there. Includes tasks, notes, reminders, calendar imports, settings and attached files.</p><div class="bgrow"><button class="pbtn" id="bks">⬇ Save backup</button><label class="pbtn" for="bkf">⬆ Restore backup</label><input type="file" id="bkf" accept=".json,application/json" hidden></div></div></div>
+  <section class="verse" aria-label="Verse of the day"><div class="vh" id="vh"></div><div class="vt" id="vt"></div><div class="vr" id="vr"></div></section>
+  <div id="board"></div>
+  <div class="bottom">
+    <div id="chart"></div>
+    <div id="side">
+      <section class="card"><h2>Notes 📝</h2><textarea id="notes" placeholder="Jot anything down. It saves as you type." aria-label="Notes"></textarea></section>
+      <section class="card"><h2>Drive links 📁</h2><div id="links"></div>
+        <div class="lf"><input type="text" id="ln" placeholder="Name" aria-label="Link name"><input type="text" id="lu" placeholder="Paste Drive folder link" aria-label="Drive link"><button class="addbtn" id="la" aria-label="Add link">+</button></div></section>
+    </div>
+  </div>
+  <div class="rem" id="rem"></div>
+  <section class="card cal" id="cal" aria-label="Calendar"></section>
+</div></div></div>
+<input type="file" id="lgf" accept="image/*" hidden>
+<input type="file" id="fpf" multiple hidden>
+<input type="file" id="icsf" accept=".ics,text/calendar" multiple hidden>
+<div id="toasts" aria-live="polite"></div>
+<div id="party" role="dialog" aria-label="Task done"><canvas id="cv"></canvas><div class="flags" id="flags"></div><div><div class="bg"><span style="background:#E6007A">🌸 PERSONAL</span><span style="background:#007EB5">🏢 KBW</span><span style="background:#037F4C">🛠️ BYLD</span></div><h2 id="ph">Done!</h2><div class="crew" id="crew"></div><p id="pt"></p><small>Click anywhere to keep going. ¡Ándale! 🌮</small></div></div>
+<script>
+var KEY="planner-tasks-v3",LK="planner-log-v1",tasks=[],UI={open:{},col:{},arch:{}};
+var G={},DG={personal:{n:"Personal",tag:"🌸 PERSONAL",c:"#e0559c",cd:"#FF5AC4",bar:"#ff9ccf"},kbw:{n:"KBW",tag:"🏢 KBW REAL ESTATE",c:"#3f83dc",cd:"#579BFC",bar:"#8ec1ff"},byld:{n:"BYLD",tag:"🛠️ BYLD TECHNICAL",c:"#22996f",cd:"#00C875",bar:"#7be0b0"}};
+var U={crit:"Critical",high:"High",med:"Medium",low:"Low"},RANK={crit:0,high:1,med:2,low:3};
+var S={open:"Not open",work:"Working on it",stuck:"Stuck / Blocked",review:"In review",done:"Done"};
+function load(k){try{return JSON.parse(localStorage.getItem(k))||[]}catch(e){return[]}}
+tasks=load(KEY);
+if(!tasks.length){tasks=load("planner-tasks-v2");
+  if(!tasks.length)tasks=load("planner-tasks-v1").map(function(t){return{id:t.id,g:"personal",title:t.title,owner:"",urg:"med",status:t.status==="done"?"done":"work",due:t.due,notes:t.summary}});}
+tasks.forEach(function(t){t.subs=t.subs||[]});
+var LOG=load(LK);
+var $=function(i){return document.getElementById(i)};
+var MK="planner-meta-v1",META={};try{META=JSON.parse(localStorage.getItem(MK))||{}}catch(e){}
+var NAMES=META.names||{},LOGOS=META.logos||{},REM=META.rem||{},CUSTOM=META.custom||{},GONE=META.gone||[],COL=META.col||{},SHORT=META.short||{},PNOTES=META.pnotes||{},lgT="",READY=false;
+function saveMeta(){try{localStorage.setItem(MK,JSON.stringify({names:NAMES,logos:LOGOS,rem:REM,custom:CUSTOM,gone:GONE,col:COL,short:SHORT,pnotes:PNOTES}))}catch(e){}}
+function mix(h,t,k){var n=parseInt(h.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;function m(x){return Math.round(x+(t-x)*k)}return"#"+[m(r),m(g),m(b)].map(function(x){return("0"+x.toString(16)).slice(-2)}).join("")}
+function colorsFor(h){return{c:mix(h,0,.18),cd:h,bar:mix(h,255,.4)}}
+function rebuildG(){
+  G={};
+  Object.keys(DG).forEach(function(id){if(GONE.indexOf(id)<0)G[id]=Object.assign({},DG[id])});
+  Object.keys(CUSTOM).forEach(function(id){G[id]=Object.assign({},CUSTOM[id])});
+  Object.keys(COL).forEach(function(id){if(G[id]&&/^#[0-9a-f]{6}$/i.test(COL[id]))Object.assign(G[id],colorsFor(COL[id]))});
+}
+rebuildG();
+function gh(g){var k=Object.keys(G),n=k.length;return n<2?320:Math.round(k.indexOf(g)*290/(n-1))}
+function bcol(g){if(g==="_x")return"#cfc6dc";if(document.documentElement.dataset.theme==="dark")return"hsl("+gh(g)+",95%,64%)";return G[g].bar}
+function gtag(g){return NAMES[g]!==undefined?NAMES[g]:(G[g]?G[g].tag:"")}
+function sname(g){var t=(G[g]||NAMES[g]!==undefined?gtag(g):"").replace(/^[^A-Za-z0-9]+/,"").trim();return t||(G[g]?G[g].n:"")}
+function refreshNames(){document.querySelectorAll(".rn,.an").forEach(function(e){if(G[e.dataset.g])e.textContent=e.classList.contains("rn")?tabName(e.dataset.g):sname(e.dataset.g)})}
+function nameChange(g,el){NAMES[g]=el.value;el.size=Math.max(6,Math.round(el.value.length*1.3));saveMeta();refreshNames();chart();buildTabs()}
+var PAL=["#8b5cf6","#f97316","#14b8a6","#f43f5e","#eab308","#6366f1","#84cc16","#0ea5e9"];
+function addGroup(){
+  var id="g"+uid(),h=PAL[Object.keys(CUSTOM).length%PAL.length];
+  CUSTOM[id]=Object.assign({n:"New part",tag:"✨ New part"},colorsFor(h));
+  saveMeta();rebuildG();buildRem();VIEW=id;SUB[id]="tasks";saveView();render();
+  var el=document.querySelector('[data-gn="'+id+'"]');if(el){el.focus();el.select();el.scrollIntoView({block:"center"})}
+}
+function delGroup(id){
+  var n=tasks.filter(function(t){return t.g===id}).length;
+  if(!confirm('Delete "'+sname(id)+'"'+(n?" and its "+n+" item"+(n>1?"s":""):"")+"? This can't be undone."))return;
+  tasks=tasks.filter(function(t){return t.g!==id});
+  if(CUSTOM[id])delete CUSTOM[id];else if(GONE.indexOf(id)<0)GONE.push(id);
+  delete NAMES[id];delete LOGOS[id];delete REM[id];delete COL[id];delete SHORT[id];delete PNOTES[id];
+  if(VIEW===id)VIEW="sum";saveView();fdelGroup(id);
+  saveMeta();save();rebuildG();buildRem();render();
+}
+function setColor(id,h){COL[id]=h;saveMeta();rebuildG();buildRem();render()}
+function buildRem(){
+  $("rem").innerHTML=Object.keys(G).map(function(g){return'<section class="card rc" style="--c:'+G[g].c+';--cd:'+G[g].cd+';--h:'+gh(g)+'"><h2><span class="rn" data-g="'+g+'"></span> · Monthly reminders 🗓️</h2><textarea class="rt" data-rg="'+g+'" placeholder="e.g. 5th: pay rent · 25th: salaries" aria-label="Monthly reminders"></textarea></section>'}).join("");
+  Object.keys(G).forEach(function(g){$("rem").querySelector('.rt[data-rg="'+g+'"]').value=REM[g]||""});
+  refreshNames();
+}
+$("rem").addEventListener("input",function(e){var g=e.target.dataset.rg;if(g){REM[g]=e.target.value;saveMeta()}});
+$("lgf").addEventListener("change",function(){
+  var f=this.files[0];this.value="";if(!f||!lgT)return;
+  var img=new Image(),u=URL.createObjectURL(f);
+  img.onload=function(){var c=document.createElement("canvas");c.width=c.height=96;var x=c.getContext("2d"),k=Math.min(96/img.width,96/img.height);
+    x.drawImage(img,(96-img.width*k)/2,(96-img.height*k)/2,img.width*k,img.height*k);LOGOS[lgT]=c.toDataURL("image/png");saveMeta();render();URL.revokeObjectURL(u)};
+  img.src=u;
+});
+var cT;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(tasks));localStorage.setItem(LK,JSON.stringify(LOG))}catch(e){}if(READY){clearTimeout(cT);cT=setTimeout(buildCal,250)}}
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+function ds(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function today(){return ds(new Date())}
+function opts(m,cur){return Object.keys(m).map(function(k){return'<option value="'+k+'"'+(k===cur?" selected":"")+">"+m[k]+"</option>"}).join("")}
+function uid(){return Date.now()+""+Math.floor(Math.random()*9999)}
+/* theme */
+function theme(t){document.documentElement.dataset.theme=t;$("th").textContent=t==="dark"?"☀️":"🌙";try{localStorage.setItem("planner-theme",t)}catch(e){}if(READY){chart();buildCal()}}
+$("th").addEventListener("click",function(){theme(document.documentElement.dataset.theme==="dark"?"light":"dark")});
+try{theme(localStorage.getItem("planner-theme")||"light")}catch(e){theme("light")}
+/* rows */
+function trow(t,par){
+  var sub=!!par,late=t.due&&t.due<today()&&t.status!=="done";
+  var at=sub?' data-id="'+par.id+'" data-sid="'+t.id+'"':' data-id="'+t.id+'"';
+  return '<div class="tr'+(sub?" sub":"")+(t.status==="done"?" done":"")+(late?" late":"")+(isRec(t)?" rec":"")+'"'+at+'>'+
+  '<div class="ck"><input type="checkbox" data-k="check"'+(t.status==="done"?" checked":"")+' aria-label="Mark done"></div>'+
+  '<div>'+(sub?'<span class="ind"></span>':'<button class="xp" data-xp aria-label="Toggle sub-items">'+(UI.open[t.id]?"▾":"▸")+'</button>')+
+    '<input type="text" class="title" data-k="title" value="'+esc(t.title)+'" title="'+esc(t.title)+'" aria-label="Item">'+
+    (!sub&&t.subs.length?'<span class="badge" title="Sub-items">'+t.subs.length+'</span>':"")+'</div>'+
+  '<div class="pc"><select class="pill c-'+t.status+'" data-k="status" aria-label="Status">'+opts(S,t.status)+'</select></div>'+
+  '<div><input type="date" data-k="due" value="'+esc(t.due)+'" aria-label="Due date"></div>'+
+  '<div class="pc">'+(sub?"":'<select class="pill p-'+t.urg+'" data-k="urg" aria-label="Priority">'+opts(U,t.urg)+'</select>')+'</div>'+
+  '<div class="pc rk"><label title="Tick if this is a reconciliation (shows QB, Excel and the difference)"><input type="checkbox" data-k="rec"'+(isRec(t)?" checked":"")+' aria-label="Reconciliation"><span>Reconciliation</span></label></div>'+
+  (isRec(t)?recCell(t):'<div><input type="text" data-k="notes" value="'+esc(t.notes)+'" placeholder="Summary of work" aria-label="Summary of work"></div>')+
+  '<div><button class="del" data-del aria-label="Delete">&times;</button></div></div>';
+}
+var HEAD='<div class="tr hd"><div></div><div>Item</div><div>Status</div><div>Due date</div><div>Priority</div><div>Recon</div><div>Summary of work</div><div></div></div>';
+var DR={};
+function newDraft(){return{title:"",status:"work",due:today(),urg:"med",owner:"",notes:"",rec:false}}
+function addRow(key,sub){
+  var d=DR[key]||(DR[key]=newDraft());
+  return '<div class="tr add'+(sub?" sub":"")+'" data-dr="'+key+'"><div class="ck"></div>'+
+  '<div><span class="ind"></span><input type="text" data-dk="title" value="'+esc(d.title)+'" placeholder="'+(sub?"New sub-item":"New item")+'" aria-label="New item name"></div>'+
+  '<div class="pc"><select class="pill c-'+d.status+'" data-dk="status" aria-label="Status">'+opts(S,d.status)+'</select></div>'+
+  '<div><input type="date" data-dk="due" value="'+esc(d.due)+'" aria-label="Due date"></div>'+
+  '<div class="pc">'+(sub?"":'<select class="pill p-'+d.urg+'" data-dk="urg" aria-label="Priority">'+opts(U,d.urg)+'</select>')+'</div>'+
+  '<div class="pc rk"><label title="Tick if this is a reconciliation"><input type="checkbox" data-dk="rec"'+(d.rec?" checked":"")+' aria-label="Reconciliation"><span>Reconciliation</span></label></div>'+
+  '<div><input type="text" data-dk="notes" value="'+esc(d.notes)+'" placeholder="Summary of work" aria-label="Summary of work"></div>'+
+  '<div><button class="addbtn" data-add="'+key+'" aria-label="Add item">+</button></div></div>';
+}
+function addItem(key){
+  var d=DR[key];
+  if(!d||!d.title.trim()){var f0=document.querySelector('[data-dr="'+key+'"] [data-dk="title"]');if(f0)f0.focus();return}
+  var rec={title:d.title.trim(),owner:d.owner.trim(),status:d.status,due:d.due,notes:d.notes.trim(),rec:!!d.rec},g;
+  if(G[key]){rec.id=uid();rec.g=key;rec.urg=d.urg;rec.subs=[];tasks.push(rec);g=key}
+  else{var t=tasks.find(function(x){return x.id===key.slice(1)});if(!t)return;rec.id=uid();t.subs.push(rec);g=t.g}
+  if(rec.status==="done")LOG.push({d:today(),g:g,id:rec.id});
+  delete DR[key];save();render();
+  var n=document.querySelector('[data-dr="'+key+'"] [data-dk="title"]');if(n)n.focus();
+}
+function block(t){return trow(t)+(UI.open[t.id]?t.subs.map(function(s){return trow(s,t)}).join("")+addRow("s"+t.id,true):"")}
+function render(){
+  if(VIEW!=="sum"&&!G[VIEW])VIEW="sum";
+  document.body.dataset.view=VIEW==="sum"?"sum":"part";
+  $("board").innerHTML=VIEW==="sum"?summaryHtml():partHtml(VIEW);
+  var d=tasks.filter(function(t){return t.status==="done"}).length;
+  $("count").textContent=d+" of "+tasks.length+" done";
+  $("fill").style.width=(tasks.length?d/tasks.length*100:0)+"%";
+  buildTabs();loadThumbs();notesSize();
+  chart();if(READY)buildCal();
+}
+/* productivity chart */
+function chart(){
+  var N=14,now=new Date(),days=[],by={},i;
+  for(i=N-1;i>=0;i--){var dt=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i);var k=ds(dt);days.push({k:k,w:"SMTWTFS".charAt(dt.getDay()),n:dt.getDate()});by[k]={t:0}}
+  LOG.forEach(function(x){if(by[x.d]){var key=G[x.g]?x.g:"_x";by[x.d][key]=(by[x.d][key]||0)+1;by[x.d].t++}});
+  var max=4,week=0,best=0,bestD="";
+  days.forEach(function(d,ix){var t=by[d.k].t;if(t>max)max=t;if(ix>=N-7)week+=t;if(t>best){best=t;bestD=d.n}});
+  if(max%2)max++;
+  var streak=0,ix=N-1;if(by[days[ix].k].t===0)ix--;
+  while(ix>=0&&by[days[ix].k].t>0){streak++;ix--}
+  var W=720,H=150,pl=26,pr=6,pt=14,pb=30,pw=W-pl-pr,ph=H-pt-pb,slot=pw/N,bw=slot*.56,s="";
+  [0,.5,1].forEach(function(f){var y=pt+ph-ph*f;s+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y+'" y2="'+y+'" stroke-dasharray="3 5"/><text x="'+(pl-8)+'" y="'+(y+4)+'" text-anchor="end">'+Math.round(max*f)+'</text>'});
+  days.forEach(function(d,j){
+    var x=pl+slot*j+(slot-bw)/2,y=pt+ph,c=by[d.k],cls=d.k===today()?' class="now"':"";
+    Object.keys(G).concat("_x").forEach(function(g){
+      if(!c[g])return;var h=Math.max(8,c[g]/max*ph-2);y-=h+2;
+      s+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+h+'" rx="6" fill="'+bcol(g)+'"/>';
+    });
+    if(c.t)s+='<text class="tot" x="'+(x+bw/2)+'" y="'+(y-5)+'" text-anchor="middle">'+c.t+'</text>';
+    s+='<text'+cls+' x="'+(x+bw/2)+'" y="'+(H-17)+'" text-anchor="middle">'+d.w+'</text><text'+cls+' x="'+(x+bw/2)+'" y="'+(H-5)+'" text-anchor="middle">'+d.n+'</text>';
+  });
+  var any=LOG.length>0;
+  $("chart").innerHTML='<section class="chart"><div class="ct"><h2>Productivity ✨</h2><span style="color:var(--mute)">Items finished, last 14 days</span><span class="legend">'+
+    Object.keys(G).map(function(g){return'<span><i style="background:'+bcol(g)+'"></i>'+esc(sname(g))+'</span>'}).join("")+'</span></div>'+
+    '<div class="stats"><div class="stat"><b>'+week+'</b><span>finished this week</span></div><div class="stat"><b>'+streak+(streak===1?" day":" days")+'</b><span>current streak 🔥</span></div><div class="stat"><b>'+(best||"–")+'</b><span>'+(best?"best day (the "+bestD+")":"best day")+'</span></div></div>'+
+    (any?"":'<div class="none">Finish a task and your first bar will show up here ✨</div>')+
+    '<div class="csv"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Bar chart of items finished per day">'+s+'</svg></div></section>';
+  var cs=$("chart").querySelector(".csv");if(cs)cs.scrollLeft=cs.scrollWidth;
+}
+/* events */
+function find(el){
+  var r=el.closest(".tr,.nt");if(!r)return null;
+  var t=tasks.find(function(x){return x.id===r.dataset.id});if(!t)return null;
+  return r.dataset.sid?{item:t.subs.find(function(s){return s.id===r.dataset.sid}),par:t,sub:true}:{item:t,par:null,sub:false};
+}
+var TXT={title:1,owner:1,notes:1,qb:1,xl:1};
+$("board").addEventListener("input",function(e){
+  var dk=e.target.dataset.dk;if(dk){if(e.target.type!=="checkbox")DR[e.target.closest(".tr").dataset.dr][dk]=e.target.value;return}
+  var gn=e.target.dataset.gn;if(gn){nameChange(gn,e.target);return}
+  var k=e.target.dataset.k;if(!TXT[k])return;
+  var f=find(e.target);if(f&&f.item){f.item[k]=e.target.value;save()}
+});
+$("board").addEventListener("change",function(e){
+  if(e.target.dataset.gc){setColor(e.target.dataset.gc,e.target.value);return}
+  var dk=e.target.dataset.dk;if(dk){DR[e.target.closest(".tr").dataset.dr][dk]=e.target.type==="checkbox"?e.target.checked:e.target.value;if(dk==="status")e.target.className="pill c-"+e.target.value;if(dk==="urg")e.target.className="pill p-"+e.target.value;return}
+  var k=e.target.dataset.k;if(!k||TXT[k])return;
+  var f=find(e.target);if(!f||!f.item)return;
+  var it=f.item,was=it.status;
+  if(k==="check")it.status=e.target.checked?"done":"work";else if(k==="rec")it.rec=e.target.checked;else it[k]=e.target.value;
+  if(it.status==="done"&&was!=="done")LOG.push({d:today(),g:f.sub?f.par.g:it.g,id:it.id});
+  else if(was==="done"&&it.status!=="done")LOG=LOG.filter(function(x){return x.id!==it.id});
+  save();render();
+  if(!f.sub&&it.status==="done"&&was!=="done")celebrate(it.title,tasks.every(function(x){return x.status==="done"}));
+});
+$("board").addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.tagName==="INPUT"&&e.target.dataset.dk)addItem(e.target.closest(".tr").dataset.dr)});
+$("board").addEventListener("click",function(e){
+  var d=e.target.dataset;
+  if("addgrp" in d){addGroup();return}
+  if(d.gdel){delGroup(d.gdel);return}
+  if(d.add){addItem(d.add);return}
+  if(d.lg){lgT=d.lg;$("lgf").click();return}
+  if(d.lx){delete LOGOS[d.lx];saveMeta();render();return}
+  if(d.gx){UI.col[d.gx]=!UI.col[d.gx];render()}
+  else if(d.ax){UI.arch[d.ax]=!UI.arch[d.ax];render()}
+  else if("xp" in d){var id=e.target.closest(".tr").dataset.id;UI.open[id]=!UI.open[id];render()}
+  else if("del" in d){var f=find(e.target);if(!f)return;
+    if(f.sub)f.par.subs=f.par.subs.filter(function(s){return s!==f.item});else tasks=tasks.filter(function(x){return x!==f.item});save();render()}
+});
+/* celebration */
+var raf,timer,P=$("party"),cv=$("cv"),cx=cv.getContext("2d");
+function celebrate(name,all){
+  P.classList.toggle("all",all);
+  document.querySelector("#party .bg").innerHTML=Object.keys(G).map(function(g){return'<span style="background:'+G[g].cd+';text-shadow:0 1px 3px rgba(0,0,0,.4)">'+esc(gtag(g))+'</span>'}).join("");
+  $("ph").textContent=all?"¡VIVA! ALL PROJECTS 100% DONE! 🎉":"¡Felicidades! 🎉";
+  $("pt").textContent=all?Object.keys(G).map(sname).join(", ")+" milestones are officially DONE!":name;
+  P.classList.add("on");music(true);cv.width=innerWidth;cv.height=innerHeight;
+  clearTimeout(timer);timer=setTimeout(stop,all?9000:5000);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var cols=["#ff2d87","#ffd23f","#06b6c4","#7bd82f","#ff7a1a","#fff"],ps=[],EM=["🌮","🌶️","🌵","🎉","🎊","🌺"];
+  for(var i=0;i<220;i++)ps.push({x:Math.random()*cv.width,y:-Math.random()*cv.height,w:6+Math.random()*8,h:10+Math.random()*10,vy:2+Math.random()*4,vx:-1.5+Math.random()*3,a:Math.random()*6,va:-.2+Math.random()*.4,c:cols[i%cols.length],e:i%5===0?EM[i%EM.length]:0});
+  cancelAnimationFrame(raf);
+  (function frame(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.a+=p.va;if(p.y>cv.height){p.y=-20;p.x=Math.random()*cv.width}
+      cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);if(p.e){cx.font="26px serif";cx.fillText(p.e,-13,10)}else{cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h)}cx.restore()});
+    raf=requestAnimationFrame(frame);
+  })();
+}
+function stop(){P.classList.remove("on");music(false);cancelAnimationFrame(raf);clearTimeout(timer)}
+P.addEventListener("click",stop);
+addEventListener("keydown",function(e){if(e.key==="Escape")stop()});
+var CR=["💃","🎺","🕺","🎊","🕺","🎸","💃"],cw="",i;for(i=0;i<7;i++)cw+='<span style="animation-delay:'+(i%2?.3:0)+'s">'+CR[i]+'</span>';$("crew").innerHTML=cw;
+var FC=["#ff2d87","#ffd23f","#06b6c4","#7bd82f","#ff7a1a","#9b5de5"],fl="";for(i=0;i<14;i++)fl+='<i style="background:'+FC[i%6]+';animation-delay:'+(i%2?.4:0)+'s"></i>';$("flags").innerHTML=fl;
+/* celebration music: original built-in fiesta tune, or your own song (kept in this browser) */
+var SONG=null,AC,bt,stp=0;
+function idb(cb){try{var r=indexedDB.open("planner-song",1);r.onupgradeneeded=function(){r.result.createObjectStore("s")};r.onsuccess=function(){cb(r.result)}}catch(e){}}
+function setSong(b){SONG=new Audio(URL.createObjectURL(b));SONG.loop=true;$("sx").hidden=false;$("st").textContent="🎵 My song ✓"}
+idb(function(db){var q=db.transaction("s").objectStore("s").get("song");q.onsuccess=function(){if(q.result)setSong(q.result)}});
+$("sf").addEventListener("change",function(){var f=this.files[0];if(!f)return;setSong(f);idb(function(db){db.transaction("s","readwrite").objectStore("s").put(f,"song")})});
+$("sx").addEventListener("click",function(){if(SONG){SONG.pause();SONG=null}$("sx").hidden=true;$("st").textContent="🎵 Song";$("sf").value="";idb(function(db){db.transaction("s","readwrite").objectStore("s").delete("song")})});
+function tone(f,t,d,ty,v){var o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d)}
+function kick(t){var o=AC.createOscillator(),g=AC.createGain();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(40,t+.12);g.gain.setValueAtTime(.35,t);g.gain.exponentialRampToValueAtTime(.001,t+.15);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.16)}
+function music(on){
+  clearInterval(bt);
+  if(SONG){SONG.pause();if(on){SONG.currentTime=0;SONG.play().catch(function(){})}return}
+  if(!on)return;
+  try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(e){return}
+  var mel=[7,7,9,7,4,0,5,5,7,5,2,-1,4,4,5,4,0,-5,2,4,5,2,7,7],CH=[0,-5,0,-5],root=261.63;stp=0;
+  bt=setInterval(function(){var t=AC.currentTime+.02,j=stp%12,b=Math.floor(stp/12)%4,r=CH[b],f=function(x){return root*Math.pow(2,x/12)};
+    tone(f(mel[stp%24]),t,.16,"sawtooth",.04);
+    if(j===0)tone(f(r-12),t,.32,"triangle",.16);
+    if(j===3)tone(f(r-5),t,.32,"triangle",.14);
+    if(j===1||j===2||j===4||j===5){tone(f(r+12),t,.09,"square",.02);tone(f(r+16),t,.09,"square",.02)}
+    tone(8000,t,.02,"square",.01);
+    stp++},175);
+}
+/* verse of the day (KJV): a new one each day, shuffled, no repeats for over a year */
+var VERSES=[["Matthew 6:33", "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you."], ["Matthew 11:29", "Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."], ["Exodus 33:14", "And he said, My presence shall go with thee, and I will give thee rest."], ["1 Chronicles 29:11", "Thine, O LORD, is the greatness, and the power, and the glory, and the victory, and the majesty: for all that is in the heaven and in the earth is thine; thine is the kingdom, O LORD, and thou art exalted as head above all."], ["James 1:5", "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him."], ["Romans 8:26", "Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered."], ["Numbers 6:26", "The LORD lift up his countenance upon thee, and give thee peace."], ["Romans 5:3", "And not only so, but we glory in tribulations also: knowing that tribulation worketh patience;"], ["Romans 12:12", "Rejoicing in hope; patient in tribulation; continuing instant in prayer;"], ["Psalms 46:5", "God is in the midst of her; she shall not be moved: God shall help her, and that right early."], ["2 Corinthians 9:7", "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."], ["Romans 5:5", "And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us."], ["Matthew 7:7", "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you:"], ["Jeremiah 29:13", "And ye shall seek me, and find me, when ye shall search for me with all your heart."], ["James 4:7", "Submit yourselves therefore to God. Resist the devil, and he will flee from you."], ["Isaiah 9:6", "For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace."], ["Psalms 126:3", "The LORD hath done great things for us; whereof we are glad."], ["Philippians 4:6", "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."], ["Matthew 16:26", "For what is a man profited, if he shall gain the whole world, and lose his own soul? or what shall a man give in exchange for his soul?"], ["Proverbs 16:24", "Pleasant words are as an honeycomb, sweet to the soul, and health to the bones."], ["John 13:34", "A new commandment I give unto you, That ye love one another; as I have loved you, that ye also love one another."], ["John 14:6", "Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me."], ["John 1:12", "But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name:"], ["Psalms 31:24", "Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD."], ["1 Samuel 12:24", "Only fear the LORD, and serve him in truth with all your heart: for consider how great things he hath done for you."], ["1 Peter 5:10", "But the God of all grace, who hath called us unto his eternal glory by Christ Jesus, after that ye have suffered a while, make you perfect, stablish, strengthen, settle you."], ["Psalms 136:1", "O give thanks unto the LORD; for he is good: for his mercy endureth for ever."], ["2 Corinthians 4:18", "While we look not at the things which are seen, but at the things which are not seen: for the things which are seen are temporal; but the things which are not seen are eternal."], ["James 1:19", "Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath:"], ["Psalms 42:11", "Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God."], ["1 Timothy 4:12", "Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity."], ["Proverbs 15:1", "A soft answer turneth away wrath: but grievous words stir up anger."], ["Romans 12:10", "Be kindly affectioned one to another with brotherly love; in honour preferring one another;"], ["Psalms 34:8", "O taste and see that the LORD is good: blessed is the man that trusteth in him."], ["Proverbs 16:9", "A man’s heart deviseth his way: but the LORD directeth his steps."], ["Matthew 6:34", "Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof."], ["Psalms 63:1", "O God, thou art my God; early will I seek thee: my soul thirsteth for thee, my flesh longeth for thee in a dry and thirsty land, where no water is;"], ["Psalms 121:2", "My help cometh from the LORD, which made heaven and earth."], ["Psalms 33:12", "Blessed is the nation whose God is the LORD; and the people whom he hath chosen for his own inheritance."], ["John 15:12", "This is my commandment, That ye love one another, as I have loved you."], ["Proverbs 3:27", "Withhold not good from them to whom it is due, when it is in the power of thine hand to do it."], ["Revelation 21:4", "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away."], ["Exodus 20:3", "Thou shalt have no other gods before me."], ["Philippians 3:14", "I press toward the mark for the prize of the high calling of God in Christ Jesus."], ["Psalms 18:32", "It is God that girdeth me with strength, and maketh my way perfect."], ["Ecclesiastes 3:1", "To every thing there is a season, and a time to every purpose under the heaven:"], ["1 John 4:7", "Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God."], ["Revelation 21:5", "And he that sat upon the throne said, Behold, I make all things new. And he said unto me, Write: for these words are true and faithful."], ["Micah 7:7", "Therefore I will look unto the LORD; I will wait for the God of my salvation: my God will hear me."], ["Mark 10:45", "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many."], ["Psalms 119:11", "Thy word have I hid in mine heart, that I might not sin against thee."], ["Matthew 11:28", "Come unto me, all ye that labour and are heavy laden, and I will give you rest."], ["Joshua 1:9", "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest."], ["Psalms 16:8", "I have set the LORD always before me: because he is at my right hand, I shall not be moved."], ["Deuteronomy 10:12", "And now, Israel, what doth the LORD thy God require of thee, but to fear the LORD thy God, to walk in all his ways, and to love him, and to serve the LORD thy God with all thy heart and with all thy soul,"], ["Psalms 19:14", "Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD, my strength, and my redeemer."], ["Psalms 43:5", "Why art thou cast down, O my soul? and why art thou disquieted within me? hope in God: for I shall yet praise him, who is the health of my countenance, and my God."], ["Romans 8:28", "And we know that all things work together for good to them that love God, to them who are the called according to his purpose."], ["Psalms 90:17", "And let the beauty of the LORD our God be upon us: and establish thou the work of our hands upon us; yea, the work of our hands establish thou it."], ["Romans 10:17", "So then faith cometh by hearing, and hearing by the word of God."], ["Psalms 59:16", "But I will sing of thy power; yea, I will sing aloud of thy mercy in the morning: for thou hast been my defence and refuge in the day of my trouble."], ["Psalms 111:10", "The fear of the LORD is the beginning of wisdom: a good understanding have all they that do his commandments: his praise endureth for ever."], ["John 14:1", "Let not your heart be troubled: ye believe in God, believe also in me."], ["John 8:12", "Then spake Jesus again unto them, saying, I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life."], ["1 Corinthians 2:9", "But as it is written, Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him."], ["James 1:2", "My brethren, count it all joy when ye fall into divers temptations;"], ["Ephesians 4:32", "And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you."], ["Romans 13:10", "Love worketh no ill to his neighbour: therefore love is the fulfilling of the law."], ["Philippians 4:7", "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."], ["Psalms 34:17", "The righteous cry, and the LORD heareth, and delivereth them out of all their troubles."], ["Psalms 125:1", "They that trust in the LORD shall be as mount Zion, which cannot be removed, but abideth for ever."], ["Proverbs 3:6", "In all thy ways acknowledge him, and he shall direct thy paths."], ["1 Corinthians 15:57", "But thanks be to God, which giveth us the victory through our Lord Jesus Christ."], ["James 5:16", "Confess your faults one to another, and pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much."], ["Psalms 94:19", "In the multitude of my thoughts within me thy comforts delight my soul."], ["Isaiah 40:28", "Hast thou not known? hast thou not heard, that the everlasting God, the LORD, the Creator of the ends of the earth, fainteth not, neither is weary? there is no searching of his understanding."], ["Proverbs 22:6", "Train up a child in the way he should go: and when he is old, he will not depart from it."], ["Psalms 3:5", "I laid me down and slept; I awaked; for the LORD sustained me."], ["John 16:33", "These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world."], ["Psalms 143:8", "Cause me to hear thy lovingkindness in the morning; for in thee do I trust: cause me to know the way wherein I should walk; for I lift up my soul unto thee."], ["Acts 16:31", "And they said, Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house."], ["Psalms 16:11", "Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore."], ["Matthew 28:20", "Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen."], ["Luke 11:9", "And I say unto you, Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you."], ["Romans 5:8", "But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us."], ["Psalms 73:26", "My flesh and my heart faileth: but God is the strength of my heart, and my portion for ever."], ["Psalms 33:22", "Let thy mercy, O LORD, be upon us, according as we hope in thee."], ["Numbers 23:19", "God is not a man, that he should lie; neither the son of man, that he should repent: hath he said, and shall he not do it? or hath he spoken, and shall he not make it good?"], ["Proverbs 31:25", "Strength and honour are her clothing; and she shall rejoice in time to come."], ["Matthew 6:6", "But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly."], ["Lamentations 3:25", "The LORD is good unto them that wait for him, to the soul that seeketh him."], ["Psalms 106:1", "Praise ye the LORD. O give thanks unto the LORD; for he is good: for his mercy endureth for ever."], ["Galatians 5:22", "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith,"], ["Psalms 91:4", "He shall cover thee with his feathers, and under his wings shalt thou trust: his truth shall be thy shield and buckler."], ["Psalms 5:3", "My voice shalt thou hear in the morning, O LORD; in the morning will I direct my prayer unto thee, and will look up."], ["Psalms 127:1", "Except the LORD build the house, they labour in vain that build it: except the LORD keep the city, the watchman waketh but in vain."], ["Proverbs 27:17", "Iron sharpeneth iron; so a man sharpeneth the countenance of his friend."], ["Psalms 92:1", "It is a good thing to give thanks unto the LORD, and to sing praises unto thy name, O most High:"], ["Proverbs 10:12", "Hatred stirreth up strifes: but love covereth all sins."], ["Mark 10:27", "And Jesus looking upon them saith, With men it is impossible, but not with God: for with God all things are possible."], ["Psalms 62:8", "Trust in him at all times; ye people, pour out your heart before him: God is a refuge for us. Selah."], ["Psalms 121:7", "The LORD shall preserve thee from all evil: he shall preserve thy soul."], ["1 Peter 5:7", "Casting all your care upon him; for he careth for you."], ["1 Chronicles 16:8", "Give thanks unto the LORD, call upon his name, make known his deeds among the people."], ["Proverbs 15:22", "Without counsel purposes are disappointed: but in the multitude of counsellors they are established."], ["Lamentations 3:22", "It is of the LORD’s mercies that we are not consumed, because his compassions fail not."], ["Psalms 138:8", "The LORD will perfect that which concerneth me: thy mercy, O LORD, endureth for ever: forsake not the works of thine own hands."], ["Psalms 139:24", "And see if there be any wicked way in me, and lead me in the way everlasting."], ["Psalms 19:1", "The heavens declare the glory of God; and the firmament sheweth his handywork."], ["Psalms 113:3", "From the rising of the sun unto the going down of the same the LORD’s name is to be praised."], ["Psalms 29:11", "The LORD will give strength unto his people; the LORD will bless his people with peace."], ["Psalms 30:12", "To the end that my glory may sing praise to thee, and not be silent. O LORD my God, I will give thanks unto thee for ever."], ["Psalms 91:11", "For he shall give his angels charge over thee, to keep thee in all thy ways."], ["Isaiah 43:1", "But now thus saith the LORD that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine."], ["Psalms 34:1", "I will bless the LORD at all times: his praise shall continually be in my mouth."], ["Psalms 112:7", "He shall not be afraid of evil tidings: his heart is fixed, trusting in the LORD."], ["Psalms 34:19", "Many are the afflictions of the righteous: but the LORD delivereth him out of them all."], ["Matthew 19:26", "But Jesus beheld them, and said unto them, With men this is impossible; but with God all things are possible."], ["Psalms 32:8", "I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye."], ["1 Peter 3:8", "Finally, be ye all of one mind, having compassion one of another, love as brethren, be pitiful, be courteous:"], ["Deuteronomy 31:6", "Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee."], ["Proverbs 28:13", "He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy."], ["James 4:10", "Humble yourselves in the sight of the Lord, and he shall lift you up."], ["Matthew 7:12", "Therefore all things whatsoever ye would that men should do to you, do ye even so to them: for this is the law and the prophets."], ["Isaiah 48:17", "Thus saith the LORD, thy Redeemer, the Holy One of Israel; I am the LORD thy God which teacheth thee to profit, which leadeth thee by the way that thou shouldest go."], ["Psalms 37:3", "Trust in the LORD, and do good; so shalt thou dwell in the land, and verily thou shalt be fed."], ["1 John 4:8", "He that loveth not knoweth not God; for God is love."], ["Matthew 5:16", "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven."], ["Psalms 23:2", "He maketh me to lie down in green pastures: he leadeth me beside the still waters."], ["Psalms 27:1", "The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?"], ["Psalms 100:4", "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name."], ["Psalms 24:1", "The earth is the LORD’s, and the fulness thereof; the world, and they that dwell therein."], ["Ruth 1:16", "And Ruth said, Intreat me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God:"], ["2 Timothy 1:7", "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind."], ["John 1:5", "And the light shineth in darkness; and the darkness comprehended it not."], ["2 Chronicles 16:9", "For the eyes of the LORD run to and fro throughout the whole earth, to shew himself strong in the behalf of them whose heart is perfect toward him. Herein thou hast done foolishly: therefore from henceforth thou shalt have wars."], ["Isaiah 43:2", "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee."], ["Isaiah 41:10", "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness."], ["Ephesians 6:10", "Finally, my brethren, be strong in the Lord, and in the power of his might."], ["Psalms 37:23", "The steps of a good man are ordered by the LORD: and he delighteth in his way."], ["Psalms 31:14", "But I trusted in thee, O LORD: I said, Thou art my God."], ["Psalms 51:10", "Create in me a clean heart, O God; and renew a right spirit within me."], ["Deuteronomy 33:27", "The eternal God is thy refuge, and underneath are the everlasting arms: and he shall thrust out the enemy from before thee; and shall say, Destroy them."], ["James 4:8", "Draw nigh to God, and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded."], ["Proverbs 18:10", "The name of the LORD is a strong tower: the righteous runneth into it, and is safe."], ["Psalms 9:10", "And they that know thy name will put their trust in thee: for thou, LORD, hast not forsaken them that seek thee."], ["Deuteronomy 32:4", "He is the Rock, his work is perfect: for all his ways are judgment: a God of truth and without iniquity, just and right is he."], ["Psalms 23:6", "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever."], ["Colossians 3:15", "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful."], ["Psalms 86:11", "Teach me thy way, O LORD; I will walk in thy truth: unite my heart to fear thy name."], ["1 Samuel 2:2", "There is none holy as the LORD: for there is none beside thee: neither is there any rock like our God."], ["Psalms 46:10", "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth."], ["Proverbs 1:7", "The fear of the LORD is the beginning of knowledge: but fools despise wisdom and instruction."], ["Psalms 139:14", "I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well."], ["Romans 12:21", "Be not overcome of evil, but overcome evil with good."], ["2 Thessalonians 3:3", "But the Lord is faithful, who shall stablish you, and keep you from evil."], ["Ephesians 2:8", "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God:"], ["Psalms 25:5", "Lead me in thy truth, and teach me: for thou art the God of my salvation; on thee do I wait all the day."], ["Psalms 121:8", "The LORD shall preserve thy going out and thy coming in from this time forth, and even for evermore."], ["Mark 12:30", "And thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind, and with all thy strength: this is the first commandment."], ["Psalms 56:3", "What time I am afraid, I will trust in thee."], ["Matthew 5:7", "Blessed are the merciful: for they shall obtain mercy."], ["Proverbs 13:20", "He that walketh with wise men shall be wise: but a companion of fools shall be destroyed."], ["Colossians 3:17", "And whatsoever ye do in word or deed, do all in the name of the Lord Jesus, giving thanks to God and the Father by him."], ["Psalms 147:3", "He healeth the broken in heart, and bindeth up their wounds."], ["John 15:5", "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing."], ["Psalms 36:5", "Thy mercy, O LORD, is in the heavens; and thy faithfulness reacheth unto the clouds."], ["Deuteronomy 30:19", "I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live:"], ["Psalms 37:39", "But the salvation of the righteous is of the LORD: he is their strength in the time of trouble."], ["1 Thessalonians 5:17", "Pray without ceasing."], ["Psalms 40:8", "I delight to do thy will, O my God: yea, thy law is within my heart."], ["1 John 1:9", "If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness."], ["Ephesians 2:10", "For we are his workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them."], ["Matthew 18:20", "For where two or three are gathered together in my name, there am I in the midst of them."], ["Psalms 124:8", "Our help is in the name of the LORD, who made heaven and earth."], ["James 1:17", "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning."], ["1 Chronicles 16:34", "O give thanks unto the LORD; for he is good; for his mercy endureth for ever."], ["Luke 1:45", "And blessed is she that believed: for there shall be a performance of those things which were told her from the Lord."], ["Psalms 10:17", "LORD, thou hast heard the desire of the humble: thou wilt prepare their heart, thou wilt cause thine ear to hear:"], ["Psalms 89:1", "I will sing of the mercies of the LORD for ever: with my mouth will I make known thy faithfulness to all generations."], ["Proverbs 11:25", "The liberal soul shall be made fat: and he that watereth shall be watered also himself."], ["1 Kings 8:56", "Blessed be the LORD, that hath given rest unto his people Israel, according to all that he promised: there hath not failed one word of all his good promise, which he promised by the hand of Moses his servant."], ["Hebrews 13:5", "Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee."], ["Proverbs 17:22", "A merry heart doeth good like a medicine: but a broken spirit drieth the bones."], ["2 Corinthians 4:16", "For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day."], ["Psalms 62:5", "My soul, wait thou only upon God; for my expectation is from him."], ["Psalms 1:2", "But his delight is in the law of the LORD; and in his law doth he meditate day and night."], ["Psalms 119:114", "Thou art my hiding place and my shield: I hope in thy word."], ["Isaiah 26:3", "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee."], ["1 Corinthians 13:13", "And now abideth faith, hope, charity, these three; but the greatest of these is charity."], ["Psalms 91:1", "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty."], ["Proverbs 14:26", "In the fear of the LORD is strong confidence: and his children shall have a place of refuge."], ["Exodus 23:25", "And ye shall serve the LORD your God, and he shall bless thy bread, and thy water; and I will take sickness away from the midst of thee."], ["Job 23:10", "But he knoweth the way that I take: when he hath tried me, I shall come forth as gold."], ["Romans 8:31", "What shall we then say to these things? If God be for us, who can be against us?"], ["Romans 8:37", "Nay, in all these things we are more than conquerors through him that loved us."], ["Exodus 15:2", "The LORD is my strength and song, and he is become my salvation: he is my God, and I will prepare him an habitation; my father’s God, and I will exalt him."], ["2 Corinthians 5:17", "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new."], ["Psalms 91:2", "I will say of the LORD, He is my refuge and my fortress: my God; in him will I trust."], ["Galatians 6:9", "And let us not be weary in well doing: for in due season we shall reap, if we faint not."], ["Psalms 145:3", "Great is the LORD, and greatly to be praised; and his greatness is unsearchable."], ["Psalms 130:5", "I wait for the LORD, my soul doth wait, and in his word do I hope."], ["2 Corinthians 1:3", "Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort;"], ["Psalms 107:1", "O give thanks unto the LORD, for he is good: for his mercy endureth for ever."], ["Romans 12:2", "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."], ["Psalms 32:7", "Thou art my hiding place; thou shalt preserve me from trouble; thou shalt compass me about with songs of deliverance. Selah."], ["Psalms 118:8", "It is better to trust in the LORD than to put confidence in man."], ["Psalms 46:1", "God is our refuge and strength, a very present help in trouble."], ["Romans 15:4", "For whatsoever things were written aforetime were written for our learning, that we through patience and comfort of the scriptures might have hope."], ["John 3:16", "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."], ["Psalms 103:13", "Like as a father pitieth his children, so the LORD pitieth them that fear him."], ["1 Peter 4:8", "And above all things have fervent charity among yourselves: for charity shall cover the multitude of sins."], ["Revelation 3:20", "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me."], ["Jeremiah 29:11", "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end."], ["1 Thessalonians 5:11", "Wherefore comfort yourselves together, and edify one another, even as also ye do."], ["Psalms 100:5", "For the LORD is good; his mercy is everlasting; and his truth endureth to all generations."], ["Psalms 57:7", "My heart is fixed, O God, my heart is fixed: I will sing and give praise."], ["Psalms 65:11", "Thou crownest the year with thy goodness; and thy paths drop fatness."], ["2 Samuel 22:31", "As for God, his way is perfect; the word of the LORD is tried: he is a buckler to all them that trust in him."], ["Isaiah 40:8", "The grass withereth, the flower fadeth: but the word of our God shall stand for ever."], ["Psalms 50:15", "And call upon me in the day of trouble: I will deliver thee, and thou shalt glorify me."], ["Psalms 27:13", "I had fainted, unless I had believed to see the goodness of the LORD in the land of the living."], ["Colossians 3:2", "Set your affection on things above, not on things on the earth."], ["Psalms 31:3", "For thou art my rock and my fortress; therefore for thy name’s sake lead me, and guide me."], ["Psalms 61:2", "From the end of the earth will I cry unto thee, when my heart is overwhelmed: lead me to the rock that is higher than I."], ["Psalms 71:5", "For thou art my hope, O Lord GOD: thou art my trust from my youth."], ["Isaiah 55:12", "For ye shall go out with joy, and be led forth with peace: the mountains and the hills shall break forth before you into singing, and all the trees of the field shall clap their hands."], ["Genesis 9:13", "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth."], ["Proverbs 16:3", "Commit thy works unto the LORD, and thy thoughts shall be established."], ["Psalms 33:20", "Our soul waiteth for the LORD: he is our help and our shield."], ["Psalms 121:1", "I will lift up mine eyes unto the hills, from whence cometh my help."], ["Psalms 33:4", "For the word of the LORD is right; and all his works are done in truth."], ["Romans 5:1", "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ:"], ["Numbers 6:25", "The LORD make his face shine upon thee, and be gracious unto thee:"], ["Deuteronomy 7:9", "Know therefore that the LORD thy God, he is God, the faithful God, which keepeth covenant and mercy with them that love him and keep his commandments to a thousand generations;"], ["Isaiah 41:13", "For I the LORD thy God will hold thy right hand, saying unto thee, Fear not; I will help thee."], ["1 Corinthians 16:14", "Let all your things be done with charity."], ["Joshua 21:45", "There failed not ought of any good thing which the LORD had spoken unto the house of Israel; all came to pass."], ["Genesis 28:15", "And, behold, I am with thee, and will keep thee in all places whither thou goest, and will bring thee again into this land; for I will not leave thee, until I have done that which I have spoken to thee of."], ["Psalms 34:18", "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit."], ["Philippians 4:4", "Rejoice in the Lord alway: and again I say, Rejoice."], ["Jeremiah 31:3", "The LORD hath appeared of old unto me, saying, Yea, I have loved thee with an everlasting love: therefore with lovingkindness have I drawn thee."], ["John 10:10", "The thief cometh not, but for to steal, and to kill, and to destroy: I am come that they might have life, and that they might have it more abundantly."], ["2 Chronicles 7:14", "If my people, which are called by my name, shall humble themselves, and pray, and seek my face, and turn from their wicked ways; then will I hear from heaven, and will forgive their sin, and will heal their land."], ["Proverbs 22:1", "A good name is rather to be chosen than great riches, and loving favour rather than silver and gold."], ["Matthew 5:3", "Blessed are the poor in spirit: for theirs is the kingdom of heaven."], ["Psalms 37:24", "Though he fall, he shall not be utterly cast down: for the LORD upholdeth him with his hand."], ["Psalms 71:1", "In thee, O LORD, do I put my trust: let me never be put to confusion."], ["Psalms 27:14", "Wait on the LORD: be of good courage, and he shall strengthen thine heart: wait, I say, on the LORD."], ["John 3:30", "He must increase, but I must decrease."], ["Luke 10:27", "And he answering said, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy strength, and with all thy mind; and thy neighbour as thyself."], ["Micah 6:8", "He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?"], ["Proverbs 17:17", "A friend loveth at all times, and a brother is born for adversity."], ["1 Chronicles 16:11", "Seek the LORD and his strength, seek his face continually."], ["Isaiah 55:9", "For as the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts."], ["Psalms 30:5", "For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning."], ["Proverbs 4:18", "But the path of the just is as the shining light, that shineth more and more unto the perfect day."], ["Job 19:25", "For I know that my redeemer liveth, and that he shall stand at the latter day upon the earth:"], ["Luke 12:32", "Fear not, little flock; for it is your Father’s good pleasure to give you the kingdom."], ["Matthew 5:5", "Blessed are the meek: for they shall inherit the earth."], ["Psalms 23:1", "The LORD is my shepherd; I shall not want."], ["Jeremiah 29:12", "Then shall ye call upon me, and ye shall go and pray unto me, and I will hearken unto you."], ["Romans 12:15", "Rejoice with them that do rejoice, and weep with them that weep."], ["Psalms 23:4", "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me."], ["2 Corinthians 5:7", "(For we walk by faith, not by sight:)"], ["Hebrews 10:23", "Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;)"], ["Genesis 12:2", "And I will make of thee a great nation, and I will bless thee, and make thy name great; and thou shalt be a blessing:"], ["Psalms 28:7", "The LORD is my strength and my shield; my heart trusted in him, and I am helped: therefore my heart greatly rejoiceth; and with my song will I praise him."], ["1 Timothy 6:6", "But godliness with contentment is great gain."], ["John 14:15", "If ye love me, keep my commandments."], ["Deuteronomy 31:8", "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed."], ["Psalms 18:2", "The LORD is my rock, and my fortress, and my deliverer; my God, my strength, in whom I will trust; my buckler, and the horn of my salvation, and my high tower."], ["Psalms 63:3", "Because thy lovingkindness is better than life, my lips shall praise thee."], ["Psalms 37:4", "Delight thyself also in the LORD; and he shall give thee the desires of thine heart."], ["Nehemiah 8:10", "Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our Lord: neither be ye sorry; for the joy of the LORD is your strength."], ["Luke 1:37", "For with God nothing shall be impossible."], ["Genesis 1:27", "So God created man in his own image, in the image of God created he him; male and female created he them."], ["Job 8:7", "Though thy beginning was small, yet thy latter end should greatly increase."], ["Exodus 14:14", "The LORD shall fight for you, and ye shall hold your peace."], ["Hebrews 13:6", "So that we may boldly say, The Lord is my helper, and I will not fear what man shall do unto me."], ["Psalms 25:21", "Let integrity and uprightness preserve me; for I wait on thee."], ["Proverbs 29:25", "The fear of man bringeth a snare: but whoso putteth his trust in the LORD shall be safe."], ["Psalms 36:7", "How excellent is thy lovingkindness, O God! therefore the children of men put their trust under the shadow of thy wings."], ["Psalms 1:3", "And he shall be like a tree planted by the rivers of water, that bringeth forth his fruit in his season; his leaf also shall not wither; and whatsoever he doeth shall prosper."], ["Proverbs 4:23", "Keep thy heart with all diligence; for out of it are the issues of life."], ["Galatians 2:20", "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me."], ["Psalms 90:12", "So teach us to number our days, that we may apply our hearts unto wisdom."], ["2 Samuel 22:33", "God is my strength and power: and he maketh my way perfect."], ["Romans 1:16", "For I am not ashamed of the gospel of Christ: for it is the power of God unto salvation to every one that believeth; to the Jew first, and also to the Greek."], ["2 Corinthians 12:9", "And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me."], ["Psalms 34:4", "I sought the LORD, and he heard me, and delivered me from all my fears."], ["Isaiah 46:4", "And even to your old age I am he; and even to hoar hairs will I carry you: I have made, and I will bear; even I will carry, and will deliver you."], ["1 Corinthians 13:7", "Beareth all things, believeth all things, hopeth all things, endureth all things."], ["Matthew 5:14", "Ye are the light of the world. A city that is set on an hill cannot be hid."], ["Isaiah 40:29", "He giveth power to the faint; and to them that have no might he increaseth strength."], ["Hebrews 13:8", "Jesus Christ the same yesterday, and to day, and for ever."], ["John 14:27", "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid."], ["Psalms 119:18", "Open thou mine eyes, that I may behold wondrous things out of thy law."], ["Psalms 103:2", "Bless the LORD, O my soul, and forget not all his benefits:"], ["Deuteronomy 6:5", "And thou shalt love the LORD thy God with all thine heart, and with all thy soul, and with all thy might."], ["Colossians 3:23", "And whatsoever ye do, do it heartily, as to the Lord, and not unto men;"], ["Isaiah 30:15", "For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not."], ["Nahum 1:7", "The LORD is good, a strong hold in the day of trouble; and he knoweth them that trust in him."], ["Matthew 5:8", "Blessed are the pure in heart: for they shall see God."], ["Isaiah 55:8", "For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD."], ["Lamentations 3:23", "They are new every morning: great is thy faithfulness."], ["Psalms 86:5", "For thou, Lord, art good, and ready to forgive; and plenteous in mercy unto all them that call upon thee."], ["Psalms 37:5", "Commit thy way unto the LORD; trust also in him; and he shall bring it to pass."], ["Psalms 150:6", "Let every thing that hath breath praise the LORD. Praise ye the LORD."], ["Ezekiel 36:26", "A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh."], ["Romans 15:13", "Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost."], ["Philippians 2:3", "Let nothing be done through strife or vainglory; but in lowliness of mind let each esteem other better than themselves."], ["John 8:32", "And ye shall know the truth, and the truth shall make you free."], ["Psalms 27:4", "One thing have I desired of the LORD, that will I seek after; that I may dwell in the house of the LORD all the days of my life, to behold the beauty of the LORD, and to enquire in his temple."], ["Deuteronomy 4:29", "But if from thence thou shalt seek the LORD thy God, thou shalt find him, if thou seek him with all thy heart and with all thy soul."], ["Genesis 50:20", "But as for you, ye thought evil against me; but God meant it unto good, to bring to pass, as it is this day, to save much people alive."], ["Psalms 90:14", "O satisfy us early with thy mercy; that we may rejoice and be glad all our days."], ["Psalms 103:12", "As far as the east is from the west, so far hath he removed our transgressions from us."], ["Psalms 37:7", "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass."], ["Isaiah 26:4", "Trust ye in the LORD for ever: for in the LORD JEHOVAH is everlasting strength:"], ["Romans 8:1", "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit."], ["1 Corinthians 16:13", "Watch ye, stand fast in the faith, quit you like men, be strong."], ["Zephaniah 3:17", "The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy; he will rest in his love, he will joy over thee with singing."], ["2 Peter 3:9", "The Lord is not slack concerning his promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish, but that all should come to repentance."], ["Psalms 116:1", "I love the LORD, because he hath heard my voice and my supplications."], ["Proverbs 21:5", "The thoughts of the diligent tend only to plenteousness; but of every one that is hasty only to want."], ["Mark 9:23", "Jesus said unto him, If thou canst believe, all things are possible to him that believeth."], ["2 Timothy 3:16", "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:"], ["Matthew 22:37", "Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind."], ["Romans 12:18", "If it be possible, as much as lieth in you, live peaceably with all men."], ["Isaiah 53:5", "But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed."], ["Acts 20:35", "I have shewed you all things, how that so labouring ye ought to support the weak, and to remember the words of the Lord Jesus, how he said, It is more blessed to give than to receive."], ["Psalms 18:30", "As for God, his way is perfect: the word of the LORD is tried: he is a buckler to all those that trust in him."], ["Psalms 55:22", "Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved."], ["Jeremiah 33:3", "Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not."], ["Philippians 4:19", "But my God shall supply all your need according to his riches in glory by Christ Jesus."], ["Jeremiah 17:7", "Blessed is the man that trusteth in the LORD, and whose hope the LORD is."], ["Isaiah 12:2", "Behold, God is my salvation; I will trust, and not be afraid: for the LORD JEHOVAH is my strength and my song; he also is become my salvation."], ["1 John 4:18", "There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love."], ["1 John 3:1", "Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God: therefore the world knoweth us not, because it knew him not."], ["Matthew 6:21", "For where your treasure is, there will your heart be also."], ["Deuteronomy 5:33", "Ye shall walk in all the ways which the LORD your God hath commanded you, that ye may live, and that it may be well with you, and that ye may prolong your days in the land which ye shall possess."], ["Psalms 20:7", "Some trust in chariots, and some in horses: but we will remember the name of the LORD our God."], ["1 John 5:14", "And this is the confidence that we have in him, that, if we ask any thing according to his will, he heareth us:"], ["Luke 6:37", "Judge not, and ye shall not be judged: condemn not, and ye shall not be condemned: forgive, and ye shall be forgiven:"], ["Ephesians 4:2", "With all lowliness and meekness, with longsuffering, forbearing one another in love;"], ["Matthew 5:44", "But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you;"], ["1 Thessalonians 5:18", "In every thing give thanks: for this is the will of God in Christ Jesus concerning you."], ["Jeremiah 32:17", "Ah Lord GOD! behold, thou hast made the heaven and the earth by thy great power and stretched out arm, and there is nothing too hard for thee:"], ["Mark 11:24", "Therefore I say unto you, What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them."], ["1 John 4:4", "Ye are of God, little children, and have overcome them: because greater is he that is in you, than he that is in the world."], ["Psalms 84:11", "For the LORD God is a sun and shield: the LORD will give grace and glory: no good thing will he withhold from them that walk uprightly."], ["Matthew 6:26", "Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?"], ["2 Timothy 2:15", "Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth."], ["Hebrews 11:6", "But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him."], ["1 John 4:19", "We love him, because he first loved us."], ["Matthew 5:6", "Blessed are they which do hunger and thirst after righteousness: for they shall be filled."], ["Ecclesiastes 9:10", "Whatsoever thy hand findeth to do, do it with thy might; for there is no work, nor device, nor knowledge, nor wisdom, in the grave, whither thou goest."], ["Psalms 17:8", "Keep me as the apple of the eye, hide me under the shadow of thy wings,"], ["Habakkuk 3:19", "The LORD God is my strength, and he will make my feet like hinds’ feet, and he will make me to walk upon mine high places. To the chief singer on my stringed instruments."], ["Matthew 5:10", "Blessed are they which are persecuted for righteousness’ sake: for theirs is the kingdom of heaven."], ["Luke 18:27", "And he said, The things which are impossible with men are possible with God."], ["Proverbs 19:21", "There are many devices in a man’s heart; nevertheless the counsel of the LORD, that shall stand."], ["Job 5:17", "Behold, happy is the man whom God correcteth: therefore despise not thou the chastening of the Almighty:"], ["Ecclesiastes 4:9", "Two are better than one; because they have a good reward for their labour."], ["Isaiah 58:11", "And the LORD shall guide thee continually, and satisfy thy soul in drought, and make fat thy bones: and thou shalt be like a watered garden, and like a spring of water, whose waters fail not."], ["Proverbs 3:5", "Trust in the LORD with all thine heart; and lean not unto thine own understanding."], ["Proverbs 3:13", "Happy is the man that findeth wisdom, and the man that getteth understanding."], ["Galatians 6:2", "Bear ye one another’s burdens, and so fulfil the law of Christ."], ["Numbers 6:24", "The LORD bless thee, and keep thee:"], ["Psalms 118:6", "The LORD is on my side; I will not fear: what can man do unto me?"], ["Luke 6:38", "Give, and it shall be given unto you; good measure, pressed down, and shaken together, and running over, shall men give into your bosom. For with the same measure that ye mete withal it shall be measured to you again."], ["Ephesians 3:20", "Now unto him that is able to do exceeding abundantly above all that we ask or think, according to the power that worketh in us,"], ["Galatians 5:1", "Stand fast therefore in the liberty wherewith Christ hath made us free, and be not entangled again with the yoke of bondage."], ["Romans 8:39", "Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord."], ["Psalms 25:4", "Shew me thy ways, O LORD; teach me thy paths."], ["Isaiah 54:10", "For the mountains shall depart, and the hills be removed; but my kindness shall not depart from thee, neither shall the covenant of my peace be removed, saith the LORD that hath mercy on thee."], ["1 John 3:18", "My little children, let us not love in word, neither in tongue; but in deed and in truth."], ["Psalms 103:8", "The LORD is merciful and gracious, slow to anger, and plenteous in mercy."], ["Matthew 11:30", "For my yoke is easy, and my burden is light."], ["Matthew 6:9", "After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name."], ["Job 42:2", "I know that thou canst do every thing, and that no thought can be withholden from thee."], ["Psalms 133:1", "Behold, how good and how pleasant it is for brethren to dwell together in unity!"], ["Philippians 1:6", "Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ:"], ["2 Chronicles 15:7", "Be ye strong therefore, and let not your hands be weak: for your work shall be rewarded."], ["Romans 8:18", "For I reckon that the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us."], ["Jude 1:24", "Now unto him that is able to keep you from falling, and to present you faultless before the presence of his glory with exceeding joy,"], ["Colossians 3:12", "Put on therefore, as the elect of God, holy and beloved, bowels of mercies, kindness, humbleness of mind, meekness, longsuffering;"], ["Proverbs 12:25", "Heaviness in the heart of man maketh it stoop: but a good word maketh it glad."], ["Psalms 145:18", "The LORD is nigh unto all them that call upon him, to all that call upon him in truth."], ["Psalms 139:23", "Search me, O God, and know my heart: try me, and know my thoughts:"], ["Psalms 68:19", "Blessed be the Lord, who daily loadeth us with benefits, even the God of our salvation. Selah."], ["Proverbs 18:21", "Death and life are in the power of the tongue: and they that love it shall eat the fruit thereof."], ["Psalms 40:1", "I waited patiently for the LORD; and he inclined unto me, and heard my cry."], ["Psalms 118:24", "This is the day which the LORD hath made; we will rejoice and be glad in it."], ["1 Corinthians 15:58", "Therefore, my beloved brethren, be ye stedfast, unmoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord."], ["1 Peter 5:6", "Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time:"], ["1 Corinthians 13:4", "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up,"], ["Genesis 2:24", "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh."], ["Isaiah 43:19", "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert."], ["Psalms 3:3", "But thou, O LORD, art a shield for me; my glory, and the lifter up of mine head."], ["Psalms 103:1", "Bless the LORD, O my soul: and all that is within me, bless his holy name."], ["Psalms 13:5", "But I have trusted in thy mercy; my heart shall rejoice in thy salvation."], ["2 Chronicles 20:15", "And he said, Hearken ye, all Judah, and ye inhabitants of Jerusalem, and thou king Jehoshaphat, Thus saith the LORD unto you, Be not afraid nor dismayed by reason of this great multitude; for the battle is not yours, but God’s."], ["John 15:13", "Greater love hath no man than this, that a man lay down his life for his friends."], ["Genesis 8:22", "While the earth remaineth, seedtime and harvest, and cold and heat, and summer and winter, and day and night shall not cease."], ["Psalms 62:1", "Truly my soul waiteth upon God: from him cometh my salvation."], ["Isaiah 40:31", "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint."], ["Luke 1:78", "Through the tender mercy of our God; whereby the dayspring from on high hath visited us,"], ["Hebrews 11:1", "Now faith is the substance of things hoped for, the evidence of things not seen."], ["1 Thessalonians 5:16", "Rejoice evermore."], ["Daniel 12:3", "And they that be wise shall shine as the brightness of the firmament; and they that turn many to righteousness as the stars for ever and ever."], ["Hebrews 4:16", "Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."], ["Hebrews 12:2", "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God."], ["Philippians 4:13", "I can do all things through Christ which strengtheneth me."], ["Matthew 22:39", "And the second is like unto it, Thou shalt love thy neighbour as thyself."], ["Luke 6:31", "And as ye would that men should do to you, do ye also to them likewise."], ["Hebrews 12:1", "Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us,"], ["Ecclesiastes 3:11", "He hath made every thing beautiful in his time: also he hath set the world in their heart, so that no man can find out the work that God maketh from the beginning to the end."], ["Matthew 6:14", "For if ye forgive men their trespasses, your heavenly Father will also forgive you:"], ["Acts 1:8", "But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judæa, and in Samaria, and unto the uttermost part of the earth."], ["John 11:25", "Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live:"], ["Psalms 48:14", "For this God is our God for ever and ever: he will be our guide even unto death."], ["Psalms 4:8", "I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety."], ["Romans 10:9", "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved."], ["Matthew 5:9", "Blessed are the peacemakers: for they shall be called the children of God."], ["Matthew 5:4", "Blessed are they that mourn: for they shall be comforted."], ["Psalms 119:105", "Thy word is a lamp unto my feet, and a light unto my path."], ["Psalms 18:1", "I will love thee, O LORD, my strength."]];
+function showVerse(){
+  var n=new Date(),day=Math.floor((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())-Date.UTC(2026,0,1))/864e5),N=VERSES.length,v=VERSES[((day%N)+N)%N];
+  $("vh").textContent="🙏 Verse of the day · "+n.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+  $("vt").textContent="“"+v[1]+"”";$("vr").textContent=v[0]+" (KJV)";
+}
+showVerse();setInterval(showVerse,3600000);
+/* notes + drive links */
+var NK="planner-notes-v1",LNK="planner-links-v1",links=load(LNK);
+try{$("notes").value=localStorage.getItem(NK)||""}catch(e){}
+$("notes").addEventListener("input",function(){try{localStorage.setItem(NK,this.value)}catch(e){}});
+function saveLinks(){try{localStorage.setItem(LNK,JSON.stringify(links))}catch(e){}}
+function renderLinks(){
+  $("links").innerHTML=links.length?links.map(function(l){return'<div class="lk">📁<a href="'+esc(l.url)+'" target="_blank" rel="noopener" title="'+esc(l.url)+'">'+esc(l.name)+'</a><button data-dl="'+l.id+'" aria-label="Remove link">&times;</button></div>'}).join(""):'<div class="nolk">No links yet. Paste a Drive folder link below.</div>';
+}
+function addLink(){
+  var u=$("lu").value.trim(),n=$("ln").value.trim();if(!u){$("lu").focus();return}
+  if(!/^https?:\/\//i.test(u)){if(/^[a-z][a-z0-9+.-]*:/i.test(u)){$("lu").focus();return}u="https://"+u}
+  links.push({id:uid(),name:n||"Drive folder",url:u});saveLinks();renderLinks();$("ln").value="";$("lu").value="";$("ln").focus();
+}
+$("la").addEventListener("click",addLink);
+["ln","lu"].forEach(function(i){$(i).addEventListener("keydown",function(e){if(e.key==="Enter")addLink()})});
+$("links").addEventListener("click",function(e){var id=e.target.dataset.dl;if(!id)return;links=links.filter(function(l){return l.id!==id});saveLinks();renderLinks()});
+renderLinks();
+/* background picker */
+var BGK="planner-bg-v1",BGI="planner-bgimg-v1",RT=document.documentElement,BG=null;
+try{BG=JSON.parse(localStorage.getItem(BGK))}catch(e){}
+var SW=[{t:"squid",l:"Squidward",v:"#accfc9"},{t:"color",l:"Mint",v:"#d9f2e8"},{t:"color",l:"Blush",v:"#fde3ee"},{t:"color",l:"Lavender",v:"#e6defa"},{t:"color",l:"Sky",v:"#d8eafd"},{t:"color",l:"Butter",v:"#fff1c9"},{t:"color",l:"Peach",v:"#ffe1d1"},{t:"color",l:"Cloud",v:"#f4f1f8"},{t:"grad",l:"Sunset",v:"linear-gradient(135deg,#ffd1dc,#ffe6b3,#cdeeff)"},{t:"grad",l:"Aurora",v:"linear-gradient(135deg,#c9f0e1,#cfd8ff,#f3cffb)"},{t:"grad",l:"Spectrum",v:"linear-gradient(120deg,#ff9ab8,#ffd28a,#fff3a0,#a8f0c6,#9ad7ff,#c9b3ff)"},{t:"grad",l:"Midnight",v:"linear-gradient(160deg,#141a3a,#3a1c5c,#0f4c5c)"},{t:"color",l:"Palladian",v:"#EEE9DF"},{t:"color",l:"Oatmeal",v:"#C9C1B1"},{t:"color",l:"Blue Fantastic",v:"#2C3B4D"},{t:"color",l:"Burning Flame",v:"#FFB162"},{t:"color",l:"Truffle Trouble",v:"#A35139"},{t:"color",l:"Abyssal Anchorfish Blue",v:"#1B2632"}];
+function applyBg(b){
+  ["--bg","--bgimg","--bgpos"].forEach(function(k){RT.style.removeProperty(k)});
+  if(!b||b.t==="squid")return;
+  if(b.t==="color"){RT.style.setProperty("--bg",b.v);RT.style.setProperty("--bgimg","none")}
+  else if(b.t==="grad"){RT.style.setProperty("--bg","#ddd");RT.style.setProperty("--bgimg",b.v);RT.style.setProperty("--bgpos","center")}
+  else if(b.t==="img"){var u="";try{u=localStorage.getItem(BGI)}catch(e){}if(!u)return;RT.style.setProperty("--bg","#ddd");RT.style.setProperty("--bgimg","url("+u+")");RT.style.setProperty("--bgpos","center")}
+}
+function setBg(b,keep){BG=b;try{localStorage.setItem(BGK,JSON.stringify(b))}catch(e){}applyBg(b);if(!keep)buildBg()}
+function buildBg(){
+  var cur=BG||{t:"squid"};
+  $("bgp").innerHTML='<h3>Background</h3><div class="sws">'+SW.map(function(w,i){
+    var on=w.t==="squid"?cur.t==="squid":(cur.t===w.t&&cur.v===w.v);
+    return'<button class="sw'+(on?" on":"")+'" data-sw="'+i+'" title="'+w.l+'" aria-label="'+w.l+'" style="background:'+(w.t==="grad"?w.v:w.v)+'"></button>'}).join("")+
+  '</div><div class="bgrow"><label class="tb">📷 Upload photo<input type="file" id="bgf" accept="image/*" hidden></label><label class="tb">Pick a color <input type="color" id="bgc" value="'+(cur.t==="color"?cur.v:"#accfc9")+'"></label></div><p class="bgn" id="bgn"></p>';
+}
+$("bgb").addEventListener("click",function(){var h=$("bgp").hidden;$("bgp").hidden=!h;this.setAttribute("aria-expanded",String(h))});
+document.addEventListener("click",function(e){if(!e.target.isConnected)return;if(!$("bgp").hidden&&!e.target.closest("#bgp,#bgb"))$("bgp").hidden=true});
+addEventListener("keydown",function(e){if(e.key==="Escape")$("bgp").hidden=true});
+$("bgp").addEventListener("click",function(e){var b=e.target.closest("[data-sw]");if(!b)return;var w=SW[+b.dataset.sw];setBg(w.t==="squid"?{t:"squid"}:{t:w.t,v:w.v})});
+$("bgp").addEventListener("input",function(e){if(e.target.id==="bgc")setBg({t:"color",v:e.target.value},true)});
+$("bgp").addEventListener("change",function(e){
+  if(e.target.id!=="bgf")return;
+  var f=e.target.files[0];e.target.value="";if(!f)return;
+  var u=URL.createObjectURL(f),im=new Image();
+  im.onload=function(){
+    var k=Math.min(1,1600/im.width,1200/im.height),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+    var d=c.toDataURL("image/jpeg",.8);
+    try{localStorage.setItem(BGI,d)}catch(err){$("bgn").textContent="That photo is too big to keep. Try a smaller one.";return}
+    setBg({t:"img"});$("bgn").textContent="Photo saved ✓";
+  };
+  im.onerror=function(){$("bgn").textContent="Couldn't read that image."};
+  im.src=u;
+});
+/* ===== part panels: tabs, summary, files ===== */
+var VIEW="sum",SUB={},FILES=[],FT="";
+try{var vv=JSON.parse(localStorage.getItem("planner-view-v1")||"{}");VIEW=vv.v||"sum";SUB=vv.s||{}}catch(e){}
+function saveView(){try{localStorage.setItem("planner-view-v1",JSON.stringify({v:VIEW,s:SUB}))}catch(e){}}
+function setView(v){VIEW=v;saveView();if(v==="sum")buildRem();render();window.scrollTo({top:0})}
+function gstats(g){
+  var td=today(),act=tasks.filter(function(t){return t.g===g&&t.status!=="done"});
+  return{open:act.length,due:act.filter(function(t){return t.due===td}).length,late:act.filter(function(t){return t.due&&t.due<td}).length,
+    done:tasks.filter(function(t){return t.g===g&&t.status==="done"}).length,files:FILES.filter(function(f){return f.g===g}).length}}
+function vit(o){
+  return'<div class="xvit"><div class="sv"><small>Open</small><b>'+o.open+'</b></div><div class="sv"><small>Due today</small><b>'+o.due+'</b></div>'+
+    '<div class="sv'+(o.late?" late":"")+'"><small>Overdue</small><b>'+o.late+'</b></div><div class="sv"><small>Done</small><b>'+o.done+'</b></div>'+
+    '<div class="sv"><small>Files</small><b>'+o.files+'</b></div></div>'}
+function lead(g){var m=/^[^A-Za-z0-9\s]+/.exec((gtag(g)||"").trim());return m?m[0]:""}
+function tabName(g){
+  if(SHORT[g]!==undefined&&SHORT[g]!=="")return SHORT[g];
+  if(DG[g])return DG[g].n;
+  var t=sname(g);return t.length>12?t.slice(0,11)+"…":t}
+function buildTabs(){
+  var h='<button class="xtab'+(VIEW==="sum"?" on":"")+'" data-tab="sum" role="tab">🏠 <span>Summary</span></button>';
+  Object.keys(G).forEach(function(g){
+    var n=tasks.filter(function(t){return t.g===g&&t.status!=="done"}).length;
+    h+='<button class="xtab'+(VIEW===g?" on":"")+'" data-tab="'+g+'" role="tab" title="'+esc(sname(g))+'" style="--c:'+G[g].c+';--h:'+gh(g)+'">'+(LOGOS[g]?'<img src="'+LOGOS[g]+'" alt="">':(lead(g)?'<b class="ti">'+esc(lead(g))+'</b>':""))+'<span>'+esc(tabName(g))+'</span>'+(n?'<em>'+n+'</em>':"")+'</button>'});
+  h+='<button class="xtab add" data-tab="+" aria-label="Add a part">＋ Part</button>';
+  $("tabs").innerHTML=h}
+function summaryHtml(){
+  var T={open:0,due:0,late:0,done:0,files:0},cards="";
+  Object.keys(G).forEach(function(g){
+    var st=gstats(g),all=st.open+st.done;for(var k in T)T[k]+=st[k];
+    var nx=tasks.filter(function(t){return t.g===g&&t.status!=="done"&&t.due}).sort(function(a,b){return a.due<b.due?-1:a.due>b.due?1:0})[0];
+    cards+='<button class="xcard" data-open="'+g+'" style="--c:'+G[g].c+';--cd:'+G[g].cd+';--h:'+gh(g)+'"><span class="nm">'+(LOGOS[g]?'<img src="'+LOGOS[g]+'" alt="">':"")+esc(gtag(g))+'</span>'+vit(st)+
+      '<div class="xprog" title="'+st.done+' of '+all+' done"><i style="width:'+(all?Math.round(st.done/all*100):0)+'%"></i></div>'+
+      '<span class="nx">'+(nx?'Next: '+esc(nx.title)+' · '+fmtShort(nx.due):'No upcoming due dates')+'</span></button>'});
+  return'<section class="xsum"><div class="xhead"><div class="xid"><span class="xbadge">🏠</span><div><h2>Summary</h2><small>All your parts at a glance</small></div></div>'+vit(T)+'</div>'+
+    '<div class="xgrid">'+cards+'</div><button class="addgrp" data-addgrp>＋ Add a new part</button></section>'}
+function partHtml(g){
+  var st=gstats(g),sub=SUB[g]||"tasks",all=tasks.filter(function(t){return t.g===g}),
+    act=all.filter(function(t){return t.status!=="done"}).sort(function(a,b){return RANK[a.urg]-RANK[b.urg]||(a.due||"9999").localeCompare(b.due||"9999")}),
+    done=all.filter(function(t){return t.status==="done"}),
+    H='<section class="grp xpv" style="--c:'+G[g].c+';--cd:'+G[g].cd+';--h:'+gh(g)+'"><div class="xhead"><div class="xid"><button class="logo big" data-lg="'+g+'" title="Add or change logo" aria-label="Logo">'+(LOGOS[g]?'<img src="'+LOGOS[g]+'" alt="">':'+')+'</button>'+
+      (LOGOS[g]?'<button class="lx" data-lx="'+g+'" title="Remove logo" aria-label="Remove logo">×</button>':"")+
+      '<div><input class="gname" data-gn="'+g+'" value="'+esc(gtag(g))+'" size="'+Math.max(6,Math.round(gtag(g).length*1.3))+'" aria-label="Part name"><div class="xmeta"><label class="xshort"><small>Tab name</small><input type="text" class="gshort" data-gs="'+g+'" value="'+esc(tabName(g))+'" maxlength="14" placeholder="Short name" aria-label="Short tab name"></label><input type="color" class="gcol" data-gc="'+g+'" value="'+G[g].cd.toLowerCase()+'" title="Change color" aria-label="Part color">'+
+      (Object.keys(G).length>1?'<button class="gdel" data-gdel="'+g+'" title="Delete this part" aria-label="Delete this part">🗑️</button>':"")+'</div></div></div>'+vit(st)+'</div>';
+  var tabs=[["tasks","Tasks",act.length],["rem","Reminders",""],["files","Files",st.files]];
+  if(!tabs.some(function(t){return t[0]===sub}))sub="tasks";
+  H+='<div class="xsubs" role="tablist">'+tabs.map(function(t){return'<button class="xs'+(sub===t[0]?" on":"")+'" data-sub="'+t[0]+'" role="tab">'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
+  if(sub==="tasks"){
+    H+='<section class="xsec"><h3>🗂️ Tasks <em>'+act.length+'</em></h3><div class="scroll"><div class="tbl act">'+HEAD+act.map(block).join("")+addRow(g,false)+'</div></div></section>'+
+      pnotesHtml(g)+
+      '<section class="xsec"><h3>✅ Completed <em>'+done.length+'</em></h3><div class="scroll arch"><div class="tbl">'+(done.length?done.map(block).join(""):'<div class="empty">Completed items will land here.</div>')+'</div></div></section>'}
+  else if(sub==="rem")H+='<section class="card rc"><h2>Monthly reminders 🗓️</h2><textarea class="rt" data-rg="'+g+'" placeholder="e.g. 5th: pay rent · 25th: salaries" aria-label="Monthly reminders">'+esc(REM[g]||"")+'</textarea></section>';
+  else H+=filesHtml(g);
+  return H+'</section>'}
+$("board").addEventListener("input",function(e){var g=e.target.dataset.rg;if(g){REM[g]=e.target.value;saveMeta()}
+  var q=e.target.dataset.gs;if(q){var v=e.target.value.trim();if(v)SHORT[q]=v;else delete SHORT[q];saveMeta();buildTabs()}});
+function pnotesHtml(g){
+  return'<section class="xsec"><h3>📝 Notes</h3><textarea class="pnote" data-pn="'+g+'" placeholder="Write your notes for '+esc(sname(g))+' here…" aria-label="Notes">'+esc(PNOTES[g]||"")+'</textarea></section>'}
+$("board").addEventListener("input",function(e){var g=e.target.dataset.pn;if(g){PNOTES[g]=e.target.value;saveMeta()}});
+/* one-time: bring notes already written on items into each part's single notes box */
+(function(){var ch=false;Object.keys(G).forEach(function(g){
+  if(PNOTES[g]!==undefined)return;
+  var L=[];tasks.filter(function(t){return t.g===g&&t.notes&&String(t.notes).trim()}).forEach(function(t){L.push(t.title+": "+String(t.notes).trim())});
+  PNOTES[g]=L.join("\n");ch=true});if(ch)saveMeta()})();
+function notesHtml(act){
+  var items=[],td=today();
+  act.forEach(function(t){items.push({t:t,p:null});t.subs.filter(function(x){return x.status!=="done"}).forEach(function(x){items.push({t:x,p:t})})});
+  if(!items.length)return'<section class="xsec"><h3>📝 Notes <em>0</em></h3><div class="empty">Add an item above and its notes will show up here.</div></section>';
+  return'<section class="xsec"><h3>📝 Notes <em>'+items.length+'</em></h3><div class="ngrid">'+items.map(function(x){
+    var t=x.t,late=t.due&&t.due<td;
+    return'<div class="nt'+(x.p?" sub":"")+'" data-id="'+(x.p?x.p.id:t.id)+'"'+(x.p?' data-sid="'+t.id+'"':"")+'><div class="nh"><i class="dot c-'+t.status+'"></i><b title="'+esc(t.title)+'">'+(x.p?"↳ ":"")+esc(t.title)+'</b>'+(t.due?'<small'+(late?' class="late"':"")+'>'+fmtShort(t.due)+'</small>':"")+'</div>'+
+      '<textarea data-k="notes" rows="2" placeholder="Add a note…" aria-label="Notes for '+esc(t.title)+'">'+esc(t.notes)+'</textarea></div>'}).join("")+'</div></section>'}
+function grow(el){el.style.height="auto";el.style.height=Math.max(44,el.scrollHeight)+"px"}
+$("board").addEventListener("input",function(e){if(e.target.matches&&e.target.matches(".nt textarea"))grow(e.target)});
+function notesSize(){document.querySelectorAll(".nt textarea").forEach(grow)}
+/* --- files: kept in this browser (IndexedDB) --- */
+var FDBP=null;
+function fdb(){return FDBP||(FDBP=new Promise(function(res,rej){
+  var r=indexedDB.open("planner-files",1);
+  r.onupgradeneeded=function(){r.result.createObjectStore("m",{keyPath:"id"});r.result.createObjectStore("b",{keyPath:"id"})};
+  r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}))}
+function fwrite(stores,fn){return fdb().then(function(db){return new Promise(function(res,rej){
+  var t=db.transaction(stores,"readwrite");fn(t);t.oncomplete=res;t.onerror=t.onabort=function(){rej(t.error)}})})}
+function getBlob(id){return fdb().then(function(db){return new Promise(function(res){
+  var r=db.transaction("b").objectStore("b").get(id);r.onsuccess=function(){res(r.result&&r.result.blob)};r.onerror=function(){res(null)}})}).catch(function(){return null})}
+try{fdb().then(function(db){var r=db.transaction("m").objectStore("m").getAll();r.onsuccess=function(){FILES=r.result||[];render()}}).catch(function(){})}catch(e){}
+function fsz(n){return n<1024?n+" B":n<1048576?Math.round(n/1024)+" KB":(n/1048576).toFixed(n<1e7?1:0)+" MB"}
+function ficon(f){
+  var x=(f.name.split(".").pop()||"").toLowerCase();
+  if(/^image/.test(f.type))return"🖼️";if(/^audio/.test(f.type))return"🎵";if(/^video/.test(f.type))return"🎬";
+  if(x==="pdf")return"📕";if(/^docx?$/.test(x))return"📝";if(/^(xlsx?|csv)$/.test(x))return"📊";if(/^pptx?$/.test(x))return"📽️";
+  if(/^(zip|rar|7z)$/.test(x))return"🗜️";if(/^(txt|md|rtf)$/.test(x))return"📄";return"📎"}
+function filesHtml(g){
+  var L=FILES.filter(function(f){return f.g===g}).sort(function(a,b){return b.at-a.at}),tot=0;L.forEach(function(f){tot+=f.size});
+  return'<div class="xdrop" data-drop="'+g+'"><div class="xdi">📎</div><b>Attach files and documents</b><small>Drag them here or pick them from your computer: PDFs, photos, Word, Excel, anything. They are saved in this browser only, so keep a copy of anything important elsewhere too.</small><button class="pbtn" data-fpick="'+g+'">＋ Attach files</button></div>'+
+    (L.length?'<div class="xfl">'+L.map(function(f){
+      return'<div class="xf"><div class="xfi">'+(/^image/.test(f.type)?'<img data-th="'+f.id+'" alt="">':ficon(f))+'</div><div class="xfn"><b title="'+esc(f.name)+'">'+esc(f.name)+'</b><small>'+fsz(f.size)+' · '+fmtShort(ds(new Date(f.at)))+'</small></div>'+
+        '<div class="xfa"><button data-fo="'+f.id+'" title="Open" aria-label="Open">👁</button><button data-fd="'+f.id+'" title="Download" aria-label="Download">⬇</button><button data-fx="'+f.id+'" title="Remove" aria-label="Remove">🗑</button></div></div>'}).join("")+'</div><p class="xtot">'+L.length+' file'+(L.length===1?"":"s")+' · '+fsz(tot)+'</p>':
+      '<div class="empty" style="margin-top:14px">No files attached to this part yet.</div>')}
+var THUMBS=[];
+function loadThumbs(){
+  THUMBS.forEach(function(u){URL.revokeObjectURL(u)});THUMBS=[];
+  document.querySelectorAll("img[data-th]").forEach(function(im){getBlob(im.dataset.th).then(function(b){if(b&&im.isConnected){var u=URL.createObjectURL(b);THUMBS.push(u);im.src=u}})})}
+function attach(g,list){
+  list=[].slice.call(list||[]);if(!list.length||!G[g])return;
+  var ok=0,bad=0,p=Promise.resolve();
+  list.forEach(function(f){p=p.then(function(){
+    if(f.size>300*1048576){bad++;return}
+    var m={id:uid(),g:g,name:f.name,type:f.type||"",size:f.size,at:Date.now()};
+    return fwrite(["m","b"],function(t){t.objectStore("m").put(m);t.objectStore("b").put({id:m.id,blob:f})}).then(function(){FILES.push(m);ok++},function(){bad++})})});
+  p.then(function(){
+    render();
+    if(ok)toast("Attached",ok+" file"+(ok===1?"":"s")+" added to "+sname(g)+".");
+    if(bad)toast("Couldn't attach "+bad+" file"+(bad===1?"":"s"),"It may be over 300 MB, or this browser's storage is full.")})}
+function fdelIds(ids){
+  if(!ids.length)return;FILES=FILES.filter(function(f){return ids.indexOf(f.id)<0});
+  fwrite(["m","b"],function(t){ids.forEach(function(id){t.objectStore("m").delete(id);t.objectStore("b").delete(id)})}).catch(function(){})}
+function fdelGroup(g){fdelIds(FILES.filter(function(f){return f.g===g}).map(function(f){return f.id}))}
+function fileGet(id,dl){
+  var m=FILES.filter(function(f){return f.id===id})[0];if(!m)return;
+  getBlob(id).then(function(b){
+    if(!b){toast("File not found","It's no longer stored in this browser.");return}
+    var u=URL.createObjectURL(b);
+    function save(){var a=document.createElement("a");a.href=u;a.download=m.name;document.body.appendChild(a);a.click();a.remove()}
+    if(dl)save();else{var w=window.open(u,"_blank");if(!w)save()}
+    setTimeout(function(){URL.revokeObjectURL(u)},120000)})}
+$("board").addEventListener("click",function(e){
+  var b=e.target.closest("[data-open],[data-sub],[data-fpick],[data-fo],[data-fd],[data-fx]");if(!b)return;var d=b.dataset;
+  if(d.open)setView(d.open);
+  else if(d.sub){SUB[VIEW]=d.sub;saveView();render()}
+  else if(d.fpick){FT=d.fpick;$("fpf").click()}
+  else if(d.fo)fileGet(d.fo,false);
+  else if(d.fd)fileGet(d.fd,true);
+  else if(d.fx){var m=FILES.filter(function(f){return f.id===d.fx})[0];if(m&&confirm('Remove "'+m.name+'"? This can\'t be undone.')){fdelIds([m.id]);render()}}
+});
+$("fpf").addEventListener("change",function(){var l=[].slice.call(this.files);this.value="";attach(FT,l)});
+function hasFiles(e){var t=e.dataTransfer&&e.dataTransfer.types;return t&&[].indexOf.call(t,"Files")>=0}
+document.addEventListener("dragover",function(e){if(!hasFiles(e))return;e.preventDefault();
+  var z=e.target.closest&&e.target.closest("[data-drop]");document.querySelectorAll(".xdrop.over").forEach(function(x){if(x!==z)x.classList.remove("over")});if(z)z.classList.add("over")});
+document.addEventListener("dragleave",function(e){if(!e.relatedTarget)document.querySelectorAll(".xdrop.over").forEach(function(x){x.classList.remove("over")})});
+document.addEventListener("drop",function(e){if(!hasFiles(e))return;e.preventDefault();
+  document.querySelectorAll(".xdrop.over").forEach(function(x){x.classList.remove("over")});
+  var z=e.target.closest&&e.target.closest("[data-drop]");if(z)attach(z.dataset.drop,e.dataTransfer.files)});
+$("tabs").addEventListener("click",function(e){var b=e.target.closest("[data-tab]");if(!b)return;var v=b.dataset.tab;if(v==="+")addGroup();else setView(v)});
+$("hb").addEventListener("click",function(){setView("sum")});
+/* ===== calendar, iCalendar import/export, due-date alerts ===== */
+function lobj(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return{}}}
+var MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function D2N(s){var p=s.split("-");return Math.round(Date.UTC(+p[0],+p[1]-1,+p[2])/864e5)}
+function N2D(n){var d=new Date(n*864e5);return d.getUTCFullYear()+"-"+("0"+(d.getUTCMonth()+1)).slice(-2)+"-"+("0"+d.getUTCDate()).slice(-2)}
+var WD={SU:0,MO:1,TU:2,WE:3,TH:4,FR:5,SA:6};
+function nthDay(y,m,nth,wd){
+  if(nth>0){var f=Date.UTC(y,m,1)/864e5,o=(wd-new Date(f*864e5).getUTCDay()+7)%7,d=f+o+(nth-1)*7;return new Date(d*864e5).getUTCMonth()===m?d:null}
+  var l=Date.UTC(y,m+1,0)/864e5,o2=(new Date(l*864e5).getUTCDay()-wd+7)%7,d2=l-o2-(-nth-1)*7;return new Date(d2*864e5).getUTCMonth()===m?d2:null}
+/* --- read an .ics file --- */
+function parseIcs(txt){
+  var lines=txt.replace(/\r\n?/g,"\n").replace(/\n[ \t]/g,"").split("\n"),ev=[],cur=null;
+  function un(v){return v.replace(/\\[nN]/g," ").replace(/\\([,;\\])/g,"$1")}
+  function pd(v){
+    var m=/^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2})?(Z)?)?$/.exec(v.trim());if(!m)return null;
+    if(m[4]===undefined)return{d:m[1]+"-"+m[2]+"-"+m[3],tm:""};
+    var dt=m[7]?new Date(Date.UTC(+m[1],+m[2]-1,+m[3],+m[4],+m[5],+(m[6]||0))):new Date(+m[1],+m[2]-1,+m[3],+m[4],+m[5],+(m[6]||0));
+    return{d:ds(dt),tm:("0"+dt.getHours()).slice(-2)+":"+("0"+dt.getMinutes()).slice(-2)}}
+  lines.forEach(function(l){
+    if(l==="BEGIN:VEVENT"){cur={x:[]};return}
+    if(l==="END:VEVENT"){
+      if(cur&&cur.s&&cur.st!=="CANCELLED"){
+        var e=cur.e||cur.s;
+        if(e>cur.s&&(!cur.etm||cur.etm==="00:00"))e=N2D(D2N(e)-1);
+        if(e<cur.s)e=cur.s;
+        var o={u:cur.u||"",t:cur.t||"",s:cur.s,e:e,tm:cur.tm||"",x:cur.x};if(cur.r)o.r=cur.r;if(cur.rid)o.rid=cur.rid;ev.push(o)}
+      cur=null;return}
+    if(!cur)return;
+    var i=l.indexOf(":");if(i<0)return;
+    var name=l.slice(0,i).split(";")[0].toUpperCase(),val=l.slice(i+1),q;
+    if(name==="SUMMARY")cur.t=un(val);
+    else if(name==="DTSTART"){q=pd(val);if(q){cur.s=q.d;cur.tm=q.tm}}
+    else if(name==="DTEND"){q=pd(val);if(q){cur.e=q.d;cur.etm=q.tm}}
+    else if(name==="RRULE")cur.r=val;
+    else if(name==="EXDATE")val.split(",").forEach(function(v){var z=pd(v);if(z)cur.x.push(z.d)});
+    else if(name==="RECURRENCE-ID"){q=pd(val);if(q)cur.rid=q.d}
+    else if(name==="STATUS")cur.st=val.toUpperCase();
+    else if(name==="UID")cur.u=val;
+  });
+  ev.forEach(function(o){if(o.rid)ev.forEach(function(m){if(m!==o&&m.u&&m.u===o.u&&m.r&&!m.rid)m.x.push(o.rid)})});
+  return ev}
+/* --- which days does an event fall on (handles repeats) --- */
+function expand(ev,from,to){
+  var s=D2N(ev.s),e=D2N(ev.e),f=D2N(from),t=D2N(to),span=e-s,out=[];
+  if(!ev.r){if(e>=f&&s<=t)out.push(s);return out}
+  var R={};ev.r.split(";").forEach(function(p){var kv=p.split("=");R[kv[0]]=kv[1]||""});
+  var it=Math.max(1,parseInt(R.INTERVAL||"1",10)),cnt=R.COUNT?parseInt(R.COUNT,10):1e9,
+      un=R.UNTIL?D2N(R.UNTIL.slice(0,4)+"-"+R.UNTIL.slice(4,6)+"-"+R.UNTIL.slice(6,8)):1e9,n=0,guard=0,ex={};
+  ev.x.forEach(function(x){ex[D2N(x)]=1});
+  function take(d){if(d<s)return true;if(d>un||d>t)return false;n++;if(n>cnt)return false;if(!ex[d]&&d+span>=f)out.push(d);return true}
+  var fr=R.FREQ,sd=new Date(s*864e5);
+  if(fr==="DAILY"){for(var d=s;guard++<20000;d+=it)if(!take(d))break}
+  else if(fr==="WEEKLY"){
+    var days=(R.BYDAY?R.BYDAY.split(",").map(function(x){return WD[x.slice(-2)]}):[sd.getUTCDay()]).filter(function(x){return x!==undefined}).sort(function(a,b){return((a+6)%7)-((b+6)%7)});
+    var wk=s-((sd.getUTCDay()+6)%7),i;
+    outer:for(;guard++<5000&&days.length;wk+=7*it){for(i=0;i<days.length;i++){var d2=wk+((days[i]+6)%7);if(d2<s)continue;if(!take(d2))break outer}}}
+  else if(fr==="MONTHLY"){
+    var y=sd.getUTCFullYear(),m=sd.getUTCMonth(),dom=sd.getUTCDate(),om=/^(-?\d)(SU|MO|TU|WE|TH|FR|SA)$/.exec(R.BYDAY||"");
+    for(;guard++<3000;m+=it){var yy=y+Math.floor(m/12),mm=((m%12)+12)%12,d3;
+      if(om)d3=nthDay(yy,mm,+om[1],WD[om[2]]);
+      else{d3=Date.UTC(yy,mm,dom)/864e5;if(new Date(d3*864e5).getUTCMonth()!==mm)continue}
+      if(d3==null)continue;if(!take(Math.round(d3)))break}}
+  else if(fr==="YEARLY"){
+    var y0=sd.getUTCFullYear(),mo=sd.getUTCMonth(),da=sd.getUTCDate();
+    for(var k=0;guard++<500;k+=it){var d4=Date.UTC(y0+k,mo,da)/864e5;if(new Date(d4*864e5).getUTCMonth()!==mo)continue;if(!take(Math.round(d4)))break}}
+  else{if(e>=f&&s<=t)out.push(s)}
+  return out}
+/* --- state --- */
+var CK="planner-ical-v1",ICAL=lobj(CK),SK="planner-calshow-v1",SHOWC=lobj(SK);
+if(SHOWC.tasks===undefined)SHOWC.tasks=true;if(SHOWC.ical===undefined)SHOWC.ical=true;
+var CM=(function(){var n=new Date();return{y:n.getFullYear(),m:n.getMonth()}})(),SEL=today();
+function icalEvents(){var a=[];Object.keys(ICAL.files||{}).forEach(function(f){(ICAL.files[f].ev||[]).forEach(function(e){a.push(e)})});return a}
+function dueItems(all){
+  var out=[];
+  tasks.forEach(function(t){if(!G[t.g])return;
+    if(t.due&&(all||t.status!=="done"))out.push({id:t.id,t:t.title,d:t.due,g:t.g,n:t.notes,done:t.status==="done"});
+    (t.subs||[]).forEach(function(x){if(x.due&&(all||x.status!=="done"))out.push({id:x.id,t:x.title,d:x.due,g:t.g,n:x.notes,done:x.status==="done",sub:1})})});
+  return out}
+function evMap(from,to){
+  var M={};function put(d,it){(M[d]=M[d]||[]).push(it)}
+  if(SHOWC.tasks)dueItems(true).forEach(function(x){if(x.d>=from&&x.d<=to)put(x.d,{k:"task",t:x.t,g:x.g,done:x.done,sub:x.sub})});
+  if(SHOWC.ical)icalEvents().forEach(function(ev){
+    var span=D2N(ev.e)-D2N(ev.s);
+    expand(ev,from,to).forEach(function(n){for(var k=0;k<=span;k++){var d=N2D(n+k);if(d>=from&&d<=to)put(d,{k:"ev",t:ev.t||"(No title)",tm:k===0?ev.tm:""})}})});
+  Object.keys(M).forEach(function(d){M[d].sort(function(a,b){
+    var ka=a.k==="ev"?(a.tm?"1"+a.tm:"0"):"2",kb=b.k==="ev"?(b.tm?"1"+b.tm:"0"):"2";return ka<kb?-1:ka>kb?1:0})});
+  return M}
+function fmtLong(d){return new Date(d+"T12:00:00").toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"})}
+function fmtShort(d){return new Date(d+"T12:00:00").toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"})}
+function buildCal(){
+  var el=$("cal");if(!el)return;
+  var y=CM.y,m=CM.m,first=new Date(y,m,1),off=(first.getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),rows=Math.ceil((off+dim)/7),
+      n0=D2N(ds(new Date(y,m,1-off))),from=N2D(n0),to=N2D(n0+rows*7-1),M=evMap(from,to),td=today(),ym=y+"-"+("0"+(m+1)).slice(-2),h="",i;
+  if(SEL<from||SEL>to)SEL=(td>=from&&td<=to)?td:ym+"-01";
+  var names=Object.keys(ICAL.files||{});
+  h+='<div class="ch"><h2>📅 '+MN[m]+' '+y+'</h2><button class="nb" data-cn="-1" aria-label="Previous month">‹</button><button class="nb" data-cn="1" aria-label="Next month">›</button><button class="sbtn" data-cn="0">Today</button>'+
+    '<button class="chip'+(SHOWC.tasks?" on":"")+'" data-cs="tasks" aria-pressed="'+SHOWC.tasks+'">'+(SHOWC.tasks?"✓ ":"")+'My tasks</button>'+
+    '<button class="chip'+(SHOWC.ical?" on":"")+'" data-cs="ical" aria-pressed="'+SHOWC.ical+'">'+(SHOWC.ical?"✓ ":"")+'iCalendar</button><span class="sp"></span>'+
+    '<label class="pbtn" for="icsf" title="Import an .ics file exported from Apple Calendar">⬆ Import iCalendar</label>'+
+    '<button class="pbtn" data-cx title="Download your due dates as an .ics file with alerts, then open it in Apple Calendar">⬇ Send due dates to Calendar</button></div>';
+  h+=filesBar(names);
+  h+='<div class="cbody"><div class="cgrid"><div class="wk">'+["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(function(w){return'<div class="wd">'+w+'</div>'}).join("");
+  for(i=0;i<rows*7;i++){
+    var d=N2D(n0+i),items=M[d]||[],out=d.slice(0,7)!==ym;
+    h+='<button class="day'+(out?" out":"")+(d===td?" today":"")+(d===SEL?" sel":"")+'" data-day="'+d+'" aria-label="'+fmtLong(d)+'"><span class="dn">'+(+d.slice(8))+'</span>'+
+      items.slice(0,3).map(function(it){
+        return it.k==="task"?'<span class="ev t'+(it.done?" dd":"")+'" style="--cc:'+bcol(it.g)+'" title="'+esc(it.t)+'">'+(it.sub?"↳ ":"")+esc(it.t)+'</span>'
+                            :'<span class="ev x" title="'+esc(it.t)+'">'+(it.tm?it.tm+" ":"")+esc(it.t)+'</span>'}).join("")+
+      (items.length>3?'<span class="more">+'+(items.length-3)+' more</span>':"")+'</button>'}
+  h+='</div></div><aside class="agenda"><h3>'+fmtLong(SEL)+'</h3><div class="aglist">'+
+    ((M[SEL]||[]).length?(M[SEL]).map(function(it){
+      return it.k==="task"?'<div class="ai"><i style="background:'+bcol(it.g)+'"></i><div><b class="'+(it.done?"dd":"")+'">'+(it.sub?"↳ ":"")+esc(it.t)+'</b><small>'+esc(sname(it.g))+' · '+(it.done?"done":"due")+'</small></div></div>'
+                          :'<div class="ai"><i></i><div><b>'+esc(it.t)+'</b><small>'+(it.tm||"All day")+' · iCalendar</small></div></div>'}).join(""):'<div class="empty">Nothing on this day.</div>')+
+    '</div><h3>Coming up</h3><div class="aglist">';
+  var up=dueItems(false).map(function(x){x.k="task";return x});
+  if(SHOWC.ical)upcomingEv(14).forEach(function(x){x.k="ev";up.push(x)});
+  up.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:(a.tm||"")<(b.tm||"")?-1:1});up=up.slice(0,8);
+  h+=up.length?up.map(function(x){var late=x.d<td&&x.k==="task";
+    if(x.k==="ev")return'<div class="ai"><i></i><div><b>'+esc(x.t)+'</b><small>'+(x.d===td?"Today":fmtShort(x.d))+' · '+(x.tm||"All day")+' · iCalendar</small></div></div>';
+    return'<div class="ai"><i style="background:'+bcol(x.g)+'"></i><div><b>'+(x.sub?"↳ ":"")+esc(x.t)+'</b><small class="'+(late?"late":"")+'">'+(late?"Overdue · ":"")+(x.d===td?"Today":fmtShort(x.d))+' · '+esc(sname(x.g))+'</small></div></div>'}).join(""):'<div class="empty">Nothing coming up.</div>';
+  h+='</div></aside></div>';
+  el.innerHTML=h}
+$("cal").addEventListener("click",function(e){
+  var b=e.target.closest("[data-cn],[data-cs],[data-day],[data-cx],[data-crm],[data-lk],[data-lr],[data-ld],[data-lu]");if(!b)return;var d=b.dataset;
+  if(d.cn!==undefined){
+    var k=+d.cn;
+    if(k===0){var n=new Date();CM={y:n.getFullYear(),m:n.getMonth()};SEL=today()}
+    else{var mm=CM.m+k;CM={y:CM.y+Math.floor(mm/12),m:((mm%12)+12)%12};var pre=CM.y+"-"+("0"+(CM.m+1)).slice(-2);SEL=today().slice(0,7)===pre?today():pre+"-01"}
+    buildCal()}
+  else if(d.cs){SHOWC[d.cs]=!SHOWC[d.cs];try{localStorage.setItem(SK,JSON.stringify(SHOWC))}catch(err){}buildCal()}
+  else if(d.day){SEL=d.day;var yy=+d.day.slice(0,4),mo=+d.day.slice(5,7)-1;if(yy!==CM.y||mo!==CM.m)CM={y:yy,m:mo};buildCal()}
+  else if(d.cx!==undefined)exportIcs();
+  else if(d.lk!==undefined)linkSave();
+  else if(d.lr!==undefined)syncLink(true);
+  else if(d.ld!==undefined)window.open(ICAL.url.replace(/^webcal/i,"https"),"_blank");
+  else if(d.lu!==undefined){delete ICAL.url;delete ICAL.linkAt;delete ICAL.err;if(ICAL.files)delete ICAL.files["Linked calendar"];icalSave();buildCal()}
+  else if(d.crm){delete ICAL.files[d.crm];try{localStorage.setItem(CK,JSON.stringify(ICAL))}catch(err){}buildCal()}
+});
+function icalSave(){try{localStorage.setItem(CK,JSON.stringify(ICAL))}catch(err){return false}return true}
+function keepEv(txt){var cut=N2D(D2N(today())-400);return parseIcs(txt).filter(function(o){return o.r||o.e>=cut}).slice(0,8000)}
+function importFiles(fs){
+  fs=[].slice.call(fs||[]);if(!fs.length)return;
+  ICAL.files=ICAL.files||{};var left=fs.length,tot=0;
+  fs.forEach(function(f){var r=new FileReader();
+    r.onload=function(){
+      var ev=keepEv(String(r.result));
+      if(ev.length){ICAL.files[f.name]={at:Date.now(),ev:ev};tot+=ev.length}
+      if(--left===0){
+        if(!tot){toast("No events found","That file didn't contain any calendar events.");return}
+        if(!icalSave())toast("Couldn't keep that calendar","The file is too big for this browser to store.");
+        SHOWC.ical=true;buildCal();toast("Calendar imported",tot+" event"+(tot===1?"":"s")+" added. Import again any time to refresh it.")}};
+    r.readAsText(f)})}
+$("icsf").addEventListener("change",function(){var fs=[].slice.call(this.files);this.value="";importFiles(fs)});
+/* --- link to a calendar (works when the provider allows it; otherwise download + import) --- */
+function ago(t){var m=Math.round((Date.now()-t)/6e4);if(m<2)return"just now";if(m<60)return m+" min ago";var h=Math.round(m/60);if(h<24)return h+" h ago";var d=Math.round(h/24);return d+" day"+(d===1?"":"s")+" ago"}
+function filesBar(names){
+  var h='<div class="files">',newest=0;
+  names.forEach(function(f){newest=Math.max(newest,ICAL.files[f].at||0)});
+  if(names.length)h+='Imported:'+names.map(function(f){return'<span class="fchip">'+esc(f)+' · '+ICAL.files[f].ev.length+'<button data-crm="'+esc(f)+'" aria-label="Remove '+esc(f)+'">×</button></span>'}).join("")+'<span>· updated '+ago(newest)+(Date.now()-newest>6048e5?" — import again to refresh":"")+'</span>';
+  else h+='Tip: in the Calendar app choose File → Export → Export…, then import that .ics file here. Or paste a calendar link below.';
+  h+='</div><div class="lkrow">';
+  if(ICAL.url){
+    var host="";try{host=new URL(ICAL.url.replace(/^webcal/i,"https")).hostname}catch(e){}
+    h+='<span class="lk">🔗 Linked: '+esc(host||"calendar")+'</span><button class="sbtn" data-lr>↻ Refresh now</button><button class="sbtn" data-ld title="Opens the link so your browser downloads the calendar file">⬇ Download file</button><button class="sbtn" data-lu>Unlink</button>'+
+      (ICAL.err?'<small class="lkerr">Your calendar blocks direct reading. Use “Download file”, then “Import iCalendar”.</small>':"")}
+  else h+='<input type="text" id="lkurl" placeholder="Paste your calendar link (webcal://… or https://….ics)" aria-label="Calendar link" autocomplete="off"><button class="sbtn" data-lk>🔗 Connect</button>';
+  return h+'</div>'}
+function linkSave(){
+  var v=($("lkurl")||{}).value;v=(v||"").trim();
+  if(!/^(webcal|https?):\/\//i.test(v)){toast("That doesn't look like a link","Paste a link that starts with webcal:// or https://");return}
+  ICAL.url=v;delete ICAL.err;icalSave();buildCal();syncLink(true)}
+function syncLink(manual){
+  if(!ICAL.url)return;
+  var url=ICAL.url.replace(/^webcal/i,"https");
+  fetch(url,{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(txt){
+    if(txt.indexOf("BEGIN:VCALENDAR")<0)throw 0;
+    var ev=keepEv(txt);ICAL.files=ICAL.files||{};ICAL.files["Linked calendar"]={at:Date.now(),ev:ev};ICAL.linkAt=Date.now();delete ICAL.err;icalSave();SHOWC.ical=true;buildCal();
+    if(manual)toast("Calendar refreshed",ev.length+" event"+(ev.length===1?"":"s")+" loaded from your link.")
+  }).catch(function(){
+    ICAL.err=1;ICAL.linkAt=Date.now();icalSave();buildCal();
+    if(manual)toast("Can't read that link directly","Browsers block most calendar links. Tap “Download file”, then import the file it gives you.")})}
+setTimeout(function(){if(ICAL.url&&(!ICAL.linkAt||Date.now()-ICAL.linkAt>36e5))syncLink(false)},1800);
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&ICAL.url&&(!ICAL.linkAt||Date.now()-ICAL.linkAt>36e5))syncLink(false)});
+function upcomingEv(n){
+  var td=today(),to=N2D(D2N(td)+n),out=[];
+  icalEvents().forEach(function(ev){var span=D2N(ev.e)-D2N(ev.s);
+    expand(ev,td,to).forEach(function(st){for(var k=0;k<=span;k++){var d=N2D(st+k);if(d>=td&&d<=to)out.push({d:d,t:ev.t||"(No title)",tm:k===0?ev.tm:""})}})});
+  return out}
+/* dragging an .ics file onto the calendar imports it */
+$("cal").addEventListener("dragover",function(e){if(e.dataTransfer&&[].indexOf.call(e.dataTransfer.types||[],"Files")>=0)e.preventDefault()});
+$("cal").addEventListener("drop",function(e){
+  var fs=[].slice.call(e.dataTransfer.files||[]).filter(function(f){return/\.ics$/i.test(f.name)});
+  if(fs.length){e.preventDefault();importFiles(fs)}});
+/* --- send due dates to Apple Calendar (.ics with alerts) --- */
+function icsEsc(v){return String(v||"").replace(/\\/g,"\\\\").replace(/;/g,"\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n")}
+function fold(l){var o=[];while(l.length>73){var k=73;if(/[\uDC00-\uDFFF]/.test(l.charAt(k)))k--;o.push(l.slice(0,k));l=" "+l.slice(k)}o.push(l);return o.join("\r\n")}
+function exportIcs(){
+  var items=dueItems(false);
+  if(!items.length){toast("Nothing to send yet","Add a due date to an open item first.");return}
+  var stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,""),L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Task Management//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH","X-WR-CALNAME:Task Management"];
+  items.forEach(function(x){
+    var a=x.d.replace(/-/g,""),b=N2D(D2N(x.d)+1).replace(/-/g,"");
+    L.push("BEGIN:VEVENT","UID:task-"+x.id+"@task-management.local","DTSTAMP:"+stamp,"DTSTART;VALUE=DATE:"+a,"DTEND;VALUE=DATE:"+b,
+      "SUMMARY:"+icsEsc("Due: "+x.t+" ["+sname(x.g)+"]"),"DESCRIPTION:"+icsEsc(x.n),"TRANSP:TRANSPARENT",
+      "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc("Due tomorrow: "+x.t),"TRIGGER:-PT15H","END:VALARM",
+      "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc("Due today: "+x.t),"TRIGGER:PT9H","END:VALARM","END:VEVENT")});
+  L.push("END:VCALENDAR");
+  var blob=new Blob([L.map(fold).join("\r\n")+"\r\n"],{type:"text/calendar;charset=utf-8"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="task-management-due-dates.ics";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},600);
+  toast("Calendar file ready",items.length+" due date"+(items.length===1?"":"s")+" saved. Open the file to add them to Apple Calendar. You'll get an alert at 9:00 the day before and at 9:00 on the day.")}
+/* --- alerts --- */
+var AK="planner-alerts-v1",ALERT="on";try{ALERT=localStorage.getItem(AK)||"on"}catch(e){}
+var NK2="planner-notified-v1",NOTI=lobj(NK2);
+function paintAlert(){var b=$("alb");b.textContent=ALERT==="on"?"🔔 Alerts on":"🔕 Alerts off";b.setAttribute("aria-pressed",String(ALERT==="on"))}
+function toast(title,body){
+  var t=document.createElement("div");t.className="toast";
+  t.innerHTML='<b>'+esc(title)+'</b><span>'+esc(body||"")+'</span><button aria-label="Dismiss">×</button>';
+  t.querySelector("button").onclick=function(){t.remove()};
+  var box=$("toasts");box.appendChild(t);setTimeout(function(){t.remove()},20000);
+  while(box.children.length>4)box.firstChild.remove()}
+function tell(title,body,tag){
+  toast(title,body);
+  if("Notification" in window&&Notification.permission==="granted"){try{new Notification(title,{body:body,tag:tag})}catch(e){}}}
+function checkDue(force){
+  if(ALERT!=="on"||!READY)return;
+  var now=new Date(),td=today(),tm=ds(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)),hr=now.getHours(),C={over:[],today:[],tom:[]},dirty=false;
+  Object.keys(NOTI).forEach(function(k){if(k.indexOf(td+":")!==0){delete NOTI[k];dirty=true}});
+  dueItems(false).forEach(function(x){
+    var c=x.d<td?"over":x.d===td?"today":x.d===tm?"tom":"";if(!c)return;
+    if(!force){var born=parseInt(String(x.id).slice(0,13),10);if(born&&Date.now()-born<6e5)return;if(c==="tom"?hr<16:hr<8)return}
+    var key=td+":"+c+":"+x.id;if(NOTI[key])return;NOTI[key]=1;dirty=true;C[c].push(x)});
+  if(SHOWC.ical&&(force||hr>=8)){var ek=td+":ev";if(!NOTI[ek]){var evs=upcomingEv(0);if(evs.length){NOTI[ek]=1;dirty=true;C.evs=evs}}}
+  if(dirty){try{localStorage.setItem(NK2,JSON.stringify(NOTI))}catch(e){}}
+  [["over","⚠️","overdue"],["today","⏰","due today"],["tom","📅","due tomorrow"]].forEach(function(r){
+    var a=C[r[0]];if(!a.length)return;
+    var lines=a.slice(0,4).map(function(x){return"• "+x.t+" ("+sname(x.g)+")"});if(a.length>4)lines.push("…and "+(a.length-4)+" more");
+    tell(r[1]+" "+a.length+" "+r[2],lines.join("\n"),"due-"+r[0])});
+  if(C.evs&&C.evs.length){var el=C.evs.slice(0,4).map(function(x){return"• "+(x.tm?x.tm+" ":"")+x.t});if(C.evs.length>4)el.push("…and "+(C.evs.length-4)+" more");tell("🗓️ "+C.evs.length+" calendar event"+(C.evs.length===1?"":"s")+" today",el.join("\n"),"cal-today")}}
+$("alb").addEventListener("click",function(){
+  var canAsk="Notification" in window&&Notification.permission==="default";
+  if(ALERT==="on"&&canAsk){
+    try{var pr=Notification.requestPermission(function(){});if(pr&&pr.then)pr.then(function(p){toast(p==="granted"?"Desktop pop-ups allowed":"Desktop pop-ups not allowed",p==="granted"?"You'll get a system notification as well as the box here.":"You'll still see alerts in this page while it's open.")})}catch(e){}
+    return}
+  ALERT=ALERT==="on"?"off":"on";try{localStorage.setItem(AK,ALERT)}catch(e){}paintAlert();
+  if(ALERT==="on"){tell("Alerts are on","You'll be told about items that are overdue, due today or due tomorrow while this page is open. For phone alerts use “Send due dates to Calendar”.","alerts-on");checkDue(true)}
+  else toast("Alerts are off","You won't be told about due dates until you turn them back on.")});
+document.addEventListener("visibilitychange",function(){if(!document.hidden)checkDue()});
+setInterval(function(){checkDue()},60000);
+paintAlert();
+/* ===== reconciliation items: QB balance, Excel balance, difference ===== */
+function isRec(t){return !!t&&(t.rec===undefined?/reconcil/i.test(t.title||""):!!t.rec)}
+function num(v){var n=parseFloat(String(v==null?"":v).replace(/[,\s]/g,""));return isNaN(n)?null:n}
+function money(n){return n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function diffOf(t){
+  var a=num(t.qb),b=num(t.xl);
+  if(a===null&&b===null)return{cls:"na",txt:"—"};
+  var d=Math.round(((a||0)-(b||0))*100)/100;
+  return d===0?{cls:"ok",txt:"0.00"}:{cls:"bad",txt:(d>0?"+":"−")+money(Math.abs(d))}}
+function diffHtml(t){var d=diffOf(t);return'<small>Diff</small><span>'+d.txt+'</span>'}
+function recCell(t){
+  var d=diffOf(t);
+  return'<div class="rc3"><label class="rf"><small>QB</small><input type="text" inputmode="decimal" data-k="qb" value="'+esc(t.qb)+'" placeholder="0.00" aria-label="QB balance" title="QB balance"></label>'+
+    '<label class="rf x"><small>Excel</small><input type="text" inputmode="decimal" data-k="xl" value="'+esc(t.xl)+'" placeholder="0.00" aria-label="Excel balance" title="Excel balance"></label>'+
+    '<div class="diff '+d.cls+'" title="QB balance minus Excel balance (green = matched, red = not matched)" role="status">'+diffHtml(t)+'</div></div>'}
+$("board").addEventListener("input",function(e){
+  var k=e.target.dataset.k;if(k!=="qb"&&k!=="xl")return;
+  var f=find(e.target);if(!f||!f.item)return;
+  var el=e.target.closest(".tr").querySelector(".diff"),d=diffOf(f.item);
+  el.className="diff "+d.cls;el.innerHTML=diffHtml(f.item)});
+/* ===== backup & restore, install ===== */
+function blobToUrl(b){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result)};r.onerror=rej;r.readAsDataURL(b)})}
+function backupSave(){
+  var out={app:"task-management",v:1,at:new Date().toISOString(),ls:{},files:[]},i,k;
+  try{for(i=0;i<localStorage.length;i++){k=localStorage.key(i);if(k&&k.indexOf("planner-")===0)out.ls[k]=localStorage.getItem(k)}}catch(e){}
+  var p=Promise.resolve();
+  FILES.forEach(function(m){p=p.then(function(){return getBlob(m.id).then(function(b){return b?blobToUrl(b).then(function(u){out.files.push({m:m,d:u})}):0})})});
+  p.then(function(){
+    var blob=new Blob([JSON.stringify(out)],{type:"application/json"}),a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download="task-management-backup-"+today()+".json";document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000);
+    toast("Backup saved","Keep this file somewhere safe (Files, iCloud Drive, email it to yourself). Restore it on another device from the same 💾 Backup menu.")
+  }).catch(function(){toast("Couldn't make the backup","Please try again.")})}
+function backupRestore(file){
+  var r=new FileReader();
+  r.onload=function(){
+    var d;try{d=JSON.parse(r.result)}catch(e){}
+    if(!d||d.app!=="task-management"||!d.ls){toast("Not a backup file","Pick a task-management-backup .json file.");return}
+    if(!confirm("Restore this backup? It replaces everything currently on this device ("+ (d.at||"").slice(0,10)+" backup)."))return;
+    try{Object.keys(localStorage).filter(function(k){return k.indexOf("planner-")===0}).forEach(function(k){localStorage.removeItem(k)});
+      Object.keys(d.ls).forEach(function(k){if(k.indexOf("planner-")===0)localStorage.setItem(k,d.ls[k])})}catch(e){toast("Couldn't restore","This browser's storage is full or blocked.");return}
+    var list=d.files||[],p=fwrite(["m","b"],function(t){t.objectStore("m").clear();t.objectStore("b").clear()}).catch(function(){});
+    list.forEach(function(x){p=p.then(function(){return fetch(x.d).then(function(z){return z.blob()}).then(function(b){return fwrite(["m","b"],function(t){t.objectStore("m").put(x.m);t.objectStore("b").put({id:x.m.id,blob:b})})})}).catch(function(){})});
+    p.then(function(){location.reload()})};
+  r.readAsText(file)}
+$("bks").addEventListener("click",backupSave);
+$("bkf").addEventListener("change",function(){var f=this.files[0];this.value="";if(f)backupRestore(f)});
+$("bkb").addEventListener("click",function(){var h=$("bkp").hidden;$("bkp").hidden=!h;$("bgp").hidden=true;this.setAttribute("aria-expanded",String(h))});
+document.addEventListener("click",function(e){if(!e.target.isConnected)return;if(!$("bkp").hidden&&!e.target.closest("#bkp,#bkb")){$("bkp").hidden=true;$("bkb").setAttribute("aria-expanded","false")}});
+if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register("sw.js").catch(function(){})}
+applyBg(BG);buildBg();
+buildRem();
+READY=true;
+render();
+setTimeout(function(){
+  checkDue();
+  try{if(!localStorage.getItem("planner-alerts-hint-v1")){localStorage.setItem("planner-alerts-hint-v1","1");toast("🔔 Due-date alerts are on","You'll see a box here for items that are overdue, due today or due tomorrow. Click “Alerts” at the top to allow desktop pop-ups too.")}}catch(e){}
+},900);
+</script>
+<script src="firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="sync.js"></script>
+</body>
+</html>
