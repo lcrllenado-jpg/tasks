@@ -1,5 +1,5 @@
 /* Task Management: keeps the app working offline. Your tasks are stored on the device, never here. */
-var CACHE = "task-mgmt-v2";
+var CACHE = "task-mgmt-v12";
 var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./sync.js", "./firebase-config.js", "./icon-192.png", "./icon-512.png", "./icon-180.png"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
