@@ -921,18 +921,18 @@ function applyThemeVars(){
   v["--k1"]=T.a;v["--k2"]=T.b;v["--k3"]=T.c;v["--kd"]=T.deep;v["--kb"]=T.base;v["--kp"]=T.pop;
   var mi=lumOf(T.a)>.42?T.ink:"#FFFBF4";
   if(!d){
-    var card=mix(T.base,255,.12);
-    v["--bg"]=T.base;v["--card"]=card;v["--tint"]=mix(T.base,0,.07);v["--line"]=mix(T.base,0,.16);v["--box"]=mix(T.base,0,.28);
+    var card=mix(T.base,255,.62);
+    v["--bg"]=T.base;v["--card"]=card;v["--tint"]=mix(T.base,0,.1);v["--line"]=mix(T.base,0,.24);v["--box"]=mix(T.base,0,.32);
     v["--ink"]=T.ink;v["--mute"]=mx2(T.ink,T.base,.42);v["--accent"]=mix(T.a,0,.12);v["--glass"]=rgbaOf(card,.95);
     v["--sh-d"]=rgbaOf(T.ink,.27);v["--mint"]="linear-gradient("+mix(T.a,255,.08)+","+mix(T.a,0,.1)+")";v["--mint-ink"]=mi;
-    v["--late"]=T.pop;v["--dm"]=mix(T.a,255,.2);v["--tabd"]=mix(T.deep,255,.1);v["--ovl"]="transparent";v["--ovs"]="transparent";v["--wash"]=rgbaOf(card,.74)
+    v["--late"]=T.pop;v["--dm"]=mix(T.a,255,.2);v["--tabd"]=mix(T.deep,255,.1);v["--ovl"]="transparent";v["--ovs"]="transparent";v["--wash"]=rgbaOf(mix(T.base,0,.1),.8)
   }else{
-    var dc=mix(T.deep,255,.24),dl=mix(T.a,255,.4);
-    v["--bg"]=mix(T.deep,0,.1);v["--card"]=dc;v["--tint"]=mix(T.deep,255,.34);v["--line"]=mix(T.deep,255,.5);v["--box"]=mix(T.deep,0,.3);
+    var dc=mix(T.deep,255,.2),dl=mix(T.a,255,.4);
+    v["--bg"]=mix(T.deep,0,.1);v["--card"]=dc;v["--tint"]=mix(T.deep,255,.32);v["--line"]=mix(T.deep,255,.45);v["--box"]=mix(T.deep,0,.4);
     v["--ink"]=mix(T.base,255,.5);v["--mute"]=mx2(mix(T.base,255,.3),dc,.12);v["--accent"]=dl;v["--glass"]=rgbaOf(dc,.95);
     v["--sh-d"]="rgba(0,0,0,.6)";v["--mint"]="linear-gradient("+mix(T.a,255,.22)+","+mix(T.a,255,.02)+")";v["--mint-ink"]=lumOf(mix(T.a,255,.12))>.42?mix(T.deep,0,.4):"#FFFBF4";
     v["--late"]=mix(T.pop,255,.4);v["--dm"]=dl;v["--tabd"]=mix(T.deep,255,.2);v["--rb"]="linear-gradient(90deg,"+v["--box"]+","+v["--box"]+")";
-    v["--ovl"]=rgbaOf(mix(T.deep,0,.1),.5);v["--ovs"]=rgbaOf(dc,.9);v["--wash"]=rgbaOf(mix(T.deep,0,.12),.86)
+    v["--ovl"]=rgbaOf(mix(T.deep,0,.1),.5);v["--ovs"]=rgbaOf(mix(T.deep,0,.5),.93);v["--wash"]=rgbaOf(mix(T.deep,0,.5),.9)
   }
   for(K in v)st.setProperty(K,v[K]);
   if(!d)st.removeProperty("--rb");
