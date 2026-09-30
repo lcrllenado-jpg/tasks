@@ -880,6 +880,12 @@ html[data-theme=dark] .card,html[data-theme=dark] .tbl,html[data-theme=dark] .xc
 @media print{body>#repPrint{display:block!important}html,body{overflow:visible!important;height:auto!important}#repPrint{height:auto!important;overflow:visible!important}#repPrint .rep,#repPrint .rep *{-webkit-print-color-adjust:exact;print-color-adjust:exact}.rep .rpt tr{break-inside:avoid;page-break-inside:avoid}.rep h4{break-after:avoid}.rep .rpsum,.rep .rpsg{break-inside:avoid}}
 .rep td,.rep td *,.rep h4,.rep h4 em{text-transform:none!important;letter-spacing:normal!important;font-family:Arial,Helvetica,sans-serif!important}.rep td,.rep td b,.rep td small{color:#1b1b1b!important}.rep td small{color:#666!important;font-weight:400}.rep .rpt tr.late td .rpl{color:#b3261e!important}.rep .rpt th{color:#333!important;text-transform:uppercase}.rep h4{text-transform:uppercase!important}.rep .rpsum .rpk b{color:#fff!important}
 .rpgrp{display:flex;gap:8px;flex-wrap:wrap}.rep .rpe2{margin:12px 0;color:#666}.ars .rpbar h2{margin:0}
+.pytbl td.pyb.bad{background:#FBD0CB!important;color:#B3261E!important;font-weight:900!important;font-size:14.5px}.pytbl td.pyb.ok{color:var(--mute)!important;font-weight:700}
+.pytbl tfoot td[data-tot=bal]{background:#F3B6AF!important;color:#8E1B14!important;font-weight:900!important;font-size:14.5px}
+html[data-theme=dark] .pytbl td.pyb.bad{background:#5A2323!important;color:#FFB4AB!important}html[data-theme=dark] .pytbl tfoot td[data-tot=bal]{background:#7A2A2A!important;color:#FFD9D4!important}
+.rldt{flex:none;font:inherit;font-size:13px;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:10px;padding:4px 8px;height:auto!important}.rli.done .rldt{color:var(--mute);background:transparent}.rlw{flex:none;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;padding:3px 9px;border-radius:999px;color:#fff;background:#C62828}.rlw.today{background:#E08A00}
+.rli:has(.rlw.overdue){border-left-color:#C62828}.rli:has(.rlw.overdue) .rlx{color:#B3261E}html[data-theme=dark] .rli:has(.rlw.overdue) .rlx{color:#FFB4AB}.rla .rlnd{flex:none;width:auto}
+@media(max-width:640px){.rli{flex-wrap:wrap}.rli .rlx{flex:1 1 60%}}
 </style>
 </head>
 <body>
@@ -1719,17 +1725,21 @@ function rlSave(){try{localStorage.setItem(RLK,JSON.stringify(REML))}catch(e){}}
 function rlGet(g){
   if(!REML[g]){REML[g]=String(REM[g]||"").split(/\n+/).map(function(t){return t.replace(/^[\s\-•*]+/,"").trim()}).filter(Boolean).map(function(t){return{id:uid(),t:t,d:false}});rlSave()}
   return REML[g]}
-function rlSorted(g){var L=rlGet(g);return L.filter(function(x){return!x.d}).concat(L.filter(function(x){return x.d}))}
+function rlSorted(g){var L=rlGet(g),ix=L.map(function(x,i){return{x:x,i:i}});
+  var P=ix.filter(function(o){return!o.x.d}).sort(function(a,b){return (a.x.due||"9999").localeCompare(b.x.due||"9999")||a.i-b.i}).map(function(o){return o.x});
+  return P.concat(L.filter(function(x){return x.d}))}
+function rlWhen(x){if(!x.due)return"";var td=today();return x.d?"":(x.due<td?"overdue":x.due===td?"today":"")}
 function remHtml(g){
   var L=rlSorted(g),p=L.filter(function(x){return!x.d}).length;
   return'<section class="card rc rlc"><h2>Reminders <em>'+p+' to do'+(L.length-p?' · '+(L.length-p)+' done':'')+'</em></h2><p class="plh">Press the bullet when it\'s done: it gets crossed out and moves to the bottom. Click the text to edit it.</p>'+
-  '<ul class="rll">'+(L.length?L.map(function(x){return'<li class="rli'+(x.d?" done":"")+'" data-rid="'+x.id+'"><button type="button" class="rlb" data-rlt="'+x.id+'" role="checkbox" aria-checked="'+(x.d?"true":"false")+'" aria-label="'+(x.d?"Mark as not done":"Mark as done")+'"></button><input type="text" class="rlx" data-rlx="'+x.id+'" value="'+esc(x.t)+'" aria-label="Reminder"><button type="button" class="rld" data-rldel="'+x.id+'" title="Delete" aria-label="Delete this reminder">×</button></li>'}).join(""):'<li class="rle">Nothing to remember yet. Add one below.</li>')+'</ul>'+
-  '<div class="rla"><input type="text" class="rln" data-rln="'+g+'" placeholder="Add a reminder, e.g. 5th: pay rent" aria-label="New reminder"><button type="button" class="btn pri" data-rladd="'+g+'">+ Add</button></div></section>'}
+  '<ul class="rll">'+(L.length?L.map(function(x){return'<li class="rli'+(x.d?" done":"")+'" data-rid="'+x.id+'"><button type="button" class="rlb" data-rlt="'+x.id+'" role="checkbox" aria-checked="'+(x.d?"true":"false")+'" aria-label="'+(x.d?"Mark as not done":"Mark as done")+'"></button><input type="text" class="rlx" data-rlx="'+x.id+'" value="'+esc(x.t)+'" aria-label="Reminder">'+(rlWhen(x)?'<span class="rlw '+rlWhen(x)+'">'+(rlWhen(x)==="today"?"Due today":"Overdue")+'</span>':"")+'<input type="date" class="rldt" data-rldt="'+x.id+'" value="'+esc(x.due||"")+'" title="Due date" aria-label="Due date"><button type="button" class="rld" data-rldel="'+x.id+'" title="Delete" aria-label="Delete this reminder">×</button></li>'}).join(""):'<li class="rle">Nothing to remember yet. Add one below.</li>')+'</ul>'+
+  '<div class="rla"><input type="text" class="rln" data-rln="'+g+'" placeholder="Add a reminder, e.g. pay rent" aria-label="New reminder"><input type="date" class="rldt rlnd" data-rlnd="'+g+'" title="Due date (optional)" aria-label="Due date for the new reminder"><button type="button" class="btn pri" data-rladd="'+g+'">+ Add</button></div></section>'}
 function rlAdd(g){var el=document.querySelector('[data-rln="'+g+'"]'),v=el&&el.value.trim();if(!v){if(el)el.focus();return}
-  rlGet(g).push({id:uid(),t:v,d:false});rlSave();render();var n=document.querySelector('[data-rln="'+g+'"]');if(n)n.focus()}
+  var dd=document.querySelector('[data-rlnd="'+g+'"]');rlGet(g).push({id:uid(),t:v,d:false,due:dd?dd.value:""});rlSave();render();var n=document.querySelector('[data-rln="'+g+'"]');if(n)n.focus()}
 function rlFind(id){var g=VIEW,L=rlGet(g),i;for(i=0;i<L.length;i++)if(L[i].id===id)return L[i]}
 $("board").addEventListener("input",function(e){var t=e.target;if(t.dataset&&t.dataset.rlx){var x=rlFind(t.dataset.rlx);if(x){x.t=t.value;rlSave()}}});
-$("board").addEventListener("keydown",function(e){var t=e.target;if(e.key==="Enter"&&t.dataset&&t.dataset.rln){e.preventDefault();rlAdd(t.dataset.rln)}else if(e.key==="Enter"&&t.dataset&&t.dataset.rlx){t.blur()}});
+$("board").addEventListener("change",function(e){var t=e.target;if(t.dataset&&t.dataset.rldt){var x=rlFind(t.dataset.rldt);if(x){x.due=t.value;rlSave();render()}}});
+$("board").addEventListener("keydown",function(e){var t=e.target;if(e.key==="Enter"&&t.dataset&&(t.dataset.rln||t.dataset.rlnd)){e.preventDefault();rlAdd(t.dataset.rln||t.dataset.rlnd)}else if(e.key==="Enter"&&t.dataset&&t.dataset.rlx){t.blur()}});
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-rlt],[data-rldel],[data-rladd]");if(!b)return;var d=b.dataset;
   if(d.rlt){var x=rlFind(d.rlt);if(x){x.d=!x.d;rlSave();render()}}
   else if(d.rldel){var g=VIEW;REML[g]=rlGet(g).filter(function(q){return q.id!==d.rldel});rlSave();render()}
