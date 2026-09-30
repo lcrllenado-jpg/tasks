@@ -890,13 +890,20 @@ html[data-theme=dark] .pytbl td.pyb.bad{background:#5A2323!important;color:#FFB4
 .pytbl td.pyp.paid{background:#CDEFD6!important}.pytbl td.pyp.paid .pa{font-weight:900;color:#0F5A2B}.pytbl td.pyp.paid .pypb{background:#2E9E5B;border-color:#2E9E5B}.pytbl td.pyp.paid .pypb::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
 html[data-theme=dark] .pytbl td.pyp.paid{background:#1F4A31!important}html[data-theme=dark] .pytbl td.pyp.paid .pa{color:#B8F0CB}
 .pycd{min-width:170px}.pycd select{width:100%;box-sizing:border-box;font:inherit;font-size:12.5px;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:6px 6px;height:auto!important}
+.cfop{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin:10px 0 12px}.cfop label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;font-weight:700;color:var(--mute)}.cfop input,.cfop select{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:7px 9px}.cfop input[data-cb=open]{text-align:right;width:170px}
+.cfbadge{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:#3a3a3a;color:#fff;border-radius:99px;padding:3px 9px;margin-left:8px;vertical-align:middle}
+.cft td{vertical-align:middle}.cft td input,.cft td select{width:100%;box-sizing:border-box;font:inherit;font-size:13px;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:6px;padding:6px 6px}.cft td input:focus,.cft td select:focus{border-color:var(--line);background:var(--tint)}.cft td.cfw{min-width:220px}.cft td.num input{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.cft td.cfd{background:rgba(46,158,91,.12)}.cft td.cfc{background:rgba(214,69,55,.12)}.cft td.cfr{font-weight:800;text-align:right;font-variant-numeric:tabular-nums;padding-right:10px}.cft tr.cfbeg td{background:var(--tint);font-weight:800}.cft tfoot tr.cfsub td{font-weight:600;font-size:12px;opacity:.85}.cft tfoot .cfend,.cft tfoot tr.cfend td{font-weight:900;font-size:14.5px}
+#undoBar{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:99990;background:#2C3B4D;color:#fff;border-radius:99px;padding:10px 12px 10px 18px;display:flex;gap:12px;align-items:center;font:600 14px system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:.2s}#undoBar.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}#undoBar button{border:0;border-radius:99px;padding:7px 16px;background:#FFB162;color:#1B2632;font:800 13px system-ui,sans-serif;cursor:pointer}
+.tb:disabled{opacity:.4;cursor:default}
+.cfaddsec{border:2px dashed var(--line);background:transparent;color:var(--mute);font:700 13px inherit;border-radius:10px;padding:7px 14px;cursor:pointer;margin-left:6px}.cfaddsec:hover{color:var(--ink);border-color:var(--ink)}.cfcust{display:flex;gap:12px;align-items:flex-end;margin:10px 0}.cfcust label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;font-weight:700;color:var(--mute)}.cfcust input{font:inherit;font-size:15px;font-weight:700;color:var(--ink);background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:7px 9px;min-width:240px}
 </style>
 </head>
 <body>
 <div class="wrap"><div class="frame">
   <div class="ftabs"><button class="hb" id="hb" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></button><div class="xtabs" id="tabs" role="tablist" aria-label="Parts"></div></div>
   <div class="shell">
-  <div class="top"><h1>Task Management</h1><div class="bar"><i id="fill"></i></div><span id="count"></span><span class="right"><label class="tb" id="sl"><span id="st">Song</span><input type="file" id="sf" accept="audio/*" hidden></label><button class="tb" id="sx" hidden aria-label="Remove my song">✕</button><button class="tb" id="alb" title="Due-date alerts">Alerts on</button><button class="tb" id="bgb" aria-haspopup="true" aria-expanded="false">Theme</button><button class="tb" id="lbb" aria-pressed="false" title="Rename any label">Edit text</button><button class="tb" id="bkb" aria-haspopup="true" aria-expanded="false">Backup</button><button id="th" aria-label="Night mode on or off" title="Night mode">Dark</button></span><div class="bgp" id="bgp" hidden></div><div class="bgp" id="bkp" hidden><h3>Backup &amp; restore</h3><p>Your tasks live on this device only. Save a backup file to move everything to your phone or tablet (or to keep a safe copy), then restore it there. Includes tasks, notes, reminders, calendar imports, settings and attached files.</p><div class="bgrow"><button class="pbtn" id="bks">⬇ Save backup</button><label class="pbtn" for="bkf">⬆ Restore backup</label><input type="file" id="bkf" accept=".json,application/json" hidden></div></div></div>
+  <div class="top"><h1>Task Management</h1><div class="bar"><i id="fill"></i></div><span id="count"></span><span class="right"><label class="tb" id="sl"><span id="st">Song</span><input type="file" id="sf" accept="audio/*" hidden></label><button class="tb" id="sx" hidden aria-label="Remove my song">✕</button><button class="tb" id="alb" title="Due-date alerts">Alerts on</button><button class="tb" id="bgb" aria-haspopup="true" aria-expanded="false">Theme</button><button class="tb" id="lbb" aria-pressed="false" title="Rename any label">Edit text</button><button class="tb" id="bkb" aria-haspopup="true" aria-expanded="false">Backup</button><button class="tb" id="undoBtn" title="Undo the last delete (Ctrl+Z)" aria-label="Undo" disabled>↶ Undo</button><button class="tb" id="redoBtn" title="Redo (Ctrl+Y)" aria-label="Redo" disabled>↷ Redo</button><button id="th" aria-label="Night mode on or off" title="Night mode">Dark</button></span><div class="bgp" id="bgp" hidden></div><div class="bgp" id="bkp" hidden><h3>Backup &amp; restore</h3><p>Your tasks live on this device only. Save a backup file to move everything to your phone or tablet (or to keep a safe copy), then restore it there. Includes tasks, notes, reminders, calendar imports, settings and attached files.</p><div class="bgrow"><button class="pbtn" id="bks">⬇ Save backup</button><label class="pbtn" for="bkf">⬆ Restore backup</label><input type="file" id="bkf" accept=".json,application/json" hidden></div></div></div>
   <section class="verse" aria-label="Verse of the day"><div class="vh" id="vh"></div><div class="vt" id="vt"></div><div class="vr" id="vr"></div></section>
   <div id="board"></div>
   <div class="bottom">
@@ -1802,6 +1809,106 @@ function rpPrint(html,land){
   setTimeout(function(){try{window.print()}catch(e){}setTimeout(done,1500)},120)}
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-rp]");if(!b)return;var g=VIEW;if(!G[g])return;
   if(b.dataset.rp==="pay")rpPrint(rpPayHtml(g,b.dataset.rps),true);else rpPrint(rpArHtml(g,b.dataset.rps),false)});
+/* ===== Undo / Redo for accidental deletes (works for the whole website) ===== */
+var UNDO=(function(){
+  var EXK={"planner-view-v1":1,"planner-notified-v1":1,"planner-alerts-hint-v1":1,"planner-sync-meta":1,"planner-undo-carry":1},U=[],R=[],bar=null,barT=0,MAX=30;
+  function snap(){var s={},i,k;try{for(i=0;i<localStorage.length;i++){k=localStorage.key(i);if(k.indexOf("planner-")===0&&!EXK[k])s[k]=localStorage.getItem(k)}}catch(e){}
+    var top=U[U.length-1]||R.__last;if(top)for(k in s)if(top[k]===s[k])s[k]=top[k];return s}
+  function same(a,b){var k;for(k in a)if(a[k]!==b[k])return false;for(k in b)if(!(k in a))return false;return true}
+  function take(){var s=snap();if(U.length&&same(U[U.length-1],s))return s;U.push(s);if(U.length>MAX)U.shift();R.length=0;btns();return s}
+  function restore(s){var i,k,rm=[];try{for(i=0;i<localStorage.length;i++){k=localStorage.key(i);if(k.indexOf("planner-")===0&&!EXK[k]&&!(k in s))rm.push(k)}
+    rm.forEach(function(x){localStorage.removeItem(x)});for(k in s)if(localStorage.getItem(k)!==s[k])localStorage.setItem(k,s[k])}catch(e){}}
+  function carry(){var c={u:U.slice(-6),r:R.slice(-6)},j;while(true){try{j=JSON.stringify(c);sessionStorage.setItem("planner-undo-carry",j);return}catch(e){if(c.u.length<=1&&c.r.length<=1){try{sessionStorage.removeItem("planner-undo-carry")}catch(x){}return}c.u=c.u.slice(-Math.max(1,c.u.length-2));c.r=c.r.slice(-Math.max(1,c.r.length-2))}}}
+  function go(from,to){var cur=snap(),s;while(from.length){s=from.pop();if(!same(s,cur)){to.push(cur);restore(s);carry();location.reload();return true}}btns();return false}
+  function undo(){if(!go(U,R))flash("Nothing to undo")}
+  function redo(){if(!go(R,U))flash("Nothing to redo")}
+  function flash(t){say(t,false)}
+  function say(t,withUndo){if(!bar){bar=document.createElement("div");bar.id="undoBar";bar.setAttribute("role","status");document.body.appendChild(bar)}
+    bar.innerHTML="";var sp=document.createElement("span");sp.textContent=t;bar.appendChild(sp);
+    if(withUndo){var b=document.createElement("button");b.type="button";b.textContent="Undo";b.onclick=function(){bar.classList.remove("on");undo()};bar.appendChild(b)}
+    bar.classList.add("on");clearTimeout(barT);barT=setTimeout(function(){bar.classList.remove("on")},withUndo?12000:2200)}
+  function btns(){var a=document.getElementById("undoBtn"),b=document.getElementById("redoBtn");if(a)a.disabled=!U.length;if(b)b.disabled=!R.length}
+  var DEL=/delet|remov|clear|discard|^\s*[×✕✖x]\s*$/i;
+  function isDel(el){var b=el.closest&&el.closest("button,[role=button],a,.del,.pyx");if(!b||b.id==="undoBtn"||b.id==="redoBtn")return false;
+    return DEL.test((b.getAttribute("aria-label")||"")+" "+(b.getAttribute("title")||"")+" "+(b.textContent||"").trim())||b.classList.contains("del")||b.classList.contains("pyx")}
+  document.addEventListener("click",function(e){if(!isDel(e.target))return;var before=take();
+    setTimeout(function(){if(!same(before,snap()))say("Deleted. Changed your mind?",true)},700)},true);
+  var oc=window.confirm;window.confirm=function(m){var r=oc.call(window,m);if(r){var b=take();setTimeout(function(){if(!same(b,snap())&&!(bar&&bar.classList.contains("on")))say("Deleted. Changed your mind?",true)},700)}return r};
+  document.addEventListener("keydown",function(e){var t=e.target,ed=t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable);if(ed||!(e.ctrlKey||e.metaKey))return;
+    var k=e.key.toLowerCase();if(k==="z"&&!e.shiftKey){e.preventDefault();undo()}else if(k==="y"||(k==="z"&&e.shiftKey)){e.preventDefault();redo()}});
+  try{var c=JSON.parse(sessionStorage.getItem("planner-undo-carry")||"null");if(c){U=c.u||[];R=c.r||[];sessionStorage.removeItem("planner-undo-carry")}}catch(e){}
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#undoBtn,#redoBtn");if(!b)return;b.id==="undoBtn"?undo():redo()});
+  setTimeout(btns,0);
+  return{take:take,undo:undo,redo:redo}})();
+/* ===== KBW Confidential: ledger of accounts (Undisclosed, DLP, Company account, Mr. Bader bonus + your own sections) ===== */
+var CFK="planner-conf-v1",CF={};
+try{CF=JSON.parse(localStorage.getItem(CFK)||"{}")||{}}catch(e){CF={}}
+var CFB=[["und","Undisclosed"],["dlp","DLP"],["co","Company account"],["bon","Mr. Bader bonus"]],CFSH="und",CFTYPES=["Cash","Cheque","Transfer"];
+function cfSave(){try{localStorage.setItem(CFK,JSON.stringify(CF))}catch(e){}}
+function cfSecs(){return CFB.concat((CF.custom||[]).map(function(c){return[c.id,c.name||"New section"]}))}
+function cfKind(k){if(k==="und"||k==="dlp")return k;if(k==="co"||k==="bon")return"co";var c=(CF.custom||[]).filter(function(x){return x.id===k})[0];return c&&c.type==="pay"?"dlp":"co"}
+function cfName(k){var s=cfSecs().filter(function(x){return x[0]===k})[0];return s?s[1]:k}
+function cfAcc(k){if(!CF[k])CF[k]={open:"",asof:"",norm:k==="bon"?"c":"d",rows:[]};if(!CF[k].rows)CF[k].rows=[];return CF[k]}
+function cfCalc(k){var A=cfAcc(k),kd=cfKind(k),o=num(A.open)||0,run=kd==="und"?0:o,td=0,tc=0,ta=0,by={Cash:0,Cheque:0,Transfer:0},R={};
+  A.rows.forEach(function(r){
+    if(kd==="und"){var a=num(r.a)||0;ta+=a;run=r2(run+a);R[r.id]=run;if(by[r.ty]!==undefined)by[r.ty]+=a}
+    else if(kd==="dlp"){var b=num(r.a)||0;ta+=b;run=r2(run-b);R[r.id]=run}
+    else{var d=num(r.dr)||0,c=num(r.cr)||0;td+=d;tc+=c;run=r2(run+(A.norm==="c"?c-d:d-c));R[r.id]=run}});
+  return{open:o,td:r2(td),tc:r2(tc),ta:r2(ta),by:by,run:R,end:run}}
+function cfRow(k,r){var kd=cfKind(k),h='<tr data-cid="'+r.id+'"><td><input type="date" data-cf="d" value="'+esc(r.d)+'" aria-label="Date"></td><td class="cfw"><input data-cf="x" value="'+esc(r.x)+'" placeholder="Description" aria-label="Description"></td>',rn='<td class="num cfr" data-cfrun="'+r.id+'"></td>';
+  if(kd==="und")h+='<td><input data-cf="f" value="'+esc(r.f)+'" placeholder="Client / from" aria-label="Client or from"></td><td><select data-cf="ty" aria-label="Type of payment"><option value="">Type</option>'+CFTYPES.map(function(t){return'<option'+(r.ty===t?" selected":"")+'>'+t+'</option>'}).join("")+'</select></td><td class="num"><input inputmode="decimal" data-cf="a" data-cm="1" value="'+esc(r.a)+'" placeholder="0.00" aria-label="Amount"></td>'+rn;
+  else if(kd==="dlp")h+='<td><input data-cf="f" value="'+esc(r.f)+'" placeholder="Paid to whom" aria-label="Paid to whom"></td><td class="num"><input inputmode="decimal" data-cf="a" data-cm="1" value="'+esc(r.a)+'" placeholder="0.00" aria-label="Amount"></td>'+rn;
+  else h+='<td class="num cfd"><input inputmode="decimal" data-cf="dr" data-cm="1" value="'+esc(r.dr)+'" placeholder="0.00" aria-label="Debit"></td><td class="num cfc"><input inputmode="decimal" data-cf="cr" data-cm="1" value="'+esc(r.cr)+'" placeholder="0.00" aria-label="Credit"></td>'+rn;
+  return h+'<td><button type="button" class="pyx" data-cfx="'+r.id+'" title="Delete this row" aria-label="Delete this row">×</button></td></tr>'}
+function cfHtml(){
+  var secs=cfSecs();if(!secs.some(function(s){return s[0]===CFSH}))CFSH="und";
+  var k=CFSH,kd=cfKind(k),A=cfAcc(k),C=cfCalc(k),h,ncol=kd==="und"?7:kd==="dlp"?6:6,cust=(CF.custom||[]).filter(function(c){return c.id===k})[0];
+  h='<section class="xsec pyw cfw0"><div class="rpbar"><h3>Confidential <em class="cfbadge">private ledger</em></h3><span class="rpgrp"><button type="button" class="btn pri rpbtn" data-cfp="'+k+'">Print this section</button><button type="button" class="btn rpbtn" data-cfp="all">Print all sections</button></span></div>'+
+   '<div class="pysh" role="tablist">'+secs.map(function(t){return'<button type="button" class="'+(k===t[0]?"on":"")+'" data-cfsh="'+t[0]+'" role="tab">'+esc(t[1])+(cfAcc(t[0]).rows.length?' <em>'+cfAcc(t[0]).rows.length+'</em>':"")+'</button>'}).join("")+'<button type="button" class="cfaddsec" data-cfsec="1" title="Add a new section">+ Add section</button></div>';
+  if(cust)h+='<div class="cfcust"><label>Section name<input data-cfnm="'+k+'" value="'+esc(cust.name)+'" aria-label="Section name"></label><button type="button" class="btn" data-cfdel="'+k+'">Delete this section</button></div>';
+  if(kd!=="und")h+='<div class="cfop" data-ck="'+k+'"><label>Beginning balance<input inputmode="decimal" data-cb="open" data-cm="1" value="'+esc(A.open)+'" placeholder="0.00" aria-label="Beginning balance"></label><label>as of<input type="date" data-cb="asof" value="'+esc(A.asof)+'" aria-label="Beginning balance as of"></label>'+
+    (kd==="dlp"?"":'<label>Balance grows with<select data-cb="norm" aria-label="Normal balance"><option value="d"'+(A.norm==="d"?" selected":"")+'>Debit (asset / cash account)</option><option value="c"'+(A.norm==="c"?" selected":"")+'>Credit (amount owed, liability)</option></select></label>')+'</div>';
+  var head=kd==="und"?'<th>Date</th><th>Description</th><th>Client / from</th><th>Type of payment</th><th>Amount</th><th>Running balance</th><th></th>':kd==="dlp"?'<th>Date</th><th>Description</th><th>Paid to whom</th><th>Amount</th><th>Running balance</th><th></th>':'<th>Date</th><th>Description</th><th>Debit</th><th>Credit</th><th>Running balance</th><th></th>',tf;
+  if(kd==="und")tf='<tr><td colspan="4">Total</td><td class="num" data-ct="ta">'+money(C.ta)+'</td><td class="num cfend" data-ct="end">'+money(C.end)+'</td><td></td></tr>'+CFTYPES.map(function(t){return'<tr class="cfsub"><td colspan="4">of which '+t+'</td><td class="num" data-ct="by'+t+'">'+money(C.by[t])+'</td><td></td><td></td></tr>'}).join("");
+  else if(kd==="dlp")tf='<tr><td colspan="3">Total amount</td><td class="num" data-ct="ta">'+money(C.ta)+'</td><td class="num cfend" data-ct="end">'+money(C.end)+'</td><td></td></tr>';
+  else tf='<tr><td colspan="2">Total</td><td class="num" data-ct="td">'+money(C.td)+'</td><td class="num" data-ct="tc">'+money(C.tc)+'</td><td class="num cfend" data-ct="end">'+money(C.end)+'</td><td></td></tr>';
+  var first=kd!=="und"?'<tr class="cfbeg"><td data-cfbd>'+esc(rpD(A.asof))+'</td><td colspan="'+(kd==="dlp"?3:3)+'" data-cfbt>Beginning balance'+(A.asof?" as of "+esc(rpD(A.asof)):"")+'</td><td class="num cfr" data-ct="open">'+money(C.open)+'</td><td></td></tr>':"";
+  h+='<div class="pyscroll"><table class="pytbl cft" data-ck="'+k+'"><thead><tr>'+head+'</tr></thead><tbody>'+first+(A.rows.length?A.rows.map(function(r){return cfRow(k,r)}).join(""):'<tr class="cfem"><td class="pyem" colspan="'+ncol+'">No entries yet. Press Add entry.</td></tr>')+'</tbody><tfoot>'+tf+'</tfoot></table></div>'+
+   '<button type="button" class="btn pri pyadd" data-cfadd="'+k+'">+ Add entry</button><p class="plh">'+(kd==="und"?"The running balance adds up every amount, and totals by type of payment are worked out for you.":kd==="dlp"?"The running balance starts from the beginning balance and goes down with every amount.":"Running balance is worked out line by line: "+(A.norm==="c"?"credit adds, debit reduces.":"debit adds, credit reduces.")+" Change this with “Balance grows with” above.")+'</p></section>';
+  return h}
+function cfLive(tb){var k=tb.dataset.ck,C=cfCalc(k),e,id;
+  tb.querySelectorAll("[data-cfrun]").forEach(function(c){var v=C.run[c.dataset.cfrun];c.textContent=v===undefined?"":money(v)});
+  var M={ta:C.ta,td:C.td,tc:C.tc,end:C.end,open:C.open,byCash:C.by.Cash,byCheque:C.by.Cheque,byTransfer:C.by.Transfer};
+  for(var n in M)tb.querySelectorAll('[data-ct="'+n+'"]').forEach(function(c){c.textContent=money(M[n])})}
+$("board").addEventListener("input",function(e){var t=e.target,d=t.dataset||{};
+  if(d.cfnm){var cu=(CF.custom||[]).filter(function(c){return c.id===d.cfnm})[0];if(cu){cu.name=t.value;cfSave();var bt=document.querySelector('[data-cfsh="'+d.cfnm+'"]');if(bt){var em=bt.querySelector("em");bt.textContent=t.value||"New section";if(em){bt.appendChild(document.createTextNode(" "));bt.appendChild(em)}}}return}
+  if(d.cb){var op=t.closest(".cfop"),k=op&&op.dataset.ck;if(!k)return;cfAcc(k)[d.cb]=t.value;cfSave();if(d.cb==="norm"){render();return}var tb=document.querySelector('table.cft[data-ck="'+k+'"]');if(tb){cfLive(tb);if(d.cb==="asof"){var bd=tb.querySelector("[data-cfbd]"),bx=tb.querySelector("[data-cfbt]");if(bd)bd.textContent=rpD(t.value);if(bx)bx.textContent="Beginning balance"+(t.value?" as of "+rpD(t.value):"")}}return}
+  if(!d.cf)return;var tr=t.closest("tr[data-cid]"),tb=t.closest("table.cft");if(!tr||!tb)return;
+  var r=cfAcc(tb.dataset.ck).rows.filter(function(q){return q.id===tr.dataset.cid})[0];if(!r)return;r[d.cf]=t.value;cfSave();cfLive(tb)});
+$("board").addEventListener("change",function(e){var t=e.target;if(t.dataset&&t.dataset.cf==="ty"){var tb=t.closest("table.cft");if(tb)cfLive(tb)}});
+$("board").addEventListener("focusout",function(e){var t=e.target,d=t.dataset||{};if(!d.cm)return;var n=num(t.value);if(n===null)return;t.value=money(n);
+  if(d.cb){var op=t.closest(".cfop");if(op){cfAcc(op.dataset.ck)[d.cb]=t.value;cfSave()}}
+  else{var tr=t.closest("tr[data-cid]"),tb=t.closest("table.cft"),r=tr&&cfAcc(tb.dataset.ck).rows.filter(function(q){return q.id===tr.dataset.cid})[0];if(r){r[d.cf]=t.value;cfSave()}}
+  var tb2=document.querySelector("table.cft");if(tb2)cfLive(tb2)});
+$("board").addEventListener("click",function(e){var b=e.target.closest("[data-cfsh],[data-cfadd],[data-cfx],[data-cfp],[data-cfsec],[data-cfdel]");if(!b)return;var d=b.dataset;
+  if(d.cfsh){CFSH=d.cfsh;render()}
+  else if(d.cfsec){var nm=prompt("Name of the new section:");if(!nm||!nm.trim())return;
+    var ty=prompt("What kind of section?\n1 = Payments list (date, description, paid to whom, amount, running balance)\n2 = Ledger (date, description, debit, credit, running balance)","2");if(ty===null)return;
+    var c={id:"c"+uid(),name:nm.trim(),type:String(ty).trim()==="1"?"pay":"led"};(CF.custom=CF.custom||[]).push(c);cfSave();CFSH=c.id;render()}
+  else if(d.cfdel){if(!confirm("Delete this whole section and its entries? You can press Undo right after."))return;CF.custom=(CF.custom||[]).filter(function(c){return c.id!==d.cfdel});delete CF[d.cfdel];cfSave();CFSH="und";render()}
+  else if(d.cfadd){var k=d.cfadd,kd=cfKind(k),r={id:uid(),d:today(),x:""};if(kd==="und"){r.f="";r.ty="";r.a=""}else if(kd==="dlp"){r.f="";r.a=""}else{r.dr="";r.cr=""}cfAcc(k).rows.push(r);cfSave();render();var el=document.querySelector('tr[data-cid="'+r.id+'"] [data-cf="x"]');if(el)el.focus()}
+  else if(d.cfx){if(!confirm("Delete this row?"))return;var k2=CFSH;CF[k2].rows=cfAcc(k2).rows.filter(function(q){return q.id!==d.cfx});cfSave();render()}
+  else if(d.cfp)rpPrint(cfPrintHtml(d.cfp),false)});
+function cfPrintHtml(w){
+  var keys=w==="all"?cfSecs().map(function(s){return s[0]}):[w],h=rpHead("kbw","Confidential · "+(w==="all"?"All sections":cfName(w)));
+  keys.forEach(function(k){var A=cfAcc(k),kd=cfKind(k),C=cfCalc(k),nm=cfName(k),cols,rows,tot,R=A.rows,bb='<b>Beginning balance'+(A.asof?" as of "+rpD(A.asof):"")+'</b>';
+    if(kd==="und"){cols=[["Date"],["Description"],["Client / from"],["Type"],["Amount","n"],["Running balance","n"]];rows=R.map(function(r){return{c:[rpD(r.d),esc(r.x),esc(r.f),esc(r.ty),money(num(r.a)||0),money(C.run[r.id])]}});tot=["Total","","","",money(C.ta),money(C.end)]}
+    else if(kd==="dlp"){cols=[["Date"],["Description"],["Paid to whom"],["Amount","n"],["Running balance","n"]];rows=[{cls:"rpto",c:[rpD(A.asof),bb,"","",'<b>'+money(C.open)+'</b>']}].concat(R.map(function(r){return{c:[rpD(r.d),esc(r.x),esc(r.f),money(num(r.a)||0),money(C.run[r.id])]}}));tot=["Total amount","","",money(C.ta),money(C.end)]}
+    else{cols=[["Date"],["Description"],["Debit","n"],["Credit","n"],["Running balance","n"]];rows=[{cls:"rpto",c:[rpD(A.asof),bb,"","",'<b>'+money(C.open)+'</b>']}].concat(R.map(function(r){return{c:[rpD(r.d),esc(r.x),num(r.dr)?money(num(r.dr)):"",num(r.cr)?money(num(r.cr)):"",money(C.run[r.id])]}}));tot=["Total","",money(C.td),money(C.tc),money(C.end)]}
+    h+='<h4>'+esc(nm)+' <em>'+R.length+'</em></h4>'+rpTable(cols,rows,tot);
+    if(kd==="und")h+='<div class="rpsum">'+CFTYPES.map(function(t){return'<div><span>'+t+'</span><b>'+money(C.by[t])+'</b></div>'}).join("")+'</div>';
+    else h+='<div class="rpsum"><div class="rpk"><span>Ending balance</span><b>'+money(C.end)+'</b></div></div>'});
+  return h+rpFoot()}
 function partHtml(g){
   var st=gstats(g),sub=SUB[g]||"tasks",all=tasks.filter(function(t){return t.g===g}),
     act=all.filter(function(t){return t.status!=="done"}).sort(function(a,b){return RANK[a.urg]-RANK[b.urg]||(a.due||"9999").localeCompare(b.due||"9999")}),
@@ -1814,6 +1921,7 @@ function partHtml(g){
   if(g==="kbw"||g==="byld")tabs.push(["vat","VAT Checker",VATR.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="byld")tabs.splice(1,0,["ppay","Project payments",PAY.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="kbw"||g==="byld")tabs.splice(g==="byld"?2:1,0,["pr","Payable & receivable",PAY.ar.filter(function(x){return x.g===g}).length||""]);
+  if(g==="kbw")tabs.splice(1,0,["conf","Confidential",(function(){var n=0;cfSecs().forEach(function(x){n+=cfAcc(x[0]).rows.length});return n||""})()]);
   if(!tabs.some(function(t){return t[0]===sub}))sub="tasks";
   H+='<div class="xsubs" role="tablist">'+tabs.map(function(t){return'<button class="xs'+(sub===t[0]?" on":"")+'" data-sub="'+t[0]+'" role="tab">'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
   if(sub==="tasks"){
@@ -1821,6 +1929,7 @@ function partHtml(g){
       '<section class="xsec"><h3>Completed <em>'+done.length+'</em></h3><div class="scroll arch"><div class="tbl">'+(done.length?done.map(block).join(""):'<div class="empty">Completed items will land here.</div>')+'</div></div></section>'+
       pnotesHtml(g)}
   else if(sub==="ppay")H+=pyHtml(g);
+  else if(sub==="conf")H+=cfHtml();
   else if(sub==="rem")H+=remHtml(g);
   else if(sub==="pr")H+=arHtml(g);
   else if(sub==="rcp")H+=rcHtml(g);
