@@ -1314,6 +1314,8 @@ html[data-look=library][data-side][data-look] .pnote,html[data-look=library][dat
 html[data-look=library][data-side][data-look]{background:#3a0f1c!important}
 html[data-look=library][data-side][data-look] body{background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iNzAwIj48ZGVmcz48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjAwOCAuMDIiIG51bU9jdGF2ZXM9IjMiIHNlZWQ9IjEyIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgLjg2ICAwIDAgMCAwIC43ICAwIDAgMCAwIC4zOCAgMSAwIDAgMCAwIi8+PGZlQ29tcG9uZW50VHJhbnNmZXI+PGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDAgMCAwIC45IDAgMCAwIDAiLz48L2ZlQ29tcG9uZW50VHJhbnNmZXI+PC9maWx0ZXI+PGZpbHRlciBpZD0iYiIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9Ii4wMTIgLjAzIiBudW1PY3RhdmVzPSIzIiBzZWVkPSIzMSIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIC4xMiAgMCAwIDAgMCAuMiAgMCAwIDAgMCAuMzggIDEgMCAwIDAgMCIvPjxmZUNvbXBvbmVudFRyYW5zZmVyPjxmZUZ1bmNBIHR5cGU9InRhYmxlIiB0YWJsZVZhbHVlcz0iMCAwIDAgLjggMCAwIDAgLjggMCIvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9IiM0YTE0MjQiLz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsdGVyPSJ1cmwoI2IpIi8+PHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==),#3a0f1c!important}
 @media(max-width:820px){html[data-look=library][data-side][data-look] .xtabs{left:8px;right:8px}}
+.gde{display:inline-flex;gap:5px;align-items:center;font-size:11.5px;cursor:pointer;white-space:nowrap}.gde input{margin:0}
+html[data-look=library][data-side][data-look] .xtab:not(.add){counter-increment:bk}
 .stkeys{display:flex;gap:6px;margin:6px 0}.stkey{border:0;background:var(--card);box-shadow:var(--raise-s);border-radius:8px;width:38px;height:34px;font:700 16px inherit;cursor:pointer;color:var(--ink)}.stbtns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .stsc{display:flex;gap:18px;align-items:center;background:var(--card);border-radius:16px;padding:14px 20px;box-shadow:var(--raise-s);margin:10px 0}.stbig{font-size:34px;font-weight:900}.stsc small{display:block;color:var(--mute);margin-top:3px}
 @media(max-width:640px){.stq{flex-wrap:wrap}.stp,.sai,.sta{flex:1 1 100%}}
@@ -1745,6 +1747,10 @@ function buildBg(){
 $("bgb").addEventListener("click",function(){var h=$("bgp").hidden;$("bgp").hidden=!h;this.setAttribute("aria-expanded",String(h))});
 document.addEventListener("click",function(e){if(!e.target.isConnected)return;if(!$("bgp").hidden&&!e.target.closest("#bgp,#bgb"))$("bgp").hidden=true});
 addEventListener("keydown",function(e){if(e.key==="Escape")$("bgp").hidden=true});
+document.addEventListener("change",function(e){var c=e.target.closest&&e.target.closest("[data-gde]");if(!c)return;var g=c.dataset.gde;
+  LSG.on=LSG.on.filter(function(x){return x!==g});LSG.off=LSG.off.filter(function(x){return x!==g});
+  if(c.checked)LSG.on.push(g);else LSG.off.push(g);
+  lsgSave();SUB[g]=c.checked?"d3":"tasks";saveView();try{buildTabs();render()}catch(err){}});
 $("bgp").addEventListener("click",function(e){
   var x=e.target.closest("[data-thdel]");
   if(x){var id=x.dataset.thdel,t=THEMES.filter(function(q){return q.id===id})[0];
@@ -3084,7 +3090,15 @@ var STK="planner-study-v1",ST={res:[],done:{}},STLV="b0",STV=null,STOPEN={},STLA
 try{var _st=JSON.parse(localStorage.getItem(STK)||"null");if(_st&&typeof _st==="object"){ST.res=_st.res||[];ST.done=_st.done||{};ST.art=_st.art}}catch(e){}
 ST.art=ST.art||{n:{},rounds:[]};ST.art.n=ST.art.n||{};ST.art.rounds=ST.art.rounds||[];
 function stSave(){try{localStorage.setItem(STK,JSON.stringify(ST))}catch(e){}}
-function stIsDe(g){return /german|deutsch/i.test([G[g]&&G[g].n,G[g]&&G[g].tag,SHORT[g],gtag(g),tabName(g)].join(" "))}
+var LSGK="planner-german-v1",LSG={on:[],off:[]};try{var _l=JSON.parse(localStorage.getItem(LSGK)||"{}");if(_l&&_l.on)LSG.on=_l.on;if(_l&&_l.off)LSG.off=_l.off}catch(e){}
+function lsgSave(){try{localStorage.setItem(LSGK,JSON.stringify(LSG))}catch(e){}}
+function stIsDe(g){
+  if(!G[g])return false;
+  if(LSG.off.indexOf(g)>=0)return false;
+  if(LSG.on.indexOf(g)>=0)return true;
+  var hit=/german|deutsch/i.test([G[g].n,G[g].tag,SHORT[g],gtag(g),tabName(g)].join(" "))||/^\s*g\s*$/i.test(tabName(g)||"")||/^\s*g\s*$/i.test(gtag(g)||"");
+  if(hit){LSG.on.push(g);lsgSave()}
+  return hit}
 function stSet(id){var i,j;for(i=0;i<STL.length;i++)for(j=0;j<STL[i].S.length;j++)if(STL[i].S[j].id===id)return STL[i].S[j]}
 function stLevel(id){return STL.filter(function(l){return l.id===id})[0]}
 function stItems(s){if(s.k==="r"||s.k==="c")return[];if(STC[s.id])return STC[s.id];return STC[s.id]=s.d.split("\n").map(function(r){var p=r.split("=");if(s.k==="g")return{q:p[0],a:p[1].split("|"),d:[p[0]],e:p[1].split("|")};return{d:p[0].split("|"),e:p[1].split("|")}})}
@@ -4590,7 +4604,7 @@ function partHtml(g){
     H='<section class="grp xpv" style="--c:'+G[g].c+';--cd:'+G[g].cd+';--h:'+gh(g)+'"><div class="xhead"><div class="xid"><button class="logo big" data-lg="'+g+'" title="Add or change logo" aria-label="Logo">'+(LOGOS[g]?'<img src="'+LOGOS[g]+'" alt="">':'+')+'</button>'+
       (LOGOS[g]?'<button class="lx" data-lx="'+g+'" title="Remove logo" aria-label="Remove logo">×</button>':"")+
       '<div><input class="gname" data-gn="'+g+'" value="'+esc(gtag(g))+'" size="'+Math.max(6,Math.round(gtag(g).length*1.3))+'" aria-label="Part name"><div class="xmeta"><label class="xshort"><small>Tab name</small><input type="text" class="gshort" data-gs="'+g+'" value="'+esc(tabName(g))+'" maxlength="14" placeholder="Short name" aria-label="Short tab name"></label><input type="color" class="gcol" data-gc="'+g+'" value="'+G[g].cd.toLowerCase()+'" title="Change color" aria-label="Part color">'+
-      (Object.keys(G).length>1?'<button class="gdel" data-gdel="'+g+'" title="Delete this part" aria-label="Delete this part">Delete part</button>':"")+'</div></div></div>'+vit(st)+'</div>';
+      (function(){var de=stIsDe(g);return'<label class="gde" title="Show the German study board (der/die/das, levels A1\u2013C2) in this part"><input type="checkbox" data-gde="'+g+'"'+(de?" checked":"")+'> German study</label>'})()+(Object.keys(G).length>1?'<button class="gdel" data-gdel="'+g+'" title="Delete this part" aria-label="Delete this part">Delete part</button>':"")+'</div></div></div>'+vit(st)+'</div>';
   var tabs=[["tasks","Tasks",act.length],["rem","Reminders",rlGet(g).filter(function(x){return!x.d}).length||""],["files","Files & links",st.files],["photos","Photos",PH.filter(function(x){return x.g===g}).length||""],["rcp","Receipts",RC.list.filter(function(x){return x.g===g}).length||""]];
   if(g==="kbw"||g==="byld")tabs.push(["vat","VAT Checker",VATR.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="byld")tabs.splice(1,0,["ppay","Project payments",PAY.rows.filter(function(x){return x.g===g}).length||""]);
