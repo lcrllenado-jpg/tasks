@@ -1480,6 +1480,31 @@ html[data-look=neo][data-theme=dark] .pytbl tbody tr:nth-child(even) td{backgrou
 html[data-look=neo][data-theme=dark] .pytbl tbody td input{background:#1B1A1D!important}
 html[data-look=neo] .xsec{background:#F7F2E7!important}
 html[data-look=neo][data-theme=dark] .xsec{background:#2E2D30!important}
+/* Soft Clay: selected sub-tab inner text (German levels) must sit on the pill, not on its own box */
+html[data-look=neo] .xsubs .xs b,html[data-look=neo] .xsubs .xs small,html[data-look=neo] .xsubs .xs.on b,html[data-look=neo] .xsubs .xs.on small,html[data-look=neo] .xsubs.de .xs.on small{background:transparent!important;background-color:transparent!important;box-shadow:none!important}
+html[data-look=neo] .xsubs .xs.on,html[data-look=neo] .xsubs .xs.on b,html[data-look=neo] .xsubs .xs.on small,html[data-look=neo] .xsubs.de .xs.on small{color:#fff!important;text-shadow:none!important}
+html[data-look=neo] .xsubs .xs:not(.on) b{color:var(--ink)!important}
+/* ===== Soft Clay: each part gets its own colour (the dot in the part header), blended with blue so every section pops ===== */
+html[data-look=neo] .grp{--pt:color-mix(in srgb,var(--c) 24%,#C2E0EE);--pd:color-mix(in srgb,var(--c) 66%,#06303a);--pn:color-mix(in srgb,var(--c) 30%,#E4F0F1);--pr:color-mix(in srgb,var(--c) 34%,#98C4DC);--pb:color-mix(in srgb,var(--c) 30%,#A9D0E4)}
+html[data-look=neo][data-theme=dark] .grp{--pt:color-mix(in srgb,var(--c) 24%,#3A3C42);--pd:color-mix(in srgb,var(--c) 72%,#101012);--pn:color-mix(in srgb,var(--c) 14%,#1C1D21);--pr:color-mix(in srgb,var(--c) 22%,#2E2F35);--pb:color-mix(in srgb,var(--c) 26%,#44464D)}
+html[data-look=neo] .grp .xhead>.xid,html[data-look=neo] .grp .xid{background:var(--pt)!important;border:1px solid rgba(0,0,0,.18)!important;border-left:8px solid var(--pd)!important}
+html[data-look=neo] .grp .xsec{background:var(--pt)!important;border:1px solid rgba(0,0,0,.16)!important;border-top:8px solid var(--pd)!important}
+html[data-look=neo] .grp .xsec>h3,html[data-look=neo] .grp .xsec>h3 em{background:var(--pd)!important;color:#fff!important}
+html[data-look=neo] .grp .xsec>h3 em{background:rgba(255,255,255,.22)!important}
+html[data-look=neo] .grp .xsubs{background:var(--pb)!important;border:1px solid rgba(0,0,0,.2)!important}
+html[data-look=neo] .grp .xsubs .xs.on{background:var(--pd)!important;color:#fff!important}
+html[data-look=neo] .grp .xsubs .xs:not(.on){color:var(--ink)!important}
+html[data-look=neo] .grp .pnote,html[data-look=neo] .grp .xsec textarea,html[data-look=neo] .grp .xsec input:not([type=checkbox]):not([type=color]),html[data-look=neo] .grp .xsec select:not(.pill){background:var(--pn)!important;border:1px solid color-mix(in srgb,var(--pd) 45%,transparent)!important;color:var(--ink)!important}
+html[data-look=neo] .grp .tr.hd{background:var(--pd)!important;color:#fff!important}
+html[data-look=neo] .grp .tr.hd *{color:#fff!important}
+html[data-look=neo] .grp .tbl{background:var(--pr)!important;border:1px solid color-mix(in srgb,var(--pd) 50%,transparent)!important}
+html[data-look=neo] .grp .xsec .card,html[data-look=neo] .grp .xdrop,html[data-look=neo] .grp .acclock,html[data-look=neo] .grp details.card{background:var(--pb)!important;border:1px solid color-mix(in srgb,var(--pd) 45%,transparent)!important;border-left:6px solid var(--pd)!important}
+html[data-look=neo] .grp .pytbl{background:var(--pr)!important;border:2px solid var(--pd)!important}
+html[data-look=neo] .grp .xsec .btn.pri,html[data-look=neo] .grp .xsec .btn.green{background:var(--pd)!important;color:#fff!important}
+/* full-screen page: no empty strip underneath */
+html[data-look=neo] .wrap,html[data-look=neo] .frame{padding-bottom:0!important;margin-bottom:0!important}
+html[data-look=neo] .shell{min-height:calc(100vh - 16px)!important;padding-bottom:20px!important;margin-bottom:0!important}
+html[data-look=neo] body{min-height:0!important;padding-bottom:0!important}
 .stkeys{display:flex;gap:6px;margin:6px 0}.stkey{border:0;background:var(--card);box-shadow:var(--raise-s);border-radius:8px;width:38px;height:34px;font:700 16px inherit;cursor:pointer;color:var(--ink)}.stbtns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .stsc{display:flex;gap:18px;align-items:center;background:var(--card);border-radius:16px;padding:14px 20px;box-shadow:var(--raise-s);margin:10px 0}.stbig{font-size:34px;font-weight:900}.stsc small{display:block;color:var(--mute);margin-top:3px}
 @media(max-width:640px){.stq{flex-wrap:wrap}.stp,.sai,.sta{flex:1 1 100%}}
