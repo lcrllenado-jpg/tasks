@@ -1560,6 +1560,7 @@ html[data-look=neo] .grp .pytbl tbody tr.arh td small{color:#fff!important}
 .mrq{display:flex;align-items:center;gap:14px;padding:8px 12px;border-bottom:1px solid #cfe0d6}.mrq b{flex:0 0 38%}.mrq>span:not(.pill){flex:1}
 .mrt small{display:block;font-weight:400}
 .mrvd{display:flex;align-items:center;gap:14px;padding:12px 14px;margin:4px 0 8px;border:2px solid #12373B;border-radius:10px;background:#F3F9F5;font-size:14px;font-weight:600}.mrvd .pill{font-size:12.5px;min-width:130px}
+.mrp small.loss{color:#a32424!important;font-weight:700}.mrp small.gain{color:#1b7a3d!important;font-weight:700}
 .stkeys{display:flex;gap:6px;margin:6px 0}.stkey{border:0;background:var(--card);box-shadow:var(--raise-s);border-radius:8px;width:38px;height:34px;font:700 16px inherit;cursor:pointer;color:var(--ink)}.stbtns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .stsc{display:flex;gap:18px;align-items:center;background:var(--card);border-radius:16px;padding:14px 20px;box-shadow:var(--raise-s);margin:10px 0}.stbig{font-size:34px;font-weight:900}.stsc small{display:block;color:var(--mute);margin-top:3px}
 @media(max-width:640px){.stq{flex-wrap:wrap}.stp,.sai,.sta{flex:1 1 100%}}
@@ -2577,10 +2578,11 @@ function mrKey(r){var c=(r.code||"").trim().toUpperCase();return c?c:"~"+(r.name
 function mrProjects(g){
   var O=[],M={};
   PAY.rows.forEach(function(r){if(r.g!==g||!pyIsPT(r.k))return;var q=pyCalc(r);if(q.done)return;var k=mrKey(r),x=M[k];
-    if(!x){x=M[k]={key:k,code:(r.code||"").trim(),names:[],cv:0,bef:0,bal:0};O.push(x)}
+    if(!x){x=M[k]={key:k,code:(r.code||"").trim(),names:[],cv:0,bef:0,bal:0,paid:0};O.push(x)}
     var nm=(r.name||"").trim();if(nm&&x.names.every(function(n){return n.toLowerCase()!==nm.toLowerCase()}))x.names.push(nm);
-    x.cv=r2(x.cv+q.cv);x.bef=r2(x.bef+(num(r.bef)||0));x.bal=r2(x.bal+Math.max(q.bal,0))});
-  O.forEach(function(x){var p=MR.proj[x.key]||{};x.exp=num(p.exp)||0;x.estIn=p.est||"";x.est=num(p.est)!==null?num(p.est):x.bef;x.pct=x.est>0?r2(x.exp/x.est*100):null});
+    x.cv=r2(x.cv+q.cv);x.paid=r2(x.paid+q.paid);x.bef=r2(x.bef+(num(r.bef)||0));x.bal=r2(x.bal+Math.max(q.bal,0))});
+  var SP={};PAY.rows.forEach(function(r){if(r.g===g&&r.k==="sub"&&(r.pcode||"").trim()){var kk=r.pcode.trim().toUpperCase();SP[kk]=r2((SP[kk]||0)+pyCalc(r).paid)}});
+  O.forEach(function(x){var p=MR.proj[x.key]||{};x.expAuto=SP[x.key]||0;x.expIn=p.exp||"";x.exp=num(p.exp)!==null?num(p.exp):x.expAuto;x.estIn=p.est||"";x.est=num(p.est)!==null?num(p.est):x.bef;x.pct=(x.exp>0&&x.est>0)?r2(x.exp/x.est*100):null});
   return O}
 function mrPay(g,k){return PAY.rows.filter(function(r){return r.g===g&&r.k===k&&!pyCalc(r).done}).map(function(r){var q=pyCalc(r);return{name:(r.name||"").trim()||"(no name yet)",code:(r.pcode||"").trim(),cv:q.cv,paid:q.paid,bal:Math.max(q.bal,0)}})}
 var MR_LH="BYLD TECHNICAL SERVICES L.L.C\nGOSHI WAREHOUSE 156\nAl Quoz 3, Dubai, UAE";
@@ -2704,9 +2706,9 @@ function mrReport(g,mode){
     '<div class="mrsr mrsn"><span>Net position</span><b>'+mrN(net)+'</b></div>'+'</div>';
   h+='<div class="mrsc">'+sec("1","CASH ON HAND")+'<div class="mrasof">Running balance held by each person as of '+d+'</div>'+tb("1fr 170px",["Held by","Amount"],cashR,["Total cash on hand",mrN(ctot)])+note(MR.cnote);
   h+='</div><div class="mrsc">'+sec("2","RAK BANK")+'<div class="mrasof">Bank reconciliation as of '+d+'</div>'+tb("1fr 170px",["Description","Amount"],[["Bank balance",mrN(bk)],["Book balance",mrN(bo)]],["Reconciliation discrepancy (bank less book)",Math.abs(df)<.005?"-":mrN(df)])+note(MR.bnote);
-  h+='</div><div class="mrsc">'+sec("3","PROJECTS - PT (ONGOING)")+'<div class="mrasof">Position of each ongoing project as of '+d+'. Estimated % = expenses to date ÷ total estimated revenue.</div>';
-  if(P.length){var tp=c>0?r2(b/c*100):null;
-    h+=tb("1.5fr 1fr 1fr 1fr .7fr 1fr",["Project","Cost incl. VAT","Expenses to date","Est. revenue","Est. %","To be received"],P.map(function(x){return['<b>'+esc(x.code||x.names[0]||"(no code yet)")+'</b>'+(x.names.length&&(x.code||x.names.length>1)?'<small>'+esc((x.code?x.names:x.names.slice(1)).join(" / "))+'</small>':""),mrN(x.cv),mrN(x.exp),mrN(x.est),x.pct===null?"-":x.pct.toFixed(1)+"%",mrN(x.bal)]}),["Total",mrN(a),mrN(b),mrN(c),tp===null?"-":tp.toFixed(1)+"%",mrN(e)])}
+  h+='</div><div class="mrsc">'+sec("3","PROJECTS - PT (ONGOING)")+'<div class="mrasof">Position of each ongoing project as of '+d+'. Estimated profit or loss = estimated revenue (contract value before VAT unless you changed it) less expenses to date, with its percentage of that revenue.</div>';
+  if(P.length){var pf=function(ex,es){if(!(ex>0&&es>0))return"-";var pr=r2(es-ex),pp=Math.abs(r2(pr/es*100)).toFixed(1);return mrN(pr)+'<small class="'+(pr<0?"loss":"gain")+'">'+pp+(pr<0?"% loss":"% profit")+'</small>'};
+    h+=tb("1.4fr 1fr 1fr 1fr 1.1fr 1fr",["Project","Project cost (incl. VAT)","Received from customer","Expenses to date","Est. profit / (loss)","Pending balance"],P.map(function(x){return['<b>'+esc(x.code||x.names[0]||"(no code yet)")+'</b>'+(x.names.length&&(x.code||x.names.length>1)?'<small>'+esc((x.code?x.names:x.names.slice(1)).join(" / "))+'</small>':""),mrN(x.cv),mrN(x.paid),mrN(x.exp),pf(x.exp,x.est),mrN(x.bal)]}),["Total",mrN(a),mrN(r2(P.reduce(function(t,x){return t+x.paid},0))),mrN(b),pf(b,c),mrN(e)])}
   else h+='<div class="mrnote">No ongoing projects.</div>';
   h+=note(MR.pnote);
   h+='</div><div class="mrsc">'+sec("4","PAYABLES")+'<div class="mrasof">Amounts still to be paid as of '+d+'</div>';
@@ -2728,8 +2730,8 @@ function mrHtml(g){
     '<label class="mrf mrw"><small>Note (you can edit this)</small><textarea data-mr="cnote" rows="2" placeholder="e.g. where the cash came from">'+esc(MR.cnote)+'</textarea></label></section>'+
     '<section class="xsec"><h3>Rak Bank</h3><div class="mrcash"><label class="mrf"><small>Bank balance</small><input inputmode="decimal" data-mr="bank" value="'+esc(MR.bank)+'" placeholder="0.00"></label><label class="mrf"><small>Book balance</small><input inputmode="decimal" data-mr="book" value="'+esc(MR.book)+'" placeholder="0.00"></label><div class="mrf"><small>Reconciliation discrepancy (automatic)</small><b id="mrDisc" class="mrdisc"></b></div></div>'+
     '<label class="mrf mrw"><small>Note (you can edit this)</small><textarea data-mr="bnote" rows="2">'+esc(MR.bnote)+'</textarea></label></section>'+
-    '<section class="xsec"><h3>Projects (PT ongoing)</h3><p class="plh">Cost, balance and project code come from Project payments. Type the expenses to date. Estimated revenue starts as the contract value before VAT; type over it if it differs.</p>'+
-    '<div class="mrproj">'+(mrProjects(g).map(function(x){return'<div class="mrpc"><b>'+esc(x.code||x.names[0]||"(no code)")+'</b><small>'+esc(x.names.join(" / "))+'</small><div class="mrcash"><label class="mrf"><small>Expenses until date</small><input inputmode="decimal" data-mrp="exp" data-mrk="'+esc(x.key)+'" value="'+esc((MR.proj[x.key]||{}).exp||"")+'" placeholder="0.00"></label><label class="mrf"><small>Total estimated revenue</small><input inputmode="decimal" data-mrp="est" data-mrk="'+esc(x.key)+'" value="'+esc(x.estIn)+'" placeholder="'+money(x.bef)+'"></label></div></div>'}).join("")||'<p class="plh">No ongoing projects yet. Add them under Project payments.</p>')+'</div>'+
+    '<section class="xsec"><h3>Projects (PT ongoing)</h3><p class="plh">Cost, balance and project code come from Project payments. Expenses to date start as what you have paid to the sub-contractors tagged to that project; type over it to include other costs. Estimated revenue starts as the contract value before VAT; type over it if it differs.</p>'+
+    '<div class="mrproj">'+(mrProjects(g).map(function(x){return'<div class="mrpc"><b>'+esc(x.code||x.names[0]||"(no code)")+'</b><small>'+esc(x.names.join(" / "))+'</small><div class="mrcash"><label class="mrf"><small>Expenses until date (automatic: sub-contractor payments)</small><input inputmode="decimal" data-mrp="exp" data-mrk="'+esc(x.key)+'" value="'+esc(x.expIn)+'" placeholder="'+money(x.expAuto)+'"></label><label class="mrf"><small>Total estimated revenue</small><input inputmode="decimal" data-mrp="est" data-mrk="'+esc(x.key)+'" value="'+esc(x.estIn)+'" placeholder="'+money(x.bef)+'"></label></div></div>'}).join("")||'<p class="plh">No ongoing projects yet. Add them under Project payments.</p>')+'</div>'+
     '<label class="mrf mrw"><small>Projects note (you can edit this)</small><textarea data-mr="pnote" rows="2">'+esc(MR.pnote)+'</textarea></label></section>'+
     '<section class="xsec"><h3>Payables note</h3><label class="mrf mrw"><small>Note (you can edit this)</small><textarea data-mr="ynote" rows="2">'+esc(MR.ynote)+'</textarea></label></section>'+
     '<section class="xsec" id="mrPrevSec"><div class="rpbar"><h3>Monthly report</h3><span class="rpgrp"><button type="button" class="btn pri rpbtn" data-mrprint="report">Print report</button></span></div><div class="mrpaper" id="mrPrev">'+mrReport(g,"report")+'</div></section>'+
