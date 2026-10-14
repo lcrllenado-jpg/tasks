@@ -1643,19 +1643,61 @@ html[data-look=neo] .pytbl td input:not([type=checkbox]):not([type=color]):not([
 .cmdws{margin:14px 0 6px}.cmdws h4{margin:0 0 8px!important;font-size:17px!important;text-transform:none!important;letter-spacing:0!important;color:#16407f!important}
 .cmdwf{background:#fff!important;border:2px solid #16407f;border-radius:12px;padding:10px 12px 8px;margin:0 0 12px;color:#16407f!important}.cmdwf figcaption{margin:0 0 6px}.cmdwf figcaption b{display:block;font-size:15.5px;color:#16407f!important}.cmdwf figcaption span{display:block;font-size:13.5px;line-height:1.4;color:#2b4676!important;margin-top:2px}.cmdwsvg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
 .dwpg{display:grid;grid-template-columns:1fr 1fr;gap:6px}.dwpg .cmdwf{margin:0;break-inside:avoid;padding:6px 8px}.dwpg .cmdwf figcaption b{font-size:11px}.dwpg .cmdwf figcaption span{font-size:9.5px}
-.inkov{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:40}
-body.inkon .inkov{pointer-events:auto;cursor:crosshair;touch-action:pan-y pan-x}body.inkon.inkfing .inkov{touch-action:none}body.inkscroll .inkov{pointer-events:none!important}#inkbar .inkseen{flex:1 0 100%;text-align:center;color:#cfe0ff;font:600 12px Arial,sans-serif}
-body.inkon .cmroot{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
-body.inkpage .cmroot p,body.inkpage .cmroot li,body.inkpage .cmroot td{line-height:1.9!important}
-@media(min-width:900px){body.inkpage .cmroot{padding-right:250px;background:linear-gradient(to left,#fffdf0 0,#fffdf0 236px,transparent 236px);background-repeat:no-repeat}body.inkpage .cmroot::after{content:"margin notes";position:absolute;right:0;top:0;bottom:0;width:236px;border-left:2px solid #e8a2a2;color:#c9b27a;font-size:12px;padding:6px 10px;pointer-events:none;background:repeating-linear-gradient(transparent 0,transparent 31px,#e5dcc0 32px)}}
-.inkscratch{height:420px;margin:22px 0 8px;border:2px dashed #16407f;border-radius:12px;background-color:#fffdf5;background-image:radial-gradient(#b8c4de 1.2px,transparent 1.4px);background-size:22px 22px;position:relative}.inkscratch span{position:absolute;left:12px;top:8px;font-size:12.5px;font-weight:700;color:#16407f;opacity:.7}
-#inkbar{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:3000;display:none;gap:6px;flex-wrap:wrap;justify-content:center;max-width:96vw;background:#16407f;padding:7px 9px;border-radius:26px;box-shadow:0 6px 22px rgba(0,0,0,.35)}
-#inkbar .inkb{min-height:44px;min-width:44px;box-sizing:border-box;padding:0 14px;border-radius:22px;background:#fff!important;color:#16407f!important;font:800 14px Arial,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;-webkit-user-select:none;border:3px solid transparent;box-shadow:none!important;text-align:center}
-#inkbar .inkb.on{border-color:#ffb020;background:#FFF5D6!important}#inkbar .inkb.inkpri{background:#ffb020!important;color:#1b1b1b!important}#inkbar .inkb.inkq{color:#c0176f!important}#inkbar .inksw{padding:0;width:44px;border:3px solid #fff}#inkbar .inksw.on{border-color:#ffb020;outline:2px solid #fff}
 #inktoast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#1b2b4b;color:#fff;padding:10px 16px;border-radius:12px;font:700 14px Arial,sans-serif;z-index:3100;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center}
 .inkx .inki{background:#fff!important;border:2px solid #16407f;border-left:7px solid #e0338d;border-radius:12px;padding:10px 14px;margin:10px 0;color:#16407f!important}.inkx .inkok{border-left-color:#1a7a3c;opacity:.75}.inkx .inkh{font-size:13px;color:#2b4676!important}.inkx .inkc{font-size:16px;font-weight:800;margin:4px 0;color:#16407f!important}.inkx .inkx2{font-size:13.5px;line-height:1.5;color:#333!important;margin:2px 0 6px}.inkx mark{background:#ffe08a;color:inherit;padding:0 2px;border-radius:3px}
 .inkx .inkexp,.inkexp{width:100%;box-sizing:border-box;border:2px solid #b8c4de;border-radius:10px;padding:8px 10px;font:15px/1.5 Arial,sans-serif;background:#fffdf5!important;color:#1b2b4b!important;margin:6px 0}
-@media(max-width:640px){#inkbar .inkb{padding:0 10px;font-size:13px}}
+.inkov{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:40}
+body.inkact .cmroot{-webkit-touch-callout:none}
+#inkbar{position:fixed;right:14px;bottom:14px;z-index:3000;display:none;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:min(560px,92vw);align-items:center}
+#inkbar .inkb{min-height:46px;box-sizing:border-box;padding:0 16px;border-radius:23px;background:#fff!important;color:#16407f!important;font:700 15px Arial,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;-webkit-user-select:none;border:2px solid #16407f;box-shadow:0 2px 8px rgba(0,0,0,.25)!important;text-align:center}
+#inkbar .inkb.on{background:#FFF5D6!important;border-color:#e0338d}
+#inkbar .inkb.inkon{background:#e0338d!important;color:#fff!important;border-color:#e0338d;font-size:16px}
+#inkbar .inkseen{flex:1 0 100%;text-align:right;color:#fff;background:rgba(22,64,127,.88);border-radius:10px;padding:5px 10px;font:600 12px Arial,sans-serif}
+/* ===== formal look for the CMA reviewer ===== */
+html body #board .cmroot{--card:#fff;--tint:#f5f8fd;--line:#c9d3e6;--box:#e3e9f5;--ink:#1b2b4b;--mute:#5a6a8a;--accent:#16407f;--glass:#fff;--sh-d:transparent;--sh-l:transparent;--raise:none;--raise-s:none;--raise-xs:none;--inset:none;--mint:#16407f;--mint-ink:#fff;--late:#b3261e;color-scheme:light;color:#1b2b4b}
+html body #board .cmroot *{--card:#fff;--ink:#1b2b4b;--mute:#5a6a8a}
+html body #board .xsubs.cmnav{background:#fff!important;border:1px solid #c9d3e6!important;border-radius:6px!important;box-shadow:none!important;padding:0 6px!important;gap:0!important;margin:10px 0 0!important}
+html body #board .xsubs.cmnav .xs{background:transparent!important;box-shadow:none!important;border-radius:0!important;border:0!important;border-bottom:3px solid transparent!important;color:#3d4f73!important;font-size:14px!important;font-weight:600!important;padding:12px 14px!important;text-shadow:none!important}
+html body #board .xsubs.cmnav .xs.on{color:#16407f!important;border-bottom-color:#16407f!important;font-weight:800!important}
+html body #board .xsubs.cmnav .xs small,html body #board .xsubs.cmnav .xs em{background:none!important;color:#6b7a99!important;box-shadow:none!important}
+html body #board .cmroot{background:#fff!important;color:#1b2b4b!important;border:1px solid #c9d3e6!important;border-top:0!important;border-radius:0 0 6px 6px!important;padding:22px 26px 30px!important;box-shadow:none!important;margin-bottom:24px}
+html body #board .cmroot,html body #board .cmroot *{text-shadow:none!important}
+html body #board .cmroot .xsec{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;color:#1b2b4b!important;border-radius:0!important}
+html body #board .cmroot .rpbar{background:none!important;box-shadow:none!important;border:0!important;border-bottom:2px solid #16407f!important;border-radius:0!important;margin:0 0 16px!important;padding:0 0 8px!important}
+html body #board .cmroot .rpbar h3{background:none!important;box-shadow:none!important;border:0!important;padding:0!important;margin:0!important;color:#16407f!important;font-size:22px!important;font-weight:700!important;border-radius:0!important}
+html body #board .cmroot em,html body #board .cmroot .rpbar h3 em{background:none!important;box-shadow:none!important;padding:0!important;border:0!important;color:#5a6a8a!important;font-style:normal!important;font-size:13px!important;font-weight:600!important;display:inline!important;width:auto!important}
+html body #board .cmroot .sth,html body #board .cmroot h5{color:#16407f!important;background:none!important;box-shadow:none!important;border:0!important;border-bottom:1px solid #c9d3e6!important;border-radius:0!important;padding:0 0 4px!important;margin:22px 0 10px!important;font-size:16px!important;text-transform:none!important;letter-spacing:0!important}
+html body #board .cmroot .btn,html body #board .cmroot button.btn{border-radius:4px!important;box-shadow:none!important;background:#fff!important;background-image:none!important;color:#16407f!important;border:1px solid #16407f!important;font-weight:600!important;font-size:14px!important;padding:8px 14px!important;min-height:38px!important;filter:none!important}
+html body #board .cmroot .btn.pri{background:#16407f!important;color:#fff!important}
+html body #board .cmroot .btn:hover{background:#eef2fa!important}.cmroot .btn.pri:hover{background:#0f3068!important}
+html body #board .cmroot .stcard,html body #board .cmroot .cmone,html body #board .cmroot .cmcc,html body #board .cmroot .cmkpi>div,html body #board .cmroot .cmprow,html body #board .cmroot .cmcase,html body #board .cmroot .cmsd,html body #board .cmroot details.cmsd,html body #board .cmroot .cmfc,html body #board .cmroot .stsc,html body #board .cmroot .cmcard,html body #board .cmroot .cmq,html body #board .cmroot .cmuni,html body #board .cmroot .cmfp,html body #board .cmroot .cmdwf,html body #board .cmroot .rfl,html body #board .cmroot .inki,html body #board .cmroot .cmmn,html body #board .cmroot .cmrd{background:#fff!important;background-image:none!important;border:1px solid #c9d3e6!important;border-radius:6px!important;box-shadow:none!important;color:#1b2b4b!important}
+html body #board .cmroot .cmone{border-left:4px solid #16407f!important;background:#f5f8fd!important}
+html body #board .cmroot .cmone small,html body #board .cmroot .cmone h4{color:#16407f!important}
+html body #board .cmroot .rfcta,html body #board .cmroot .cmrd{background:#f5f8fd!important;border:1px solid #c9d3e6!important;border-left:4px solid #16407f!important;border-radius:6px!important}
+html body #board .cmroot .cmmn{background:#f9fafc!important;border-left:4px solid #16407f!important}
+html body #board .cmroot .cmsd>summary{background:#f5f8fd!important;box-shadow:none!important;color:#16407f!important;border-radius:6px!important}
+html body #board .cmroot .cmuni{border:1px solid #16407f!important}
+html body #board .cmroot .cmdwf{border:1px solid #c9d3e6!important}
+html body #board .cmroot .rfl{border:1px solid #c9d3e6!important}.cmroot .rfl>summary{background:transparent!important}
+html body #board .cmroot .pytbl,html body #board .cmroot .rft{box-shadow:none!important;border-radius:0!important}
+html body #board .cmroot .pytbl th,html body #board .cmroot .rft th{background:#16407f!important;color:#fff!important}
+html body #board .cmroot input[type=search],html body #board .cmroot textarea{border-radius:4px!important;box-shadow:none!important;background:#fff!important;color:#1b2b4b!important;border:1px solid #9aa9c6!important}
+html body #board .cmroot .cmbar{background:#e3e9f5!important;box-shadow:none!important;border-radius:3px!important}.cmroot .cmbar i{background:#16407f!important;box-shadow:none!important}
+html body #board .cmroot h4,html body #board .cmroot b,html body #board .cmroot strong{text-shadow:none!important}
+html body #board .cmroot p,html body #board .cmroot li,html body #board .cmroot .plh{color:#2b3a5a!important}
+html body #board .cmroot .stcb em,html body #board .cmroot .stdone{color:#1a7a3c!important}
+html body #board .cmroot .pytbl tbody td,html body #board .cmroot .pytbl tbody td b,html body #board .cmroot .pytbl tbody td span:not(.cmdots):not(.cmdot){color:#1b2b4b!important}
+html body #board .cmroot .pytbl tbody td small,html body #board .cmroot .cmima,html body #board .cmroot .cmopt{color:#5a6a8a!important;background:none!important}
+html body #board .cmroot .cmstp div,html body #board .cmroot .cmstp div *{color:#1b2b4b!important}
+html body #board .cmroot .cmstp div b{background:#16407f!important;color:#fff!important}
+html body #board .xsubs.cmnav .xs *{color:inherit!important}
+html body #board .xsubs.cmnav .xs b{background:none!important}
+html body #board .cmroot table.pytbl,html body #board .cmroot table.pytbl tr,html body #board .cmroot table.pytbl td,html body #board .cmroot table.pytbl tbody{background:#fff!important;background-image:none!important}
+html body #board .cmroot table.pytbl tbody tr:nth-child(even) td{background:#f7f9fd!important}
+html body #board .cmroot .cmdn td{background:#eef7f0!important}
+html body #board .cmroot .cmtrap{background:#fdeeea!important;border:1px solid #e8b9ab!important;border-left:4px solid #c0391b!important;border-radius:6px!important;color:#7a2a10!important}
+html body #board .cmroot .cmtrap *{color:#7a2a10!important}
+html body #board .cmroot input[type=checkbox]{-webkit-appearance:auto!important;appearance:auto!important;background:#fff!important;box-shadow:none!important;border-radius:3px!important;accent-color:#16407f;width:18px!important;height:18px!important}
 .stkeys{display:flex;gap:6px;margin:6px 0}.stkey{border:0;background:var(--card);box-shadow:var(--raise-s);border-radius:8px;width:38px;height:34px;font:700 16px inherit;cursor:pointer;color:var(--ink)}.stbtns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .stsc{display:flex;gap:18px;align-items:center;background:var(--card);border-radius:16px;padding:14px 20px;box-shadow:var(--raise-s);margin:10px 0}.stbig{font-size:34px;font-weight:900}.stsc small{display:block;color:var(--mute);margin-top:3px}
 @media(max-width:640px){.stq{flex-wrap:wrap}.stp,.sai,.sta{flex:1 1 100%}}
@@ -3209,7 +3251,7 @@ function cmDwHtml(n){var l=DWCH[n];if(!l)return"";return'<div class="cmdws"><h4>
 function cmDwPrint(){var h='<h2 style="margin:0 0 4px">CMA Part 1: picture sheet</h2><p style="margin:0 0 8px;color:#555">Printed '+cmDate(Date.now())+'. Redraw these by hand to remember them.</p>';CMD.ch.forEach(function(c){var l=DWCH[c.n];if(!l)return;h+='<div style="break-inside:avoid;margin:0 0 6px"><b style="background:#16407f;color:#fff;padding:3px 8px;display:block;font-size:12px">'+(c.n?"Chapter "+c.n+": ":"")+esc(c.t)+'</b><div class="dwpg">'+l.map(dwFig).join("")+'</div></div>'});return h}
 
 /* ===== Pencil mode: scribble on study pages, circle = "I do not understand", doubts sheet ===== */
-var INKK="planner-ink-v1",INK={pg:{},q:[],n:0,tool:"p",col:"#1f2a44",fing:0},INKON=false,INKPEN=0,INKLAST="",INKSCR=false,INKNS="http://www.w3.org/2000/svg",INKRO=null,INKRAF=0;
+var INKK="planner-ink-v1",INK={pg:{},q:[],n:0,tool:"q",col:"#1f2a44",fing:0},INKPEN=0,INKLAST="",INKNS="http://www.w3.org/2000/svg",INKRO=null,INKRAF=0;
 try{var _ik=JSON.parse(localStorage.getItem(INKK)||"null");if(_ik&&typeof _ik==="object"){for(var _k2 in _ik)INK[_k2]=_ik[_k2];INK.pg=INK.pg||{};INK.q=INK.q||[]}}catch(e){}
 function inkSave(){try{localStorage.setItem(INKK,JSON.stringify(INK))}catch(e){}}
 function inkKey(){if(CMV&&(CMV.t==="quiz"||CMV.t==="rev"||CMV.t==="inks"||CMV.t==="drill"))return null;
@@ -3239,9 +3281,8 @@ function inkCircle(pts,k,sid){var x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;pts.forEach(func
   if(txt&&ctx&&txt.split(" ").length>=5){var ix=ctx.indexOf(txt);if(ix>=0){var st=0,en=ctx.length;[". ","? ","! "].forEach(function(t){var j=ctx.lastIndexOf(t,ix-1);if(j>=0&&j+2>st)st=j+2;var k2=ctx.indexOf(t,ix+txt.length-1);if(k2>=0&&k2+1<en)en=k2+1});txt=ctx.slice(st,en)}}
   if(!txt)txt=ctx.slice(0,160);if(!txt){inkToast("Nothing to explain there. Circle some text.");return false}
   INK.n=(INK.n||0)+1;INK.q.push({id:INK.n,pg:k,ttl:inkTitle(k),text:txt.slice(0,500),ctx:ctx.slice(0,700),at:Date.now(),exp:"",st:0,sid:sid});inkToast("Added to My doubts: #"+INK.n);return true}
-function inkIsPen(e){if(e.pointerType==="pen"||e.pointerType==="mouse")return true;if(e.pointerType==="touch"){if(INK.fing)return true;if(e.width>0&&e.width<=4&&e.height<=4)return true}return false}
+var INKACT=false,INKCUR=null,INKPEND=null;
 function inkSeen(e){var s=e.pointerType==="touch"&&e.width?"touch (contact "+Math.round(e.width)+"px)":e.pointerType;if(s!==INKLAST){INKLAST=s;var el=document.getElementById("inkseen");if(el)el.textContent="Input seen: "+s}}
-var INKCUR=null,INKPEND=null;
 function inkSvg(){var r=inkRoot();return r&&r.querySelector(":scope > .inkov")}
 function inkBegin(x,y){var svg=inkSvg(),root=inkRoot();if(!svg||!root)return;var rr=root.getBoundingClientRect();INKCUR={pts:[[x,y]],t:INK.tool,el:null};if(INK.tool==="e")inkErase(x,y);else{var p=document.createElementNS(INKNS,"path");inkStyle(p,INK.tool);p.setAttribute("d","M"+(x-rr.left).toFixed(1)+" "+(y-rr.top).toFixed(1));svg.appendChild(p);INKCUR.el=p}}
 function inkAdd(x,y){if(!INKCUR)return;if(INKCUR.t==="e"){inkErase(x,y);return}var root=inkRoot();if(!root)return;var rr=root.getBoundingClientRect(),l=INKCUR.pts[INKCUR.pts.length-1];if(Math.abs(x-l[0])+Math.abs(y-l[1])<1.2)return;INKCUR.pts.push([x,y]);INKCUR.el.setAttribute("d",INKCUR.el.getAttribute("d")+" L"+(x-rr.left).toFixed(1)+" "+(y-rr.top).toFixed(1))}
@@ -3252,46 +3293,39 @@ function inkEnd(){if(!INKCUR)return;var c=INKCUR;INKCUR=null;if(c.el)c.el.remove
   if(c.t==="q"&&!inkCircle(sp,k,s.id)){inkPaint();return}
   (INK.pg[k]=INK.pg[k]||[]).push(s);inkSave();inkPaint();inkBarRender()}
 function inkCo(e){var ev=e.getCoalescedEvents?e.getCoalescedEvents():[];return ev.length?ev:[e]}
-function inkWire(svg){
-  svg.addEventListener("pointerdown",function(e){if(!INKON||INKSCR)return;inkSeen(e);if(e.pointerType==="pen")INKPEN=Date.now();if(!inkIsPen(e)||e.button>0)return;if(e.pointerType==="touch"&&!INK.fing&&Date.now()-INKPEN<1500)return;e.preventDefault();try{svg.setPointerCapture(e.pointerId)}catch(x){}inkBegin(e.clientX,e.clientY)});
-  svg.addEventListener("pointermove",function(e){if(!INKCUR||INKPEND)return;inkCo(e).forEach(function(q){inkAdd(q.clientX,q.clientY)})});
-  svg.addEventListener("pointerup",function(){if(!INKPEND)inkEnd()});svg.addEventListener("pointercancel",function(){if(!INKPEND)inkEnd()});
-  ["touchstart","touchmove"].forEach(function(t){svg.addEventListener(t,function(e){var q=e.touches[0];if(!INKON||!q)return;var st=q.touchType==="stylus"||(Math.max(q.radiusX||99,q.radiusY||99)<=4)||Date.now()-INKPEN<1500;if(st||INK.fing)e.preventDefault()},{passive:false})})}
-/* automatic stylus mode: the pen draws as soon as it touches the page; taps still click, fingers still scroll */
-function inkAutoOk(e){if(INKSCR||INKON||!inkKey())return false;var root=inkRoot();if(!root||!root.contains(e.target)||e.target.closest(".inkov,#inkbar,textarea,input,select"))return false;return true}
-document.addEventListener("pointerdown",function(e){if(!inkAutoOk(e))return;inkSeen(e);var pen=e.pointerType==="pen"||(e.pointerType==="touch"&&e.width>0&&e.width<=4&&e.height<=4);if(e.pointerType==="pen")INKPEN=Date.now();if(!pen){INKPEND=null;return}INKPEND={x:e.clientX,y:e.clientY,id:e.pointerId,go:false}},true);
+/* the pen only draws while the question-mark switch is ON. Switch OFF = the pen behaves normally. */
+function inkAutoOk(e){if(!INKACT||!inkKey())return false;var root=inkRoot();if(!root||!root.contains(e.target)||e.target.closest("#inkbar,textarea,input,select"))return false;return true}
+function inkPenLike(e){if(e.pointerType==="pen"||e.pointerType==="mouse")return true;if(e.pointerType==="touch"){if(INK.fing)return true;if(e.width>0&&e.width<=5&&e.height<=5)return true}return false}
+document.addEventListener("pointerdown",function(e){if(!inkAutoOk(e))return;inkSeen(e);if(e.pointerType==="pen")INKPEN=Date.now();if(!inkPenLike(e)||e.button>0){INKPEND=null;return}if(e.pointerType==="touch"&&!INK.fing&&Date.now()-INKPEN<1500&&e.width>5){INKPEND=null;return}INKPEND={x:e.clientX,y:e.clientY,id:e.pointerId,go:false}},true);
 document.addEventListener("pointermove",function(e){if(!INKPEND||e.pointerId!==INKPEND.id)return;if(!INKPEND.go){if(Math.abs(e.clientX-INKPEND.x)+Math.abs(e.clientY-INKPEND.y)<6)return;INKPEND.go=true;inkBegin(INKPEND.x,INKPEND.y);var sel=window.getSelection&&window.getSelection();if(sel&&sel.removeAllRanges)sel.removeAllRanges()}inkCo(e).forEach(function(q){inkAdd(q.clientX,q.clientY)})},true);
 function inkPenUp(){if(INKPEND&&INKPEND.go){inkEnd();var f=function(ev){ev.stopPropagation();ev.preventDefault()};document.addEventListener("click",f,true);setTimeout(function(){document.removeEventListener("click",f,true)},80)}INKPEND=null}
 document.addEventListener("pointerup",inkPenUp,true);document.addEventListener("pointercancel",inkPenUp,true);
-document.addEventListener("touchmove",function(e){if(INKSCR||INKON)return;var q=e.touches[0];if(!q||!e.cancelable)return;var root=inkRoot();if(!root||!root.contains(e.target)||!inkKey())return;var st=q.touchType==="stylus"||Math.max(q.radiusX||99,q.radiusY||99)<=4||(INKPEND&&INKPEND.go);if(st)e.preventDefault()},{passive:false,capture:true});
+document.addEventListener("touchmove",function(e){if(!INKACT)return;var q=e.touches[0];if(!q||!e.cancelable)return;var root=inkRoot();if(!root||!root.contains(e.target)||!inkKey())return;var st=q.touchType==="stylus"||Math.max(q.radiusX||99,q.radiusY||99)<=5||(INKPEND&&INKPEND.go)||(INK.fing&&INKPEND);if(st)e.preventDefault()},{passive:false,capture:true});
 document.addEventListener("selectstart",function(e){if(INKPEND&&INKPEND.go)e.preventDefault()},true);
 function inkErase(x,y){var root=inkRoot(),k=inkKey();if(!root||!k)return;var map={};inkBlocks(root).forEach(function(b){map[b.k]=b});var list=INK.pg[k]||[],hit=false;
   INK.pg[k]=list.filter(function(s){var pts=inkAbs(s,map);if(!pts)return true;var near=pts.some(function(p){return Math.abs(p[0]-x)<12&&Math.abs(p[1]-y)<12});if(near){hit=true;if(s.t==="q")INK.q=INK.q.filter(function(i){return i.sid!==s.id})}return!near});
   if(hit){inkSave();inkPaint();inkBarRender()}}
 function inkBar(){var b=document.getElementById("inkbar");if(!b){b=document.createElement("div");b.id="inkbar";document.body.appendChild(b);b.addEventListener("click",inkBarClick);b.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.dataset&&e.target.dataset.ink){e.preventDefault();inkBarClick(e)}})}return b}
-var INKMIN=false;
-function inkBarRender(){var b=inkBar(),n=INK.q.filter(function(x){return x.st===0}).length,k=inkKey(),btn=function(a,t,cl){return'<div role="button" tabindex="0" class="inkb'+(cl?" "+cl:"")+'" data-ink="'+a+'">'+t+'</div>'};
-  if(INKMIN){b.innerHTML=btn("max","✏ Pencil","inkpri");return}
-  var cols=["#1f2a44","#c0391b","#1a7a3c","#1a56c4"];
-  b.innerHTML=btn("t:p","✏ Pen",INK.tool==="p"?"on":"")+btn("t:h","🖍 Highlight",INK.tool==="h"?"on":"")+btn("t:q","❓ Circle: I don't get it",INK.tool==="q"?"on inkq":"inkq")+btn("t:e","⌫ Erase",INK.tool==="e"?"on":"")+cols.map(function(c){return'<div role="button" tabindex="0" aria-label="colour" class="inkb inksw'+(INK.col===c?" on":"")+'" data-ink="c:'+c+'" style="background:'+c+'!important"></div>'}).join("")+btn("undo","↶ Undo")+btn("clear","Clear page")+btn("mouse",INKON?"🖱 Mouse draws: ON":"🖱 Mouse/finger draws",INKON?"on":"")+btn("scr",INKSCR?"✋ Pen paused (tap)":"✋ Pause pen",INKSCR?"on":"")+btn("doubts","❓ Doubts ("+n+")")+btn("min","▾ Hide")+'<div id="inkseen" class="inkseen">'+(INKLAST?"Input seen: "+INKLAST:"Just write with your pencil. Tap a tool to change it.")+'</div>'}
-function inkMode(){var root=inkRoot();document.body.classList.toggle("inkon",INKON);document.body.classList.toggle("inkscroll",INKSCR);document.body.classList.toggle("inkfing",!!INK.fing&&INKON);document.body.classList.toggle("inkpage",!!inkKey());if(!root)return;var sc=root.querySelector(":scope > .inkscratch");if(inkKey()&&!sc){sc=document.createElement("div");sc.className="inkscratch";sc.innerHTML="<span>Scratch space: work out problems here</span>";root.appendChild(sc)}}
+function inkBarRender(){var b=document.getElementById("inkbar");if(!b)return;var n=INK.q.filter(function(x){return x.st===0}).length,btn=function(a,t,cl){return'<div role="button" tabindex="0" class="inkb'+(cl?" "+cl:"")+'" data-ink="'+a+'">'+t+'</div>'};
+  var h2=btn("sw",INKACT?"❓ Pen ON":"❓ Pen OFF",INKACT?"inkon":"")+btn("doubts","My doubts ("+n+")");
+  if(INKACT)h2+=btn("t:q","Circle",INK.tool==="q"?"on":"")+btn("t:p","Write",INK.tool==="p"?"on":"")+btn("t:e","Erase",INK.tool==="e"?"on":"")+btn("undo","Undo")+btn("fing",INK.fing?"Finger: draws":"Finger: scrolls",INK.fing?"on":"");
+  if(INKACT)h2+='<div id="inkseen" class="inkseen">'+(INKLAST?"Input seen: "+INKLAST:"Circle a sentence you do not understand")+'</div>';
+  b.innerHTML=h2}
+function inkMode(){document.body.classList.toggle("inkact",INKACT)}
 function inkBarClick(e){var t=e.target.closest("[data-ink]");if(!t)return;var a=t.dataset.ink,k=inkKey();
-  if(a==="min"){INKMIN=true;inkBarRender();return}if(a==="max"){INKMIN=false;inkBarRender();return}
-  if(a==="mouse"){INKON=!INKON;if(INKON)INKSCR=false;inkMode();inkBarRender();return}
-  if(a==="scr"){INKSCR=!INKSCR;if(INKSCR)INKON=false;inkMode();inkBarRender();return}
+  if(a==="sw"){INKACT=!INKACT;if(INKACT&&INK.tool!=="p"&&INK.tool!=="e")INK.tool="q";if(INKACT)INK.tool=INK.tool==="e"?"e":INK.tool;INKPEND=null;inkMode();inkBarRender();return}
   if(a.indexOf("t:")===0){INK.tool=a.slice(2);inkSave();inkBarRender();return}
-  if(a.indexOf("c:")===0){INK.col=a.slice(2);if(INK.tool==="e"||INK.tool==="q")INK.tool="p";inkSave();inkBarRender();return}
+  if(a==="fing"){INK.fing=INK.fing?0:1;inkSave();inkBarRender();return}
   if(a==="undo"){var l=INK.pg[k]||[],s=l.pop();if(s&&s.t==="q")INK.q=INK.q.filter(function(i){return i.sid!==s.id});inkSave();inkPaint();inkBarRender();return}
-  if(a==="clear"){if(!(INK.pg[k]||[]).length||!confirm("Erase all your pencil marks on this page? Circles will also leave the doubts sheet."))return;var ids={};(INK.pg[k]||[]).forEach(function(s){ids[s.id]=1});INK.q=INK.q.filter(function(i){return!ids[i.sid]});INK.pg[k]=[];inkSave();inkPaint();inkBarRender();return}
-  if(a==="doubts"){INKON=false;inkMode();cmGo(VIEW,"cma",{t:"inks"});return}}
+  if(a==="doubts"){INKACT=false;inkMode();cmGo(VIEW,"cma",{t:"inks"});return}}
 function inkAttach(){var k=inkKey(),root=inkRoot(),bar=inkBar();
-  if(!k||!root){INKON=false;document.body.classList.remove("inkon","inkpage");bar.style.display="none";return}
+  if(!k||!root){INKACT=false;document.body.classList.remove("inkact");bar.style.display="none";return}
   bar.style.display="flex";root.classList.add("inkpg");var svg=root.querySelector(":scope > .inkov");
-  if(!svg){svg=document.createElementNS(INKNS,"svg");svg.setAttribute("class","inkov");root.appendChild(svg);inkWire(svg)}
+  if(!svg){svg=document.createElementNS(INKNS,"svg");svg.setAttribute("class","inkov");root.appendChild(svg)}
   if(INKRO)INKRO.disconnect();if(window.ResizeObserver){INKRO=new ResizeObserver(inkLater);INKRO.observe(root)}
   inkMode();inkPaint();inkBarRender()}
 window.addEventListener("resize",inkLater);document.addEventListener("toggle",inkLater,true);
-setInterval(function(){var b=document.getElementById("inkbar");if(b&&b.style.display!=="none"&&!document.querySelector("#board .inkov")){INKON=false;document.body.classList.remove("inkon","inkpage");b.style.display="none"}},600);
+setInterval(function(){var b=document.getElementById("inkbar");if(b&&b.style.display!=="none"&&!document.querySelector("#board .inkov")){INKACT=false;document.body.classList.remove("inkact");b.style.display="none"}},600);
 /* ---- doubts sheet ---- */
 function inkMark(ctx,txt){var c=esc(ctx),t=esc(txt.slice(0,120)),i=c.indexOf(t);if(i<0)return c;return c.slice(0,i)+'<mark>'+c.slice(i,i+t.length)+'</mark>'+c.slice(i+t.length)}
 function inkItem(x){return'<div class="inki'+(x.st===2?" inkok":"")+'" data-id="'+x.id+'"><div class="inkh"><b>#'+x.id+'</b> '+esc(x.ttl)+' <small>'+cmDate(x.at)+'</small></div><div class="inkc">'+esc(x.text)+'</div>'+(x.ctx&&x.ctx!==x.text?'<div class="inkx2">'+inkMark(x.ctx,x.text)+'</div>':"")+'<textarea class="inkexp" data-inkexp="'+x.id+'" rows="3" placeholder="Explanation: paste it from Claude, or write it in your own words">'+esc(x.exp||"")+'</textarea><div class="stbtns"><button type="button" class="btn" data-cm="inkgo" data-a="'+x.id+'">Go to the page</button><button type="button" class="btn'+(x.st===2?"":" pri")+'" data-cm="inkdone" data-a="'+x.id+'">'+(x.st===2?"Not clear yet":"✓ Got it")+'</button><button type="button" class="pyx" data-cm="inkdel" data-a="'+x.id+'" title="Delete this doubt" aria-label="Delete this doubt">×</button></div></div>'}
@@ -3312,7 +3346,7 @@ function cmOverview(){var all=CMD.ch.filter(function(c){return c.n>0}),d=all.fil
   if(next){var st=cmSteps(next.n);h+='<div class="cmone"><small>YOUR ONE THING FOR NOW</small><h4>Chapter '+next.n+': '+esc(next.t)+'</h4><div class="cmstp"><div class="'+(st.f?"dn":"")+'"><b>1</b> Read the formula box <small>2 min</small></div><div class="'+(st.n?"dn":"")+'"><b>2</b> Skim the notes <small>5 min</small></div><div class="'+(st.p?"dn":"")+'"><b>3</b> Do one practice set <small>5 min</small></div></div><div class="stbtns"><button type="button" class="btn pri cmbig" data-cm="study" data-a="'+next.n+'">Open Chapter '+next.n+'</button><button type="button" class="btn cmbig" data-cm="timer" data-a="10">⏱ 10-minute focus timer</button></div></div>'}
   else h+='<div class="cmone"><h4>All 24 chapters are done. Now keep doing mock exams.</h4><div class="stbtns"><button type="button" class="btn pri cmbig" data-cm="start" data-a="mock|100">100-question mock</button></div></div>';
   h+='<div class="rfcta"><div><b>Rusty on the basics?</b><small>A plain refresher on debits, credits, journal entries, adjustments and the four statements, with one small company followed all the way through.</small></div><button type="button" class="btn pri" data-cm="ref">Open the refresher</button></div>';
-  h+='<div class="rfcta"><div><b>Pencil mode and My doubts</b><small>Open any study page and just write on it with your stylus. Pick the ❓ Circle tool at the bottom, circle a sentence, and it lands on a separate doubts sheet, ready to be explained.</small></div><button type="button" class="btn pri" data-cm="inks">My doubts ('+INK.q.filter(function(x){return x.st!==2}).length+')</button></div>';
+  h+='<div class="rfcta"><div><b>Pencil mode and My doubts</b><small>Tap the ❓ Pen button at the bottom of any study page. ON: your stylus circles or writes. OFF: the pen behaves normally. Circle a sentence you do not understand and it lands on the doubts sheet.</small></div><button type="button" class="btn pri" data-cm="inks">My doubts ('+INK.q.filter(function(x){return x.st!==2}).length+')</button></div>';
   h+='<div class="cmkpi"><div><b>'+d+'/'+all.length+'</b><small>chapters done</small>'+cmBar(d/all.length*100)+'</div><div><b>'+tried+'/'+Object.keys(CMX).length+'</b><small>questions tried</small>'+cmBar(tried/Object.keys(CMX).length*100)+'</div><div><b>'+(tried?Math.round(right/tried*100)+"%":"-")+'</b><small>answered correctly</small>'+cmBar(tried?right/tried*100:0)+'</div><div><b>'+cdone+'/12</b><small>case studies</small>'+cmBar(cdone/12*100)+'</div></div>';
   var weak=all.map(function(c){return[c,cmStat(c.n)]}).filter(function(x){return x[1].tried>=5&&x[1].acc<70}).sort(function(a,b){return a[1].acc-b[1].acc}).slice(0,4);
   if(weak.length)h+='<p class="cmweak">Worth another look: '+weak.map(function(x){return'<button type="button" class="btn" data-cm="study" data-a="'+x[0].n+'">Ch '+x[0].n+' ('+x[1].acc+'%)</button>'}).join(" ")+'</p>';
@@ -5755,7 +5789,7 @@ function partHtml(g){
   if(stIsDe(g))tabs=[["d3","<b>der · die · das</b><small>"+stArtCount().m+"/"+stArtCount().t+" mastered</small>",""]].concat(STL.map(function(l){var dn=l.L.filter(function(x){return ST.done[x.id]}).length,pr=l.S.filter(stPrac).length;return["lv-"+l.id,"<b>"+esc(l.n)+"</b><small>"+dn+"/"+l.L.length+" lessons · "+pr+"/"+l.S.length+" practised</small>",""]}));
   if(!tabs.some(function(t){return t[0]===sub}))sub=tabs[0][0];
   tabs=ordApply("sub:"+g,tabs,function(t){return t[0]});
-  H+='<div class="xsubs'+(stIsDe(g)?" de":"")+'" role="tablist">'+tabs.map(function(t){return'<button class="xs'+(sub===t[0]?" on":"")+'" data-sub="'+t[0]+'" role="tab"'+dndA("sub:"+g,t[0])+'>'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
+  H+='<div class="xsubs'+(stIsDe(g)?" de":"")+(cmOn(g)?" cmnav":"")+'" role="tablist">'+tabs.map(function(t){return'<button class="xs'+(sub===t[0]?" on":"")+'" data-sub="'+t[0]+'" role="tab"'+dndA("sub:"+g,t[0])+'>'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
   if(sub==="tasks"&&!stIsDe(g)){
     H+='<section class="xsec"><h3>Tasks <em>'+act.length+'</em></h3><div class="scroll"><div class="tbl act">'+HEAD+act.map(block).join("")+addRow(g,false)+'</div></div></section>'+
       '<section class="xsec"><h3>Completed <em>'+done.length+'</em></h3><div class="scroll arch"><div class="tbl">'+(done.length?done.map(block).join(""):'<div class="empty">Completed items will land here.</div>')+'</div></div></section>'+
