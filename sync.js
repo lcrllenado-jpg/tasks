@@ -100,11 +100,57 @@
     b.onclick = async function () { b.textContent = "…"; await applyRemote(getList()); location.reload(); };
     banner.appendChild(b); document.body.appendChild(banner);
   }
+
+  /* ---- photos: stored on this device (IndexedDB) and mirrored to your private space ---- */
+  var phCol = null, phcCol = null, phBusy = false, phAgain = false, phTimer = 0, phUnsub = null, PCH = 60000;
+  function phSoon() { clearTimeout(phTimer); phTimer = setTimeout(phRun, 1200); }
+  async function phFetch(x) { var out = "", i, d; for (i = 0; i < x.n; i++) { d = await phcCol.doc(x.id + "-" + i).get(); if (!d.exists) return null; out += d.data().s; } return out; }
+  async function phMeta(l, n) { await phCol.doc(l.id).set({ id: l.id, g: l.g, name: l.name || "", cap: l.cap || "", at: l.at, ts: l.ts || l.at, n: n }); }
+  async function phUpload(l) { var n = Math.max(1, Math.ceil(l.data.length / PCH)), i; for (i = 0; i < n; i++) await phcCol.doc(l.id + "-" + i).set({ s: l.data.slice(i * PCH, (i + 1) * PCH) }); await phMeta(l, n); }
+  async function phDropRemote(x) { var i; for (i = 0; i < (x.n || 0); i++) await phcCol.doc(x.id + "-" + i).delete(); await phCol.doc(x.id).delete(); }
+  async function phRun() {
+    if (!phCol || !window.PHOTOS) return;
+    if (phBusy) { phAgain = true; return; }
+    phBusy = true;
+    try {
+      var rs = await phCol.get(), rm = {}, id, l, i, changed = false;
+      rs.forEach(function (d) { var x = d.data(); if (x && x.id) rm[x.id] = x; });
+      var loc = await PHOTOS.all(), lm = {}, tomb = PHOTOS.tomb();
+      loc.forEach(function (y) { lm[y.id] = y; });
+      for (id in rm) if (tomb.indexOf(id) >= 0) { await phDropRemote(rm[id]); delete rm[id]; }
+      for (id in rm) {
+        if (!lm[id]) {
+          var data = await phFetch(rm[id]);
+          if (data) { await PHOTOS.put({ id: id, g: rm[id].g, name: rm[id].name, cap: rm[id].cap || "", at: rm[id].at, ts: rm[id].ts || 0, data: data, synced: 1 }); changed = true; }
+        } else {
+          l = lm[id];
+          if ((rm[id].ts || 0) > (l.ts || 0)) { l.cap = rm[id].cap || ""; l.g = rm[id].g; l.ts = rm[id].ts; l.synced = 1; await PHOTOS.put(l); changed = true; }
+          else if ((l.ts || 0) > (rm[id].ts || 0)) await phMeta(l, rm[id].n);
+        }
+      }
+      for (i = 0; i < loc.length; i++) {
+        l = loc[i];
+        if (!rm[l.id]) {
+          if (l.synced) { await PHOTOS.del(l.id); changed = true; }
+          else { await phUpload(l); l.synced = 1; await PHOTOS.put(l); }
+        }
+      }
+      if (changed) PHOTOS.changed();
+    } catch (e) { console.warn("photo sync", e); }
+    phBusy = false;
+    if (phAgain) { phAgain = false; phSoon(); }
+  }
+  function phStart(base) {
+    phCol = base.collection("ph"); phcCol = base.collection("phc");
+    window.PLSYNC = { kick: phSoon };
+    phUnsub = phCol.onSnapshot(function () { phSoon(); }, function () {});
+  }
+  function phStop() { phCol = phcCol = null; window.PLSYNC = null; if (phUnsub) { phUnsub(); phUnsub = null; } }
   var unsub = null;
   async function startSync(u) {
     user = u;
     var db = firebase.firestore(), base = db.collection("users").doc(u.uid);
-    kv = base.collection("kv"); kc = base.collection("kc");
+    kv = base.collection("kv"); kc = base.collection("kc"); phStart(base);
     status("saving");
     try {
       var snap = await kv.get(), remote = {}, m = meta(), newer = [], k, i;
@@ -129,7 +175,7 @@
       }, function () {});
     } catch (e) { status("err"); }
   }
-  function stopSync() { ready = false; kv = kc = null; user = null; if (unsub) { unsub(); unsub = null; } status("out"); }
+  function stopSync() { phStop(); ready = false; kv = kc = null; user = null; if (unsub) { unsub(); unsub = null; } status("out"); }
 
   function init() {
     var cfg = window.FIREBASE_CONFIG;
