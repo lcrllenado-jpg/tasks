@@ -3269,11 +3269,12 @@ function pcPrintHtml(g,y,m){
 function pcReportSection(g,tb,sec,d){
   var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc">'+sec("5","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
   if(!M.rows.length)return h+'<div class="mrnote">No petty cash lines were entered for this month.</div></div>';
-  h+=tb("1fr 170px",["Petty cash box","Amount"],[["Opening balance",mrN(M.open)],["Add: cash received",mrN(M.i)],["Less: cash paid out",mrN(-M.o)]],["Closing balance",mrN(M.close)]);
-  var P=pcByCat(M.rows,"o"),R=pcByCat(M.rows,"i");
-  if(P.length)h+='<div class="mrsubh">5.1  Where the money went</div>'+tb("1.6fr 70px 1fr 90px",["Category","Lines","Amount","% of total"],P.map(function(c){return[esc(c.c),String(c.n),mrN(c.a),(M.o?(c.a/M.o*100).toFixed(1):"0.0")+"%"]}),["Total paid out","",mrN(M.o),"100%"]);
-  if(R.length)h+='<div class="mrsubh">5.2  Where the cash came from</div>'+tb("1.6fr 70px 1fr",["Source","Lines","Amount"],R.map(function(c){return[esc(c.c),String(c.n),mrN(c.a)]}),["Total received","",mrN(M.i)]);
-  h+='<div class="mrsubh">5.3  Every line for the month</div>'+tb("84px 1.1fr 1.7fr 90px 1fr 1fr 1fr",["Date","Category","Description","Ref","Paid out","Received","Balance"],M.rows.map(function(x){var r=x.r;return[rpD(r.d),esc(r.c||""),esc(r.x||""),esc(r.r||""),r.o?mrN(r.o):"",r.i?mrN(r.i):"",mrN(x.bal)]}),["","","Closing balance","","","",mrN(M.close)]);
+  var cols="84px 1.1fr 2fr 86px 88px 88px 98px 30px",st='style="grid-template-columns:'+cols+'"',sp=function(t,n){return'<span'+(n?' class="n"':'')+'>'+t+'</span>'};
+  h+='<div class="mrt mrth" '+st+'>'+["Date","Category","Description","Ref"].map(function(x){return sp(x)}).join("")+["Paid out","Received","Balance"].map(function(x){return sp(x,1)}).join("")+sp("QB",1)+'</div>';
+  h+='<div class="mrt" style="background:#E4E0CF;font-weight:700;grid-template-columns:'+cols+'">'+sp("")+sp("")+sp("Beg. Balance")+sp("")+sp("")+sp("")+sp(mrN(M.open),1)+sp("")+'</div>';
+  M.rows.forEach(function(x,k){var r=x.r;h+='<div class="mrt'+(k%2?" alt":"")+'" '+st+'>'+sp(rpD(r.d))+sp(esc(r.c||""))+sp(esc(r.x||""))+sp(esc(r.r||""))+sp(r.o?mrN(r.o):"",1)+sp(r.i?mrN(r.i):"",1)+sp("<b>"+mrN(x.bal)+"</b>",1)+sp(r.q?"&#10003;":"",1)+'</div>'});
+  h+='<div class="mrt mrth" style="border-top:2px solid #12373B;grid-template-columns:'+cols+'">'+sp("")+sp("")+sp("Total for "+PCM[m-1]+" "+y)+sp("")+sp(mrN(M.o),1)+sp(mrN(M.i),1)+sp(mrN(M.close),1)+sp("")+'</div>';
+  h+='<div class="mrnote">QB &#10003; = already recorded in QuickBooks. '+M.rows.filter(function(x){return x.r.q}).length+' of '+M.rows.length+' lines.</div>';
   return h+'</div>'}
 function pcFocus(key){if(!key)return;setTimeout(function(){var e=document.querySelector('[data-pk="'+key+'"]');if(e){e.focus();if(e.select&&e.type!=="date")try{e.select()}catch(x){}}},30)}
 function pcRender(key){render();pcFocus(key)}
