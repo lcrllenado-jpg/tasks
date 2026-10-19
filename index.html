@@ -3241,7 +3241,7 @@ function pcHtml(g){
   h+='</div></div><div class="pcsum"><div><small>Opening balance</small><b class="'+(M.open<0?"neg":"")+'">'+pcBal(M.open)+'</b>'+((PC.open[g]&&PC.open[g][v.y]!==undefined&&v.m===1)||!pcHasYear(g,v.y-1)&&v.m===1?'<button type="button" class="pcmini" data-pcopen="1">edit</button>':'<span>from previous month</span>')+'</div>'+
     '<div><small>Paid out</small><b>'+money(M.o)+'</b><span>'+M.rows.filter(function(x){return x.r.o}).length+' line(s)</span></div><div><small>Received</small><b>'+money(M.i)+'</b><span>'+M.rows.filter(function(x){return x.r.i}).length+' line(s)</span></div>'+
     '<div class="pchi2"><small>Closing balance</small><b>'+pcBal(M.close)+'</b><span>carries to next month</span></div><div><small>Recorded in QuickBooks</small><b>'+done+' of '+tot+'</b><div class="pcbar"><i style="width:'+(tot?Math.round(done/tot*100):0)+'%"></i></div></div></div>';
-  h+='<div class="pctool"><label class="btn pcfile">Import file<input type="file" accept=".csv,.txt" data-pcfile="1" hidden></label><button type="button" class="btn" data-pcpaste="1">Paste from Excel</button><button type="button" class="btn" data-pcdl="m">Download month</button><button type="button" class="btn" data-pcdl="y">Backup all lines</button><button type="button" class="btn pri" data-pcprint="1">Print month</button>'+
+  h+='<div class="pctool"><label class="btn pcfile">Import file<input type="file" accept=".csv,.txt" data-pcfile="1" hidden></label><button type="button" class="btn" data-pcpaste="1">Paste from Excel</button><button type="button" class="btn" data-pcdl="m">Download month</button><button type="button" class="btn" data-pcdl="y">Backup all lines</button><button type="button" class="btn pri" data-pcprint="1">Print month</button><button type="button" class="btn" data-pcclr="1" style="color:#b3261e;border-color:#b3261e">Clear all</button>'+
     '<span class="pcflt"><small>Show</small><button type="button" class="pcfb'+(v.f!=="nqb"?" on":"")+'" data-pcf="all">All '+tot+'</button><button type="button" class="pcfb'+(v.f==="nqb"?" on":"")+'" data-pcf="nqb">Not in QB yet '+mp+'</button></span></div>';
   if(msg)h+='<p class="pcmsg">'+esc(msg)+'</p>';
   if(imp)h+='<div class="pcimp"><b>Paste lines from Excel</b><small>One line per row. Columns in this order: Date, Category, Description, Ref, Paid out, Received. A header row is fine. Lines already in the app are skipped.</small><textarea data-pcta="1" rows="6" placeholder="13/01/2026 [tab] Azeez [tab] Issued petty cash [tab] PV-0093 [tab] 183.00 [tab] [tab]"></textarea><div class="pctool"><button type="button" class="btn pri" data-pcgo="1">Add these lines</button><button type="button" class="btn" data-pcpaste="0">Cancel</button></div></div>';
@@ -3284,11 +3284,13 @@ function pcAdd(g){
   PC.rows.push({id:uid(),g:g,d:d,c:(dr.c||"").trim(),x:(dr.x||"").trim(),r:(dr.r||"").trim(),o:r2(o),i:r2(i),q:0});
   var v=pcState(g);v.y=+d.slice(0,4);v.m=+d.slice(5,7);PCN[g]={d:d,c:"",x:"",r:"",o:"",i:""};pcSave();pcRender("new:x")}
 function pcParse(g,rows){
-  var added=0,skipped=0,bad=0,op=null,seen={},map=null;
+  var added=0,skipped=0,bad=0,op=null,seen={},map=null,rep=false,stop=false;
   PC.rows.forEach(function(r){if(r.g===g){var k=pcKey(r);seen[k]=(seen[k]||0)+1}});
   rows.forEach(function(c){
     if(!c||!c.some(function(x){return String(x||"").trim()}))return;
     var a=String(c[0]||"").trim();
+    if(/^#replace/i.test(a)){if(!rep){var n=PC.rows.filter(function(r){return r.g===g}).length;if(n&&!confirm("This file replaces everything in this Petty cash tab ("+n+" lines now). Continue?")){stop=true;return}PC.rows=PC.rows.filter(function(r){return r.g!==g});seen={};rep=true}return}
+    if(stop)return;
     if(/^#opening/i.test(a)){var yy=parseInt(c[1],10),vv=num(c[2]);if(yy&&vv!==null){PC.open[g]=PC.open[g]||{};PC.open[g][yy]=vv;op=yy}return}
     if(/^date$/i.test(a)||/^date\b/i.test(a)&&!pcDateIn(a)){map={};c.forEach(function(h,i){h=String(h||"").toLowerCase();
       if(/qb|quick/.test(h))map.q=i;else if(/date/.test(h))map.d=i;else if(/categ|account|title/.test(h))map.c=i;else if(/desc/.test(h))map.x=i;else if(/ref/.test(h))map.r=i;else if(/paid|out|debit|payment/.test(h))map.o=i;else if(/receiv|^in$|credit/.test(h))map.i=i});return}
@@ -3300,7 +3302,7 @@ function pcParse(g,rows){
     if(seen[k]>0){seen[k]--;skipped++;return}
     PC.rows.push(r);added++});
   pcSave();var S=pcSorted(g),l=S[S.length-1],v=pcState(g);if(l&&added){v.y=+l.d.slice(0,4);v.m=+l.d.slice(5,7)}
-  return"Added "+added+" line"+(added===1?"":"s")+(op?" and the "+op+" opening balance":"")+(skipped?". "+skipped+" already in the app were skipped":"")+(bad?". "+bad+" rows had no date or amount and were left out":"")+"."}
+  if(stop)return"Nothing was changed.";return(rep?"Replaced the old lines. ":"")+"Added "+added+" line"+(added===1?"":"s")+(op?" and the "+op+" opening balance":"")+(skipped?". "+skipped+" already in the app were skipped":"")+(bad?". "+bad+" rows had no date or amount and were left out":"")+"."}
 function pcKey(r){return[r.d,(r.x||"").toLowerCase().replace(/\s+/g," "),(r.r||"").toLowerCase(),r2(r.o||0),r2(r.i||0)].join("|")}
 function pcTsv(t){return t.split(/\r?\n/).map(function(l){return l.split("\t")})}
 function pcDownload(g,all){
@@ -3310,8 +3312,9 @@ function pcDownload(g,all){
   var csv="﻿"+L.map(function(r){return r.map(pcCsvCell).join(",")}).join("\r\n"),a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download=(g.toUpperCase())+"-petty-cash-"+(all?"all-lines":v.y+"-"+("0"+v.m).slice(-2))+".csv";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
 $("board").addEventListener("click",function(e){
-  var b=e.target.closest("[data-pcy],[data-pcm],[data-pcf],[data-pcqb],[data-pcx],[data-pcadd],[data-pcpaste],[data-pcgo],[data-pcdl],[data-pcprint],[data-pcopen]");if(!b)return;
+  var b=e.target.closest("[data-pcy],[data-pcm],[data-pcf],[data-pcqb],[data-pcx],[data-pcadd],[data-pcpaste],[data-pcgo],[data-pcdl],[data-pcclr],[data-pcprint],[data-pcopen]");if(!b)return;
   var sec=b.closest("[data-pcg]"),g=sec?sec.dataset.pcg:VIEW;if(!G[g])return;var v=pcState(g),d=b.dataset;
+  if(d.pcclr){var n=PC.rows.filter(function(r){return r.g===g}).length;if(!n){alert("Nothing to clear.");return}if(!confirm("Delete ALL "+n+" lines in this Petty cash tab? This cannot be undone (tip: tap Backup all lines first).")||!confirm("Really clear all "+n+" lines? The opening balance stays."))return;PC.rows=PC.rows.filter(function(r){return r.g!==g});PCN[g]=null;pcSave();render();return}
   if(d.pcy){v.y+=+d.pcy;v.m=Math.min(v.m,12);PCN[g]=null;pcSave();render();return}
   if(d.pcm){v.m=+d.pcm;PCN[g]=null;pcSave();render();return}
   if(d.pcf){v.f=d.pcf;pcSave();render();return}
