@@ -1921,7 +1921,7 @@ table.pctbl{border-collapse:separate;border-spacing:0;width:100%;min-width:900px
 .bkcon{width:250px;flex:0 0 250px;max-height:78vh;overflow:auto;background:#fff;border:1px solid #c9d3e6;border-radius:12px;padding:8px;position:sticky;top:8px}
 .bksh{font-size:11px;font-weight:800;color:#5a6a8a;text-transform:uppercase;letter-spacing:.05em;padding:10px 8px 3px}
 .bkci{display:flex;gap:8px;padding:8px;border-radius:8px;font-size:13px;cursor:pointer;color:#1b2b4b;line-height:1.3}.bkci span{flex:0 0 20px;font-weight:800;color:#16407f}
-.bkci:hover{background:#eef3fb}.bkci.on{background:#16407f;color:#fff}.bkci.on span{color:#fff}.bkci.dn span{color:#2E9E5B}.bkci.on.dn span{color:#fff}
+.bkci:hover{background:#eef3fb}.bkci.on{background:#16407f;color:#fff}.bkci.on span{color:#fff}.bkci.bkdn span{color:#2E9E5B}.bkci.on.bkdn span{color:#fff}
 .bkpi{margin:1px 0 1px 28px;padding:5px 8px;font-size:12px;border-left:2px solid #c9d3e6;color:#3a4a6b;cursor:pointer;border-radius:0 6px 6px 0}.bkpi.on{background:#FFF5D6;border-left-color:#e0a800;font-weight:700;color:#1b2b4b}.bkpi:hover{background:#eef3fb}
 .bkmain{flex:1;min-width:0}
 .bksel{display:none;width:100%;margin:0 0 10px;font-size:15px;padding:10px;border:2px solid #16407f;border-radius:10px;background:#fff;color:#16407f;font-weight:700}
@@ -1941,7 +1941,7 @@ table.pctbl{border-collapse:separate;border-spacing:0;width:100%;min-width:900px
 .bkpen{position:absolute;left:0;top:0;width:100%;height:100%;z-index:2;pointer-events:none;border-radius:12px}
 .bkpen.on{pointer-events:auto;cursor:crosshair;touch-action:none;background:rgba(22,64,127,.025);outline:2px dashed #e0a800;outline-offset:-3px}
 .bknav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
-.bkdots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.bkdots i{width:8px;height:8px;border-radius:50%;background:#c9d3e6;display:block}.bkdots i.dn{background:#8aa4d6}.bkdots i.on{background:#16407f;transform:scale(1.35)}
+.bkdots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.bkdots i{width:8px;height:8px;border-radius:50%;background:#c9d3e6;display:block}.bkdots i.bkdn{background:#8aa4d6}.bkdots i.on{background:#16407f;transform:scale(1.35)}
 .bktm{padding:4px 0}.bkbigt{font-size:26px;font-weight:800;color:#16407f;margin:2px 0 6px}.bktq{font-size:20px;margin:6px 0 12px;color:#1b2b4b}.bktq b{color:#16407f}
 .bkyou{background:#f5f8fd;border:1px dashed #9aa8c4;border-radius:10px;padding:8px 12px;margin:0 0 10px;white-space:pre-wrap}.bkyou small{display:block;color:#5a6a8a}
 .bktmc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.bktmc .btn{text-align:left;display:flex;gap:8px;align-items:center}.bktmc small{margin-left:auto;color:#5a6a8a}
@@ -3096,7 +3096,7 @@ function bkPenBind(){var s=document.getElementById("bkpen");if(!s||BK.mode!=="p"
 function bkAfter(){var b=bkBody(),p=bkCur();if(!b||!p)return;if(p.s)bkApplyHl(b,BK.hl[bkKey()]);bkPenPaint();bkPenBind()}
 /* ---- the book ---- */
 function bkContents(){var h="",sec="";CMD.ch.forEach(function(c){var s=c.n?c.sec:"0";if(s!==sec){sec=s;h+='<div class="bksh">'+(s==="0"?"Optional":esc("Section "+s+": "+CMD.secs[s]))+'</div>'}
-  var on=c.n===BK.c;h+='<div role="button" tabindex="0" class="bkci'+(on?" on":"")+(CMS.done[c.n]?" dn":"")+'" data-bk="go" data-a="'+c.n+'"><span>'+(CMS.done[c.n]?"✓":(c.n||"•"))+'</span>'+esc(c.t)+'</div>';
+  var on=c.n===BK.c;h+='<div role="button" tabindex="0" class="bkci'+(on?" on":"")+(CMS.done[c.n]?" bkdn":"")+'" data-bk="go" data-a="'+c.n+'"><span>'+(CMS.done[c.n]?"✓":(c.n||"•"))+'</span>'+esc(c.t)+'</div>';
   if(on)bkPages(c.n).forEach(function(p,i){h+='<div role="button" tabindex="0" class="bkpi'+(i===BK.p?" on":"")+'" data-bk="pp" data-a="'+i+'">'+esc(p.t)+'</div>'})});return h}
 function cmBook(){var c=cmCh(BK.c)||cmCh(1);BK.c=c.n;var P=bkPages(c.n);if(BK.p>=P.length)BK.p=P.length-1;if(BK.p<0)BK.p=0;var pg=P[BK.p],all=CMD.ch.filter(function(x){return x.n>0}),dn=all.filter(function(x){return CMS.done[x.n]}).length,st=pg.s,m=BK.mode;
   var h='<section class="xsec stw bk"><div class="rpbar"><h3>CMA Part 1 <em>'+dn+' of '+all.length+' chapters done</em></h3></div>';
@@ -3107,7 +3107,7 @@ function cmBook(){var c=cmCh(BK.c)||cmCh(1);BK.c=c.n;var P=bkPages(c.n);if(BK.p>
     (m==="p"?'<button type="button" class="btn'+(BK.fing?" on":"")+'" data-bk="fing">'+(BK.fing?"Finger draws":"Finger scrolls")+'</button>':"")+'<button type="button" class="btn" data-bk="undo">Undo pen</button><button type="button" class="btn" data-bk="clr">Clear my marks</button>':'<span class="bkmute">Highlighter and pen are on the reading pages.</span>')+
     '<span class="bkpdf"><button type="button" class="btn pri" data-bk="pdf">Download PDF ↓</button>'+(BK.pdfm?'<span class="bkpm"><button type="button" class="btn" data-bk="pdfg" data-a="m">Include my marks</button><button type="button" class="btn" data-bk="pdfg" data-a="c">Clean copy to scribble on</button></span>':"")+'</span></div>';
   h+='<div class="bkpage"><div class="bkph"><b>'+esc(cmLab(c))+(c.n?" · IMA "+esc(c.ima):"")+'</b><span>page '+(BK.p+1)+' of '+P.length+'</span></div><h3 class="bkpt">'+esc(pg.t)+'</h3>'+(pg.ref?'<div class="bkref">'+esc(pg.ref)+'</div>':"")+'<div id="bkbody" class="bkbody">'+pg.h()+'</div>'+(st?'<svg id="bkpen" class="bkpen'+(m==="p"?" on":"")+'" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>':"")+'</div>';
-  h+='<div class="bknav"><button type="button" class="btn" data-bk="nav" data-a="-1"'+(BK.p===0&&c.n===CMD.ch[0].n?" disabled":"")+'>‹ Back</button><div class="bkdots">'+P.map(function(x,i){return'<i class="'+(i===BK.p?"on":(i<BK.p?"dn":""))+'"></i>'}).join("")+'</div><button type="button" class="btn pri" data-bk="nav" data-a="1">'+(BK.p<P.length-1?"Next ›":"Next chapter ›")+'</button></div></div></div></section>';
+  h+='<div class="bknav"><button type="button" class="btn" data-bk="nav" data-a="-1"'+(BK.p===0&&c.n===CMD.ch[0].n?" disabled":"")+'>‹ Back</button><div class="bkdots">'+P.map(function(x,i){return'<i class="'+(i===BK.p?"on":(i<BK.p?"bkdn":""))+'"></i>'}).join("")+'</div><button type="button" class="btn pri" data-bk="nav" data-a="1">'+(BK.p<P.length-1?"Next ›":"Next chapter ›")+'</button></div></div></div></section>';
   setTimeout(bkAfter,0);return h}
 function bkGo(n,p){BK.c=n;BK.p=p||0;BK.pdfm=0;bkSave();CMV=null;render();var e=document.querySelector(".bkmain");if(e)window.scrollTo(0,Math.max(0,e.getBoundingClientRect().top+window.pageYOffset-70))}
 function bkOpen(n){BK.c=n;BK.p=0;BK.pdfm=0;bkSave();cmGo(VIEW,"cma",null)}
