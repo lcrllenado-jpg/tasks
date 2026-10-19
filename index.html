@@ -1879,6 +1879,137 @@ html body #board .cxcap{font-size:18px;line-height:1.55;background:#FFF9DB!impor
 .stkeys{display:flex;gap:6px;margin:6px 0}.stkey{border:0;background:var(--card);box-shadow:var(--raise-s);border-radius:8px;width:38px;height:34px;font:700 16px inherit;cursor:pointer;color:var(--ink)}.stbtns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .stsc{display:flex;gap:18px;align-items:center;background:var(--card);border-radius:16px;padding:14px 20px;box-shadow:var(--raise-s);margin:10px 0}.stbig{font-size:34px;font-weight:900}.stsc small{display:block;color:var(--mute);margin-top:3px}
 @media(max-width:640px){.stq{flex-wrap:wrap}.stp,.sai,.sta{flex:1 1 100%}}
+/* petty cash v114 */
+.pcs .pcnav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0}
+.pcy{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:3px 6px}.pcy b{font-size:15px;min-width:42px;text-align:center}
+.pcyb{border:0;background:transparent;font-size:20px;line-height:1;cursor:pointer;color:var(--ink);padding:2px 8px;border-radius:8px}.pcyb:hover{background:var(--line)}
+.pcmo{display:flex;flex-wrap:wrap;gap:5px}
+.pcmb{position:relative;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:7px 11px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.pcmb.dim{opacity:.55}.pcmb.on{background:var(--c,#3f83dc);color:#fff;border-color:transparent;opacity:1}
+.pcbd{font-style:normal;position:absolute;top:-7px;right:-5px;background:var(--late,#d64545);color:#fff;border-radius:99px;font-size:10px;min-width:17px;height:17px;line-height:17px;text-align:center;padding:0 3px}
+.pcok{font-style:normal;font-size:10px;margin-left:4px;color:#22996f}.pcmb.on .pcok{color:#fff}
+.pcsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}
+.pcsum>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.pcsum small{color:var(--mute);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}.pcsum b{font-size:18px;font-variant-numeric:tabular-nums}.pcsum span{font-size:11px;color:var(--mute)}
+.pcsum .pchi2{background:#fff3a8;border-color:#e6cf4d;color:#222}.pcsum .pchi2 small,.pcsum .pchi2 span{color:#6b5b00}
+.pcmini{align-self:flex-start;border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:8px;font-size:11px;cursor:pointer;padding:1px 8px}
+.pcbar{height:7px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:4px}.pcbar i{display:block;height:100%;background:#22996f}
+.neg{color:var(--late,#c0392b)}
+.pctool{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.pcfile{cursor:pointer}
+.pcflt{margin-left:auto;display:flex;gap:5px;align-items:center}.pcflt small{color:var(--mute);font-weight:700}
+.pcfb{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.pcfb.on{background:var(--ink);color:var(--card)}
+.pcmsg{background:color-mix(in srgb,#22996f 14%,var(--card));border:1px solid #22996f;border-radius:10px;padding:8px 12px;font-size:13px}
+.pcimp{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px;margin:8px 0}.pcimp small{display:block;color:var(--mute);margin:3px 0 8px}.pcimp textarea{width:100%;box-sizing:border-box;font:12px/1.4 ui-monospace,monospace;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--card);color:var(--ink)}
+table.pctbl{border-collapse:separate;border-spacing:0;width:100%;min-width:900px;font-size:13px;background:var(--card)}
+.pctbl th{background:color-mix(in srgb,var(--c,#3f83dc) 14%,var(--card));padding:8px;border:1px solid var(--line);text-align:left;font-size:12px}.pctbl th.num{text-align:right}
+.pctbl td{border:1px solid var(--line);padding:2px;background:var(--card)}
+.pctbl td input{width:100%;box-sizing:border-box;font:inherit;font-size:13px;color:var(--ink);background:transparent;border:0;padding:6px;border-radius:6px;min-width:0;height:auto!important;box-shadow:none!important}
+.pctbl td.num input{text-align:right;font-variant-numeric:tabular-nums}.pctbl td.pco input{font-weight:800}
+.pctbl td.pcd{width:128px}.pctbl td.pcc{width:150px}.pctbl td.pcr{width:96px}.pctbl td.num{width:112px}.pctbl td.pcq,.pctbl th.pcq{width:74px;text-align:center}
+.pctbl td.pcb{text-align:right;padding:6px 10px;font-variant-numeric:tabular-nums;font-weight:700}.pctbl td.pclast{background:#fff3a8;color:#222}
+.pctbl tr.pcin td.pcd input{font-style:italic;font-weight:800}
+.pctbl tr.pcdone td{background:color-mix(in srgb,#2fb26b 18%,var(--card))}
+.pctbl tr.pcop td{background:color-mix(in srgb,var(--line) 50%,var(--card));padding:6px 8px}.pctbl td.pcmute{color:var(--mute);font-size:11px;text-align:right;padding:6px 8px}
+.pctbl tr.pcnew td{background:color-mix(in srgb,var(--c,#3f83dc) 7%,var(--card))}
+.pctbl tfoot td{font-weight:800;padding:8px;background:color-mix(in srgb,var(--line) 60%,var(--card));border:1px solid var(--line)}.pctbl tfoot td.num{text-align:right}.pctbl tfoot td.pcb{background:#fff3a8;color:#222}
+.pcqb{border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:8px;padding:5px 9px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}.pcqb.on{background:#22996f;color:#fff;border-color:#22996f}
+.pcadd{padding:5px 12px}
+@media(max-width:700px){.pcflt{margin-left:0}}
+.rep .rpt tr.pcrop td{background:#f4f5f6}
+/* CMA book v115 */
+.bkwrap{display:flex;gap:14px;align-items:flex-start}
+.bkcon{width:250px;flex:0 0 250px;max-height:78vh;overflow:auto;background:#fff;border:1px solid #c9d3e6;border-radius:12px;padding:8px;position:sticky;top:8px}
+.bksh{font-size:11px;font-weight:800;color:#5a6a8a;text-transform:uppercase;letter-spacing:.05em;padding:10px 8px 3px}
+.bkci{display:flex;gap:8px;padding:8px;border-radius:8px;font-size:13px;cursor:pointer;color:#1b2b4b;line-height:1.3}.bkci span{flex:0 0 20px;font-weight:800;color:#16407f}
+.bkci:hover{background:#eef3fb}.bkci.on{background:#16407f;color:#fff}.bkci.on span{color:#fff}.bkci.dn span{color:#2E9E5B}.bkci.on.dn span{color:#fff}
+.bkpi{margin:1px 0 1px 28px;padding:5px 8px;font-size:12px;border-left:2px solid #c9d3e6;color:#3a4a6b;cursor:pointer;border-radius:0 6px 6px 0}.bkpi.on{background:#FFF5D6;border-left-color:#e0a800;font-weight:700;color:#1b2b4b}.bkpi:hover{background:#eef3fb}
+.bkmain{flex:1;min-width:0}
+.bksel{display:none;width:100%;margin:0 0 10px;font-size:15px;padding:10px;border:2px solid #16407f;border-radius:10px;background:#fff;color:#16407f;font-weight:700}
+.bktb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 8px}
+.bktb .btn{padding:6px 12px;font-size:13px}.bktb .btn.on{background:#FFF5D6!important;border-color:#e0a800!important;color:#16407f!important}
+.bksw{width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #9aa8c4;cursor:pointer;display:inline-block}.bksw.on{box-shadow:0 0 0 3px #16407f}
+.bkmute{color:#5a6a8a;font-size:13px}.bkref{color:#5a6a8a;font-size:12px;margin:-8px 0 10px}
+.bkpdf{margin-left:auto;position:relative;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.bkpm{display:flex;gap:6px;flex-wrap:wrap}
+.bkpage{position:relative;background:#fff;border:2px solid #16407f;border-radius:14px;padding:16px 18px 20px;min-height:340px}
+.bkph{display:flex;justify-content:space-between;color:#5a6a8a;font-size:12px;margin-bottom:2px}.bkph b{color:#16407f}
+.bkpt{margin:2px 0 12px!important;font-size:22px!important;color:#16407f!important;line-height:1.25}
+.bkbody{font-size:16px;line-height:1.75;color:#1b2b4b;position:relative;z-index:1}
+.bkl{margin:0 0 10px;padding-left:20px}.bkl li{margin:0 0 8px}.bkbig li{list-style:none;margin-left:-20px;font-size:17px}
+.bkk{color:#16407f;font-weight:800}.bkt{color:#c0391b;font-weight:800}
+.bktr li::marker{color:#c0391b}
+.bkh{border-radius:3px;cursor:default}
+.bkpen{position:absolute;left:0;top:0;width:100%;height:100%;z-index:2;pointer-events:none;border-radius:12px}
+.bkpen.on{pointer-events:auto;cursor:crosshair;touch-action:none;background:rgba(22,64,127,.025);outline:2px dashed #e0a800;outline-offset:-3px}
+.bknav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
+.bkdots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.bkdots i{width:8px;height:8px;border-radius:50%;background:#c9d3e6;display:block}.bkdots i.dn{background:#8aa4d6}.bkdots i.on{background:#16407f;transform:scale(1.35)}
+.bktm{padding:4px 0}.bkbigt{font-size:26px;font-weight:800;color:#16407f;margin:2px 0 6px}.bktq{font-size:20px;margin:6px 0 12px;color:#1b2b4b}.bktq b{color:#16407f}
+.bkyou{background:#f5f8fd;border:1px dashed #9aa8c4;border-radius:10px;padding:8px 12px;margin:0 0 10px;white-space:pre-wrap}.bkyou small{display:block;color:#5a6a8a}
+.bktmc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.bktmc .btn{text-align:left;display:flex;gap:8px;align-items:center}.bktmc small{margin-left:auto;color:#5a6a8a}
+.bktl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.bktc{text-align:left;background:#fff;border:2px solid #16407f;border-radius:14px;padding:14px 16px;cursor:pointer;color:#16407f;font:inherit}.bktc b{display:block;font-size:17px}.bktc small{display:block;color:#5a6a8a;margin-top:3px;font-size:13px}.bktc:hover{background:#eef3fb}
+.bkback{margin:0 0 10px}
+@media(max-width:760px){.bkcon{display:none}.bksel{display:block}.bkwrap{display:block}.bkpage{padding:12px 12px 16px}.bkbody{font-size:16px}.bkpdf{margin-left:0}}
+.bkprint{font-family:Arial,Helvetica,sans-serif;--card:#fff;--ink:#1b2b4b;--mute:#5a6a8a;--accent:#16407f;--line:#c9d3e6;--tint:#f5f8fd;--box:#e3e9f5;--glass:#fff;color:#1b2b4b;background:#fff}
+.bkprint .bkcov{border-bottom:2px solid #16407f;padding:0 0 6px;margin:0 0 12px;display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#5a6a8a}.bkprint .bkcov b{font-size:15px;color:#16407f}
+.bkprint .bkpp{break-after:page;page-break-after:always;margin:0 0 18px}.bkprint .bkpp:last-child{break-after:auto;page-break-after:auto}
+.bkprint .bkpt{font-size:18px;color:#16407f;margin:0 0 8px}
+.bkprint .bkpa{position:relative;font-size:12.5px;line-height:1.6}
+.bkprint .bkpen{pointer-events:none;outline:0;background:none}
+.bkprint .bkruled{margin-top:14px;height:70mm;border:1px solid #c9d3e6;border-radius:6px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 8mm,#d9e0ee 8mm,#d9e0ee calc(8mm + 1px));position:relative}.bkprint .bkruled span{position:absolute;left:8px;top:3px;font-size:10px;color:#8a97b3}
+.bkprint .bkl{padding-left:18px}.bkprint .cmrw{break-inside:avoid}.bkprint .bkh{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* project tracker v117 */
+.pyw[data-pylook="navy"]{--pk-page:#F4F1EC;--pk-ink:#1B2438;--pk-mute:#5E6779;--pk-head:#1F2A44;--pk-headfg:#fff;--pk-card:#fff;--pk-line:#E6E1D8;--pk-border:#1F2A44;--pk-idle:#F1EFEA;--pk-chip:#E9E5DC;--pk-chipfg:#4A5262;--pk-paidbg:#D7F2E9;--pk-paid:#0F7A5C;--pk-over:#C8321F;--pk-overfg:#fff;--pk-overbg:#FFF0EC;--pk-soon:#F0A02B;--pk-soonfg:#3F2800;--pk-soonbg:#FFF4DD;--pk-next:#4458D8;--pk-nextfg:#fff;--pk-nextbg:#fff;--pk-info:#7A4FD6;--pk-infofg:#fff;--pk-ok:#0F7A5C;--pk-okfg:#fff;--pk-total:#E9E5DC;--pk-track:#E9E5DC}
+.pyw[data-pylook="bw"]{--pk-page:#F3F3F1;--pk-ink:#111;--pk-mute:#666;--pk-head:#111;--pk-headfg:#fff;--pk-card:#fff;--pk-line:#E5E5E2;--pk-border:#111;--pk-idle:#F7F7F5;--pk-chip:#ECECE8;--pk-chipfg:#444;--pk-paidbg:#E9E9E6;--pk-paid:#111;--pk-over:#E5271D;--pk-overfg:#fff;--pk-overbg:#FFF1F0;--pk-soon:#FFE14D;--pk-soonfg:#111;--pk-soonbg:#FFFBE0;--pk-next:#111;--pk-nextfg:#fff;--pk-nextbg:#fff;--pk-info:#555;--pk-infofg:#fff;--pk-ok:#3A3A3A;--pk-okfg:#fff;--pk-total:#ECECE8;--pk-track:#E5E5E2}
+.pyw[data-pylook="dark"]{--pk-page:#12161C;--pk-ink:#E8ECF2;--pk-mute:#9AA5B5;--pk-head:#232B38;--pk-headfg:#F3F6FA;--pk-card:#1A2029;--pk-line:#2A3340;--pk-border:#3B4657;--pk-idle:#222A36;--pk-chip:#2C3544;--pk-chipfg:#C5CEDA;--pk-paidbg:#1E3B34;--pk-paid:#4FD1A5;--pk-over:#FF6B6B;--pk-overfg:#2A0707;--pk-overbg:#3A1F24;--pk-soon:#FFC857;--pk-soonfg:#2E2000;--pk-soonbg:#3A3220;--pk-next:#5CC8FF;--pk-nextfg:#04283A;--pk-nextbg:#1A2029;--pk-info:#B28DFF;--pk-infofg:#1E1233;--pk-ok:#4FD1A5;--pk-okfg:#06241B;--pk-total:#232B38;--pk-track:#2C3544;color-scheme:dark}
+html body #board .pyw[data-pylook]{background:var(--pk-page)!important;color:var(--pk-ink)!important;border-radius:16px;padding:14px 16px!important}
+html body #board .pyw[data-pylook] .pyhd{color:var(--pk-ink)!important}
+html body #board .pyw[data-pylook] .pyhd{background:var(--pk-chip)!important;border-color:var(--pk-line)!important}
+html body #board .pyw[data-pylook] .plh{color:var(--pk-mute)!important}
+html body #board .pyw[data-pylook] .pysh{border-bottom:3px solid var(--pk-head)!important}
+html body #board .pyw[data-pylook] .pysh button{background:transparent!important;color:var(--pk-mute)!important;box-shadow:none!important}
+html body #board .pyw[data-pylook] .pysh button.on{background:var(--pk-head)!important;color:var(--pk-headfg)!important}
+html body #board .pyw[data-pylook] .pysh em{background:var(--pk-chip)!important;color:var(--pk-chipfg)!important}
+html body #board .pyw[data-pylook] .pytbl th{background:var(--pk-head)!important;color:var(--pk-headfg)!important;border-color:var(--pk-head)!important;box-shadow:none!important}
+html body #board .pyw[data-pylook] .pytbl td{background:var(--pk-card)!important;color:var(--pk-ink)!important;border-color:var(--pk-line)!important}
+html body #board .pyw[data-pylook] .pytbl td input,html body #board .pyw[data-pylook] .pytbl td select{color:var(--pk-ink)!important;background:transparent!important;border-color:transparent!important}
+html body #board .pyw[data-pylook] .pytbl td .pd,html body #board .pyw[data-pylook] .pytbl td .pypct{color:var(--pk-mute)!important}
+html body #board .pyw[data-pylook] .pytbl td .pm{background:var(--pk-chip)!important;color:var(--pk-chipfg)!important}
+html body #board .pyw[data-pylook] .pytbl tr.pyvo td{background:var(--pk-idle)!important}
+html body #board .pyw[data-pylook] .pytbl tfoot td{background:var(--pk-total)!important;color:var(--pk-ink)!important;white-space:nowrap}
+html body #board .pyw[data-pylook] .pytbl tfoot td[data-tot=bal]{background:var(--pk-overbg)!important;color:var(--pk-over)!important}
+html body #board .pyw[data-pylook] .pytbl td.pyb.bad{background:var(--pk-overbg)!important;color:var(--pk-over)!important}
+html body #board .pyw[data-pylook] .pytbl td.pyb.ok{color:var(--pk-mute)!important}
+html body #board .pyw[data-pylook] .pytbl tr[class*="pyst-"] td:first-child{box-shadow:inset 8px 0 0 var(--stripe,var(--pk-line))!important}
+.pyw .pyst-over{--stripe:var(--pk-over)}.pyw .pyst-soon{--stripe:var(--pk-soon)}.pyw .pyst-info{--stripe:var(--pk-info)}.pyw .pyst-ok{--stripe:var(--pk-ok)}.pyw .pyst-idle{--stripe:var(--pk-line)}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-paid{background:var(--pk-paidbg)!important}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-idle{background:var(--pk-idle)!important}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-empty{opacity:.6}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-next{background:var(--pk-nextbg)!important;--g:var(--pk-next);animation:pyglow 2.2s ease-in-out infinite}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-over{background:var(--pk-overbg)!important;--g:var(--pk-over);animation:pyglow 1.6s ease-in-out infinite}
+html body #board .pyw[data-pylook] .pytbl td.pyp.pys-soon{background:var(--pk-soonbg)!important;--g:var(--pk-soon);animation:pyglow 2s ease-in-out infinite}
+@keyframes pyglow{0%,100%{box-shadow:inset 0 0 0 3px var(--g),inset 0 0 18px 2px color-mix(in srgb,var(--g) 40%,transparent)}50%{box-shadow:inset 0 0 0 3px var(--g),inset 0 0 4px 0 color-mix(in srgb,var(--g) 15%,transparent)}}
+@media(prefers-reduced-motion:reduce){.pyw .pytbl td.pyp{animation:none!important;box-shadow:inset 0 0 0 3px var(--g,transparent)!important}}
+.pyw .pytbl td.pyp[data-tag]::after{content:attr(data-tag);display:inline-block;margin:4px 0 2px 3px;padding:1px 9px;border-radius:999px;font:800 10.5px/1.5 inherit;letter-spacing:.03em;background:var(--g);color:#fff}
+.pyw .pytbl td.pyp.pys-soon[data-tag]::after{color:var(--pk-soonfg)}.pyw .pytbl td.pyp.pys-next[data-tag]::after{color:var(--pk-nextfg)}.pyw .pytbl td.pyp.pys-over[data-tag]::after{color:var(--pk-overfg)}
+.pyw .pypill{display:inline-block;margin-top:4px;border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:800}
+.pyw .pk-over{background:var(--pk-over);color:var(--pk-overfg)}.pyw .pk-soon{background:var(--pk-soon);color:var(--pk-soonfg)}.pyw .pk-info{background:var(--pk-info);color:var(--pk-infofg)}.pyw .pk-ok{background:var(--pk-ok);color:var(--pk-okfg)}.pyw .pk-idle{background:var(--pk-chip);color:var(--pk-chipfg)}
+.pyw .pybw .pybar{height:8px;border-radius:6px;background:var(--pk-track);overflow:hidden;margin-top:5px}.pyw .pybw .pybar i{display:block;height:100%;background:var(--pk-ok)}.pyw .pybw small{display:block;margin-top:3px;font-size:11px;font-weight:600;color:var(--pk-mute);text-align:center}
+.pyw .pyatt{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--pk-card);border:2px solid var(--pk-border);border-radius:14px;padding:9px 14px;margin:12px 0}
+.pyw .pyatl{font-size:14px;color:var(--pk-ink);margin-right:4px}.pyw .pyhint{margin-left:auto;font-size:12.5px;color:var(--pk-mute)}
+.pyw .pychip{border:0;border-radius:999px;padding:7px 14px;font:800 13.5px inherit;cursor:pointer}
+.pyw .pychip.over{background:var(--pk-over);color:var(--pk-overfg)}.pyw .pychip.soon{background:var(--pk-soon);color:var(--pk-soonfg)}.pyw .pychip.info{background:var(--pk-info);color:var(--pk-infofg)}.pyw .pychip.idle{background:var(--pk-chip);color:var(--pk-chipfg)}.pyw .pychip.ok{background:var(--pk-ok);color:var(--pk-okfg);cursor:default}
+.pyw .pytool{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:6px 0 8px}.pyw .pycols{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--pk-ink)}
+.pyw .pycols button{width:30px;height:30px;border-radius:50%;border:2px dashed var(--pk-mute);background:transparent;color:var(--pk-ink);font:800 16px/1 inherit;cursor:pointer;padding:0}.pyw .pycols button:disabled{opacity:.35;cursor:default}
+.pyw .pylk{display:inline-flex;gap:0;border:2px solid var(--pk-head,#1F2A44);border-radius:999px;overflow:hidden}.pyw .pylk button{border:0;background:transparent;color:var(--pk-ink);padding:6px 12px;font:700 12.5px inherit;cursor:pointer}.pyw .pylk button.on{background:var(--pk-head);color:var(--pk-headfg)}
+.pyw .pytbl tr.pyflash td{animation:pyfl 1.8s ease-out}@keyframes pyfl{0%,40%{background:#fff3a8!important}100%{}}
+.pyw .pyst{min-height:4px}
+.pytbl td.pyn{min-width:190px}
+.pyw .pytbl[data-vis="1"] .pc1,.pyw .pytbl[data-vis="1"] .pc2,.pyw .pytbl[data-vis="1"] .pc3,.pyw .pytbl[data-vis="1"] .pc4,.pyw .pytbl[data-vis="1"] .pc5{display:none!important}
+.pyw .pytbl[data-vis="2"] .pc2,.pyw .pytbl[data-vis="2"] .pc3,.pyw .pytbl[data-vis="2"] .pc4,.pyw .pytbl[data-vis="2"] .pc5{display:none!important}
+.pyw .pytbl[data-vis="3"] .pc3,.pyw .pytbl[data-vis="3"] .pc4,.pyw .pytbl[data-vis="3"] .pc5{display:none!important}
+.pyw .pytbl[data-vis="4"] .pc4,.pyw .pytbl[data-vis="4"] .pc5{display:none!important}
+.pyw .pytbl[data-vis="5"] .pc5{display:none!important}
+html body #board .pyw[data-pylook] .pytbl td [data-cv],html body #board .pyw[data-pylook] .pytbl td [data-bv]{color:inherit!important}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></head>
 <body>
@@ -2666,7 +2797,7 @@ function pyTerms(r){var c=pyCalc(r);if(!c.cv||!c.sched)return{t:"",c:""};var d=r
   if(Math.abs(d)<.01)return{t:"✓ Payment terms add up to 100%",c:"ok"};
   return d>0?{t:"Terms "+pc+"% · "+money(d)+" not allocated yet",c:"warn"}:{t:"Terms "+pc+"% · over by "+money(-d),c:"bad"}}
 function pyPay(r,i,lbl){var p=r.pays[i]||{a:"",d:"",m:""},pd=p.p===true;
-  return'<td class="pyp'+(pd?" paid":"")+'"><div class="pyar"><button type="button" class="pypb" data-pypb="'+i+'" role="checkbox" aria-checked="'+(pd?"true":"false")+'" title="'+(pd?"Paid. Click to mark as not paid":"Tick when this payment is paid. It is only counted in the outstanding balance once ticked")+'" aria-label="'+lbl+' paid"></button><input class="pa" inputmode="decimal" data-py="a" data-pi="'+i+'" value="'+esc(p.a)+'" placeholder="0.00" aria-label="'+lbl+' amount"></div><div class="pyar2"><input class="pd" type="date" data-py="d" data-pi="'+i+'" value="'+esc(p.d)+'" aria-label="'+lbl+' date"><span class="pypct"><input class="pq" inputmode="decimal" data-py="pct" data-pi="'+i+'" value="'+esc(pyPct(r,i))+'" placeholder="%" aria-label="'+lbl+' percentage of contract value"><b>%</b></span></div><input class="pm" data-py="m" data-pi="'+i+'" value="'+esc(p.m)+'" placeholder="milestone" aria-label="'+lbl+' milestone"></td>'}
+  return'<td class="pyp pc'+i+(pd?" paid":"")+'"><div class="pyar"><button type="button" class="pypb" data-pypb="'+i+'" role="checkbox" aria-checked="'+(pd?"true":"false")+'" title="'+(pd?"Paid. Click to mark as not paid":"Tick when this payment is paid. It is only counted in the outstanding balance once ticked")+'" aria-label="'+lbl+' paid"></button><input class="pa" inputmode="decimal" data-py="a" data-pi="'+i+'" value="'+esc(p.a)+'" placeholder="0.00" aria-label="'+lbl+' amount"></div><div class="pyar2"><input class="pd" type="date" data-py="d" data-pi="'+i+'" value="'+esc(p.d)+'" aria-label="'+lbl+' date"><span class="pypct"><input class="pq" inputmode="decimal" data-py="pct" data-pi="'+i+'" value="'+esc(pyPct(r,i))+'" placeholder="%" aria-label="'+lbl+' percentage of contract value"><b>%</b></span></div><input class="pm" data-py="m" data-pi="'+i+'" value="'+esc(p.m)+'" placeholder="milestone" aria-label="'+lbl+' milestone"></td>'}
 function pyDocs(r){
   var F=FILES.filter(function(f){return f.r===r.id}),L=r.docs||[],h='<td class="pyd"><div class="pych">';
   F.forEach(function(f){h+='<span class="pyc2"><button type="button" class="pyo" data-pyfo="'+f.id+'" title="Open '+esc(f.name)+'">'+esc(f.name)+'</button><button type="button" class="pyq" data-pyfx="'+f.id+'" title="Remove" aria-label="Remove this file">×</button></span>'});
@@ -2681,23 +2812,24 @@ function pyRow(r){
   var c=pyCalc(r),pt=pyIsPT(r.k),h,i,rt=pyRoot(r),kids=pyKids(r.id),isvo=!!(r.par&&rt!==r);PYWAS[rt.id]=pyFamDone(rt);
   var hid=isvo&&!rt.open,
     vb=(pt&&!isvo)?'<div class="pyvob">'+(kids.length?'<button type="button" class="pytg" data-pytg="'+r.id+'" aria-expanded="'+(r.open?"true":"false")+'" title="'+(r.open?"Hide":"Show")+' the variation orders">'+(r.open?"▾":"▸")+' '+kids.length+' VO</button>':"")+'<button type="button" class="pytg add" data-pyvo="'+r.id+'" title="Add a variation order under this project">+ VO</button></div>':"";
-  h='<tr data-pid="'+r.id+'" class="'+(isvo?"pyvo":"")+(hid?" pyhid":"")+'"><td class="pyn">'+(isvo?'<small class="pyk">Variation order</small>':"")+pyIn("name",r,"Name")+vb+'</td>';
+  h='<tr data-pid="'+r.id+'" class="'+(isvo?"pyvo":"")+(hid?" pyhid":"")+'"><td class="pyn">'+(isvo?'<small class="pyk">Variation order</small>':"")+pyIn("name",r,"Name")+'<div class="pyst" data-pyst></div>'+vb+'</td>';
   if(pt){
     h+='<td>'+pyIn("pdate",r,"Project date","","date")+'</td><td>'+pyIn("code",r,"Code")+'</td><td class="num">'+pyIn("bef",r,"0.00")+'</td>'+
       '<td class="num"><input inputmode="decimal" data-pf="vat" value="'+esc(r.vat)+'" placeholder="'+money(r2((num(r.bef)||0)*.05))+'" aria-label="VAT amount"></td>'+
-      '<td class="num pyc"><span data-cv>'+money(c.cv)+'</span>'+(isvo||!kids.length?"":'<small class="pyterms ok" data-fam>Incl. VOs '+money(pyFam(r).cv)+'</small>')+'<small class="pyterms '+pyTerms(r).c+'" data-terms>'+esc(pyTerms(r).t)+'</small></td><td class="num pyc pyb '+(c.bal>0?"bad":"ok")+'" data-bal>'+(c.cv?money(c.bal):"—")+'</td>';
+      '<td class="num pyc"><span data-cv>'+money(c.cv)+'</span>'+(isvo||!kids.length?"":'<small class="pyterms ok" data-fam>Incl. VOs '+money(pyFam(r).cv)+'</small>')+'<small class="pyterms '+pyTerms(r).c+'" data-terms>'+esc(pyTerms(r).t)+'</small></td><td class="num pyc pyb '+(c.bal>0?"bad":"ok")+'" data-bal><span data-bv>'+(c.cv?money(c.bal):"—")+'</span><div class="pybw" data-pybw></div></td>';
     for(i=0;i<6;i++)h+=pyPay(r,i,i?"Payment "+i:"Advance payment")}
   else{
-    h+=(r.k==="sub"?pyCodeSel(r):"")+'<td class="num">'+pyIn("cv",r,"0.00")+'<small class="pyterms '+pyTerms(r).c+'" data-terms>'+esc(pyTerms(r).t)+'</small></td><td class="num pyc pyb '+(c.bal>0?"bad":"ok")+'" data-bal>'+(c.cv?(c.bal===0?"—":money(c.bal)):"—")+'</td>';
+    h+=(r.k==="sub"?pyCodeSel(r):"")+'<td class="num">'+pyIn("cv",r,"0.00")+'<small class="pyterms '+pyTerms(r).c+'" data-terms>'+esc(pyTerms(r).t)+'</small></td><td class="num pyc pyb '+(c.bal>0?"bad":"ok")+'" data-bal><span data-bv>'+(c.cv?(c.bal===0?"—":money(c.bal)):"—")+'</span><div class="pybw" data-pybw></div></td>';
     for(i=0;i<5;i++)h+=pyPay(r,i,"Payment "+(i+1))}
   return h+pyDocs(r)+'<td><button type="button" class="pyx" data-pyx="'+r.id+'" title="Delete this row" aria-label="Delete this row">×</button></td></tr>'}
 function pyTable(rows,pt,label){
-  var head=pt?'<th>Client name</th><th>Project date</th><th>Project code</th><th>Contract value before VAT</th><th>VAT amount</th><th>Contract value after tax</th><th>Outstanding balance</th><th>Advance payment</th><th>Payment 1</th><th>Payment 2</th><th>Payment 3</th><th>Payment 4</th><th>Payment 5</th><th>Documents</th><th></th>'
-    :'<th>'+label+'</th>'+(label==="Sub-contractor"?'<th>Project code</th>':"")+'<th>Contract value</th><th>Balance</th><th>Payment 1</th><th>Payment 2</th><th>Payment 3</th><th>Payment 4</th><th>Payment 5</th><th>Documents</th><th></th>';
+  var pth=function(i,l){return'<th class="pc'+i+'">'+l+'</th>'},head;
+  if(pt)head='<th>Client name</th><th>Project date</th><th>Project code</th><th>Contract value before VAT</th><th>VAT amount</th><th>Contract value after tax</th><th>Outstanding balance</th>'+pth(0,"Advance payment")+pth(1,"Payment 1")+pth(2,"Payment 2")+pth(3,"Payment 3")+pth(4,"Payment 4")+pth(5,"Payment 5")+'<th>Documents</th><th></th>';
+  else head='<th>'+label+'</th>'+(label==="Sub-contractor"?'<th>Project code</th>':"")+'<th>Contract value</th><th>Balance</th>'+pth(0,"Payment 1")+pth(1,"Payment 2")+pth(2,"Payment 3")+pth(3,"Payment 4")+pth(4,"Payment 5")+'<th>Documents</th><th></th>';
   var sc=0,sb=0;rows.forEach(function(r){var c=pyCalc(r);sc+=c.cv;sb+=c.bal});
   var tf=pt?'<td>Total</td><td></td><td></td><td></td><td></td><td class="num" data-tot="cv">'+money(sc)+'</td><td class="num" data-tot="bal">'+money(sb)+'</td><td colspan="8"></td><td></td>'
     :'<td>Total</td>'+(label==="Sub-contractor"?'<td></td>':"")+'<td class="num" data-tot="cv">'+money(sc)+'</td><td class="num" data-tot="bal">'+money(sb)+'</td><td colspan="6"></td><td></td>';
-  return'<div class="pyscroll"><table class="pytbl" data-tt="py"><thead><tr>'+head+'</tr></thead><tbody>'+(rows.length?rows.map(pyRow).join(""):'<tr><td class="pyem" colspan="'+(pt?15:(label==="Sub-contractor"?11:10))+'">Nothing here yet.</td></tr>')+'</tbody><tfoot><tr>'+tf+'</tr></tfoot></table></div>'}
+  return'<div class="pyscroll"><table class="pytbl" data-tt="py" data-vis="'+PYC.vis+'"><thead><tr>'+head+'</tr></thead><tbody>'+(rows.length?rows.map(pyRow).join(""):'<tr><td class="pyem" colspan="'+(pt?15:(label==="Sub-contractor"?11:10))+'">Nothing here yet.</td></tr>')+'</tbody><tfoot><tr>'+tf+'</tr></tfoot></table></div>'}
 function pyHtml(g){
   var sh=PYSH[g]||"pt";if(sh==="vo")sh="pt";var R=PAY.rows.filter(function(r){return r.g===g}),cnt={},h,
     ismain=function(r){return!r.par||!pyFind(r.par)},
@@ -2705,12 +2837,12 @@ function pyHtml(g){
       var o=[];R.filter(function(r){return r.k==="pt"&&ismain(r)}).forEach(function(m){var f=[m].concat(pyKids(m.id));if(pyFamDone(m)===d)o=o.concat(f)});return o};
   cnt.pt=part("pt",false).filter(ismain).length;cnt.bm=part("bm",false).length;cnt.sub=part("sub",false).length;
   cnt.done=part("pt",true).filter(ismain).length;
-  h='<section class="xsec pyw"><div class="rpbar"><h3>Project payments</h3><span class="rpgrp"><button type="button" class="btn pri rpbtn" data-rp="pay" data-rps="'+sh+'" title="Print or save this sheet as PDF">Print this sheet</button><button type="button" class="btn rpbtn" data-rp="pay" data-rps="all" title="Print all sheets in one summary">Print all sheets</button></span></div><div class="pysh" role="tablist">'+PYS.map(function(t){return'<button type="button" class="'+(sh===t[0]?"on":"")+'" data-pysh="'+t[0]+'" role="tab">'+t[1]+(cnt[t[0]]?' <em>'+cnt[t[0]]+'</em>':"")+'</button>'}).join("")+'</div>';
+  pyVisFor(g,sh);h='<section class="xsec pyw" data-pylook="'+PYLK+'"><div class="rpbar"><h3>Project payments</h3>'+pyLookHtml()+'<span class="rpgrp"><button type="button" class="btn pri rpbtn" data-rp="pay" data-rps="'+sh+'" title="Print or save this sheet as PDF">Print this sheet</button><button type="button" class="btn rpbtn" data-rp="pay" data-rps="all" title="Print all sheets in one summary">Print all sheets</button></span></div><div class="pysh" role="tablist">'+PYS.map(function(t){return'<button type="button" class="'+(sh===t[0]?"on":"")+'" data-pysh="'+t[0]+'" role="tab">'+t[1]+(cnt[t[0]]?' <em>'+cnt[t[0]]+'</em>':"")+'</button>'}).join("")+'</div>'+(sh==="done"?"":'<div class="pyatt" id="pyatt" data-g="'+g+'" data-sh="'+sh+'">'+pyStripHtml(g,sh)+'</div>'+pyToolHtml());
   if(sh==="pt")h+=pyTable(part(sh,false),true)+'<button type="button" class="btn pri pyadd" data-pyadd="'+sh+'">+ Add project</button>';
   else if(sh==="done")h+='<div class="pyhd">Completed (balance is 0)</div>'+pyTable(part("pt",true),true)+'<p class="plh">A project moves here by itself when its outstanding balance reaches 0.</p>';
   else{var lb=sh==="bm"?"BM Technical services":"Sub-contractor";
     h+='<div class="pyhd">Pending</div>'+pyTable(part(sh,false),false,lb)+'<button type="button" class="btn pri pyadd" data-pyadd="'+sh+'">+ Add</button><div class="pyhd">Completed</div>'+pyTable(part(sh,true),false,lb)}
-  return h+'</section>'}
+  setTimeout(pyMarkAll,0);return h+'</section>'}
 function pyOutK(g,k){var t=0;PAY.rows.forEach(function(r){if(r.g===g&&r.k===k){var c=pyCalc(r);if(!c.done&&c.bal>0)t+=c.bal}});return r2(t)}
 function pyOutSubs(g){var M={},O=[];PAY.rows.forEach(function(r){if(r.g===g&&r.k==="sub"){var c=pyCalc(r);if(!c.done&&c.bal>0){var n=(r.name||"").trim()||"(no name yet)",pc=(r.pcode||"").trim(),k=n.toLowerCase()+"|"+pc;if(!M[k]){M[k]={name:n,code:pc,bal:0};O.push(M[k])}M[k].bal=r2(M[k].bal+c.bal)}}});return O}
 function pyOutPT(g){var t=0;PAY.rows.forEach(function(r){if(r.g===g&&r.k==="pt"){var c=pyCalc(r);if(!c.done&&c.bal>0)t+=c.bal}});return r2(t)}
@@ -2737,11 +2869,11 @@ function arHtml(g){return'<div class="rpbar rpbar2"><span class="plh">Each secti
 function pyLive(tr,r){
   var c=pyCalc(r),cv=tr.querySelector("[data-cv]"),b=tr.querySelector("[data-bal]");
   if(cv)cv.textContent=money(c.cv);
-  if(b){b.textContent=c.cv?(c.bal===0?"—":money(c.bal)):"—";b.className=b.className.replace(/\b(bad|ok)\b/g,"")+" "+(c.bal>0?"bad":"ok")}
+  if(b){var bv=b.querySelector("[data-bv]");(bv||b).textContent=c.cv?(c.bal===0?"—":money(c.bal)):"—";b.className=b.className.replace(/\b(bad|ok)\b/g,"")+" "+(c.bal>0?"bad":"ok")}
   var rt0=pyRoot(r),rtr=document.querySelector('tr[data-pid="'+rt0.id+'"] [data-fam]');if(rtr){var F=pyFam(rt0);rtr.textContent="Incl. VOs "+money(F.cv)}
   var tm=tr.querySelector("[data-terms]");if(tm){var T=pyTerms(r);tm.textContent=T.t;tm.className="pyterms "+T.c}
   if(pyIsPT(r.k)){var v=tr.querySelector('[data-pf="vat"]');if(v&&document.activeElement!==v)v.placeholder=money(r2((num(r.bef)||0)*.05))}
-  pyTot()}
+  pyTot();pyMark(tr,r);pyStrip()}
 function pyTot(){
   document.querySelectorAll("table.pytbl").forEach(function(t){
     var sc=0,sb=0,sa=0;t.querySelectorAll("tr.ara").forEach(function(a){sa+=+a.dataset.av||0});
@@ -2906,6 +3038,302 @@ function rpPrint(html,land){
   setTimeout(function(){try{window.print()}catch(e){}setTimeout(done,1500)},120)}
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-rp]");if(!b)return;var g=VIEW;if(!G[g])return;
   if(b.dataset.rp==="pay")rpPrint(rpPayHtml(g,b.dataset.rps),true);else rpPrint(rpArHtml(g,b.dataset.rps),false)});
+/* ===== CMA book: one page at a time, key words in colour, highlighter, pen, PDF, Test me (v115) ===== */
+var BKK="planner-bk-v1",BK={c:1,p:0,hl:{},pen:{},tm:{},mode:"",hc:"#FFE066",pc:"#1f4fd8",fing:0,pdfm:0,tmr:null};
+try{var _bk=JSON.parse(localStorage.getItem(BKK)||"null");if(_bk&&typeof _bk==="object"){["c","p","hl","pen","tm","hc","pc","fing"].forEach(function(k){if(_bk[k]!==undefined)BK[k]=_bk[k]})}}catch(e){}
+function bkSave(){try{localStorage.setItem(BKK,JSON.stringify({c:BK.c,p:BK.p,hl:BK.hl,pen:BK.pen,tm:BK.tm,hc:BK.hc,pc:BK.pc,fing:BK.fing}))}catch(e){}if(typeof phKick==="function")phKick()}
+var BKSAFE={US:1,GAAP:1,IFRS:1,IMA:1,ASC:1,CMA:1,AICPA:1,FASB:1,IASB:1,SEC:1};
+function bkRx(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}
+function bkMap(h,fn){var parts=h.split(/(<[^>]+>)/),d=0;return parts.map(function(p,i){if(i%2){if(/^<b[\s>]/.test(p))d++;else if(/^<\/b>/.test(p))d=Math.max(0,d-1);return p}return d?p:fn(p)}).join("")}
+function bkKw(h,n){var c=cmCh(n),names=[];
+  c.f.forEach(function(f){cmParse(f).forEach(function(p){if(p.n){var nm=p.n.replace(/\s*\(.*?\)\s*/g," ").replace(/\s+/g," ").trim();if(nm.length>3&&names.indexOf(nm)<0)names.push(nm)}})});
+  h=h.replace(/^([^:<>&]{3,42}):(\s)/,'<b class="bkk">$1</b>:$2');
+  if(names.length){var re=new RegExp("("+names.sort(function(a,b){return b.length-a.length}).map(function(x){return bkRx(esc(x))}).join("|")+")","gi");h=bkMap(h,function(t){return t.replace(re,'<b class="bkk">$1</b>')})}
+  var ab=cmAbRe(n).m;
+  h=bkMap(h,function(t){return t.replace(/(^|[^A-Za-z0-9&;])([A-Z]{2,6})(?![A-Za-z0-9&])/g,function(m,pre,w){return pre+(BKSAFE[w]||ab[w]||w.length<4?'<b class="bkk">'+w+'</b>':'<b class="bkt">'+w+'</b>')})});
+  h=bkMap(h,function(t){return t.replace(/(^|[^A-Za-z0-9&;])(NOT|ONLY|NEVER|ALWAYS|BEFORE|AFTER)(?![A-Za-z0-9&])/g,function(m,pre,w){return pre+'<b class="bkt">'+w+'</b>'})});
+  return h}
+function bkSent(t,n,seen){return t.replace(/([.!?])\s+(?=[A-Z(])/g,"$1\u0001").split("\u0001").map(function(x){return'<li>'+bkKw(cmAbn(x,n,seen),n)+'</li>'}).join("")}
+function bkMn(n){return CMMN[n]?cmMnHtml(n).replace(cmDwHtml(n),""):""}
+function bkPracticeHtml(c){var n=c.n,h=cxLinks(n)+'<div class="stg">'+cmSets(n).map(function(s){var b=cmBest(s.key);return'<div class="stcard"><div class="stct"><b>'+s.t+'</b><small>'+s.ids.length+' questions</small></div><div class="stcb"><button type="button" class="btn pri" data-cm="start" data-a="'+s.key+'">Start</button>'+(b!==null?'<small>best '+b+'%</small>':"")+'</div></div>'}).join("")+
+  '<div class="stcard"><div class="stct"><b>Full chapter</b><small>'+c.q.length+' questions</small></div><div class="stcb"><button type="button" class="btn pri" data-cm="start" data-a="chall|'+n+'">Start</button></div></div></div>';
+  return h+'<label class="stmark cmdone"><input type="checkbox" data-cm="done" data-a="'+n+'"'+(CMS.done[n]?" checked":"")+'> Chapter done</label>'}
+function bkPages(n){var c=cmCh(n),P=[];
+  if(c.intro||c.bk)P.push({id:"i",t:"Big picture",s:1,h:function(){var seen={};return(c.intro?'<ul class="bkl bkbig"><li>'+bkKw(cmAbn(c.intro,n,seen),n)+'</li></ul>':"")+(c.bk?'<p class="cmbk"><b>Becker:</b> '+esc(c.bk)+'</p>':"")}});
+  c.s.forEach(function(s,k){P.push({id:"n"+k,t:s[0].replace(/\s*\[Becker[^\]]*\]/,""),ref:(/\[(Becker[^\]]*)\]/.exec(s[0])||[])[1]||"",s:1,h:function(){var seen={};return s[1].map(function(p){return'<ul class="bkl">'+bkSent(p,n,seen)+'</ul>'}).join("")}})});
+  if(c.f.length)P.push({id:"f",t:"Formulas",s:1,h:function(){CMNUM=0;return'<div class="cmfm">'+c.f.map(function(f){return cmFormHtml(f,n)}).join("")+'</div>'}});
+  if(CMMN[n])P.push({id:"m",t:"Memory tricks",s:1,h:function(){return bkMn(n)}});
+  if(DWCH[n])P.push({id:"d",t:"Draw it",s:1,h:function(){return cmDwHtml(n)}});
+  if(c.tr.length)P.push({id:"w",t:"Watch out for these traps",s:1,h:function(){var seen={};return'<ul class="bkl bktr">'+c.tr.map(function(f){return'<li>'+bkKw(cmAbn(f,n,seen),n)+'</li>'}).join("")+'</ul>'}});
+  c.x.forEach(function(x,k){P.push({id:"x"+k,t:x[0].replace(/^Worked Example\s*/,"Example "),s:1,h:function(){var seen={};return'<p class="cmfacts"><b>Facts.</b> '+bkKw(cmAbn(x[1],n,seen),n)+'</p><ol class="cmsol">'+x[2].map(function(z){return'<li>'+bkKw(cmAbn(z.replace(/^\d+\.\s*/,""),n,seen),n)+'</li>'}).join("")+'</ol>'}})});
+  if(bkTmItems("c"+n).length)P.push({id:"t",t:"Test me",s:0,h:function(){return bkTmHtml("c"+n)}});
+  P.push({id:"p",t:"Practice",s:0,h:function(){return bkPracticeHtml(c)}});
+  return P}
+/* ---- highlights and pen marks ---- */
+function bkWrap(root,s,e,col,idx){var tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),pos=0,n,jobs=[];
+  while(n=tw.nextNode()){var L=n.nodeValue.length,a=Math.max(s,pos),b=Math.min(e,pos+L);if(a<b)jobs.push([n,a-pos,b-pos]);pos+=L;if(pos>=e)break}
+  jobs.forEach(function(j){var r=document.createRange();r.setStart(j[0],j[1]);r.setEnd(j[0],j[2]);var sp=document.createElement("span");sp.className="bkh";sp.style.background=col;sp.setAttribute("data-i",idx);try{r.surroundContents(sp)}catch(x){}})}
+function bkApplyHl(root,list){(list||[]).forEach(function(h,i){bkWrap(root,h.s,h.e,h.c,i)})}
+function bkPenSvg(list){if(!list||!list.length)return"";return'<svg class="bkpen bkpv" viewBox="0 0 1000 1000" preserveAspectRatio="none">'+list.map(function(s){var d="";for(var i=0;i<s.p.length;i+=2)d+=(i?"L":"M")+s.p[i]+" "+s.p[i+1];return'<path d="'+d+'" fill="none" stroke="'+s.c+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'}).join("")+'</svg>'}
+function bkKey(){return BK.c+":"+(bkCur()||{}).id}
+function bkCur(){var P=bkPages(BK.c);return P[Math.max(0,Math.min(BK.p,P.length-1))]}
+function bkBody(){return document.getElementById("bkbody")}
+function bkRepaint(){var b=bkBody(),p=bkCur();if(!b||!p||!p.s)return;b.innerHTML=p.h();bkApplyHl(b,BK.hl[bkKey()])}
+function bkPenPaint(){var s=document.getElementById("bkpen");if(!s)return;var k=bkKey();s.innerHTML=(BK.pen[k]||[]).map(function(st){var d="";for(var i=0;i<st.p.length;i+=2)d+=(i?"L":"M")+st.p[i]+" "+st.p[i+1];return'<path d="'+d+'" fill="none" stroke="'+st.c+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'}).join("")}
+function bkSelCheck(){if(BK.mode!=="h")return;var b=bkBody(),p=bkCur();if(!b||!p||!p.s)return;var sel=window.getSelection();if(!sel||!sel.rangeCount||sel.isCollapsed)return;var rg=sel.getRangeAt(0);
+  if(!b.contains(rg.startContainer)||!b.contains(rg.endContainer))return;
+  var r1=document.createRange();r1.selectNodeContents(b);r1.setEnd(rg.startContainer,rg.startOffset);var s=r1.toString().length,e=s+rg.toString().length;if(e-s<2)return;
+  var k=bkKey();(BK.hl[k]=BK.hl[k]||[]).push({s:s,e:e,c:BK.hc});bkSave();sel.removeAllRanges();bkRepaint()}
+document.addEventListener("pointerup",function(){setTimeout(bkSelCheck,40)});
+var _bkT=0;document.addEventListener("selectionchange",function(){if(BK.mode!=="h")return;clearTimeout(_bkT);_bkT=setTimeout(bkSelCheck,900)});
+var BKD=null;
+function bkPt(e,r){return[Math.round((e.clientX-r.left)/r.width*1000),Math.round((e.clientY-r.top)/r.height*1000)]}
+function bkPenBind(){var s=document.getElementById("bkpen");if(!s||BK.mode!=="p")return;var lastY=null;
+  s.addEventListener("pointerdown",function(e){if(e.pointerType==="touch"&&!BK.fing){lastY=e.clientY;return}try{s.setPointerCapture(e.pointerId)}catch(x){}var r=s.getBoundingClientRect(),q=bkPt(e,r),el=document.createElementNS("http://www.w3.org/2000/svg","path");el.setAttribute("fill","none");el.setAttribute("stroke",BK.pc);el.setAttribute("stroke-width","2.2");el.setAttribute("stroke-linecap","round");el.setAttribute("stroke-linejoin","round");el.setAttribute("vector-effect","non-scaling-stroke");el.setAttribute("d","M"+q[0]+" "+q[1]);s.appendChild(el);BKD={el:el,p:[q[0],q[1]],r:r};e.preventDefault()});
+  s.addEventListener("pointermove",function(e){if(lastY!==null&&e.pointerType==="touch"&&!BK.fing){window.scrollBy(0,lastY-e.clientY);lastY=e.clientY;return}if(!BKD)return;var ev=e.getCoalescedEvents?e.getCoalescedEvents():[e];if(!ev.length)ev=[e];ev.forEach(function(x){var q=bkPt(x,BKD.r),l=BKD.p.slice(-2);if(Math.abs(q[0]-l[0])+Math.abs(q[1]-l[1])<2)return;BKD.p.push(q[0],q[1]);BKD.el.setAttribute("d",BKD.el.getAttribute("d")+"L"+q[0]+" "+q[1])})});
+  var up=function(){lastY=null;if(!BKD)return;var d=BKD;BKD=null;if(d.p.length<4){d.el.remove();return}var k=bkKey();(BK.pen[k]=BK.pen[k]||[]).push({c:BK.pc,p:d.p});bkSave()};
+  s.addEventListener("pointerup",up);s.addEventListener("pointercancel",up);s.addEventListener("touchmove",function(e){if(e.cancelable)e.preventDefault()},{passive:false})}
+function bkAfter(){var b=bkBody(),p=bkCur();if(!b||!p)return;if(p.s)bkApplyHl(b,BK.hl[bkKey()]);bkPenPaint();bkPenBind()}
+/* ---- the book ---- */
+function bkContents(){var h="",sec="";CMD.ch.forEach(function(c){var s=c.n?c.sec:"0";if(s!==sec){sec=s;h+='<div class="bksh">'+(s==="0"?"Optional":esc("Section "+s+": "+CMD.secs[s]))+'</div>'}
+  var on=c.n===BK.c;h+='<div role="button" tabindex="0" class="bkci'+(on?" on":"")+(CMS.done[c.n]?" dn":"")+'" data-bk="go" data-a="'+c.n+'"><span>'+(CMS.done[c.n]?"✓":(c.n||"•"))+'</span>'+esc(c.t)+'</div>';
+  if(on)bkPages(c.n).forEach(function(p,i){h+='<div role="button" tabindex="0" class="bkpi'+(i===BK.p?" on":"")+'" data-bk="pp" data-a="'+i+'">'+esc(p.t)+'</div>'})});return h}
+function cmBook(){var c=cmCh(BK.c)||cmCh(1);BK.c=c.n;var P=bkPages(c.n);if(BK.p>=P.length)BK.p=P.length-1;if(BK.p<0)BK.p=0;var pg=P[BK.p],all=CMD.ch.filter(function(x){return x.n>0}),dn=all.filter(function(x){return CMS.done[x.n]}).length,st=pg.s,m=BK.mode;
+  var h='<section class="xsec stw bk"><div class="rpbar"><h3>CMA Part 1 <em>'+dn+' of '+all.length+' chapters done</em></h3></div>';
+  h+='<select class="bksel" data-bk-sel="1" aria-label="Choose a chapter">'+CMD.ch.map(function(x){return'<option value="'+x.n+'"'+(x.n===c.n?" selected":"")+'>'+(x.n?x.n+". ":"Optional: ")+esc(x.t)+'</option>'}).join("")+'</select>';
+  h+='<div class="bkwrap"><div class="bkcon">'+bkContents()+'</div><div class="bkmain">';
+  h+='<div class="bktb">'+(st?'<button type="button" class="btn'+(m==="h"?" on":"")+'" data-bk="mode" data-a="h">Highlighter</button>'+['#FFE066','#9BE7A8','#FFB3D1','#A5D8FF'].map(function(x){return'<i class="bksw'+(BK.hc===x&&m==="h"?" on":"")+'" style="background:'+x+'" data-bk="hc" data-a="'+x+'" role="button" aria-label="Highlight colour"></i>'}).join("")+
+    '<button type="button" class="btn'+(m==="p"?" on":"")+'" data-bk="mode" data-a="p">Pen</button>'+['#1f4fd8','#d62828','#111111','#1b8a4b'].map(function(x){return'<i class="bksw'+(BK.pc===x&&m==="p"?" on":"")+'" style="background:'+x+'" data-bk="pc" data-a="'+x+'" role="button" aria-label="Pen colour"></i>'}).join("")+
+    (m==="p"?'<button type="button" class="btn'+(BK.fing?" on":"")+'" data-bk="fing">'+(BK.fing?"Finger draws":"Finger scrolls")+'</button>':"")+'<button type="button" class="btn" data-bk="undo">Undo pen</button><button type="button" class="btn" data-bk="clr">Clear my marks</button>':'<span class="bkmute">Highlighter and pen are on the reading pages.</span>')+
+    '<span class="bkpdf"><button type="button" class="btn pri" data-bk="pdf">Download PDF ↓</button>'+(BK.pdfm?'<span class="bkpm"><button type="button" class="btn" data-bk="pdfg" data-a="m">Include my marks</button><button type="button" class="btn" data-bk="pdfg" data-a="c">Clean copy to scribble on</button></span>':"")+'</span></div>';
+  h+='<div class="bkpage"><div class="bkph"><b>'+esc(cmLab(c))+(c.n?" · IMA "+esc(c.ima):"")+'</b><span>page '+(BK.p+1)+' of '+P.length+'</span></div><h3 class="bkpt">'+esc(pg.t)+'</h3>'+(pg.ref?'<div class="bkref">'+esc(pg.ref)+'</div>':"")+'<div id="bkbody" class="bkbody">'+pg.h()+'</div>'+(st?'<svg id="bkpen" class="bkpen'+(m==="p"?" on":"")+'" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>':"")+'</div>';
+  h+='<div class="bknav"><button type="button" class="btn" data-bk="nav" data-a="-1"'+(BK.p===0&&c.n===CMD.ch[0].n?" disabled":"")+'>‹ Back</button><div class="bkdots">'+P.map(function(x,i){return'<i class="'+(i===BK.p?"on":(i<BK.p?"dn":""))+'"></i>'}).join("")+'</div><button type="button" class="btn pri" data-bk="nav" data-a="1">'+(BK.p<P.length-1?"Next ›":"Next chapter ›")+'</button></div></div></div></section>';
+  setTimeout(bkAfter,0);return h}
+function bkGo(n,p){BK.c=n;BK.p=p||0;BK.pdfm=0;bkSave();CMV=null;render();var e=document.querySelector(".bkmain");if(e)window.scrollTo(0,Math.max(0,e.getBoundingClientRect().top+window.pageYOffset-70))}
+function bkOpen(n){BK.c=n;BK.p=0;BK.pdfm=0;bkSave();cmGo(VIEW,"cma",null)}
+/* ---- PDF ---- */
+function bkPrintHtml(n,marks){var c=cmCh(n),P=bkPages(n),h='<div class="bkprint"><div class="bkcov"><b>CMA Part 1 · '+esc(cmLab(c))+': '+esc(c.t)+'</b><span>'+(marks?"With my highlights and pen marks":"Clean copy")+' · '+cmDate(Date.now())+'</span></div>';
+  P.forEach(function(p){if(!p.s)return;var k=n+":"+p.id,d=document.createElement("div");d.innerHTML=p.h();if(marks)bkApplyHl(d,BK.hl[k]);
+    h+='<section class="bkpp"><h3 class="bkpt">'+esc(p.t)+'</h3><div class="bkpa">'+d.innerHTML+(marks?bkPenSvg(BK.pen[k]):"")+'</div><div class="bkruled"><span>My notes</span></div></section>'});
+  return h+'</div>'}
+/* ---- Test me ---- */
+function bkTmItems(scope){var o=[];CMD.ch.forEach(function(c){if(!c.n)return;if(scope!=="all"&&c.n!==+scope.slice(1))return;c.f.forEach(function(f,i){cmParse(f).forEach(function(p,j){if(p.k==="r")return;o.push({k:c.n+"."+i+"."+j,n:c.n,l:p.n||"Remember these",r:cmAnsHtml(p,c.n)})})})});return o}
+var BKCC={};function bkCalcOk(n){if(BKCC[n]===undefined){var a=cmGenIds(1,function(x){return x===n});BKCC[n]=a.length>0;a.forEach(function(i){delete CMX[i]})}return BKCC[n]}
+function bkCalcBtn(scope){if(scope==='all')return'<button type="button" class="btn cmbig" data-bk="tmc" data-a="all">How do you get X from these numbers? (10 questions)</button>';var n=+scope.slice(1);return bkCalcOk(n)?'<button type="button" class="btn cmbig" data-bk="tmc" data-a="'+scope+'">How do you get X from these numbers?</button>':""}
+function bkTmStart(scope,mode){var it=bkTmItems(scope);if(mode==="miss")it=it.filter(function(x){return BK.tm[x.k]!==1});it=cmShuf(it);if(mode==="15"||mode==="miss")it=it.slice(0,mode==="15"?15:30);if(!it.length){alert("Nothing to test here yet.");return}BK.tmr={scope:scope,q:it,i:0,show:false,got:0,again:0,rq:{},txt:""};render()}
+function bkTmHtml(scope){var R=BK.tmr,items=bkTmItems(scope),known=items.filter(function(x){return BK.tm[x.k]===1}).length;
+  if(R&&R.scope===scope&&R.calc){
+    if(R.i>=R.ids.length)return'<div class="bktm"><div class="bkbigt">'+R.got+' of '+R.i+' right</div><p class="bkmute">'+(R.again?R.again+" you missed came back with new numbers. ":"")+'Same formulas, new numbers every round.</p><div class="stbtns"><button type="button" class="btn pri cmbig" data-bk="tmc" data-a="'+scope+'">Another round</button><button type="button" class="btn" data-bk="tmx">Done</button></div></div>';
+    var cq=CMX[R.ids[R.i]];return'<div class="bktm"><div class="bkmute">Question '+(R.i+1)+' of '+R.ids.length+' · Chapter '+cq.n+'</div><div class="bktq">'+esc(cq.q)+'</div>'+(R.show?(R.txt?'<div class="bkyou"><small>Your answer</small>'+esc(R.txt)+'</div>':"")+'<div class="cmca"><b>Answer: '+esc(cq.o[cq.a])+'</b></div><div class="cmex">'+esc(cq.e)+'</div><div class="stbtns"><button type="button" class="btn cmok cmbig" data-bk="tmcy">✓ I got it</button><button type="button" class="btn cmbad cmbig" data-bk="tmcn">✗ Not yet, give me new numbers</button></div>':'<textarea id="bktxt" class="cmta" rows="2" placeholder="Work it out on paper, type your answer here"></textarea><div class="stbtns"><button type="button" class="btn pri cmbig" data-bk="tmcr">Show the answer</button><button type="button" class="btn" data-bk="tmx">Stop</button></div>')+'</div>'}
+  if(R&&R.scope===scope){
+    if(R.i>=R.q.length){var miss=items.filter(function(x){return BK.tm[x.k]!==1}).length;return'<div class="bktm"><div class="bkbigt">'+R.got+' of '+R.q.length+' got it</div><p class="bkmute">'+(R.again?R.again+" you missed came back at the end of the round. ":"")+miss+' formula'+(miss===1?"":"s")+' still to learn in this set.</p><div class="stbtns">'+(miss?'<button type="button" class="btn pri cmbig" data-bk="tms" data-a="'+scope+'|miss">Test me on the ones I still miss</button>':"")+'<button type="button" class="btn cmbig" data-bk="tms" data-a="'+scope+'|all">Go again, random order</button><button type="button" class="btn" data-bk="tmx">Done</button></div></div>'}
+    var x=R.q[R.i];return'<div class="bktm"><div class="bkmute">Question '+(R.i+1)+' of '+R.q.length+' · Chapter '+x.n+'</div><div class="bktq">What is the formula for <b>'+cmAbx(x.l,x.n)+'</b>?</div>'+(R.show?(R.txt?'<div class="bkyou"><small>You wrote</small>'+esc(R.txt)+'</div>':"")+'<div class="cmca">'+x.r+'</div><div class="stbtns"><button type="button" class="btn cmok cmbig" data-bk="tmy">✓ I got it</button><button type="button" class="btn cmbad cmbig" data-bk="tmn">✗ Not yet, ask me again</button></div>':'<textarea id="bktxt" class="cmta" rows="2" placeholder="Write it from memory, then check"></textarea><div class="stbtns"><button type="button" class="btn pri cmbig" data-bk="tmr">Show the formula</button><button type="button" class="btn" data-bk="tmx">Stop</button></div>')+'</div>'}
+  return'<div class="bktm"><div class="bkbigt">'+known+' of '+items.length+' formulas known</div><p class="bkmute">You get asked "What is the formula for…?" and write it from memory. Then check. The ones you miss come back at the end.</p><div class="stbtns">'+(scope==="all"?'<button type="button" class="btn pri cmbig" data-bk="tms" data-a="all|15">Test me on 15 random formulas</button><button type="button" class="btn cmbig" data-bk="tms" data-a="all|all">All '+items.length+' formulas</button>':'<button type="button" class="btn pri cmbig" data-bk="tms" data-a="'+scope+'|all">Start ('+items.length+' formulas)</button>')+(known<items.length&&known>0?'<button type="button" class="btn cmbig" data-bk="tms" data-a="'+scope+'|miss">Only the ones I still miss</button>':"")+bkCalcBtn(scope)+'</div><p class="bkmute">The calculation questions give you numbers and ask you to work out the answer. They change every time.</p></div>'}
+function bkTmTab(){var h='<section class="xsec stw">'+cmHead("Test me","what is the formula for…?")+'<h5 class="sth">All chapters</h5>'+bkTmHtml("all");
+  h+='<h5 class="sth">One chapter</h5><div class="bktmc">'+CMD.ch.filter(function(c){return c.n>0&&bkTmItems("c"+c.n).length}).map(function(c){var it=bkTmItems("c"+c.n),k=it.filter(function(x){return BK.tm[x.k]===1}).length;return'<button type="button" class="btn" data-bk="tms" data-a="c'+c.n+'|all"><b>'+c.n+'</b> '+esc(c.t)+'<small>'+k+'/'+it.length+'</small></button>'}).join("")+'</div>';return h+'</section>'}
+function bkTools(){var T=[["ex","Exam cards","Study card, refresher and heavy practice for each module"],["ref","Rusty on the basics?","Plain refresher on debits, credits and the four statements"],["cs","Case studies","12 cases, 4 items each"],["fm","Formulas to remember","Every formula in one list, with a drill"],["ga","GAAP vs IFRS","Key differences, searchable"],["ov","Checklist and scores","Chapters done and practice history"]];
+  return'<section class="xsec stw">'+cmHead("Tools","everything else")+'<div class="bktl">'+T.map(function(t){return'<button type="button" class="bktc" data-bk="tool" data-a="'+t[0]+'"><b>'+t[1]+'</b><small>'+t[2]+'</small></button>'}).join("")+'</div></section>'}
+$("board").addEventListener("click",function(e){var b=e.target.closest("[data-bk]");if(!b)return;var a=b.dataset.a||"",act=b.dataset.bk,g=VIEW;if(!G[g])return;
+  if(act==="go"){bkGo(+a,0);return}
+  if(act==="pp"){bkGo(BK.c,+a);return}
+  if(act==="nav"){var P=bkPages(BK.c),i=BK.p+(+a);if(i<0){var ix=CMD.ch.findIndex(function(x){return x.n===BK.c});if(ix>0){var pc=CMD.ch[ix-1];bkGo(pc.n,bkPages(pc.n).length-1)}return}if(i>=P.length){var ix2=CMD.ch.findIndex(function(x){return x.n===BK.c});if(ix2<CMD.ch.length-1)bkGo(CMD.ch[ix2+1].n,0);return}bkGo(BK.c,i);return}
+  if(act==="mode"){BK.mode=BK.mode===a?"":a;render();return}
+  if(act==="hc"){BK.hc=a;BK.mode="h";bkSave();render();return}
+  if(act==="pc"){BK.pc=a;BK.mode="p";bkSave();render();return}
+  if(act==="fing"){BK.fing=BK.fing?0:1;bkSave();render();return}
+  if(act==="undo"){var k=bkKey();if(BK.pen[k]&&BK.pen[k].length){BK.pen[k].pop();bkSave();bkPenPaint()}return}
+  if(act==="clr"){var k2=bkKey();if(!(BK.hl[k2]&&BK.hl[k2].length)&&!(BK.pen[k2]&&BK.pen[k2].length))return;if(!confirm("Clear your highlights and pen marks on this page?"))return;delete BK.hl[k2];delete BK.pen[k2];bkSave();bkRepaint();bkPenPaint();return}
+  if(act==="pdf"){BK.pdfm=BK.pdfm?0:1;render();return}
+  if(act==="pdfg"){BK.pdfm=0;var html=bkPrintHtml(BK.c,a==="m");render();rpPrint(html,false);return}
+  if(act==="tools"){cmGo(g,"cmaz",null);return}
+  if(act==="tool"){if(a==="ex")cmGo(g,"cmax",null);else if(a==="ref")cmGo(g,"cma",{t:"ref"});else if(a==="cs")cmGo(g,"cmac",null);else if(a==="fm")cmGo(g,"cmaf",null);else if(a==="ga")cmGo(g,"cmag",null);else if(a==="ov")cmGo(g,"cmao",null);return}
+  if(act==="tms"){var q=a.split("|");bkTmStart(q[0],q[1]);return}
+  if(act==="tmr"){var ta=document.getElementById("bktxt");BK.tmr.txt=ta?ta.value.trim():"";BK.tmr.show=true;render();return}
+  if(act==="tmy"||act==="tmn"){var R=BK.tmr,x=R.q[R.i];if(act==="tmy"){BK.tm[x.k]=1;R.got++}else{BK.tm[x.k]=0;if(!R.rq[x.k]){R.rq[x.k]=1;R.q.push(x);R.again++}}R.i++;R.show=false;R.txt="";bkSave();render();return}
+  if(act==="tmc"){var sc=a,ids=sc==="all"?cmGenIds(10):cmGenIds(10,function(x){return x===+sc.slice(1)});if(!ids.length){alert("No number questions for this one yet.");return}BK.tmr={calc:true,scope:sc,ids:ids,i:0,show:false,got:0,again:0,n0:ids.length,txt:""};render();return}
+  if(act==="tmcr"){var ta2=document.getElementById("bktxt");BK.tmr.txt=ta2?ta2.value.trim():"";BK.tmr.show=true;render();return}
+  if(act==="tmcy"||act==="tmcn"){var R2=BK.tmr,q2=CMX[R2.ids[R2.i]];if(act==="tmcy")R2.got++;else{var nn=cmGenIds(1,function(x){return x===q2.n});if(nn.length){R2.ids.push(nn[0]);R2.again++}}R2.i++;R2.show=false;R2.txt="";render();return}
+  if(act==="tmx"){BK.tmr=null;render();return}});
+$("board").addEventListener("change",function(e){var t=e.target;if(t.dataset&&t.dataset.bkSel){bkGo(+t.value,0)}});
+
+/* ===== Project Tracker restyle: attention strip, glowing next payment, status pills, % collected, payment columns, three looks (v117) ===== */
+var PYLK="navy",PYVIS={},PYC={vis:6,tot:6,key:""},PYJ={};
+try{PYLK=localStorage.getItem("planner-pylook-v1")||"navy";if(["navy","bw","dark"].indexOf(PYLK)<0)PYLK="navy"}catch(e){}
+try{PYVIS=JSON.parse(localStorage.getItem("planner-pyvis-v1")||"{}")||{}}catch(e){}
+function pyLkSave(){try{localStorage.setItem("planner-pylook-v1",PYLK);localStorage.setItem("planner-pyvis-v1",JSON.stringify(PYVIS))}catch(e){}if(typeof phKick==="function")phKick()}
+function pyDays(a,b){return Math.round((Date.parse(b)-Date.parse(a))/864e5)}
+function pyAdd(d,n){var x=new Date(d+"T00:00:00");x.setDate(x.getDate()+n);return x.getFullYear()+"-"+("0"+(x.getMonth()+1)).slice(-2)+"-"+("0"+x.getDate()).slice(-2)}
+function pyShort(d){var m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(d||"");return m?(+m[3])+" "+PCMS[+m[2]-1]:""}
+function pyStat(r){var c=pyCalc(r),pt=pyIsPT(r.k),n=pt?6:5,td=today(),lim=pyAdd(td,14),cells=[],tags=[],over=0,overSum=0,maxD=0,soon=0,soonSum=0,minSoon="",nx=-1;
+  for(var i=0;i<n;i++){var p=r.pays[i]||{},a=num(p.a)||0,paid=p.p===true;
+    if(!a){cells.push("empty");tags.push("");continue}
+    if(paid){cells.push("paid");tags.push("");continue}
+    if(p.d&&p.d<td){var dd=pyDays(p.d,td);cells.push("over");tags.push("OVERDUE "+dd+" DAY"+(dd===1?"":"S"));over++;overSum+=a;if(dd>maxD)maxD=dd;continue}
+    if(p.d&&p.d<=lim){cells.push("soon");tags.push("DUE "+pyShort(p.d).toUpperCase());soon++;soonSum+=a;if(!minSoon||p.d<minSoon)minSoon=p.d;if(nx<0)nx=i;continue}
+    if(nx<0){nx=i;cells.push("next");tags.push("NEXT PAYMENT")}else{cells.push("idle");tags.push("")}}
+  var paidSum=0;for(i=0;i<n;i++){var q=r.pays[i]||{};if(q.p===true)paidSum+=num(q.a)||0}
+  var T=pyTerms(r),nf=!c.done&&T.c!=="ok",nod=pt&&!r.par&&!r.pdate,pill;
+  if(over)pill={t:"Overdue "+maxD+" day"+(maxD===1?"":"s"),c:"over"};
+  else if(soon)pill={t:"Due "+pyShort(minSoon),c:"soon"};
+  else if(c.done)pill={t:"Fully collected",c:"ok"};
+  else if(nf)pill={t:"Not finalized",c:"info"};
+  else if(nx>=0){var ms=(r.pays[nx]||{}).m;pill={t:"On track"+(ms?" · next "+ms:""),c:"ok"}}
+  else pill={t:"No payments yet",c:"idle"};
+  return{cells:cells,tags:tags,over:over,overSum:overSum,soon:soon,soonSum:soonSum,nf:nf,nod:nod,pill:pill,pct:c.cv>0?Math.max(0,Math.min(100,Math.round(paidSum/c.cv*100))):0,done:c.done}}
+function pyMark(tr,r){if(!tr||!r)return;var s=pyStat(r),fl=[];
+  tr.className=tr.className.replace(/\bpyst-\w+/g,"").replace(/\s+/g," ").trim();tr.classList.add("pyst-"+s.pill.c);
+  if(s.over)fl.push("over");if(s.soon)fl.push("soon");if(s.nf&&!s.done)fl.push("nf");if(s.nod)fl.push("nod");tr.dataset.fl=fl.join(" ");
+  [].forEach.call(tr.querySelectorAll("td.pyp"),function(td,i){td.className=td.className.replace(/\bpys-\w+/g,"").replace(/\s+/g," ").trim();var st=s.cells[i]||"empty";td.classList.add("pys-"+st);if(s.tags[i])td.setAttribute("data-tag",s.tags[i]);else td.removeAttribute("data-tag")});
+  var p=tr.querySelector("[data-pyst]");if(p)p.innerHTML='<span class="pypill pk-'+s.pill.c+'">'+esc(s.pill.t)+'</span>';
+  var b=tr.querySelector("[data-pybw]");if(b)b.innerHTML=(pyCalc(r).cv>0?'<div class="pybar"><i style="width:'+s.pct+'%"></i></div><small>'+s.pct+'% collected</small>':"")}
+function pyStripHtml(g,sh){if(sh==="done")return"";var R=PAY.rows.filter(function(r){return r.g===g&&(sh==="pt"?pyIsPT(r.k):r.k===sh)}),o=0,oS=0,sn=0,sS=0,nf=0,nod=0;
+  R.forEach(function(r){if(sh==="pt"&&r.par){var rt=pyFind(r.par);if(rt&&pyFamDone(rt))return}else if(sh==="pt"&&pyFamDone(r))return;else if(sh!=="pt"&&pyCalc(r).done)return;var s=pyStat(r);o+=s.over;oS+=s.overSum;sn+=s.soon;sS+=s.soonSum;if(s.nf)nf++;if(s.nod)nod++});
+  var ch=[];if(o)ch.push('<button type="button" class="pychip over" data-pyj="over">'+o+' overdue · '+money(r2(oS))+'</button>');
+  if(sn)ch.push('<button type="button" class="pychip soon" data-pyj="soon">'+sn+' due within 2 weeks · '+money(r2(sS))+'</button>');
+  if(nf)ch.push('<button type="button" class="pychip info" data-pyj="nf">'+nf+' not finalized</button>');
+  if(nod)ch.push('<button type="button" class="pychip idle" data-pyj="nod">'+nod+' no project date</button>');
+  return'<b class="pyatl">Needs attention</b>'+(ch.length?ch.join("")+'<span class="pyhint">Tap a chip to jump to the row</span>':'<span class="pychip ok">Nothing needs attention</span>')}
+function pyStrip(){var e=document.getElementById("pyatt");if(e)e.innerHTML=pyStripHtml(e.dataset.g,e.dataset.sh)}
+function pyMarkAll(){[].forEach.call(document.querySelectorAll(".pyw table.pytbl tr[data-pid]"),function(tr){pyMark(tr,pyFind(tr.dataset.pid))});pyStrip()}
+function pyVisFor(g,sh){var key=g+":"+sh,tot=(sh==="pt")?6:5,R=PAY.rows.filter(function(r){return r.g===g&&(sh==="pt"?pyIsPT(r.k):r.k===sh)}),used=1;
+  R.forEach(function(r){for(var i=0;i<tot;i++){var p=r.pays[i]||{};if((num(p.a)||0)>0||p.d||p.m)used=Math.max(used,i+1)}});
+  var v=PYVIS[key]!==undefined?PYVIS[key]:Math.max(used,2);v=Math.max(1,Math.min(tot,v));PYC={vis:v,tot:tot,key:key,used:used};return PYC}
+function pyToolHtml(){var v=PYC.vis,t=PYC.tot;return'<div class="pytool"><span class="pycols">Payment columns <button type="button" data-pycol="-1" aria-label="Show fewer payment columns"'+(v<=1?" disabled":"")+'>−</button><b>'+v+' of '+t+'</b><button type="button" data-pycol="1" aria-label="Show another payment column"'+(v>=t?" disabled":"")+'>+</button></span><span class="pyhint">Empty payment columns stay hidden. Press + when you need the next one.</span></div>'}
+function pyLookHtml(){return'<span class="pylk" role="group" aria-label="Look">'+[["navy","Soft navy"],["bw","Black and white"],["dark","Dark"]].map(function(x){return'<button type="button" class="'+(PYLK===x[0]?"on":"")+'" data-pylk="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</span>'}
+$("board").addEventListener("click",function(e){var b=e.target.closest("[data-pylk],[data-pycol],[data-pyj]");if(!b)return;var d=b.dataset;
+  if(d.pylk){PYLK=d.pylk;pyLkSave();var w=document.querySelector(".pyw");if(w){w.setAttribute("data-pylook",PYLK);[].forEach.call(w.querySelectorAll("[data-pylk]"),function(x){x.classList.toggle("on",x.dataset.pylk===PYLK)})}return}
+  if(d.pycol){var k=PYC.key||"",v=Math.max(1,Math.min(PYC.tot,PYC.vis+(+d.pycol)));PYVIS[k]=v;pyLkSave();render();return}
+  if(d.pyj){var L=[].filter.call(document.querySelectorAll(".pyw tr[data-pid]"),function(tr){return(" "+(tr.dataset.fl||"")+" ").indexOf(" "+d.pyj+" ")>=0&&!tr.classList.contains("pyhid")});if(!L.length)return;PYJ[d.pyj]=((PYJ[d.pyj]||0)+1)%L.length;var tr=L[PYJ[d.pyj]];tr.scrollIntoView({block:"center",behavior:"smooth"});tr.classList.add("pyflash");setTimeout(function(){tr.classList.remove("pyflash")},1800)}});
+
+/* ===== Petty cash: one cash box per company, month by month, with a QB tick (v114) ===== */
+var PCK="planner-pc-v1",PC={rows:[],open:{},v:{}},PCN={},PCUI={},PCM=["January","February","March","April","May","June","July","August","September","October","November","December"],PCMS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+try{var _pc=JSON.parse(localStorage.getItem(PCK)||"null");if(_pc&&typeof _pc==="object"){PC.rows=_pc.rows||[];PC.open=_pc.open||{};PC.v=_pc.v||{}}}catch(e){}
+function pcSave(){try{localStorage.setItem(PCK,JSON.stringify(PC))}catch(e){}if(typeof phKick==="function")phKick()}
+function pcRows(g){return PC.rows.filter(function(r){return r.g===g&&/^\d{4}-\d\d-\d\d$/.test(r.d||"")})}
+function pcSorted(g){return pcRows(g).map(function(r,i){return{r:r,i:i}}).sort(function(a,b){return a.r.d.localeCompare(b.r.d)||a.i-b.i}).map(function(x){return x.r})}
+function pcNet(L){var o=0,n=0;L.forEach(function(r){o+=r.o||0;n+=r.i||0});return{o:r2(o),i:r2(n)}}
+function pcHasYear(g,y){return pcRows(g).some(function(r){return r.d.slice(0,4)===String(y)})}
+function pcOpen(g,y,depth){
+  var o=PC.open[g]&&PC.open[g][y];if(o!==undefined&&o!==""&&o!==null&&!isNaN(+o))return+o;
+  if((depth||0)<6&&pcHasYear(g,y-1))return pcClose(g,y-1,(depth||0)+1);return 0}
+function pcClose(g,y,depth){var L=pcRows(g).filter(function(r){return r.d.slice(0,4)===String(y)}),n=pcNet(L);return r2(pcOpen(g,y,depth)+n.i-n.o)}
+function pcMonth(g,y,m){
+  var S=pcSorted(g).filter(function(r){return r.d.slice(0,4)===String(y)}),pre=S.filter(function(r){return+r.d.slice(5,7)<m}),cur=S.filter(function(r){return+r.d.slice(5,7)===m}),
+    pn=pcNet(pre),open=r2(pcOpen(g,y)+pn.i-pn.o),b=open,rows=cur.map(function(r){b=r2(b+(r.i||0)-(r.o||0));return{r:r,bal:b}}),n=pcNet(cur);
+  return{open:open,rows:rows,o:n.o,i:n.i,close:b}}
+function pcState(g){var v=PC.v[g];if(!v){v=PC.v[g]={};var S=pcSorted(g),l=S[S.length-1],t=new Date();v.y=l?+l.d.slice(0,4):t.getFullYear();v.m=l?+l.d.slice(5,7):t.getMonth()+1;v.f="all"}if(!v.y){v.y=new Date().getFullYear()}if(!v.m)v.m=1;return v}
+function pcPending(g,y,m){return pcRows(g).filter(function(r){return!r.q&&(y===undefined||r.d.slice(0,4)===String(y))&&(m===undefined||+r.d.slice(5,7)===m)}).length}
+function pcCats(g){var s={};PC.rows.forEach(function(r){if(r.g===g&&r.c)s[r.c]=1});return Object.keys(s).sort()}
+function pcDateIn(s){s=String(s||"").trim();var m=/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2}|\d{4})$/.exec(s);if(m){var y=m[3].length===2?"20"+m[3]:m[3];return y+"-"+("0"+m[2]).slice(-2)+"-"+("0"+m[1]).slice(-2)}
+  m=/^(\d{4})-(\d\d)-(\d\d)/.exec(s);return m?m[1]+"-"+m[2]+"-"+m[3]:""}
+function pcNextRef(g){var mx=0;PC.rows.forEach(function(r){if(r.g!==g)return;var m=/^PV[\s\-]*0*(\d+)$/i.exec((r.r||"").trim());if(m&&+m[1]>mx)mx=+m[1]});return mx?"PV-"+("000"+(mx+1)).slice(-4):"Ref"}
+function pcM(n){return n?money(n):""}
+function pcBal(n){return n<0?"- "+money(-n):money(n)}
+function pcCsvCell(v){v=String(v==null?"":v);return/[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function pcDefaultDate(g,y,m){var t=today();if(t.slice(0,4)===String(y)&&+t.slice(5,7)===m)return t;var L=pcMonth(g,y,m).rows;return L.length?L[L.length-1].r.d:y+"-"+("0"+m).slice(-2)+"-01"}
+function pcDraft(g){var v=pcState(g);if(!PCN[g])PCN[g]={d:"",c:"",x:"",r:"",o:"",i:""};if(!PCN[g].d)PCN[g].d=pcDefaultDate(g,v.y,v.m);return PCN[g]}
+function pcHtml(g){
+  var v=pcState(g),M=pcMonth(g,v.y,v.m),pend=pcPending(g),mp=pcPending(g,v.y,v.m),tot=M.rows.length,done=tot-mp,dr=pcDraft(g),imp=PCUI[g]&&PCUI[g].imp,msg=PCUI[g]&&PCUI[g].msg||"",
+    view=M.rows.filter(function(x){return v.f!=="nqb"||!x.r.q}),last=M.rows.length?M.rows[M.rows.length-1].r.id:"";
+  var h='<section class="card pcs" data-pcg="'+g+'"><h2>Petty cash · '+esc(G[g]?G[g].n:g)+' <em>'+(pend||"")+'</em></h2><p class="plh">Cash box for this company only. Add each line as it happens. Tap <b>QB</b> on a line once it is recorded in QuickBooks. Balances work themselves out, and the next month starts from this month\'s closing balance.</p>';
+  h+='<div class="pcnav"><div class="pcy"><button type="button" class="pcyb" data-pcy="-1" aria-label="Previous year">‹</button><b>'+v.y+'</b><button type="button" class="pcyb" data-pcy="1" aria-label="Next year">›</button></div><div class="pcmo">';
+  for(var m=1;m<=12;m++){var rows=pcMonth(g,v.y,m).rows.length,p=pcPending(g,v.y,m);h+='<button type="button" class="pcmb'+(m===v.m?" on":"")+(rows?"":" dim")+'" data-pcm="'+m+'">'+PCMS[m-1]+(p?'<i class="pcbd">'+p+'</i>':(rows?'<i class="pcok">✓</i>':""))+'</button>'}
+  h+='</div></div><div class="pcsum"><div><small>Opening balance</small><b class="'+(M.open<0?"neg":"")+'">'+pcBal(M.open)+'</b>'+((PC.open[g]&&PC.open[g][v.y]!==undefined&&v.m===1)||!pcHasYear(g,v.y-1)&&v.m===1?'<button type="button" class="pcmini" data-pcopen="1">edit</button>':'<span>from previous month</span>')+'</div>'+
+    '<div><small>Paid out</small><b>'+money(M.o)+'</b><span>'+M.rows.filter(function(x){return x.r.o}).length+' line(s)</span></div><div><small>Received</small><b>'+money(M.i)+'</b><span>'+M.rows.filter(function(x){return x.r.i}).length+' line(s)</span></div>'+
+    '<div class="pchi2"><small>Closing balance</small><b>'+pcBal(M.close)+'</b><span>carries to next month</span></div><div><small>Recorded in QuickBooks</small><b>'+done+' of '+tot+'</b><div class="pcbar"><i style="width:'+(tot?Math.round(done/tot*100):0)+'%"></i></div></div></div>';
+  h+='<div class="pctool"><label class="btn pcfile">Import file<input type="file" accept=".csv,.txt" data-pcfile="1" hidden></label><button type="button" class="btn" data-pcpaste="1">Paste from Excel</button><button type="button" class="btn" data-pcdl="m">Download month</button><button type="button" class="btn" data-pcdl="y">Backup all lines</button><button type="button" class="btn pri" data-pcprint="1">Print month</button>'+
+    '<span class="pcflt"><small>Show</small><button type="button" class="pcfb'+(v.f!=="nqb"?" on":"")+'" data-pcf="all">All '+tot+'</button><button type="button" class="pcfb'+(v.f==="nqb"?" on":"")+'" data-pcf="nqb">Not in QB yet '+mp+'</button></span></div>';
+  if(msg)h+='<p class="pcmsg">'+esc(msg)+'</p>';
+  if(imp)h+='<div class="pcimp"><b>Paste lines from Excel</b><small>One line per row. Columns in this order: Date, Category, Description, Ref, Paid out, Received. A header row is fine. Lines already in the app are skipped.</small><textarea data-pcta="1" rows="6" placeholder="13/01/2026 [tab] Azeez [tab] Issued petty cash [tab] PV-0093 [tab] 183.00 [tab] [tab]"></textarea><div class="pctool"><button type="button" class="btn pri" data-pcgo="1">Add these lines</button><button type="button" class="btn" data-pcpaste="0">Cancel</button></div></div>';
+  h+='<div class="pyscroll"><table class="pctbl"><thead><tr><th class="pcd">Date</th><th class="pcc">Category</th><th>Description</th><th class="pcr">Ref</th><th class="num">Paid out</th><th class="num">Received</th><th class="num">Balance</th><th class="pcq">QB</th><th></th></tr></thead><tbody>'+
+    '<tr class="pcop"><td></td><td></td><td><b>Beg. Balance</b></td><td></td><td></td><td></td><td class="num'+(M.open<0?" neg":"")+'"><b>'+pcBal(M.open)+'</b></td><td></td><td></td></tr>';
+  if(!view.length)h+='<tr><td class="pyem" colspan="9">'+(tot?"Everything in "+PCM[v.m-1]+" is recorded in QuickBooks.":"No lines yet for "+PCM[v.m-1]+" "+v.y+". Add one below, or import a file.")+'</td></tr>';
+  view.forEach(function(x){var r=x.r;
+    h+='<tr data-pid="'+r.id+'" class="'+(r.q?"pcdone":"")+(r.i&&!r.o?" pcin":"")+'"><td class="pcd"><input type="date" data-pk="'+r.id+':d" data-pf="d" value="'+esc(r.d)+'" aria-label="Date"></td><td class="pcc"><input data-pk="'+r.id+':c" data-pf="c" list="pcl-'+g+'" value="'+esc(r.c||"")+'" aria-label="Category"></td>'+
+      '<td><input data-pk="'+r.id+':x" data-pf="x" value="'+esc(r.x||"")+'" aria-label="Description"></td><td class="pcr"><input data-pk="'+r.id+':r" data-pf="r" value="'+esc(r.r||"")+'" aria-label="Ref"></td>'+
+      '<td class="num pco"><input inputmode="decimal" data-pk="'+r.id+':o" data-pf="o" value="'+pcM(r.o)+'" aria-label="Paid out"></td><td class="num"><input inputmode="decimal" data-pk="'+r.id+':i" data-pf="i" value="'+pcM(r.i)+'" aria-label="Received"></td>'+
+      '<td class="num pcb'+(x.bal<0?" neg":"")+(r.id===last?" pclast":"")+'">'+pcBal(x.bal)+'</td><td class="pcq"><button type="button" class="pcqb'+(r.q?" on":"")+'" data-pcqb="'+r.id+'" aria-pressed="'+(r.q?"true":"false")+'" title="Recorded in QuickBooks">'+(r.q?"✓ QB":"QB")+'</button></td><td><button type="button" class="pyx" data-pcx="'+r.id+'" title="Delete this line" aria-label="Delete this line">×</button></td></tr>'});
+  h+='<tr class="pcnew"><td class="pcd"><input type="date" data-pk="new:d" data-pn="d" value="'+esc(dr.d)+'" aria-label="New line date"></td><td class="pcc"><input data-pk="new:c" data-pn="c" list="pcl-'+g+'" value="'+esc(dr.c)+'" placeholder="Category" aria-label="New line category"></td>'+
+    '<td><input data-pk="new:x" data-pn="x" value="'+esc(dr.x)+'" placeholder="Description" aria-label="New line description"></td><td class="pcr"><input data-pk="new:r" data-pn="r" value="'+esc(dr.r)+'" placeholder="'+esc(pcNextRef(g))+'" aria-label="New line ref"></td>'+
+    '<td class="num"><input inputmode="decimal" data-pk="new:o" data-pn="o" value="'+esc(dr.o)+'" placeholder="Paid out" aria-label="New line paid out"></td><td class="num"><input inputmode="decimal" data-pk="new:i" data-pn="i" value="'+esc(dr.i)+'" placeholder="Received" aria-label="New line received"></td><td class="num pcmute">new balance</td><td class="pcq"><button type="button" class="btn pri pcadd" data-pcadd="1">Add</button></td><td></td></tr>';
+  h+='</tbody><tfoot><tr><td colspan="4">Total for '+PCM[v.m-1]+' '+v.y+'</td><td class="num">'+money(M.o)+'</td><td class="num">'+money(M.i)+'</td><td class="num pcb'+(M.close<0?" neg":"")+'">'+pcBal(M.close)+'</td><td colspan="2"></td></tr></tfoot></table></div>';
+  h+='<datalist id="pcl-'+g+'">'+pcCats(g).map(function(c){return'<option value="'+esc(c)+'">'}).join("")+'</datalist></section>';
+  return h}
+function pcByCat(rows,key){var M={};rows.forEach(function(x){var v=x.r[key]||0;if(!v)return;var c=x.r.c||"Other";M[c]=M[c]||{c:c,a:0,n:0};M[c].a=r2(M[c].a+v);M[c].n++});return Object.keys(M).map(function(k){return M[k]}).sort(function(a,b){return b.a-a.a})}
+function pcPrintHtml(g,y,m){
+  var M=pcMonth(g,y,m),h=rpHead(g,"Petty cash · "+PCM[m-1]+" "+y),cols=[["Date"],["Category"],["Description"],["Ref"],["Paid out","n"],["Received","n"],["Balance","n"]],
+    rows=[{cls:"pcrop",c:["","","<b>Beg. Balance</b>","","","","<b>"+pcBal(M.open)+"</b>"]}].concat(M.rows.map(function(x){var r=x.r;return{c:[rpD(r.d),esc(r.c||""),esc(r.x||""),esc(r.r||""),r.o?"<b>"+money(r.o)+"</b>":"",r.i?money(r.i):"",pcBal(x.bal)]}}));
+  h+=rpTable(cols,rows,["","","Total for the month","",money(M.o),money(M.i),"<b>"+pcBal(M.close)+"</b>"]);
+  var P=pcByCat(M.rows,"o");if(P.length)h+='<h4>Where the money went</h4>'+rpTable([["Category"],["Lines","n"],["Amount","n"],["% of paid out","n"]],P.map(function(c){return{c:[esc(c.c),String(c.n),money(c.a),(M.o?(c.a/M.o*100).toFixed(1):"0.0")+"%"]}}),["Total","",money(M.o),"100%"]);
+  return h+rpFoot()}
+function pcReportSection(g,tb,sec,d){
+  var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc">'+sec("5","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
+  if(!M.rows.length)return h+'<div class="mrnote">No petty cash lines were entered for this month.</div></div>';
+  h+=tb("1fr 170px",["Petty cash box","Amount"],[["Opening balance",mrN(M.open)],["Add: cash received",mrN(M.i)],["Less: cash paid out",mrN(-M.o)]],["Closing balance",mrN(M.close)]);
+  var P=pcByCat(M.rows,"o"),R=pcByCat(M.rows,"i");
+  if(P.length)h+='<div class="mrsubh">5.1  Where the money went</div>'+tb("1.6fr 70px 1fr 90px",["Category","Lines","Amount","% of total"],P.map(function(c){return[esc(c.c),String(c.n),mrN(c.a),(M.o?(c.a/M.o*100).toFixed(1):"0.0")+"%"]}),["Total paid out","",mrN(M.o),"100%"]);
+  if(R.length)h+='<div class="mrsubh">5.2  Where the cash came from</div>'+tb("1.6fr 70px 1fr",["Source","Lines","Amount"],R.map(function(c){return[esc(c.c),String(c.n),mrN(c.a)]}),["Total received","",mrN(M.i)]);
+  h+='<div class="mrsubh">5.3  Every line for the month</div>'+tb("84px 1.1fr 1.7fr 90px 1fr 1fr 1fr",["Date","Category","Description","Ref","Paid out","Received","Balance"],M.rows.map(function(x){var r=x.r;return[rpD(r.d),esc(r.c||""),esc(r.x||""),esc(r.r||""),r.o?mrN(r.o):"",r.i?mrN(r.i):"",mrN(x.bal)]}),["","","Closing balance","","","",mrN(M.close)]);
+  return h+'</div>'}
+function pcFocus(key){if(!key)return;setTimeout(function(){var e=document.querySelector('[data-pk="'+key+'"]');if(e){e.focus();if(e.select&&e.type!=="date")try{e.select()}catch(x){}}},30)}
+function pcRender(key){render();pcFocus(key)}
+function pcAdd(g){
+  var dr=pcDraft(g),o=num(dr.o)||0,i=num(dr.i)||0,d=pcDateIn(dr.d);
+  if(!d){alert("Please choose a date.");return}
+  if(!o&&!i){alert("Type an amount in Paid out or Received.");return}
+  PC.rows.push({id:uid(),g:g,d:d,c:(dr.c||"").trim(),x:(dr.x||"").trim(),r:(dr.r||"").trim(),o:r2(o),i:r2(i),q:0});
+  var v=pcState(g);v.y=+d.slice(0,4);v.m=+d.slice(5,7);PCN[g]={d:d,c:"",x:"",r:"",o:"",i:""};pcSave();pcRender("new:x")}
+function pcParse(g,rows){
+  var added=0,skipped=0,bad=0,op=null,seen={},map=null;
+  PC.rows.forEach(function(r){if(r.g===g){var k=pcKey(r);seen[k]=(seen[k]||0)+1}});
+  rows.forEach(function(c){
+    if(!c||!c.some(function(x){return String(x||"").trim()}))return;
+    var a=String(c[0]||"").trim();
+    if(/^#opening/i.test(a)){var yy=parseInt(c[1],10),vv=num(c[2]);if(yy&&vv!==null){PC.open[g]=PC.open[g]||{};PC.open[g][yy]=vv;op=yy}return}
+    if(/^date$/i.test(a)||/^date\b/i.test(a)&&!pcDateIn(a)){map={};c.forEach(function(h,i){h=String(h||"").toLowerCase();
+      if(/qb|quick/.test(h))map.q=i;else if(/date/.test(h))map.d=i;else if(/categ|account|title/.test(h))map.c=i;else if(/desc/.test(h))map.x=i;else if(/ref/.test(h))map.r=i;else if(/paid|out|debit|payment/.test(h))map.o=i;else if(/receiv|^in$|credit/.test(h))map.i=i});return}
+    var M=map||{d:0,c:1,x:2,r:3,o:4,i:5,q:6},d=pcDateIn(c[M.d===undefined?0:M.d]);
+    if(/beg\.?\s*balance|opening balance/i.test(String(c[M.x===undefined?2:M.x]||"")+a)&&!d){return}
+    if(!d){bad++;return}
+    var o=num(c[M.o]),i=num(c[M.i]);if(!o&&!i){bad++;return}
+    var r={id:uid()+added,g:g,d:d,c:String(c[M.c]||"").trim(),x:String(c[M.x]||"").trim(),r:String(c[M.r]||"").trim(),o:r2(o||0),i:r2(i||0),q:(M.q!==undefined&&/^(1|yes|y|true)$/i.test(String(c[M.q]||"").trim()))?1:0},k=pcKey(r);
+    if(seen[k]>0){seen[k]--;skipped++;return}
+    PC.rows.push(r);added++});
+  pcSave();var S=pcSorted(g),l=S[S.length-1],v=pcState(g);if(l&&added){v.y=+l.d.slice(0,4);v.m=+l.d.slice(5,7)}
+  return"Added "+added+" line"+(added===1?"":"s")+(op?" and the "+op+" opening balance":"")+(skipped?". "+skipped+" already in the app were skipped":"")+(bad?". "+bad+" rows had no date or amount and were left out":"")+"."}
+function pcKey(r){return[r.d,(r.x||"").toLowerCase().replace(/\s+/g," "),(r.r||"").toLowerCase(),r2(r.o||0),r2(r.i||0)].join("|")}
+function pcTsv(t){return t.split(/\r?\n/).map(function(l){return l.split("\t")})}
+function pcDownload(g,all){
+  var v=pcState(g),L=[],head=["Date","Category","Description","Ref","Paid out","Received","In QB (1 = yes)"];
+  if(all){L.push(["#OPENING",v.y,pcOpen(g,v.y)]);L.push(head);pcSorted(g).forEach(function(r){L.push([rpD(r.d),r.c||"",r.x||"",r.r||"",r.o||"",r.i||"",r.q?1:0])})}
+  else{var M=pcMonth(g,v.y,v.m);L.push(["Date","Category","Description","Ref","Paid out","Received","Balance","In QB"]);L.push(["","","Beg. Balance","","","",M.open,""]);M.rows.forEach(function(x){var r=x.r;L.push([rpD(r.d),r.c||"",r.x||"",r.r||"",r.o||"",r.i||"",x.bal,r.q?"yes":""])})}
+  var csv="﻿"+L.map(function(r){return r.map(pcCsvCell).join(",")}).join("\r\n"),a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download=(g.toUpperCase())+"-petty-cash-"+(all?"all-lines":v.y+"-"+("0"+v.m).slice(-2))+".csv";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+$("board").addEventListener("click",function(e){
+  var b=e.target.closest("[data-pcy],[data-pcm],[data-pcf],[data-pcqb],[data-pcx],[data-pcadd],[data-pcpaste],[data-pcgo],[data-pcdl],[data-pcprint],[data-pcopen]");if(!b)return;
+  var sec=b.closest("[data-pcg]"),g=sec?sec.dataset.pcg:VIEW;if(!G[g])return;var v=pcState(g),d=b.dataset;
+  if(d.pcy){v.y+=+d.pcy;v.m=Math.min(v.m,12);PCN[g]=null;pcSave();render();return}
+  if(d.pcm){v.m=+d.pcm;PCN[g]=null;pcSave();render();return}
+  if(d.pcf){v.f=d.pcf;pcSave();render();return}
+  if(d.pcqb){var r=PC.rows.filter(function(x){return x.id===d.pcqb})[0];if(r){r.q=r.q?0:1;pcSave();render()}return}
+  if(d.pcx){var x=PC.rows.filter(function(q){return q.id===d.pcx})[0];if(!x||!confirm("Delete this line?\n"+rpD(x.d)+"  "+(x.x||"")))return;PC.rows=PC.rows.filter(function(q){return q.id!==d.pcx});pcSave();render();return}
+  if(d.pcadd){pcAdd(g);return}
+  if(d.pcpaste!==undefined){PCUI[g]=PCUI[g]||{};PCUI[g].imp=d.pcpaste==="1";render();return}
+  if(d.pcgo){var ta=sec.querySelector("[data-pcta]"),t=ta?ta.value:"";if(!t.trim()){alert("Paste some lines first.");return}PCUI[g]=PCUI[g]||{};PCUI[g].msg=pcParse(g,pcTsv(t));PCUI[g].imp=false;render();return}
+  if(d.pcdl){pcDownload(g,d.pcdl==="y");return}
+  if(d.pcprint){rpPrint(pcPrintHtml(g,v.y,v.m),false);return}
+  if(d.pcopen){var cur=pcOpen(g,v.y),n=prompt("Opening balance for "+v.y+" (use a minus sign if the box starts overdrawn):",String(cur));if(n===null)return;var nv=num(n);if(nv===null){alert("Please type a number.");return}PC.open[g]=PC.open[g]||{};PC.open[g][v.y]=nv;pcSave();render()}});
+$("board").addEventListener("change",function(e){var t=e.target;if(!t.dataset||!t.dataset.pcfile||!t.files||!t.files[0])return;var sec=t.closest("[data-pcg]"),g=sec?sec.dataset.pcg:VIEW,f=t.files[0],fr=new FileReader();t.value="";
+  fr.onload=function(){PCUI[g]=PCUI[g]||{};try{PCUI[g].msg=pcParse(g,mrCsv(String(fr.result).replace(/^﻿/,"")))}catch(x){PCUI[g].msg="Could not read that file."}render()};fr.onerror=function(){alert("Could not read that file.")};fr.readAsText(f)});
+$("board").addEventListener("input",function(e){var t=e.target;if(!t.dataset||!t.dataset.pn)return;var sec=t.closest("[data-pcg]");if(!sec)return;pcDraft(sec.dataset.pcg)[t.dataset.pn]=t.value});
+$("board").addEventListener("keydown",function(e){var t=e.target;if(e.key!=="Enter"||!t.dataset||!t.dataset.pn)return;var sec=t.closest("[data-pcg]");if(!sec)return;e.preventDefault();pcDraft(sec.dataset.pcg)[t.dataset.pn]=t.value;pcAdd(sec.dataset.pcg)});
+$("board").addEventListener("focusout",function(e){var t=e.target;if(!t.dataset||!t.dataset.pf)return;var tr=t.closest("tr[data-pid]"),r=tr&&PC.rows.filter(function(q){return q.id===tr.dataset.pid})[0];if(!r)return;
+  var f=t.dataset.pf,val=t.value,old;
+  if(f==="o"||f==="i"){var n=num(val)||0;old=r[f]||0;if(r2(n)===r2(old)){t.value=pcM(old);return}r[f]=r2(n)}
+  else if(f==="d"){var nd=pcDateIn(val);if(!nd||nd===r.d)return;r.d=nd}
+  else{if(val===(r[f]||""))return;r[f]=val.trim()}
+  pcSave();var nx=e.relatedTarget&&e.relatedTarget.dataset?e.relatedTarget.dataset.pk:null;setTimeout(function(){pcRender(nx)},0)});
+
 /* ===== Monthly report (BYLD): cash on hand, Rak Bank, projects, payables. Generate on screen and print ===== */
 var MRK="planner-mrep-v1",MRP=["Mr. Bader","Lady","Dianne","Qaiser","Sajid","Anees","Zein","Imtiaz"],MR={asof:"",cash:{},cnote:"",bank:"",book:"",bnote:"",proj:{},pnote:"",ynote:""};
 try{var _mr=JSON.parse(localStorage.getItem(MRK)||"null");if(_mr&&typeof _mr==="object"){for(var _k in _mr)MR[_k]=_mr[_k];MR.cash=MR.cash||{};MR.proj=MR.proj||{}}}catch(e){}
@@ -3055,6 +3483,7 @@ function mrReport(g,mode){
   if(X.length)h+='<div class="mrsubh">4.3  Other payables</div>'+tb("1fr 1.6fr 1fr 1fr 1fr 1fr 1fr",["Date","Supplier","Project code","Payment terms","Amount","Paid","Balance"],X.map(function(x){return[rpD(x.due)||"-",esc(x.name||"—"),esc(x.pcode||"-"),esc(x.terms||"-"),mrN(num(x.amt)||0),mrN(num(x.paid)||0),mrN(xbal(x))]}),["Total","","","",mrN(r2(X.reduce(function(t,x){return t+(num(x.amt)||0)},0))),mrN(r2(X.reduce(function(t,x){return t+(num(x.paid)||0)},0))),mrN(xs)]);
   h+='<div class="mrt mrtt mrgrand" style="grid-template-columns:1fr 170px"><span>TOTAL PAYABLES</span><span class="n">'+mrN(pay)+'</span></div>'+note(MR.ynote);
   h+='</div>';
+  h+=pcReportSection(g,tb,sec,d);
   var AN=mrFsAnalysis(MR.f,{cash:ctot,bank:bo,rec:e,pay:pay}),sig='<div class="mrpb"><div class="mrpl"></div><div>Prepared by</div><b>LADY CAREY LLENADO</b></div></div>';
   if(mode==="analysis"){var k=h.indexOf('<div class="mrsm">');return'<div class="mrp">'+h.slice(0,k).replace("MONTHLY FINANCIAL REPORT","FINANCIAL ANALYSIS")+(AN||'<div class="mrnote">No financial statements attached yet. Attach them under Financial statements to see the analysis.</div>')+sig}
   return'<div class="mrp">'+h+sig}
@@ -3212,14 +3641,16 @@ function cmBest(key){var b=null;CMS.res.forEach(function(r){if(r.key===key){var 
 function cmBar(p){return'<div class="cmbar"><i style="width:'+Math.max(0,Math.min(100,p))+'%"></i></div>'}
 function cmStat(n){var c=cmCh(n),t=0,r=0;c.q.forEach(function(_,i){var s=CMS.q[n+"."+(i+1)];if(s){t++;if(s[2]===1)r++}});return{tried:t,right:r,total:c.q.length,acc:t?Math.round(r/t*100):null}}
 function cmHead(t,em,back){return'<div class="rpbar"><h3>'+t+(em?' <em>'+em+'</em>':"")+'</h3>'+(back?'<button type="button" class="btn" data-cm="back">← Back</button>':"")+'</div>'}
-function cmHtml(g,sub){setTimeout(inkAttach,0);return'<div class="cmroot">'+cmHtml0(g,sub)+'</div>'}
+function cmHtml(g,sub){var bar=/^cma[xcfgo]$/.test(sub)&&!(CMV&&CMV.t==='quiz')?'<button type="button" class="btn bkback" data-bk="tools">‹ Tools</button>':'';return'<div class="cmroot">'+bar+cmHtml0(g,sub)+'</div>'}
 function cmHtml0(g,sub){CMS.res.forEach(cmRegSnap);if(CMSUB!==sub){CMSUB=sub;CMV=null}
   if(CMV&&CMV.t==="ref")return cmRefresher();
-  if(CMV&&CMV.t==="inks")return cmInkSheet();
   if(CMV&&CMV.t==="quiz")return cmQuizHtml();if(CMV&&CMV.t==="rev")return cmRevHtml();
-  if(sub==="cma")return cmOverview();
+  if(sub==="cma")return cmBook();
+  if(sub==="cmao")return cmOverview();
+  if(sub==="cmaz")return bkTools();
+  if(sub==="cmat")return bkTmTab();
   if(sub==="cmax")return cxHtml();
-  if(sub==="cmas")return CMV&&CMV.t==="ch"?cmChapter(CMV.n):cmChapterList();
+  if(sub==="cmas")return cmBook();
   if(sub==="cmap")return cmPractice();
   if(sub==="cmac")return CMV&&CMV.t==="case"?cmCase(CMV.n):cmCaseList();
   if(sub==="cmaf")return CMV&&CMV.t==="drill"?cmDrill():cmFormulas();
@@ -3261,7 +3692,7 @@ function cmCase(n){var c=CMD.cs.filter(function(x){return x.n===n})[0],st=CMS.cs
 /* ---- formulas ---- */
 function cmGaap(){var h='<section class="xsec stw">'+cmHead("US GAAP vs IFRS","key differences")+'<input type="search" class="cmsrch" data-cm="gq" placeholder="Search a topic, e.g. inventory, leases" aria-label="Search"><div class="pyscroll"><table class="pytbl cmgt"><thead><tr><th>Topic</th><th>US GAAP</th><th>IFRS</th></tr></thead><tbody>'+CMD.ga.map(function(r){return'<tr><td><b>'+esc(r[0])+'</b></td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>'}).join("")+'</tbody></table></div></section>';return h}
 function cmTabs(g){var d=0,all=CMD.ch.filter(function(c){return c.n>0});all.forEach(function(c){if(CMS.done[c.n])d++});
-  return[["cma","<b>Start here</b><small>"+d+"/"+all.length+" chapters done</small>",""],["cmax","⭐ Exam cards",""],["cmas","Study chapters",""],["cmap","Practice sets",""],["cmac","Case studies",""],["cmaf","Formulas to remember",""],["cmag","GAAP vs IFRS",""]]}
+  return[["cma","<b>Study</b><small>"+d+"/"+all.length+" chapters done</small>",""],["cmap","Practice sets",""],["cmat","Test me",""],["cmaz","Tools",""]]}
 /* ===== Exam cards: ADHD-friendly study cards + practice (v110) ===== */
 var CXK="planner-cmx-v1",CX={les:{},done:{},rf:{},hp:{},pq:{},ck:{},last:null,xp:0,days:[]};
 try{var _cx=JSON.parse(localStorage.getItem(CXK)||"null");if(_cx&&typeof _cx==="object")for(var _cxk in CX)if(_cx[_cxk]!==undefined)CX[_cxk]=_cx[_cxk]}catch(e){}
@@ -3404,7 +3835,7 @@ function cxMove(){var v=CMV;if(v&&v.t==="cxcard")CX.last={id:v.id,step:v.step};c
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-cx]");if(!b)return;var act=b.dataset.cx,a=b.dataset.a,v=CMV,g=VIEW;
   if(act==="home"){cxStop();cxGo(null);return}
   if(act==="timer"){cmTimer(10);return}
-  if(act==="chap"){cxStop();cmGo(VIEW,"cmas",{t:"ch",n:+a});return}
+  if(act==="chap"){cxStop();bkOpen(+a);return}
   if(act==="forms"){cxStop();cmGo(VIEW,"cmaf",null);return}
   if(act==="pracs"){cxStop();cmGo(VIEW,"cmap",null);return}
   if(act==="les"){cxStop();cxGo({t:"cxles",id:a,i:0,ans:null,focus:false});return}
@@ -3737,7 +4168,6 @@ function cmOverview(){var all=CMD.ch.filter(function(c){return c.n>0}),d=all.fil
   if(next){var st=cmSteps(next.n);h+='<div class="cmone"><small>YOUR ONE THING FOR NOW</small><h4>Chapter '+next.n+': '+esc(next.t)+'</h4><div class="cmstp"><div class="'+(st.f?"dn":"")+'"><b>1</b> Read the formula box <small>2 min</small></div><div class="'+(st.n?"dn":"")+'"><b>2</b> Skim the notes <small>5 min</small></div><div class="'+(st.p?"dn":"")+'"><b>3</b> Do one practice set <small>5 min</small></div></div><div class="stbtns"><button type="button" class="btn pri cmbig" data-cm="study" data-a="'+next.n+'">Open Chapter '+next.n+'</button><button type="button" class="btn cmbig" data-cm="timer" data-a="10">⏱ 10-minute focus timer</button></div></div>'}
   else h+='<div class="cmone"><h4>All 24 chapters are done. Now keep doing mock exams.</h4><div class="stbtns"><button type="button" class="btn pri cmbig" data-cm="start" data-a="mock|100">100-question mock</button></div></div>';
   h+='<div class="rfcta"><div><b>Rusty on the basics?</b><small>A plain refresher on debits, credits, journal entries, adjustments and the four statements, with one small company followed all the way through.</small></div><button type="button" class="btn pri" data-cm="ref">Open the refresher</button></div>';
-  h+='<div class="rfcta"><div><b>Pencil mode and My doubts</b><small>Tap the ❓ Pen button at the bottom of any study page. ON: your stylus circles or writes. OFF: the pen behaves normally. Circle a sentence you do not understand and it lands on the doubts sheet.</small></div><button type="button" class="btn pri" data-cm="inks">My doubts ('+INK.q.filter(function(x){return x.st!==2}).length+')</button></div>';
   h+='<div class="cmkpi"><div><b>'+d+'/'+all.length+'</b><small>chapters done</small>'+cmBar(d/all.length*100)+'</div><div><b>'+tried+'/'+Object.keys(CMX).length+'</b><small>questions tried</small>'+cmBar(tried/Object.keys(CMX).length*100)+'</div><div><b>'+(tried?Math.round(right/tried*100)+"%":"-")+'</b><small>answered correctly</small>'+cmBar(tried?right/tried*100:0)+'</div><div><b>'+cdone+'/12</b><small>case studies</small>'+cmBar(cdone/12*100)+'</div></div>';
   var weak=all.map(function(c){return[c,cmStat(c.n)]}).filter(function(x){return x[1].tried>=5&&x[1].acc<70}).sort(function(a,b){return a[1].acc-b[1].acc}).slice(0,4);
   if(weak.length)h+='<p class="cmweak">Worth another look: '+weak.map(function(x){return'<button type="button" class="btn" data-cm="study" data-a="'+x[0].n+'">Ch '+x[0].n+' ('+x[1].acc+'%)</button>'}).join(" ")+'</p>';
@@ -3847,7 +4277,7 @@ $("board").addEventListener("click",function(e){var b=e.target.closest("[data-cm
   if(act==="rfall"){var ds=document.querySelectorAll(".rfl"),op=Array.prototype.every.call(ds,function(d){return d.open});ds.forEach(function(d){d.open=!op});return}
   if(act==="rfprint"){rpPrint(cmRfPrint(),false);return}
   if(act==="back"){CMV=null;render();return}
-  if(act==="study"){cmGo(g,"cmas",{t:"ch",n:+a});return}
+  if(act==="study"){bkOpen(+a);return}
   if(act==="case"){cmGo(g,"cmac",{t:"case",n:+a});return}
   if(act==="creset"){if(!confirm("Clear your answers and marks for this case?"))return;delete CMS.cs[+a];cmSave();render();return}
   if(act==="start"){var q=cmStartKey(a);if(q)cmGo(g,"cmap",q);return}
@@ -6172,6 +6602,7 @@ function partHtml(g){
       (function(){var de=stIsDe(g);return'<label class="gde" title="Show the German study board (der/die/das, levels A1\u2013C2) in this part"><input type="checkbox" data-gde="'+g+'"'+(de?" checked":"")+'> German study</label>'})()+'<label class="gde" title="Show the CMA Part 1 study board (chapters, practice sets, cases, formulas) in this part"><input type="checkbox" data-gcma="'+g+'"'+(cmOn(g)?" checked":"")+'> CMA study</label>'+(Object.keys(G).length>1?'<button class="gdel" data-gdel="'+g+'" title="Delete this part" aria-label="Delete this part">Delete part</button>':"")+'</div></div></div>'+vit(st)+'</div>';
   var tabs=[["tasks","Tasks",act.length],["rem","Reminders",rlGet(g).filter(function(x){return!x.d}).length||""],["files","Files & links",st.files],["photos","Photos",PH.filter(function(x){return x.g===g}).length||""],["rcp","Receipts",RC.list.filter(function(x){return x.g===g}).length||""]];
   if(g==="kbw"||g==="byld")tabs.push(["vat","VAT Checker",VATR.rows.filter(function(x){return x.g===g}).length||""]);
+  if(g==="kbw"||g==="byld")tabs.push(["pc","Petty cash",pcPending(g)||""]);
   if(g==="byld")tabs.push(["mrep","Monthly report",""]);
   if(g==="byld")tabs.splice(1,0,["ppay","Project payments",PAY.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="kbw"||g==="byld")tabs.splice(g==="byld"?2:1,0,["pr","Payable & receivable",PAY.ar.filter(function(x){return x.g===g}).length||""]);
@@ -6179,9 +6610,9 @@ function partHtml(g){
   if(g==="personal")tabs.splice(1,0,["acc","Accounts",""]);
   if(cmOn(g))tabs=cmTabs(g).concat(tabs.filter(function(t){return t[0]==="rem"}));
   if(stIsDe(g))tabs=[["d3","<b>der · die · das</b><small>"+stArtCount().m+"/"+stArtCount().t+" mastered</small>",""]].concat(STL.map(function(l){var dn=l.L.filter(function(x){return ST.done[x.id]}).length,pr=l.S.filter(stPrac).length;return["lv-"+l.id,"<b>"+esc(l.n)+"</b><small>"+dn+"/"+l.L.length+" lessons · "+pr+"/"+l.S.length+" practised</small>",""]}));
-  if(!tabs.some(function(t){return t[0]===sub}))sub=tabs[0][0];
+  if(!tabs.some(function(t){return t[0]===sub})&&!(cmOn(g)&&/^cma[xcfgo]$/.test(sub)))sub=tabs[0][0];
   tabs=ordApply("sub:"+g,tabs,function(t){return t[0]});
-  H+='<div class="xsubs'+(stIsDe(g)?" de":"")+(cmOn(g)?" cmnav":"")+'" role="tablist">'+tabs.map(function(t){return'<button class="xs'+(sub===t[0]?" on":"")+'" data-sub="'+t[0]+'" role="tab"'+dndA("sub:"+g,t[0])+'>'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
+  H+='<div class="xsubs'+(stIsDe(g)?" de":"")+(cmOn(g)?" cmnav":"")+'" role="tablist">'+tabs.map(function(t){return'<button class="xs'+((sub===t[0]||(t[0]==="cmaz"&&/^cma[xcfgo]$/.test(sub)))?" on":"")+'" data-sub="'+t[0]+'" role="tab"'+dndA("sub:"+g,t[0])+'>'+t[1]+(t[2]!==""?' <em>'+t[2]+'</em>':"")+'</button>'}).join("")+'</div>';
   if(sub==="tasks"&&!stIsDe(g)){
     H+='<section class="xsec"><h3>Tasks <em>'+act.length+'</em></h3><div class="scroll"><div class="tbl act">'+HEAD+act.map(block).join("")+addRow(g,false)+'</div></div></section>'+
       '<section class="xsec"><h3>Completed <em>'+done.length+'</em></h3><div class="scroll arch"><div class="tbl">'+(done.length?done.map(block).join(""):'<div class="empty">Completed items will land here.</div>')+'</div></div></section>'+
@@ -6195,6 +6626,7 @@ function partHtml(g){
   else if(sub==="rcp")H+=rcHtml(g);
   else if(sub.indexOf("cma")===0&&cmOn(g))H+=cmHtml(g,sub);
   else if(sub==="vat")H+=vtHtml(g);
+  else if(sub==="pc"&&(g==="kbw"||g==="byld"))H+=pcHtml(g);
   else if(sub==="mrep"&&g==="byld")H+=mrHtml(g);
   else if(sub==="photos")H+=phHtml(g);
   else H+=plHtml(g)+filesHtml(g);
@@ -6602,10 +7034,5 @@ setTimeout(function(){
   try{if(!localStorage.getItem("planner-alerts-hint-v1")){localStorage.setItem("planner-alerts-hint-v1","1");toast("Due-date alerts are on","You'll see a box here for items that are overdue, due today or due tomorrow. Click “Alerts” at the top to allow desktop pop-ups too.")}}catch(e){}
 },900);
 </script>
-<script src="firebase-config.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="sync.js"></script>
 </body>
 </html>
