@@ -1549,6 +1549,10 @@ html[data-look=neo] .grp .pytbl tbody tr.arh td small{color:#fff!important}
 .mrpaper,.mrp{background:#fff!important}
 .mrsc{border:2px solid #12373B;border-radius:12px;overflow:hidden;margin:20px 0;background:#fff;padding-bottom:12px}.mrsc .mrbar{margin:0 0 8px;border-radius:0}.mrsc>:not(.mrbar){margin-left:14px;margin-right:14px}
 .mrsc .mrsubh{margin-top:14px}
+.mrvo{display:block;padding-left:18px}.mrvo b{font-weight:600}.mrvo small{opacity:.8}
+.mrsc.pcl .mrt span{font-size:12px}
+@page pcland{size:A4 landscape;margin:12mm}
+@media print{.mrsc.pcl{page:pcland;break-before:page;break-after:page}.mrsc.pcl .mrt{break-inside:avoid}}
 .mrst{border:2px solid #12373B;border-radius:12px;margin:14px 0 6px;overflow:hidden;background:#fff}.mrsh2{background:#12373B;font-weight:700;padding:6px 14px;letter-spacing:.04em}.mrsh2,.mrp .mrsh2{color:#fff!important}
 .mrstr{display:flex;gap:12px;align-items:center;padding:8px 14px;border-top:1px solid #cfe0d6}.mrstr>span:last-child{flex:1}
 .mrp .pill{flex:none;min-width:104px;text-align:center;font-weight:800;font-size:11.5px;letter-spacing:.05em;padding:3px 10px;border-radius:99px}.mrp .pill.good{background:#1b7a3d}.mrp .pill.bad{background:#a32424}.mrp .pill,.mrp .pill.good,.mrp .pill.bad{color:#fff!important}
@@ -3033,7 +3037,7 @@ function rpArHtml(g,only){only=(only==="r"||only==="p")?only:null;
   return h+rpFoot()}
 function rpPrint(html,land){
   var d=document.createElement("div");d.id="repPrint";d.innerHTML='<div class="rep">'+html+'</div>';document.body.appendChild(d);
-  var st=document.createElement("style");st.id="repPage";st.textContent="@page{size:A4 "+(land?"landscape":"portrait")+";margin:12mm}";document.head.appendChild(st);
+  var st=document.createElement("style");st.id="repPage";st.textContent="@page{size:A4 "+(land?"landscape":"portrait")+";margin:12mm}@page pcland{size:A4 landscape;margin:12mm}";document.head.appendChild(st);
   var done=function(){if(d.parentNode)d.remove();if(st.parentNode)st.remove();window.removeEventListener("afterprint",done)};window.addEventListener("afterprint",done);
   setTimeout(function(){try{window.print()}catch(e){}setTimeout(done,1500)},120)}
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-rp]");if(!b)return;var g=VIEW;if(!G[g])return;
@@ -3267,9 +3271,9 @@ function pcPrintHtml(g,y,m){
   var P=pcByCat(M.rows,"o");if(P.length)h+='<h4>Where the money went</h4>'+rpTable([["Category"],["Lines","n"],["Amount","n"],["% of paid out","n"]],P.map(function(c){return{c:[esc(c.c),String(c.n),money(c.a),(M.o?(c.a/M.o*100).toFixed(1):"0.0")+"%"]}}),["Total","",money(M.o),"100%"]);
   return h+rpFoot()}
 function pcReportSection(g,tb,sec,d){
-  var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc">'+sec("5","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
+  var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc pcl">'+sec("5","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
   if(!M.rows.length)return h+'<div class="mrnote">No petty cash lines were entered for this month.</div></div>';
-  var cols="84px 1.1fr 2fr 86px 88px 88px 98px 30px",st='style="grid-template-columns:'+cols+'"',sp=function(t,n){return'<span'+(n?' class="n"':'')+'>'+t+'</span>'};
+  var cols="92px 1.2fr 3fr 96px 100px 100px 110px 34px",st='style="grid-template-columns:'+cols+'"',sp=function(t,n){return'<span'+(n?' class="n"':'')+'>'+t+'</span>'};
   h+='<div class="mrt mrth" '+st+'>'+["Date","Category","Description","Ref"].map(function(x){return sp(x)}).join("")+["Paid out","Received","Balance"].map(function(x){return sp(x,1)}).join("")+sp("QB",1)+'</div>';
   h+='<div class="mrt" style="background:#E4E0CF;font-weight:700;grid-template-columns:'+cols+'">'+sp("")+sp("")+sp("Beg. Balance")+sp("")+sp("")+sp("")+sp(mrN(M.open),1)+sp("")+'</div>';
   M.rows.forEach(function(x,k){var r=x.r;h+='<div class="mrt'+(k%2?" alt":"")+'" '+st+'>'+sp(rpD(r.d))+sp(esc(r.c||""))+sp(esc(r.x||""))+sp(esc(r.r||""))+sp(r.o?mrN(r.o):"",1)+sp(r.i?mrN(r.i):"",1)+sp("<b>"+mrN(x.bal)+"</b>",1)+sp(r.q?"&#10003;":"",1)+'</div>'});
@@ -3349,11 +3353,22 @@ function mrProjects(g){
   var O=[],M={};
   PAY.rows.forEach(function(r){if(r.g!==g||!pyIsPT(r.k))return;var q=pyCalc(r);if(q.done)return;var k=mrKey(r),x=M[k];
     if(!x){x=M[k]={key:k,code:(r.code||"").trim(),names:[],cv:0,bef:0,bal:0,paid:0};O.push(x)}
+    if(r.par&&!x.parKey){var pr=pyFind(r.par);if(pr)x.parKey=mrKey(pr)}
     var nm=(r.name||"").trim();if(nm&&x.names.every(function(n){return n.toLowerCase()!==nm.toLowerCase()}))x.names.push(nm);
     x.cv=r2(x.cv+q.cv);x.paid=r2(x.paid+q.paid);x.bef=r2(x.bef+(num(r.bef)||0));x.bal=r2(x.bal+Math.max(q.bal,0))});
   var SP={};PAY.rows.forEach(function(r){if(r.g===g&&r.k==="sub"&&(r.pcode||"").trim()){var kk=r.pcode.trim().toUpperCase();SP[kk]=r2((SP[kk]||0)+pyCalc(r).paid)}});
-  O.forEach(function(x){var p=MR.proj[x.key]||{};x.expAuto=SP[x.key]||0;x.expIn=p.exp||"";x.exp=num(p.exp)!==null?num(p.exp):x.expAuto;x.estIn=p.est||"";x.est=num(p.est)!==null?num(p.est):x.bef;x.pct=(x.exp>0&&x.est>0)?r2(x.exp/x.est*100):null});
-  return O}
+  var byK={};O.forEach(function(x){byK[x.key]=x});
+  O.forEach(function(x){if(x.parKey&&(!byK[x.parKey]||x.parKey===x.key))x.parKey=""});
+  O.forEach(function(x){x.vos=O.filter(function(y){return y.parKey===x.key})});
+  O.forEach(function(x){var p=MR.proj[x.key]||{};
+    x.expAuto=r2((SP[x.key]||0)+x.vos.reduce(function(t,y){return t+(SP[y.key]||0)},0));
+    x.expIn=p.exp||"";x.exp=num(p.exp)!==null?num(p.exp):x.expAuto;
+    x.estIn=p.est||"";x.est=num(p.est)!==null?num(p.est):r2(x.bef+x.vos.reduce(function(t,y){var q=MR.proj[y.key]||{};return t+(num(q.est)!==null?num(q.est):y.bef)},0));
+    x.pct=(x.exp>0&&x.est>0)?r2(x.exp/x.est*100):null});
+  O.forEach(function(x){if(x.parKey){x.exp=0;x.est=0;x.pct=null}});
+  var out=[];O.forEach(function(x){if(x.parKey)return;out.push(x);x.vos.forEach(function(y){out.push(y)})});
+  O.forEach(function(x){if(out.indexOf(x)<0)out.push(x)});
+  return out}
 function mrPay(g,k){return PAY.rows.filter(function(r){return r.g===g&&r.k===k&&!pyCalc(r).done}).map(function(r){var q=pyCalc(r);return{name:(r.name||"").trim()||"(no name yet)",code:(r.pcode||"").trim(),cv:q.cv,paid:q.paid,bal:Math.max(q.bal,0)}})}
 var MR_LH="BYLD TECHNICAL SERVICES L.L.C\nGOSHI WAREHOUSE 156\nAl Quoz 3, Dubai, UAE";
 function mrN(n){return n?(n<0?"("+money(-n)+")":money(n)):"-"}
@@ -3478,7 +3493,7 @@ function mrReport(g,mode){
   h+='</div><div class="mrsc">'+sec("2","RAK BANK")+'<div class="mrasof">Bank reconciliation as of '+d+'</div>'+tb("1fr 170px",["Description","Amount"],[["Bank balance",mrN(bk)],["Book balance",mrN(bo)]],["Reconciliation discrepancy (bank less book)",Math.abs(df)<.005?"-":mrN(df)])+note(MR.bnote);
   h+='</div><div class="mrsc">'+sec("3","PROJECTS - PT (ONGOING)")+'<div class="mrasof">Position of each ongoing project as of '+d+'. Estimated profit or loss = estimated revenue (contract value before VAT unless you changed it) less expenses to date, with its percentage of that revenue.</div>';
   if(P.length){var pf=function(ex,es){if(!(ex>0&&es>0))return"-";var pr=r2(es-ex),pp=Math.abs(r2(pr/es*100)).toFixed(1);return mrN(pr)+'<small class="'+(pr<0?"loss":"gain")+'">'+pp+(pr<0?"% loss":"% profit")+'</small>'};
-    h+=tb("1.4fr 1fr 1fr 1fr 1.1fr 1fr",["Project","Project cost (incl. VAT)","Received from customer","Expenses to date","Est. profit / (loss)","Pending balance"],P.map(function(x){return['<b>'+esc(x.code||x.names[0]||"(no code yet)")+'</b>'+(x.names.length&&(x.code||x.names.length>1)?'<small>'+esc((x.code?x.names:x.names.slice(1)).join(" / "))+'</small>':""),mrN(x.cv),mrN(x.paid),mrN(x.exp),pf(x.exp,x.est),mrN(x.bal)]}),["Total",mrN(a),mrN(r2(P.reduce(function(t,x){return t+x.paid},0))),mrN(b),pf(b,c),mrN(e)])}
+    h+=tb("1.4fr 1fr 1fr 1fr 1.1fr 1fr",["Project","Project cost (incl. VAT)","Received from customer","Expenses to date","Est. profit / (loss)","Pending balance"],P.map(function(x){var v=!!x.parKey;return['<span class="'+(v?"mrvo":"")+'"><b>'+(v?"&#8627; ":"")+esc(x.code||x.names[0]||"(no code yet)")+'</b>'+(x.names.length&&(x.code||x.names.length>1)?'<small>'+esc((x.code?x.names:x.names.slice(1)).join(" / "))+'</small>':"")+(x.vos&&x.vos.length?'<small>Expenses include '+x.vos.length+' VO'+(x.vos.length>1?"s":"")+'</small>':"")+'</span>',mrN(x.cv),mrN(x.paid),v?"incl. above":mrN(x.exp),v?"":pf(x.exp,x.est),mrN(x.bal)]}),["Total",mrN(a),mrN(r2(P.reduce(function(t,x){return t+x.paid},0))),mrN(b),pf(b,c),mrN(e)])}
   else h+='<div class="mrnote">No ongoing projects.</div>';
   h+=note(MR.pnote);
   h+='</div><div class="mrsc">'+sec("4","PAYABLES")+'<div class="mrasof">Amounts still to be paid as of '+d+'</div>';
