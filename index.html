@@ -3338,7 +3338,7 @@ $("board").addEventListener("focusout",function(e){var t=e.target;if(!t.dataset|
   pcSave();var nx=e.relatedTarget&&e.relatedTarget.dataset?e.relatedTarget.dataset.pk:null;setTimeout(function(){pcRender(nx)},0)});
 
 /* ===== Monthly report (BYLD): cash on hand, Rak Bank, projects, payables. Generate on screen and print ===== */
-var MRK="planner-mrep-v1",MRP=["Mr. Bader","Lady","Dianne","Qaiser","Sajid","Anees","Zein","Imtiaz"],MR={asof:"",cash:{},cnote:"",bank:"",book:"",bnote:"",proj:{},pnote:"",ynote:""};
+var MRK="planner-mrep-v1",MRP=["Mr. Bader","Lady","Dianne","Qaiser","Sajid","Anees","Zein","Imtiaz","Azeez"],MR={asof:"",cash:{},cnote:"",bank:"",book:"",bnote:"",proj:{},pnote:"",ynote:""};
 try{var _mr=JSON.parse(localStorage.getItem(MRK)||"null");if(_mr&&typeof _mr==="object"){for(var _k in _mr)MR[_k]=_mr[_k];MR.cash=MR.cash||{};MR.proj=MR.proj||{}}}catch(e){}
 function mrSave(){try{localStorage.setItem(MRK,JSON.stringify(MR))}catch(e){}}
 function mrDate(v){var m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(v||"");if(!m)return"";var M=["January","February","March","April","May","June","July","August","September","October","November","December"];return(+m[3])+" "+M[+m[2]-1]+" "+m[1]}
