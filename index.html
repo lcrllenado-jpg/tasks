@@ -1549,6 +1549,20 @@ html[data-look=neo] .grp .pytbl tbody tr.arh td small{color:#fff!important}
 .mrpaper,.mrp{background:#fff!important}
 .mrsc{border:2px solid #12373B;border-radius:12px;overflow:hidden;margin:20px 0;background:#fff;padding-bottom:12px}.mrsc .mrbar{margin:0 0 8px;border-radius:0}.mrsc>:not(.mrbar){margin-left:14px;margin-right:14px}
 .mrsc .mrsubh{margin-top:14px}
+.cqstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:10px 0}
+.cqc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.cqc small{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}.cqc b{font-size:18px}.cqc span{font-size:12px;color:var(--mute)}
+.cqc.red{background:#fde4e1;border-color:#e6a39b;color:#7b1d14}.cqc.red small,.cqc.red span{color:#8f3b33}.cqc.amb{background:#fff1c9;border-color:#e3c46b;color:#5c4400}.cqc.amb small{color:#7a5a00}
+.cqt{width:100%;border-collapse:collapse;font-size:13px}.cqt th{text-align:left;padding:8px;font-size:12px;border-bottom:2px solid var(--line)}.cqt th.n,.cqt td.n{text-align:right}
+.cqt td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:middle}.cqt input{width:100%;box-sizing:border-box;min-width:70px;border:1px solid transparent;background:transparent;border-radius:8px;padding:6px 7px;font:inherit;color:inherit}
+.cqt input:focus{border-color:var(--accent);background:var(--card)}.cqt td.n input{text-align:right}
+.cqt tr.hot td{background:#fff3d6}.cqt tr.done td{opacity:.6}.cqt tr.cqadd td{background:var(--tint)}.cqt tr.cqadd input{border-color:var(--line);background:var(--card)}
+.cqt tr.cqtot td{font-weight:700;background:var(--tint);padding:9px 8px}.cqt .empty{padding:14px;text-align:center;color:var(--mute)}
+.cqst{display:inline-block;border-radius:12px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap}.cqst.due{background:#fde4e1;color:#a3261b}.cqst.soon{background:#fff1c9;color:#7a5a00}.cqst.ok{background:#e1f3e6;color:#17683a}.cqst.idle{background:#eee;color:#555}
+.cqg td.nm b{font-size:15px}.cqg td small{display:block;font-size:11px;opacity:.75}.cqg td{vertical-align:top;padding:8px 10px}.cqg th{white-space:nowrap}
+.cqpc{min-width:118px;border-left:1px solid var(--line);cursor:pointer}.cqpc b{display:block;font-size:13px}.cqpc i{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;border-radius:10px;padding:2px 8px;margin-top:4px;background:#eee;color:#555}
+.cqpc.paid{background:#eaf6ee}.cqpc.paid i{background:#cdebd6;color:#17683a}.cqpc.hot{background:#fde4e1}.cqpc.hot i{background:#f5b9b2;color:#8f1d12}.cqpc.soon{background:#fff1c9}.cqpc.soon i{background:#f3d98a;color:#6a4d00}.cqpc.next{box-shadow:inset 0 0 0 2px #e8a317}.cqpc.empty{cursor:default}.cqpc:hover:not(.empty){filter:brightness(.97)}
+.cqok{background:#e1f3e6!important;color:#17683a!important;border-color:#9fd3b0!important}.btn.sm{padding:5px 10px;font-size:12px}
 .mrvo{display:block;padding-left:18px}.mrvo b{font-weight:600}.mrvo small{opacity:.8}
 .mrsc.pcl .mrt span{font-size:12px}
 @page pcland{size:A4 landscape;margin:12mm}
@@ -3342,6 +3356,111 @@ $("board").addEventListener("focusout",function(e){var t=e.target;if(!t.dataset|
   else{if(val===(r[f]||""))return;r[f]=val.trim()}
   pcSave();var nx=e.relatedTarget&&e.relatedTarget.dataset?e.relatedTarget.dataset.pk:null;setTimeout(function(){pcRender(nx)},0)});
 
+/* ===== Cheque tracker (BYLD): post-dated cheques, remarks, reminders ===== */
+var CQK="planner-cq-v1",CQ={rows:[],f:"p",v:"g"},CQN={},CQUI={};
+try{var _cq=JSON.parse(localStorage.getItem(CQK)||"null");if(_cq&&typeof _cq==="object"){CQ.rows=_cq.rows||[];CQ.f=_cq.f||"p";CQ.v=_cq.v||"g"}}catch(e){}
+function cqSave(){try{localStorage.setItem(CQK,JSON.stringify(CQ))}catch(e){}if(typeof phKick==="function")phKick()}
+function cqRows(g){return CQ.rows.filter(function(r){return r.g===g})}
+function cqSorted(g){return cqRows(g).map(function(r,i){return{r:r,i:i}}).sort(function(a,b){return(a.r.d||"9999").localeCompare(b.r.d||"9999")||a.i-b.i}).map(function(x){return x.r})}
+function cqDays(d){if(!/^\d{4}-\d\d-\d\d$/.test(d||""))return null;var a=new Date(d+"T00:00:00"),n=new Date(today()+"T00:00:00");return Math.round((a-n)/864e5)}
+function cqPend(g){return cqRows(g).filter(function(r){return r.s!=="c"})}
+function cqSum(L){var t=0;L.forEach(function(r){t+=num(r.a)||0});return r2(t)}
+function cqPill(r){if(r.s==="c")return'<span class="cqst ok">Cleared</span>';var n=cqDays(r.d);if(n===null)return'<span class="cqst idle">No date</span>';
+  if(n<0)return'<span class="cqst due">'+(-n)+' day'+(n===-1?"":"s")+' overdue</span>';if(n===0)return'<span class="cqst due">Today</span>';if(n===1)return'<span class="cqst due">Tomorrow</span>';
+  return'<span class="cqst '+(n<=7?"soon":"idle")+'">in '+n+' days</span>'}
+function cqItems(){return CQ.rows.filter(function(r){return r.s!=="c"&&/^\d{4}-\d\d-\d\d$/.test(r.d||"")}).map(function(r){return{id:"cq"+r.id,t:"Cheque "+(r.n||"")+" · "+(r.p||"")+" · "+money(num(r.a)||0),g:r.g,d:r.d}})}
+var CQO=["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"];
+function cqGKey(r){return((r.r||"").trim()||(r.p||"").trim()||"Other").toLowerCase()}
+function cqGroups(g){var M={},O=[];cqSorted(g).forEach(function(r){var k=cqGKey(r),x=M[k];if(!x){x=M[k]={k:k,name:(r.r||"").trim()||(r.p||"").trim()||"Other",payees:[],L:[]};O.push(x)}
+  var py=(r.p||"").trim();if(py&&x.payees.indexOf(py)<0)x.payees.push(py);x.L.push(r)});
+  O.forEach(function(x){x.tot=cqSum(x.L);x.paid=cqSum(x.L.filter(function(r){return r.s==="c"}));x.bal=r2(x.tot-x.paid);var n=x.L.filter(function(r){return r.s!=="c"})[0];x.nd=n?n.d:"9999"});
+  return O.sort(function(a,b){return a.nd.localeCompare(b.nd)||a.name.localeCompare(b.name)})}
+function cqOrd(r){var k=cqGKey(r),L=cqSorted(r.g).filter(function(x){return cqGKey(x)===k}),i=L.indexOf(r);return(CQO[i]||(i+1)+"th")+" payment"}
+function cqGroupHtml(g){var G2=cqGroups(g),mx=Math.max(6,G2.reduce(function(m,x){return Math.max(m,x.L.length)},0)),nx=cqSorted(g).filter(function(r){return r.s!=="c"&&cqDays(r.d)!==null&&cqDays(r.d)>=0})[0],tt=0,tp=0;
+  var h='<div class="scroll"><table class="cqt cqg"><thead><tr><th>For</th><th class="n">Total</th><th class="n">Paid</th><th class="n">Balance</th>';
+  for(var i=0;i<mx;i++)h+='<th>'+(CQO[i]||(i+1)+"th")+' payment</th>';h+='</tr></thead><tbody>';
+  G2.forEach(function(x){tt+=x.tot;tp+=x.paid;
+    h+='<tr><td class="nm"><b>'+esc(x.name)+'</b><small>'+esc(x.payees.join(" / "))+'</small></td><td class="n">'+money(x.tot)+'</td><td class="n">'+money(x.paid)+'</td><td class="n"><b>'+money(x.bal)+'</b></td>';
+    for(var i=0;i<mx;i++){var r=x.L[i];if(!r){h+='<td class="cqpc empty"></td>';continue}
+      var n=cqDays(r.d),cl=r.s==="c"?"paid":n===null?"idle":n<=1?"hot":n<=7?"soon":"idle";
+      h+='<td class="cqpc '+cl+(nx&&nx===r?" next":"")+'" data-cqa="tog" data-id="'+r.id+'" title="Tap to mark '+(r.s==="c"?"as pending":"as cleared")+'" tabindex="0"><b>'+money(num(r.a)||0)+'</b><small>'+rpD(r.d)+'</small><small>Chq '+esc(r.n||"")+'</small><i>'+(r.s==="c"?"✓ Cleared":cqPill(r).replace(/<[^>]+>/g,""))+'</i></td>'}
+    h+='</tr>'});
+  if(!G2.length)h+='<tr><td colspan="'+(4+mx)+'" class="empty">No cheques yet. Add one below or import your list.</td></tr>';
+  h+='<tr class="cqtot"><td>Total</td><td class="n">'+money(r2(tt))+'</td><td class="n">'+money(r2(tp))+'</td><td class="n">'+money(r2(tt-tp))+'</td><td colspan="'+mx+'"></td></tr></tbody></table></div><p class="plh">Tap a payment box to mark it cleared (tap again to undo). Change details or delete a cheque in the <b>List</b> view. Cheques are grouped by their Remarks, so give each new cheque a remark such as <i>Room 32</i>.</p>'+
+   '<table class="cqt"><tbody><tr class="cqadd"><td><input data-cqn="n" value="'+esc(cqDraft(g).n)+'" placeholder="Cheque no." size="8"></td><td><input data-cqn="b" value="'+esc(cqDraft(g).b)+'" size="9"></td><td><input data-cqn="p" value="'+esc(cqDraft(g).p)+'" placeholder="Payee"></td><td class="n"><input data-cqn="a" inputmode="decimal" value="'+esc(cqDraft(g).a)+'" placeholder="Amount" size="10"></td><td><input type="date" data-cqn="d" value="'+esc(cqDraft(g).d)+'"></td><td><input data-cqn="r" value="'+esc(cqDraft(g).r)+'" placeholder="Remarks (e.g. Room 32)"></td><td><button type="button" class="btn pri sm" data-cqa="add">Add cheque</button></td></tr></tbody></table>';
+  return h}
+function cqDraft(g){return CQN[g]||(CQN[g]={n:"",b:"RAK Bank",p:"",a:"",d:"",r:""})}
+function cqHtml(g){
+  var L=cqSorted(g),P=L.filter(function(r){return r.s!=="c"}),C=L.filter(function(r){return r.s==="c"}),f=CQ.f||"p",
+    tm=P.filter(function(r){return cqDays(r.d)===1}),td=P.filter(function(r){return cqDays(r.d)===0}),ov=P.filter(function(r){var n=cqDays(r.d);return n!==null&&n<0}),
+    wk=P.filter(function(r){var n=cqDays(r.d);return n!==null&&n>=2&&n<=7}),nx=P.filter(function(r){var n=cqDays(r.d);return n!==null&&n>=0})[0],
+    view=L.filter(function(r){return f==="a"||(f==="c"?r.s==="c":r.s!=="c")}),dr=cqDraft(g),imp=CQUI[g]&&CQUI[g].imp,msg=CQUI[g]&&CQUI[g].msg||"";
+  var urgent=ov.concat(td,tm);
+  var h='<section class="card cqs" data-cqg="'+g+'"><h2>Cheques · '+esc(G[g]?G[g].n:g)+' <em>'+(P.length||"")+'</em></h2><p class="plh">Post-dated cheques you have issued. You are reminded the day before each cheque date. Tap <b>Cleared</b> once the bank has paid it.</p>';
+  h+='<div class="cqstrip">'+
+    '<div class="cqc'+(urgent.length?" red":"")+'"><small>Due today / tomorrow / overdue</small><b>'+(urgent.length?urgent.length+' · '+money(cqSum(urgent)):"none")+'</b>'+(urgent.length?'<span>'+urgent.slice(0,3).map(function(r){return esc((r.n||"")+" "+(r.p||""))}).join(", ")+'</span>':'')+'</div>'+
+    '<div class="cqc'+(wk.length?" amb":"")+'"><small>Next 7 days</small><b>'+(wk.length?wk.length+' · '+money(cqSum(wk)):"none")+'</b></div>'+
+    '<div class="cqc'+(nx&&cqDays(nx.d)<=7?" amb":"")+'"><small>Next cheque</small><b>'+(nx?esc((nx.r||nx.p||"").trim())+' · '+cqOrd(nx).replace(" payment",""):"—")+'</b>'+(nx?'<span>'+money(num(nx.a)||0)+' · '+rpD(nx.d)+' · '+cqPill(nx).replace(/<[^>]+>/g,"")+'</span>':"")+'</div>'+
+    '<div class="cqc"><small>Pending in total</small><b>'+P.length+' · '+money(cqSum(P))+'</b></div>'+
+    '<div class="cqc"><small>Cleared</small><b>'+C.length+' · '+money(cqSum(C))+'</b></div></div>';
+  h+='<div class="pctool"><label class="btn pcfile">Import file<input type="file" accept=".csv,.txt" data-cqfile="1" hidden></label><button type="button" class="btn" data-cqa="paste" data-v="1">Paste from Excel</button><button type="button" class="btn" data-cqa="dl">Download</button><button type="button" class="btn" data-cqa="ics" title="Calendar file with an alert at 9:00 the day before each cheque date">Add to phone calendar</button><button type="button" class="btn pri" data-cqa="print">Print</button><button type="button" class="btn" data-cqa="clr" style="color:#b3261e;border-color:#b3261e">Clear all</button>'+
+    '<span class="pcfl">View '+[["g","By payment"],["l","List"]].map(function(x){return'<button type="button" class="btn'+(CQ.v!=="l"?(x[0]==="g"?" on":""):(x[0]==="l"?" on":""))+'" data-cqa="v" data-v="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</span>'+(CQ.v==="l"?'<span class="pcfl">Show '+[["p","Pending "+P.length],["a","All "+L.length],["c","Cleared "+C.length]].map(function(x){return'<button type="button" class="btn'+(f===x[0]?" on":"")+'" data-cqa="f" data-v="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</span>':"")+'</div>';
+  if(imp)h+='<div class="pcimp"><b>Paste cheques from Excel</b><small>One cheque per row. Columns in this order: Cheque no., Bank, Payee, Amount, Cheque date, Remarks. A header row is fine. Cheques already in the app are skipped.</small><textarea data-cqta="1" rows="6" placeholder="000054 [tab] RAK Bank [tab] Al Yousuf LLC [tab] 8203.13 [tab] 18/11/2026 [tab] Room 26"></textarea><div class="pctool"><button type="button" class="btn pri" data-cqa="go">Add these cheques</button><button type="button" class="btn" data-cqa="paste" data-v="0">Cancel</button></div></div>';
+  if(msg)h+='<div class="pcmsg">'+esc(msg)+'</div>';
+  if(CQ.v!=="l")return h+cqGroupHtml(g)+'</section>';
+  h+='<div class="scroll"><table class="cqt"><thead><tr><th>Cheque no.</th><th>Bank</th><th>Payee</th><th class="n">Amount</th><th>Cheque date</th><th>Due</th><th>Remarks</th><th></th><th></th></tr></thead><tbody>';
+  view.forEach(function(r){var n=cqDays(r.d),cl=r.s==="c"?" done":(n!==null&&n<=1?" hot":"");
+    h+='<tr class="'+cl.trim()+'" data-cqid="'+r.id+'"><td><input data-cqf="n" value="'+esc(r.n||"")+'" size="8" aria-label="Cheque number"></td><td><input data-cqf="b" value="'+esc(r.b||"")+'" size="9" aria-label="Bank"></td><td><input data-cqf="p" value="'+esc(r.p||"")+'" aria-label="Payee"></td>'+
+      '<td class="n"><input data-cqf="a" inputmode="decimal" value="'+esc(r.a===""||r.a==null?"":money(num(r.a)||0))+'" size="10" aria-label="Amount"></td><td><input type="date" data-cqf="d" value="'+esc(r.d||"")+'" aria-label="Cheque date"></td><td>'+cqPill(r)+'</td>'+
+      '<td><input data-cqf="r" value="'+esc(r.r||"")+'" placeholder="Remarks" aria-label="Remarks"></td><td>'+(r.s==="c"?'<button type="button" class="btn sm" data-cqa="undo" data-id="'+r.id+'">↺ Undo</button>':'<button type="button" class="btn sm cqok" data-cqa="clear" data-id="'+r.id+'">✓ Cleared</button>')+'</td><td><button type="button" class="pcx" data-cqa="del" data-id="'+r.id+'" aria-label="Delete">×</button></td></tr>'});
+  if(!view.length)h+='<tr><td colspan="9" class="empty">'+(L.length?"Nothing in this view.":"No cheques yet. Add one below or import your list.")+'</td></tr>';
+  h+='<tr class="cqadd"><td><input data-cqn="n" value="'+esc(dr.n)+'" placeholder="Cheque no." size="8"></td><td><input data-cqn="b" value="'+esc(dr.b)+'" size="9"></td><td><input data-cqn="p" value="'+esc(dr.p)+'" placeholder="Payee"></td><td class="n"><input data-cqn="a" inputmode="decimal" value="'+esc(dr.a)+'" placeholder="Amount" size="10"></td><td><input type="date" data-cqn="d" value="'+esc(dr.d)+'"></td><td></td><td><input data-cqn="r" value="'+esc(dr.r)+'" placeholder="Remarks (e.g. Room 32)"></td><td colspan="2"><button type="button" class="btn pri sm" data-cqa="add">Add</button></td></tr>';
+  var vp=view.filter(function(r){return r.s!=="c"});
+  h+='<tr class="cqtot"><td colspan="3">Total '+(f==="c"?"cleared":f==="a"?"shown":"pending")+'</td><td class="n">'+money(cqSum(view))+'</td><td colspan="5"></td></tr></tbody></table></div></section>';
+  return h}
+function cqAdd(g){var d=cqDraft(g),a=num(d.a);if(!/^\d{4}-\d\d-\d\d$/.test(d.d||"")){alert("Please choose the cheque date.");return}if(a===null||a<=0){alert("Please type the amount.");return}
+  CQ.rows.push({id:uid(),g:g,n:(d.n||"").trim(),b:(d.b||"").trim(),p:(d.p||"").trim(),a:r2(a),d:d.d,r:(d.r||"").trim(),s:""});CQN[g]={n:"",b:d.b,p:"",a:"",d:"",r:""};cqSave();render()}
+function cqKey(r){return[(r.n||"").toLowerCase(),r.d,r2(num(r.a)||0),(r.p||"").toLowerCase().replace(/\s+/g," ")].join("|")}
+function cqDate(v){v=String(v||"").trim();var m=/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})$/.exec(v);if(m){var y=+m[3];if(y<100)y+=2000;return y+"-"+("0"+m[2]).slice(-2)+"-"+("0"+m[1]).slice(-2)}if(/^\d{4}-\d\d-\d\d$/.test(v))return v;return""}
+function cqParse(g,rows){var added=0,skipped=0,bad=0,seen={},map=null,rep=false,stop=false;
+  CQ.rows.forEach(function(r){if(r.g===g){var k=cqKey(r);seen[k]=(seen[k]||0)+1}});
+  rows.forEach(function(c){if(stop||!c||!c.some(function(x){return String(x||"").trim()}))return;var a=String(c[0]||"").trim();
+    if(/^#replace/i.test(a)){if(!rep){var n=CQ.rows.filter(function(r){return r.g===g}).length;if(n&&!confirm("This file replaces all "+n+" cheques in this tab. Continue?")){stop=true;return}CQ.rows=CQ.rows.filter(function(r){return r.g!==g});seen={};rep=true}return}
+    if(/^cheque|^check|^no\b/i.test(a)&&!cqDate(c[4])&&!cqDate(c[1])){map={};c.forEach(function(h,i){h=String(h||"").toLowerCase();if(/status|clear/.test(h))map.s=i;else if(/no|number|chq|cheque/.test(h)&&map.n===undefined)map.n=i;else if(/bank/.test(h))map.b=i;else if(/payee|pay to|name/.test(h))map.p=i;else if(/amount|aed/.test(h))map.a=i;else if(/date/.test(h))map.d=i;else if(/remark|note|for|room/.test(h))map.r=i});return}
+    var M=map||{n:0,b:1,p:2,a:3,d:4,r:5,s:6},d=cqDate(c[M.d]),am=num(c[M.a]);if(!d||am===null){bad++;return}
+    var r={id:uid()+added,g:g,n:String(c[M.n]||"").trim(),b:String(c[M.b]||"").trim(),p:String(c[M.p]||"").trim(),a:r2(am),d:d,r:String(c[M.r]===undefined?"":c[M.r]).trim(),s:(M.s!==undefined&&/^(1|yes|y|true|c|cleared)$/i.test(String(c[M.s]||"").trim()))?"c":""},k=cqKey(r);
+    if(seen[k]>0){seen[k]--;skipped++;return}CQ.rows.push(r);added++});
+  cqSave();if(stop)return"Nothing was changed.";return(rep?"Replaced the old cheques. ":"")+"Added "+added+" cheque"+(added===1?"":"s")+(skipped?". "+skipped+" already in the app were skipped":"")+(bad?". "+bad+" rows had no valid date or amount and were left out":"")+"."}
+function cqDownload(g){var L=[["Cheque no.","Bank","Payee","Amount","Cheque date","Remarks","Status"]];cqSorted(g).forEach(function(r){L.push([r.n||"",r.b||"",r.p||"",r.a,rpD(r.d),r.r||"",r.s==="c"?"cleared":"pending"])});
+  var csv="﻿"+L.map(function(r){return r.map(pcCsvCell).join(",")}).join("\r\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download=g.toUpperCase()+"-cheques.csv";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+function cqIcs(g){var P=cqSorted(g).filter(function(r){return r.s!=="c"&&cqDays(r.d)!==null&&cqDays(r.d)>=0});if(!P.length){alert("No upcoming cheques to add.");return}
+  var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Project Manager//Cheques//EN","CALSCALE:GREGORIAN"],stamp=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";
+  P.forEach(function(r){var d=r.d.replace(/-/g,""),e=new Date(r.d+"T00:00:00");e.setDate(e.getDate()+1);var ed=ds(e).replace(/-/g,"");
+    L.push("BEGIN:VEVENT","UID:cheque-"+r.id+"@projectmanager","DTSTAMP:"+stamp,"DTSTART;VALUE=DATE:"+d,"DTEND;VALUE=DATE:"+ed,"SUMMARY:Cheque "+(r.n||"")+" - "+(r.p||"")+" - AED "+money(num(r.a)||0)+(r.r?" ("+r.r+")":""),
+      "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Cheque due tomorrow","TRIGGER:-PT15H","END:VALARM","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Cheque due today","TRIGGER:PT9H","END:VALARM","END:VEVENT")});
+  L.push("END:VCALENDAR");var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([L.join("\r\n")+"\r\n"],{type:"text/calendar;charset=utf-8"}));a.download=g.toUpperCase()+"-cheques.ics";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},600);
+  toast("Calendar file ready",P.length+" cheque"+(P.length===1?"":"s")+" saved. Open the file on your phone to add them. You get an alert at 9:00 the day before and at 9:00 on the day.")}
+function cqPrintHtml(g){if(CQ.v!=="l"){var G2=cqGroups(g),mx=Math.max(6,G2.reduce(function(m,x){return Math.max(m,x.L.length)},0)),cols=[["For"],["Total","n"],["Paid","n"],["Balance","n"]],tt=0,tp=0,i;for(i=0;i<mx;i++)cols.push([(CQO[i]||(i+1)+"th")+" payment"]);
+    return rpHead(g,"Cheque tracker",true)+rpTable(cols,G2.map(function(x){tt+=x.tot;tp+=x.paid;var c=[esc(x.name)+"<br><small>"+esc(x.payees.join(" / "))+"</small>",money(x.tot),money(x.paid),money(x.bal)];for(i=0;i<mx;i++){var r=x.L[i];c.push(r?"<b>"+money(num(r.a)||0)+"</b><br>"+rpD(r.d)+"<br>Chq "+esc(r.n||"")+"<br>"+(r.s==="c"?"Cleared":"Pending"):"")}return{c:c}}),["Total",money(r2(tt)),money(r2(tp)),money(r2(tt-tp))].concat(new Array(mx).fill("")))+rpFoot()}
+  var L=cqSorted(g).filter(function(r){return r.s!=="c"});
+  return rpHead(g,"Cheque tracker - pending cheques",true)+rpTable([["Cheque no."],["Bank"],["Payee"],["Amount","n"],["Cheque date"],["Days left"],["Remarks"]],L.map(function(r){var n=cqDays(r.d);return{c:[esc(r.n||""),esc(r.b||""),esc(r.p||""),money(num(r.a)||0),rpD(r.d),n===null?"":n<0?(-n)+" overdue":n===0?"Today":String(n),esc(r.r||"")]}}),["Total pending","","",money(cqSum(L)),"","",""])+rpFoot()}
+$("board").addEventListener("click",function(e){var b=e.target.closest("[data-cqa]");if(!b)return;var sec=b.closest("[data-cqg]"),g=sec?sec.dataset.cqg:VIEW;if(!G[g])return;var a=b.dataset.cqa,id=b.dataset.id,r=id&&CQ.rows.filter(function(x){return x.id===id})[0];
+  if(a==="tog"&&r){r.s=r.s==="c"?"":"c";cqSave();render();return}if(a==="v"){CQ.v=b.dataset.v;cqSave();render();return}
+  if(a==="clear"&&r){r.s="c";cqSave();render();return}if(a==="undo"&&r){r.s="";cqSave();render();return}
+  if(a==="del"&&r){if(!confirm("Delete cheque "+(r.n||"")+" ("+(r.p||"")+")?"))return;CQ.rows=CQ.rows.filter(function(x){return x.id!==id});cqSave();render();return}
+  if(a==="add"){cqAdd(g);return}if(a==="f"){CQ.f=b.dataset.v;cqSave();render();return}
+  if(a==="paste"){CQUI[g]=CQUI[g]||{};CQUI[g].imp=b.dataset.v==="1";render();return}
+  if(a==="go"){var ta=sec.querySelector("[data-cqta]"),t=ta?ta.value:"";if(!t.trim()){alert("Paste some cheques first.");return}CQUI[g]=CQUI[g]||{};CQUI[g].msg=cqParse(g,pcTsv(t));CQUI[g].imp=false;render();return}
+  if(a==="dl"){cqDownload(g);return}if(a==="ics"){cqIcs(g);return}if(a==="print"){rpPrint(cqPrintHtml(g),true);return}
+  if(a==="clr"){var n=cqRows(g).length;if(!n){alert("Nothing to clear.");return}if(!confirm("Delete ALL "+n+" cheques in this tab? This cannot be undone (tip: tap Download first.)")||!confirm("Really clear all "+n+" cheques?"))return;CQ.rows=CQ.rows.filter(function(x){return x.g!==g});cqSave();render()}});
+$("board").addEventListener("change",function(e){var t=e.target;if(!t.dataset||!t.dataset.cqfile||!t.files||!t.files[0])return;var sec=t.closest("[data-cqg]"),g=sec?sec.dataset.cqg:VIEW,f=t.files[0],fr=new FileReader();t.value="";
+  fr.onload=function(){CQUI[g]=CQUI[g]||{};try{CQUI[g].msg=cqParse(g,mrCsv(String(fr.result).replace(/^﻿/,"")))}catch(x){CQUI[g].msg="Could not read that file."}render()};fr.onerror=function(){alert("Could not read that file.")};fr.readAsText(f)});
+$("board").addEventListener("input",function(e){var t=e.target;if(!t.dataset||!t.dataset.cqn)return;var sec=t.closest("[data-cqg]");if(sec)cqDraft(sec.dataset.cqg)[t.dataset.cqn]=t.value});
+$("board").addEventListener("keydown",function(e){var t=e.target;if(e.key!=="Enter"||!t.dataset||!t.dataset.cqn)return;var sec=t.closest("[data-cqg]");if(!sec)return;e.preventDefault();cqDraft(sec.dataset.cqg)[t.dataset.cqn]=t.value;cqAdd(sec.dataset.cqg)});
+$("board").addEventListener("focusout",function(e){var t=e.target;if(!t.dataset||!t.dataset.cqf)return;var tr=t.closest("tr[data-cqid]"),r=tr&&CQ.rows.filter(function(q){return q.id===tr.dataset.cqid})[0];if(!r)return;var f=t.dataset.cqf,v=t.value.trim();
+  if(f==="a"){var n=num(v);if(n===null||n<=0){t.value=money(num(r.a)||0);return}v=r2(n)}
+  if(f==="d"&&!/^\d{4}-\d\d-\d\d$/.test(v)){t.value=r.d||"";return}
+  if(r[f]===v)return;r[f]=v;cqSave();render()});
 /* ===== Monthly report (BYLD): cash on hand, Rak Bank, projects, payables. Generate on screen and print ===== */
 var MRK="planner-mrep-v1",MRP=["Mr. Bader","Lady","Dianne","Qaiser","Sajid","Anees","Zein","Imtiaz","Azeez"],MR={asof:"",cash:{},cnote:"",bank:"",book:"",bnote:"",proj:{},pnote:"",ynote:""};
 try{var _mr=JSON.parse(localStorage.getItem(MRK)||"null");if(_mr&&typeof _mr==="object"){for(var _k in _mr)MR[_k]=_mr[_k];MR.cash=MR.cash||{};MR.proj=MR.proj||{}}}catch(e){}
@@ -6622,6 +6741,7 @@ function partHtml(g){
   var tabs=[["tasks","Tasks",act.length],["rem","Reminders",rlGet(g).filter(function(x){return!x.d}).length||""],["files","Files & links",st.files],["photos","Photos",PH.filter(function(x){return x.g===g}).length||""],["rcp","Receipts",RC.list.filter(function(x){return x.g===g}).length||""]];
   if(g==="kbw"||g==="byld")tabs.push(["vat","VAT Checker",VATR.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="kbw"||g==="byld")tabs.push(["pc","Petty cash",pcPending(g)||""]);
+  if(g==="byld")tabs.push(["cq","Cheques",cqPend(g).length||""]);
   if(g==="byld")tabs.push(["mrep","Monthly report",""]);
   if(g==="byld")tabs.splice(1,0,["ppay","Project payments",PAY.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="kbw"||g==="byld")tabs.splice(g==="byld"?2:1,0,["pr","Payable & receivable",PAY.ar.filter(function(x){return x.g===g}).length||""]);
@@ -6646,6 +6766,7 @@ function partHtml(g){
   else if(sub.indexOf("cma")===0&&cmOn(g))H+=cmHtml(g,sub);
   else if(sub==="vat")H+=vtHtml(g);
   else if(sub==="pc"&&(g==="kbw"||g==="byld"))H+=pcHtml(g);
+  else if(sub==="cq"&&g==="byld")H+=cqHtml(g);
   else if(sub==="mrep"&&g==="byld")H+=mrHtml(g);
   else if(sub==="photos")H+=phHtml(g);
   else H+=plHtml(g)+filesHtml(g);
@@ -6968,7 +7089,7 @@ function checkDue(force){
   if(ALERT!=="on"||!READY)return;
   var now=new Date(),td=today(),tm=ds(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)),hr=now.getHours(),C={over:[],today:[],tom:[]},dirty=false;
   Object.keys(NOTI).forEach(function(k){if(k.indexOf(td+":")!==0){delete NOTI[k];dirty=true}});
-  dueItems(false).forEach(function(x){
+  dueItems(false).concat(cqItems()).forEach(function(x){
     var c=x.d<td?"over":x.d===td?"today":x.d===tm?"tom":"";if(!c)return;
     if(!force){var born=parseInt(String(x.id).slice(0,13),10);if(born&&Date.now()-born<6e5)return;if(c==="tom"?hr<16:hr<8)return}
     var key=td+":"+c+":"+x.id;if(NOTI[key])return;NOTI[key]=1;dirty=true;C[c].push(x)});
