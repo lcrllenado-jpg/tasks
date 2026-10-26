@@ -923,6 +923,14 @@ html[data-theme=dark] .card,html[data-theme=dark] .tbl,html[data-theme=dark] .xc
 #repPrint .rep .rpgz tr.rpgh.rpgot td,#repPrint .rep .rpgz tr.rpgh.rpgot th{background:#5b6b7a!important;color:#fff!important}
 #repPrint .rep .rpgz tr.rpgh.rpgsc td,#repPrint .rep .rpgz tr.rpgh.rpgsc th{background:#c9a227!important;color:#14213d!important}
 #repPrint .rep .rrt tr:not(.rpto) td:not(.rrc):not(.rrout){background:#fff!important}
+.lnt{width:100%;border-collapse:collapse;font-size:13px}.lnt th{background:#dbe4f3;color:#14213d;text-align:left;padding:7px 8px}.lnt td{padding:7px 8px;border-bottom:1px solid #e3e6eb}.lnt .n{text-align:right}.lnt tfoot td{background:#14213d;color:#fff;font-weight:700;padding:8px}
+.lnr{cursor:pointer}.lnr.on{background:#eef3fb}.lnbar{background:#e3e6eb;height:8px;border-radius:4px;width:140px}.lnbar i{display:block;background:#14213d;height:8px;border-radius:4px}
+.lnd{background:#f7f9fd}.lnf{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}.lnp input,.lnp select{width:100%;min-width:90px;box-sizing:border-box}.lnp .n input{text-align:right}
+#repPrint .lnst{font-family:Calibri,Arial,sans-serif;color:#000;font-size:13px;width:100%}
+#repPrint .lnsh{border:3px solid #000;background:#dbe4f3;text-align:center;padding:6px 0 8px;margin-bottom:22px}#repPrint .lnsh div{font-size:14px}#repPrint .lnsh b{font-size:22px;display:block}
+#repPrint .lnsa{display:flex;justify-content:space-between;margin-bottom:46px;line-height:1.5}#repPrint .lnsn{margin-bottom:22px}
+#repPrint .lnsT{width:100%;border-collapse:collapse;border:3px solid #000}#repPrint .lnsT th{background:#dbe4f3!important;color:#000!important;text-transform:none!important;letter-spacing:0!important;text-align:left;font-weight:400;padding:3px 5px;border-bottom:2px solid #000}#repPrint .lnsT th.n{text-align:right}#repPrint .rep .rpt tr.rpto td{background:#14213d!important;color:#fff!important}#repPrint .lnsT td{padding:3px 5px;border:1px solid #000}#repPrint .lnsT .n{text-align:right}
+#repPrint .lnsT2{display:flex;justify-content:space-between;border:3px solid #000;background:#dbe4f3;font-weight:700;padding:3px 5px;margin-top:18px}
 .rpsum{display:flex;gap:10px;margin:16px 0 10px}.rep .rpsum>div{flex:1;border:1px solid #c8ccd0;border-radius:6px;padding:8px 10px;background:#f7f8f9}.rep .rpsum span{display:block;font-size:10px;color:#555}.rep .rpsum b{font-size:15px;font-variant-numeric:tabular-nums}.rep .rpsum .rpk{background:var(--rc);border-color:var(--rc);color:#fff}.rep .rpsum .rpk span{color:#fff;opacity:.9}
 .rep .rpsg{display:flex;gap:30px;margin-top:38px}.rep .rpsg>div{flex:1;font-size:10.5px;color:#444}.rep .rpsg i{display:block;border-bottom:1px solid #444;height:26px;margin-bottom:4px}
 @media print{body>#repPrint{display:block!important}html,body{overflow:visible!important;height:auto!important}#repPrint{height:auto!important;overflow:visible!important}#repPrint .rep,#repPrint .rep *{-webkit-print-color-adjust:exact;print-color-adjust:exact}.rep .rpt tr{break-inside:avoid;page-break-inside:avoid}.rep h4{break-after:avoid}.rep .rpsum,.rep .rpsg{break-inside:avoid}}
@@ -4076,6 +4084,61 @@ $("board").addEventListener("click",function(e){var b=e.target.closest("[data-br
 });
 
 /* ===== Work it out (v129) ===== */
+/* ===== Employee loans (v136) ===== */
+var LNK="planner-loan-v1",LN=null,LNOPEN="",LNMN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+try{LN=JSON.parse(localStorage.getItem(LNK)||"null")}catch(e){}
+if(!LN||!LN.list){(function(){function P(a){return a.map(function(x){return{m:x[0],t:x[1],a:x[2]}})}
+  var SD="Salary deduction",C="Cash Payment",T="Transfer";
+  LN={addr:"Goshi Warehouse City, WH. 156\nAl Qouz Industrial Area 3\nDubai, UAE",inc:false,list:[
+   {id:"l1",g:"kbw",name:"Lady Carey Llenado",amt:20000,pays:P([["2025-02",SD,1000],["2025-03",C,1000],["2025-04",C,1000],["2025-05",T,1000],["2025-06",T,1000],["2025-07",T,1000],["2025-08",T,1000],["2026-01",T,1500],["2026-04",T,1500],["2026-06",T,1500],["2026-08",T,1500],["2026-09",T,1500]])},
+   {id:"l2",g:"kbw",name:"Berin Wesly",amt:20000,pays:P([["2025-02",SD,1000],["2025-03",C,1000],["2025-04",C,1000],["2025-05",T,1000],["2025-06",T,1000],["2025-07",T,1000],["2025-08",T,1000],["2025-09",T,1000],["2025-10",T,1000],["2026-01",T,1000],["2026-02",T,1000],["2026-07",T,1000],["2026-08",T,1000]])}]}})()}
+function lnSave(){try{localStorage.setItem(LNK,JSON.stringify(LN))}catch(e){}}
+function lnMl(m){var x=/^(\d{4})-(\d\d)$/.exec(m||"");return x?LNMN[+x[2]-1]+"-"+x[1].slice(2):"-"}
+function lnCalc(l){var run=num(l.amt)||0,rows=[],paid=0;l.pays.forEach(function(p,i){var a=num(p.a)||0;paid=r2(paid+a);run=r2(run-a);rows.push({n:i+1,m:p.m,t:p.t,a:a,b:run})});
+  return{rows:rows,paid:paid,bal:r2((num(l.amt)||0)-paid),amt:num(l.amt)||0,last:l.pays.length?l.pays[l.pays.length-1].m:""}}
+function lnHtml(g){var L=LN.list.filter(function(x){return x.g===g}),T={a:0,p:0,b:0},h;
+  h='<section class="xsec"><div class="rpbar"><h3>Employee loans</h3><span class="rpgrp"><button type="button" class="btn rpbtn" data-ln="add">+ Add employee loan</button><button type="button" class="btn pri rpbtn" data-ln="psum">Print summary</button></span></div>'+
+   '<label class="mrf" style="flex-direction:row;gap:8px;align-items:center;margin:6px 0"><input type="checkbox" data-lnc="inc"'+(LN.inc?" checked":"")+'> <small>Include fully repaid loans in the summary print</small></label>'+
+   '<div class="scroll"><table class="lnt"><thead><tr><th>Employee</th><th class="n">Loan amount</th><th class="n">Repaid</th><th class="n">Balance</th><th>Progress</th><th class="n">Last payment</th></tr></thead><tbody>';
+  if(!L.length)h+='<tr><td colspan="6" class="rpe">No employee loans yet. Press + Add employee loan.</td></tr>';
+  L.forEach(function(l){var c=lnCalc(l),pc=c.amt>0?Math.min(100,Math.round(c.paid/c.amt*100)):0;T.a+=c.amt;T.p+=c.paid;T.b+=c.bal;
+    h+='<tr class="lnr'+(LNOPEN===l.id?" on":"")+'" data-ln="open" data-id="'+l.id+'"><td><b>'+esc(l.name||"(no name)")+'</b> '+(LNOPEN===l.id?"▾":"▸")+'</td><td class="n">'+money(c.amt)+'</td><td class="n">'+money(c.paid)+'</td><td class="n"><b>'+money(c.bal)+'</b></td><td><div class="lnbar"><i style="width:'+pc+'%"></i></div></td><td class="n">'+lnMl(c.last)+'</td></tr>';
+    if(LNOPEN===l.id){
+      h+='<tr><td colspan="6" class="lnd"><div class="lnf"><label class="mrf"><small>Employee name</small><input data-lni="name" data-id="'+l.id+'" value="'+esc(l.name)+'"></label><label class="mrf"><small>Loan amount</small><input inputmode="decimal" data-lni="amt" data-id="'+l.id+'" value="'+esc(String(l.amt))+'"></label></div>'+
+       '<table class="lnt lnp"><thead><tr><th>#</th><th>Month</th><th>Method</th><th class="n">Amount</th><th class="n">Running balance</th><th></th></tr></thead><tbody>'+
+       '<tr><td></td><td></td><td>Loan amount</td><td class="n"></td><td class="n">'+money(c.amt)+'</td><td></td></tr>'+
+       c.rows.map(function(r,i){return'<tr><td>'+r.n+'</td><td><input type="month" data-lnp="m" data-id="'+l.id+'" data-i="'+i+'" value="'+esc(r.m)+'"></td><td><select data-lnp="t" data-id="'+l.id+'" data-i="'+i+'">'+["Salary deduction","Cash Payment","Transfer"].map(function(o){return'<option'+(o===r.t?" selected":"")+'>'+o+'</option>'}).join("")+'</select></td><td class="n"><input inputmode="decimal" data-lnp="a" data-id="'+l.id+'" data-i="'+i+'" value="'+esc(String(r.a))+'"></td><td class="n">'+money(r.b)+'</td><td><button type="button" class="btn" data-ln="delp" data-id="'+l.id+'" data-i="'+i+'" title="Remove payment">✕</button></td></tr>'}).join("")+
+       '</tbody></table><div class="rpgrp" style="margin-top:8px"><button type="button" class="btn rpbtn" data-ln="addp" data-id="'+l.id+'">+ Add payment</button><button type="button" class="btn pri rpbtn" data-ln="pst" data-id="'+l.id+'">Print statement</button><button type="button" class="btn rpbtn" data-ln="dell" data-id="'+l.id+'">Delete this loan</button></div></td></tr>'}});
+  h+='</tbody>'+(L.length?'<tfoot><tr><td>Total</td><td class="n">'+money(r2(T.a))+'</td><td class="n">'+money(r2(T.p))+'</td><td class="n">'+money(r2(T.b))+'</td><td></td><td></td></tr></tfoot>':"")+'</table></div></section>'+
+   '<section class="xsec"><h3>Statement address</h3><p class="plh">Shown at the top of each printed statement. One line per row.</p><textarea class="pnote" data-lni="addr" rows="3">'+esc(LN.addr)+'</textarea></section>';
+  return h}
+function lnSummary(g){var L=LN.list.filter(function(x){return x.g===g}),T={a:0,p:0,b:0},rows=[];
+  L.forEach(function(l){var c=lnCalc(l);if(!LN.inc&&c.bal<=0.005)return;T.a+=c.amt;T.p+=c.paid;T.b+=c.bal;rows.push({c:[esc(l.name),money(c.amt),money(c.paid),'<b>'+money(c.bal)+'</b>',String(l.pays.length),lnMl(c.last)]})});
+  var h=rpHead(g,"Employee loans summary").replace("--rc:"+G[g].cd,"--rc:#14213d");
+  h+=rpTable([["Employee"],["Loan amount","n"],["Repaid","n"],["Balance","n"],["Payments made","n"],["Last payment","n"]],rows,["Total",money(r2(T.a)),money(r2(T.p)),money(r2(T.b)),"",""]);
+  h+='<div class="rpsum rrsum"><div><span>Total lent</span><b>'+money(r2(T.a))+'</b></div><div><span>Repaid so far</span><b>'+money(r2(T.p))+'</b></div><div><span>Still outstanding</span><b>'+money(r2(T.b))+'</b></div></div>';
+  return h+rpFoot()}
+function lnStatement(l){var c=lnCalc(l),n=new Date(),d=String(n.getDate()).padStart(2,"0")+"/"+String(n.getMonth()+1).padStart(2,"0")+"/"+n.getFullYear(),A=function(v){return"AED"+money(v)};
+  return'<div class="lnst"><div class="lnsh"><div>COMPANY LOAN</div><b>STATEMENT OF ACCOUNTS</b></div>'+
+   '<div class="lnsa"><div>'+esc(LN.addr).replace(/\n/g,"<br>")+'</div><div class="lnsd">DATE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+d+'</div></div><div class="lnsn">'+esc(l.name)+'</div>'+
+   '<table class="lnsT"><thead><tr><th>Date</th><th>Payment Number</th><th class="n">Amount</th><th class="n">Running Balance</th></tr></thead><tbody><tr><td></td><td>Loan Amount</td><td class="n">'+A(c.amt)+'</td><td class="n">'+A(c.amt)+'</td></tr>'+
+   c.rows.map(function(r){return'<tr><td>'+lnMl(r.m)+'</td><td>Interim Payment '+r.n+' - '+esc(r.t)+'</td><td class="n">'+A(r.a)+'</td><td class="n">'+A(r.b)+'</td></tr>'}).join("")+'</tbody></table>'+
+   '<div class="lnsT2"><span>Total Outstanding balance</span><span>'+A(c.bal)+'</span></div></div>'}
+$("board").addEventListener("click",function(e){var b=e.target.closest("[data-ln]");if(!b)return;var a=b.dataset.ln,id=b.dataset.id,l=LN.list.filter(function(x){return x.id===id})[0],g=VIEW;
+  if(e.target.closest("input,select,textarea")&&a==="open")return;
+  if(a==="open"){LNOPEN=LNOPEN===id?"":id;render();return}
+  if(a==="add"){var nid="l"+Date.now();LN.list.push({id:nid,g:g,name:"New employee",amt:20000,pays:[]});LNOPEN=nid;lnSave();render();return}
+  if(a==="addp"&&l){var lp=l.pays[l.pays.length-1],m=new Date();if(lp&&/^\d{4}-\d\d$/.test(lp.m)){var y=+lp.m.slice(0,4),mo=+lp.m.slice(5,7);mo++;if(mo>12){mo=1;y++}m=y+"-"+String(mo).padStart(2,"0")}else m=today().slice(0,7);l.pays.push({m:m,t:lp?lp.t:"Transfer",a:lp?lp.a:1000});lnSave();render();return}
+  if(a==="delp"&&l){l.pays.splice(+b.dataset.i,1);lnSave();render();return}
+  if(a==="dell"&&l){if(confirm("Delete the loan for "+l.name+"?")){LN.list=LN.list.filter(function(x){return x.id!==id});LNOPEN="";lnSave();render()}return}
+  if(a==="psum"){rpPrint(lnSummary(g),false);return}
+  if(a==="pst"&&l){rpPrint(lnStatement(l),false);return}});
+$("board").addEventListener("input",function(e){var t=e.target,id=t.dataset.id,l=LN.list.filter(function(x){return x.id===id})[0];
+  if(t.dataset.lni==="addr"){LN.addr=t.value;lnSave();return}
+  if(t.dataset.lni&&l){l[t.dataset.lni]=t.dataset.lni==="amt"?(num(t.value)||0):t.value;lnSave();return}
+  if(t.dataset.lnp&&l){var p=l.pays[+t.dataset.i];if(!p)return;p[t.dataset.lnp]=t.dataset.lnp==="a"?(num(t.value)||0):t.value;lnSave()}});
+$("board").addEventListener("change",function(e){var t=e.target;if(t.dataset.lnc==="inc"){LN.inc=t.checked;lnSave();return}
+  if(t.dataset.lnp||t.dataset.lni==="amt"||t.dataset.lni==="name")render()});
 var WKK="planner-wk-v1",WK={a:{},f:{ch:0,lv:""}},WKV=null,WKI="pm-ink-v1",WKINK={};
 try{var _wk=JSON.parse(localStorage.getItem(WKK)||"null");if(_wk&&typeof _wk==="object")for(var _wkk in WK)if(_wk[_wkk]!==undefined)WK[_wkk]=_wk[_wkk]}catch(e){}
 try{WKINK=JSON.parse(localStorage.getItem(WKI)||"{}")||{}}catch(e){WKINK={}}
@@ -7100,6 +7163,7 @@ function partHtml(g){
   var tabs=[["tasks","Tasks",act.length],["rem","Reminders",rlGet(g).filter(function(x){return!x.d}).length||""],["files","Files & links",st.files],["photos","Photos",PH.filter(function(x){return x.g===g}).length||""],["rcp","Receipts",RC.list.filter(function(x){return x.g===g}).length||""]];
   if(g==="kbw"||g==="byld")tabs.push(["vat","VAT Checker",VATR.rows.filter(function(x){return x.g===g}).length||""]);
   if(g==="kbw"||g==="byld")tabs.push(["pc","Petty cash",pcPending(g)||""]);
+  if(g==="kbw")tabs.push(["loan","Employee loans",LN.list.filter(function(x){return x.g===g}).length||""]);
   if(g==="byld")tabs.push(["cq","Cheques",cqPend(g).length||""]);
   if(g==="byld")tabs.push(["mrep","Monthly report",""]);
   if(g==="byld")tabs.splice(1,0,["ppay","Project payments",PAY.rows.filter(function(x){return x.g===g}).length||""]);
@@ -7127,6 +7191,7 @@ function partHtml(g){
   else if(sub==="pc"&&(g==="kbw"||g==="byld"))H+=pcHtml(g);
   else if(sub==="cq"&&g==="byld")H+=cqHtml(g);
   else if(sub==="mrep"&&g==="byld")H+=mrHtml(g);
+  else if(sub==="loan"&&g==="kbw")H+=lnHtml(g);
   else if(sub==="photos")H+=phHtml(g);
   else H+=plHtml(g)+filesHtml(g);
   return H+'</section>'}
