@@ -3158,7 +3158,7 @@ function rpArHtml(g,only){only=(only==="r"||only==="p")?only:null;
     pyOutSubs(g).forEach(function(x){scT+=x.bal;scR.push({c:["-","<b>"+esc(x.name)+"</b>",esc(x.code)||"-","-","","","-",money(x.bal)]})});
     Pp.forEach(function(x){otT+=xbal(x);otR.push(mkP(x))});
     bmT=r2(bmT);scT=r2(scT);otT=r2(otT);ps=r2(bmT+scT+otT);
-    PG=[{k:"bm",t:"BM-Technical (sister company)",tt:"Total BM-Technical",rows:bmR,tot:bmT},{k:"sc",t:"Sub-contractors",tt:"Total sub-contractors",rows:scR,tot:scT},{k:"ot",t:"Others (owner and suppliers)",tt:"Total others",rows:otR,tot:otT}]}
+    PG=[{k:"bm",t:"BM-Technical",tt:"Total BM-Technical",rows:bmR,tot:bmT},{k:"sc",t:"Sub-contractors",tt:"Total sub-contractors",rows:scR,tot:scT},{k:"ot",t:"Others (owner and suppliers)",tt:"Total others",rows:otR,tot:otT}]}
   else Pp.forEach(function(x){ps+=xbal(x);pr.push(mkP(x))});
   rs=r2(rs);ps=r2(ps);
   if(only!=="p")h+='<h4>Receivable <em>'+rr.length+'</em></h4>'+rpTable(cols,rr,rr.length?["Total receivable","","",money(rs)]:null);
