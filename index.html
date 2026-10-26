@@ -3396,7 +3396,7 @@ function pcPrintHtml(g,y,m){
   var P=pcByCat(M.rows,"o");if(P.length)h+='<h4>Where the money went</h4>'+rpTable([["Category"],["Lines","n"],["Amount","n"],["% of paid out","n"]],P.map(function(c){return{c:[esc(c.c),String(c.n),money(c.a),(M.o?(c.a/M.o*100).toFixed(1):"0.0")+"%"]}}),["Total","",money(M.o),"100%"]);
   return h+rpFoot()}
 function pcReportSection(g,tb,sec,d){
-  var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc pcl">'+sec("5","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
+  var asof=(typeof MR!=="undefined"&&MR.asof)||today(),y=+asof.slice(0,4),m=+asof.slice(5,7),M=pcMonth(g,y,m),h='<div class="mrsc pcl">'+sec("3","PETTY CASH - "+PCM[m-1].toUpperCase()+" "+y)+'<div class="mrasof">Cash held in the office petty cash box, and where it was spent during '+PCM[m-1]+' '+y+'</div>';
   if(!M.rows.length)return h+'<div class="mrnote">No petty cash lines were entered for this month.</div></div>';
   var cols="92px 1.2fr 3fr 96px 100px 100px 110px 34px",st='style="grid-template-columns:'+cols+'"',sp=function(t,n){return'<span'+(n?' class="n"':'')+'>'+t+'</span>'};
   h+='<div class="mrt mrth" '+st+'>'+["Date","Category","Description","Ref"].map(function(x){return sp(x)}).join("")+["Paid out","Received","Balance"].map(function(x){return sp(x,1)}).join("")+sp("QB",1)+'</div>';
@@ -3721,16 +3721,6 @@ function mrReport(g,mode){
     '<div class="mrsr mrsn"><span>Net position</span><b>'+mrN(net)+'</b></div>'+'</div>';
   h+='<div class="mrsc">'+sec("1","CASH ON HAND")+'<div class="mrasof">Running balance held by each person as of '+d+'</div>'+tb("1fr 170px",["Held by","Amount"],cashR,["Total cash on hand",mrN(ctot)])+note(MR.cnote);
   h+='</div><div class="mrsc">'+sec("2","RAK BANK")+'<div class="mrasof">Bank reconciliation as of '+d+'</div>'+tb("1fr 170px",["Description","Amount"],[["Bank balance",mrN(bk)],["Book balance",mrN(bo)]],["Reconciliation discrepancy (bank less book)",Math.abs(df)<.005?"-":mrN(df)])+note(MR.bnote);
-  h+='</div><div class="mrsc">'+sec("3","PROJECTS - PT (ONGOING)")+'<div class="mrasof">Position of each ongoing project as of '+d+'. Estimated profit or loss = estimated revenue (contract value before VAT unless you changed it) less expenses to date, with its percentage of that revenue.</div>';
-  if(P.length){var pf=function(ex,es){if(!(ex>0&&es>0))return"-";var pr=r2(es-ex),pp=Math.abs(r2(pr/es*100)).toFixed(1);return mrN(pr)+'<small class="'+(pr<0?"loss":"gain")+'">'+pp+(pr<0?"% loss":"% profit")+'</small>'};
-    h+=tb("1.4fr 1fr 1fr 1fr 1.1fr 1fr",["Project","Project cost (incl. VAT)","Received from customer","Expenses to date","Est. profit / (loss)","Pending balance"],P.map(function(x){var v=!!x.parKey;return['<span class="'+(v?"mrvo":"")+'"><b>'+(v?"&#8627; ":"")+esc(x.code||x.names[0]||"(no code yet)")+'</b>'+(x.names.length&&(x.code||x.names.length>1)?'<small>'+esc((x.code?x.names:x.names.slice(1)).join(" / "))+'</small>':"")+(x.vos&&x.vos.length?'<small>Expenses include '+x.vos.length+' VO'+(x.vos.length>1?"s":"")+'</small>':"")+'</span>',mrN(x.cv),mrN(x.paid),v?"incl. above":mrN(x.exp),v?"":pf(x.exp,x.est),mrN(x.bal)]}),["Total",mrN(a),mrN(r2(P.reduce(function(t,x){return t+x.paid},0))),mrN(b),pf(b,c),mrN(e)])}
-  else h+='<div class="mrnote">No ongoing projects.</div>';
-  h+=note(MR.pnote);
-  h+='</div><div class="mrsc">'+sec("4","PAYABLES")+'<div class="mrasof">Amounts still to be paid as of '+d+'</div>';
-  var pt=function(t,L,lab){return'<div class="mrsubh">'+t+'</div>'+(L.length?tb("1.6fr 1fr 1fr 1fr 1fr",[lab,"Project","Contract value","Paid to date","Outstanding"],L.map(function(x){return[esc(x.name),esc(x.code)||"-",mrN(x.cv),mrN(x.paid),mrN(x.bal)]}),["Total","",mrN(sm(L,"cv")),mrN(sm(L,"paid")),mrN(sm(L,"bal"))]):'<div class="mrnote">Nothing outstanding.</div>')};
-  h+=pt("4.1  BM Technical services",B,"Supplier")+pt("4.2  Sub-contractors",S,"Sub-contractor");
-  if(X.length)h+='<div class="mrsubh">4.3  Other payables</div>'+tb("1fr 1.6fr 1fr 1fr 1fr 1fr 1fr",["Date","Supplier","Project code","Payment terms","Amount","Paid","Balance"],X.map(function(x){return[rpD(x.due)||"-",esc(x.name||"—"),esc(x.pcode||"-"),esc(x.terms||"-"),mrN(num(x.amt)||0),mrN(num(x.paid)||0),mrN(xbal(x))]}),["Total","","","",mrN(r2(X.reduce(function(t,x){return t+(num(x.amt)||0)},0))),mrN(r2(X.reduce(function(t,x){return t+(num(x.paid)||0)},0))),mrN(xs)]);
-  h+='<div class="mrt mrtt mrgrand" style="grid-template-columns:1fr 170px"><span>TOTAL PAYABLES</span><span class="n">'+mrN(pay)+'</span></div>'+note(MR.ynote);
   h+='</div>';
   h+=pcReportSection(g,tb,sec,d);
   var AN=mrFsAnalysis(MR.f,{cash:ctot,bank:bo,rec:e,pay:pay}),sig='<div class="mrpb"><div class="mrpl"></div><div>Prepared by</div><b>LADY CAREY LLENADO</b></div></div>';
@@ -3738,7 +3728,7 @@ function mrReport(g,mode){
   return'<div class="mrp">'+h+sig}
 function mrHtml(g){
   var h='<section class="xsec"><div class="rpbar"><h3>Monthly report</h3><span class="rpgrp"><button type="button" class="btn pri rpbtn" data-mrgen="1">Generate report</button><button type="button" class="btn rpbtn" data-mrprint="report" title="Print or save as PDF">Print report</button></span></div>'+
-    '<p class="plh">Fill in the figures below. Projects and payables come from Project payments by themselves. Press Generate to see the report, then Print. The financial analysis prints separately, from the Financial analysis section at the bottom.</p>'+
+    '<p class="plh">Fill in the figures below. Press Generate to see the report, then Print. The financial analysis prints separately, from the Financial analysis section at the bottom.</p>'+
     '<label class="mrf"><small>Report date (month ended on)</small><input type="date" data-mr="asof" value="'+esc(MR.asof||today())+'"></label></section>'+
     mrFsHtml()+'<section class="xsec"><h3>Letterhead</h3><p class="plh">Company name and address shown at the top of the report next to the logo. One line each. To change the logo, use the round logo button at the top of this part.</p><label class="mrf mrw"><small>Company name and address</small><textarea data-mr="lh" rows="3">'+esc(MR.lh===undefined?MR_LH:MR.lh)+'</textarea></label></section>'+
     '<section class="xsec"><h3>Cash on hand</h3><p class="plh">Running balance held by each person, as of the report date.</p><div class="mrcash">'+
