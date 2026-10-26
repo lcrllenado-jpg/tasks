@@ -880,7 +880,12 @@ html[data-theme=dark] .card,html[data-theme=dark] .tbl,html[data-theme=dark] .xc
 .rep{font-family:Arial,Helvetica,sans-serif;color:#1b1b1b;font-size:11px;line-height:1.35}.rep .rph{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 14px;background:var(--rc);color:#fff;border-radius:6px}.rep .rphl{display:flex;align-items:center;gap:12px}.rep .rphl img{height:38px;width:auto;background:#fff;border-radius:6px;padding:3px}.rep .rphl b{display:block;font-size:17px;letter-spacing:.3px;text-transform:uppercase}.rep .rphl span{font-size:12px;opacity:.95}.rep .rphr{text-align:right}.rep .rphr span{display:block;font-size:10px;opacity:.85}.rep .rphr b{font-size:14px}
 .rep h4{margin:14px 0 5px;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;color:#222;border-bottom:2px solid var(--rc);padding-bottom:3px}.rep h4 em{font-style:normal;font-weight:400;color:#666;margin-left:4px}
 .rep .rpt{width:100%;border-collapse:collapse}.rep .rpt th{background:#eef0f2;text-align:left;font-size:10.5px;padding:5px 7px;border:1px solid #c8ccd0}.rep .rpt td{padding:5px 7px;border:1px solid #d5d8db;vertical-align:top}.rep .rpt .n{text-align:right;font-variant-numeric:tabular-nums}.rep .rpt th.n{text-align:right}.rep .rpt tr.rpto td{font-weight:800;background:#f4f5f6}.rep .rpt tr.late td{background:#fdecea}.rep .rpt .rpe{text-align:center;color:#777}.rep .rpt small{color:#666}.rep .rpl{font-style:normal;color:#b3261e;font-weight:700;font-size:10px;margin-left:4px}
-.rep .rpsum{display:flex;gap:10px;margin:16px 0 10px}.rep .rpsum>div{flex:1;border:1px solid #c8ccd0;border-radius:6px;padding:8px 10px;background:#f7f8f9}.rep .rpsum span{display:block;font-size:10px;color:#555}.rep .rpsum b{font-size:15px;font-variant-numeric:tabular-nums}.rep .rpsum .rpk{background:var(--rc);border-color:var(--rc);color:#fff}.rep .rpsum .rpk span{color:#fff;opacity:.9}
+.rep .rpgz .rpgh td{color:#fff;font-weight:800;letter-spacing:.03em;border:0}.rpgz .rpgs td{font-weight:800}.rpgz .rpgsub td{font-size:.92em;color:#46566a}.rpgz .rpgsub td:nth-child(2){padding-left:18px}
+.rpgz .rpgbm.rpgh td{background:#2f6fbf}.rpgz .rpgsc.rpgh td{background:#c2640f}.rpgz .rpgot.rpgh td{background:#6b7a86}
+.rpgz .rpgbm.rpgs td{background:#d6e6f8;color:#173f73}.rpgz .rpgsc.rpgs td{background:#fbdcbb;color:#7a3b05}.rpgz .rpgot.rpgs td{background:#dfe4e8;color:#35424e}
+.rpgz .rpgbm.rpgr:not(.rpgsub) td:nth-child(2),.rpgz .rpgbm.rpgsub td{background:#f3f7fd}.rpgz .rpgsc.rpgr td:nth-child(2){background:#fdf3e8}.rpgz .rpgot.rpgr td:nth-child(2){background:#f2f4f6}
+.rpgt .rpgbm{background:#2f6fbf!important;border-color:#2f6fbf!important;color:#fff}.rpgt .rpgsc{background:#c2640f!important;border-color:#c2640f!important;color:#fff}.rpgt .rpgot{background:#6b7a86!important;border-color:#6b7a86!important;color:#fff}.rpgt span,.rpgt b{color:#fff!important}.rpgt>div{-webkit-print-color-adjust:exact;print-color-adjust:exact}.rpgz td,.rpgz th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.rpsum{display:flex;gap:10px;margin:16px 0 10px}.rep .rpsum>div{flex:1;border:1px solid #c8ccd0;border-radius:6px;padding:8px 10px;background:#f7f8f9}.rep .rpsum span{display:block;font-size:10px;color:#555}.rep .rpsum b{font-size:15px;font-variant-numeric:tabular-nums}.rep .rpsum .rpk{background:var(--rc);border-color:var(--rc);color:#fff}.rep .rpsum .rpk span{color:#fff;opacity:.9}
 .rep .rpsg{display:flex;gap:30px;margin-top:38px}.rep .rpsg>div{flex:1;font-size:10.5px;color:#444}.rep .rpsg i{display:block;border-bottom:1px solid #444;height:26px;margin-bottom:4px}
 @media print{body>#repPrint{display:block!important}html,body{overflow:visible!important;height:auto!important}#repPrint{height:auto!important;overflow:visible!important}#repPrint .rep,#repPrint .rep *{-webkit-print-color-adjust:exact;print-color-adjust:exact}.rep .rpt tr{break-inside:avoid;page-break-inside:avoid}.rep h4{break-after:avoid}.rep .rpsum,.rep .rpsg{break-inside:avoid}}
 .rep td,.rep td *,.rep h4,.rep h4 em{text-transform:none!important;letter-spacing:normal!important;font-family:Arial,Helvetica,sans-serif!important}.rep td,.rep td b,.rep td small{color:#1b1b1b!important}.rep td small{color:#666!important;font-weight:400}.rep .rpt tr.late td .rpl{color:#b3261e!important}.rep .rpt th{color:#333!important;text-transform:uppercase}.rep h4{text-transform:uppercase!important}.rep .rpsum .rpk b{color:#fff!important}
@@ -3051,6 +3056,10 @@ function rpTable(cols,rows,tot){
   return'<table class="rpt"><thead><tr>'+cols.map(function(c,i){return'<th class="'+(c[1]||"")+'">'+esc(c[0])+'</th>'}).join("")+'</tr></thead><tbody>'+
     (rows.length?rows.map(function(r){return'<tr'+(r.cls?' class="'+r.cls+'"':"")+'>'+r.c.map(function(v,i){return'<td class="'+(cols[i][1]||"")+'">'+v+'</td>'}).join("")+'</tr>'}).join(""):'<tr><td colspan="'+cols.length+'" class="rpe">Nothing open.</td></tr>')+
     (tot?'<tr class="rpto">'+tot.map(function(v,i){return'<td class="'+(cols[i][1]||"")+'">'+v+'</td>'}).join("")+'</tr>':"")+'</tbody></table>'}
+function rpPayGroups(cols,G,total){var h='<table class="rpt rpgz"><thead><tr>'+cols.map(function(c){return'<th class="'+(c[1]||"")+'">'+esc(c[0])+'</th>'}).join("")+'</tr></thead><tbody>',any=false;
+  G.forEach(function(x){if(!x.rows.length)return;any=true;h+='<tr class="rpgh rpg'+x.k+'"><td colspan="'+cols.length+'">'+esc(x.t).toUpperCase()+' · '+x.rows.length+' item'+(x.rows.length>1?"s":"")+'</td></tr>'+x.rows.map(function(r){return'<tr class="rpgr rpg'+x.k+(r.sub?" rpgsub":"")+'">'+r.c.map(function(v,i){return'<td class="'+(cols[i][1]||"")+'">'+v+'</td>'}).join("")+'</tr>'}).join("")+'<tr class="rpgs rpg'+x.k+'"><td colspan="'+(cols.length-1)+'">'+esc(x.tt)+'</td><td class="n">'+money(x.tot)+'</td></tr>'});
+  if(!any)h+='<tr><td colspan="'+cols.length+'" class="rpe">Nothing open.</td></tr>';
+  return h+'<tr class="rpto"><td colspan="'+(cols.length-1)+'">Total payable</td><td class="n">'+money(total)+'</td></tr></tbody></table>'}
 function rpPayHtml(g,only){only=(only&&only!=="all")?only:null;
   var R=PAY.rows.filter(function(r){return r.g===g}),G3=[["pt","PT (ongoing)"],["bm","BM-Technical"],["sub","Sub-contractors"]],gc=0,gp=0,go=0,SN={pt:"PT (ongoing)",bm:"BM-Technical",sub:"Sub-contractors",done:"Completed"},h=rpHead(g,"Project payments summary"+(only?" · "+SN[only]:""));
   G3.forEach(function(k){
@@ -3072,14 +3081,23 @@ function rpArHtml(g,only){only=(only==="r"||only==="p")?only:null;
     Rr=PAY.ar.filter(function(x){return x.g===g&&x.t==="r"}),Pp=PAY.ar.filter(function(x){return x.g===g&&x.t==="p"}),rs=0,ps=0,rr=[],pr=[];
   if(g==="byld"){var a=pyOutPT(g);rs+=a;rr.push({c:["<b>PT (ongoing)</b> <small>total outstanding balance</small>","","",money(a)]})}
   Rr.forEach(function(x){rs+=num(x.amt)||0;rr.push(mk(x))});
-  if(g==="byld"){var bm=pyOutK(g,"bm");ps+=bm;pr.push({c:["","<b>BM-Technical</b> <small>total outstanding balance</small>","","","","","",money(bm)]});
-    pyOutSubs(g).forEach(function(x){ps+=x.bal;pr.push({c:["","<b>"+esc(x.name)+"</b> <small>sub-contractor · outstanding balance</small>",esc(x.code)||"-","","","","",money(x.bal)]})})}
-  Pp.forEach(function(x){ps+=xbal(x);pr.push(mkP(x))});
+  var PG=null;
+  if(g==="byld"){var bmR=[],bmT=0,scR=[],scT=0,otR=[],otT=0;
+    PAY.rows.filter(function(r){return r.g===g&&r.k==="bm"&&!r.par}).forEach(function(r){var fam=[r].concat(pyKids(r.id)),any=fam.some(function(x){var c=pyCalc(x);return!c.done&&c.bal>0});if(!any)return;
+      fam.forEach(function(x,i){var c=pyCalc(x),op=!c.done&&c.bal>0;if(i>0&&!op)return;var nx="";for(var k2=0;k2<5;k2++){var pq=x.pays[k2]||{};if((num(pq.a)||0)>0&&pq.p!==true&&pq.d){nx=pq.d;break}}
+        if(op)bmT+=c.bal;bmR.push({sub:i>0,c:["-",(i>0?'<span class="mrvo">↳ ':"<b>")+esc(x.name||"—")+(i>0?"</span>":"</b>"),esc(x.pcode||x.code||"-"),"-",money(c.cv),money(c.paid),rpD(nx)||"-",money(op?c.bal:0)]})})});
+    pyOutSubs(g).forEach(function(x){scT+=x.bal;scR.push({c:["-","<b>"+esc(x.name)+"</b>",esc(x.code)||"-","-","","","-",money(x.bal)]})});
+    Pp.forEach(function(x){otT+=xbal(x);otR.push(mkP(x))});
+    bmT=r2(bmT);scT=r2(scT);otT=r2(otT);ps=r2(bmT+scT+otT);
+    PG=[{k:"bm",t:"BM-Technical (sister company)",tt:"Total BM-Technical",rows:bmR,tot:bmT},{k:"sc",t:"Sub-contractors",tt:"Total sub-contractors",rows:scR,tot:scT},{k:"ot",t:"Others (owner and suppliers)",tt:"Total others",rows:otR,tot:otT}]}
+  else Pp.forEach(function(x){ps+=xbal(x);pr.push(mkP(x))});
   rs=r2(rs);ps=r2(ps);
   if(only!=="p")h+='<h4>Receivable <em>'+rr.length+'</em></h4>'+rpTable(cols,rr,rr.length?["Total receivable","","",money(rs)]:null);
-  if(only!=="r")h+='<h4>Payable <em>'+pr.length+'</em></h4>'+rpTable(colP,pr,pr.length?["Total payable","","","","","","",money(ps)]:null);
+  if(only!=="r"&&PG){var np=PG.reduce(function(a,x){return a+x.rows.length},0);h+='<h4>Payable <em>'+np+'</em></h4>'+rpPayGroups(colP,PG,ps)}
+  else if(only!=="r")h+='<h4>Payable <em>'+pr.length+'</em></h4>'+rpTable(colP,pr,pr.length?["Total payable","","","","","","",money(ps)]:null);
   if(!only)h+='<div class="rpsum"><div><span>Total receivable</span><b>'+money(rs)+'</b></div><div><span>Total payable</span><b>'+money(ps)+'</b></div><div class="rpk"><span>Net position (receivable minus payable)</span><b>'+(rs-ps<0?"−":"")+money(Math.abs(r2(rs-ps)))+'</b></div></div>';
   else h+='<div class="rpsum"><div class="rpk"><span>'+(only==="r"?"Total receivable":"Total payable")+'</span><b>'+money(only==="r"?rs:ps)+'</b></div></div>';
+  if(PG&&only!=="r")h+='<div class="rpsum rpgt">'+PG.map(function(x){return'<div class="rpg'+x.k+'"><span>'+esc(x.t.replace(/ \(.*\)/,""))+'</span><b>'+money(x.tot)+'</b></div>'}).join("")+'<div class="rpk"><span>Total payable</span><b>'+money(ps)+'</b></div></div>';
   return h+rpFoot()}
 function rpPrint(html,land){
   var d=document.createElement("div");d.id="repPrint";d.innerHTML='<div class="rep">'+html+'</div>';document.body.appendChild(d);

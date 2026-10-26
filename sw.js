@@ -1,6 +1,6 @@
 /* Task Management: keeps the app working offline. Your tasks are stored on the device, never here.
    Always tries the network first so you get the newest version, and falls back to the saved copy when offline. */
-var CACHE = "task-mgmt-v129";
+var CACHE = "task-mgmt-v130";
 var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./logo-192.png", "./logo-512.png", "./logo-180.png"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
