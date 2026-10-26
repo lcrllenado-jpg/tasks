@@ -3722,7 +3722,6 @@ function mrReport(g,mode){
   h+='<div class="mrsc">'+sec("1","CASH ON HAND")+'<div class="mrasof">Running balance held by each person as of '+d+'</div>'+tb("1fr 170px",["Held by","Amount"],cashR,["Total cash on hand",mrN(ctot)])+note(MR.cnote);
   h+='</div><div class="mrsc">'+sec("2","RAK BANK")+'<div class="mrasof">Bank reconciliation as of '+d+'</div>'+tb("1fr 170px",["Description","Amount"],[["Bank balance",mrN(bk)],["Book balance",mrN(bo)]],["Reconciliation discrepancy (bank less book)",Math.abs(df)<.005?"-":mrN(df)])+note(MR.bnote);
   h+='</div>';
-  h+=pcReportSection(g,tb,sec,d);
   var AN=mrFsAnalysis(MR.f,{cash:ctot,bank:bo,rec:e,pay:pay}),sig='<div class="mrpb"><div class="mrpl"></div><div>Prepared by</div><b>LADY CAREY LLENADO</b></div></div>';
   if(mode==="analysis"){var k=h.indexOf('<div class="mrsm">');return'<div class="mrp">'+h.slice(0,k).replace("MONTHLY FINANCIAL REPORT","FINANCIAL ANALYSIS")+(AN||'<div class="mrnote">No financial statements attached yet. Attach them under Financial statements to see the analysis.</div>')+sig}
   return'<div class="mrp">'+h+sig}
