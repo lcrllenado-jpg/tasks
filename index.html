@@ -3099,7 +3099,7 @@ function rpPayGroups(cols,G,total){var h='<table class="rpt rpgz"><thead><tr>'+c
   if(!any)h+='<tr><td colspan="'+cols.length+'" class="rpe">Nothing open.</td></tr>';
   return h+'<tr class="rpto"><td colspan="'+(cols.length-1)+'">Total payable</td><td class="n">'+money(total)+'</td></tr></tbody></table>'}
 function rpPayHtml(g,only){only=(only&&only!=="all")?only:null;
-  var R=PAY.rows.filter(function(r){return r.g===g}),G3=[["pt","PT (ongoing)"],["bm","BM-Technical"],["sub","Sub-contractors"]],gc=0,gp=0,go=0,SN={pt:"PT (ongoing)",bm:"BM-Technical",sub:"Sub-contractors",done:"Completed"},h=rpHead(g,"Project payments summary"+(only?" · "+SN[only]:""));
+  var R=PAY.rows.filter(function(r){return r.g===g}),G3=[["pt","PT (ongoing)"],["bm","BM-Technical"],["sub","Sub-contractors"]],gc=0,gp=0,go=0,SN={pt:"PT (ongoing)",bm:"BM-Technical",sub:"Sub-contractors",done:"Completed"},h=rpHead(g,"Project payments summary"+(only?" · "+SN[only]:"")),h=g==="byld"?h.replace("--rc:"+G[g].cd,"--rc:#14213d"):h;
   G3.forEach(function(k){
     if(only&&only!==k[0])return;
     var pt=pyIsPT(k[0]),L=R.filter(function(r){return r.k===k[0]&&!pyCalc(r).done}),c=0,p=0,o=0,sb2=(k[0]==="sub"),cols=pt?[["Client name"],["Project code"],["Contract value (incl. VAT)","n"],["Paid to date","n"],["Outstanding balance","n"]]:[[sb2?"Sub-contractor":"BM Technical services"]].concat(sb2?[["Project code"]]:[]).concat([["Contract value","n"],["Paid to date","n"],["Outstanding balance","n"]]);
@@ -3166,7 +3166,7 @@ function rpPrint(html,land){
   var done=function(){if(d.parentNode)d.remove();if(st.parentNode)st.remove();window.removeEventListener("afterprint",done)};window.addEventListener("afterprint",done);
   setTimeout(function(){try{window.print()}catch(e){}setTimeout(done,1500)},120)}
 $("board").addEventListener("click",function(e){var b=e.target.closest("[data-rp]");if(!b)return;var g=VIEW;if(!G[g])return;
-  if(b.dataset.rp==="pay")rpPrint(rpPayHtml(g,b.dataset.rps),true);else rpPrint(rpArHtml(g,b.dataset.rps),b.dataset.rps==="r"&&g==="byld")});
+  if(b.dataset.rp==="pay"){var __o=b.dataset.rps;if(g==="byld"&&(!__o||__o==="all"||__o==="pt"))rpPrint(rpRecvLand(g),true);else rpPrint(rpPayHtml(g,__o),true)}else rpPrint(rpArHtml(g,b.dataset.rps),b.dataset.rps==="r"&&g==="byld")});
 /* ===== CMA book: one page at a time, key words in colour, highlighter, pen, PDF, Test me (v115) ===== */
 var BKK="planner-bk-v1",BK={c:1,p:0,hl:{},pen:{},tm:{},mode:"",hc:"#FFE066",pc:"#1f4fd8",fing:0,pdfm:0,tmr:null};
 try{var _bk=JSON.parse(localStorage.getItem(BKK)||"null");if(_bk&&typeof _bk==="object"){["c","p","hl","pen","tm","hc","pc","fing"].forEach(function(k){if(_bk[k]!==undefined)BK[k]=_bk[k]})}}catch(e){}
